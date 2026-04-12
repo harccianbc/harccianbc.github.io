@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Mission — Harccian™</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: linear-gradient(135deg, #192535 0%, #be2834 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 920px;
+      width: 100%;
+      background: #fdfcf7; /* Parchment */
+      border-radius: 8px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.7);
+      padding: 60px 50px;
+      color: #192535;
+      border: 3px solid #d4af37;
+      position: relative;
+    }
+
+    .container::before {
+      content: "™";
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      font-family: 'Cinzel', serif;
+      color: #d4af37;
+      font-size: 28px;
+      font-weight: 900;
+      opacity: 0.9;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 52px;
+      font-weight: 900;
+      color: #be2834;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .latin-motto {
+      font-family: 'Cinzel', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: #192535;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      border-top: 2px solid #be2834;
+      display: inline-block;
+      padding-top: 12px;
+    }
+
+    .divider {
+      height: 4px;
+      background: linear-gradient(to right, transparent, #be2834, transparent);
+      width: 120px;
+      margin: 45px auto;
+    }
+
+    .mission-statement {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #be2834;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .mission-statement p {
+      font-size: 20px;
+      line-height: 1.85;
+      color: #192535;
+      margin-bottom: 28px;
+    }
+
+    .mission-statement strong {
+      color: #be2834;
+      font-weight: 900;
+    }
+
+    /* Commitments Grid */
+    .commitments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .commit-card {
+      background: #ffffff;
+      border: 2px solid #192535;
+      padding: 32px 28px;
+      transition: all 0.3s ease;
+    }
+
+    .commit-card:hover {
+      border-color: #d4af37;
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .commit-icon {
+      font-size: 34px;
+      margin-bottom: 16px;
+    }
+
+    .commit-card strong {
+      font-family: 'Cinzel', serif;
+      font-size: 17px;
+      color: #be2834;
+      display: block;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .commit-card span {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 70px;
+      padding-top: 30px;
+      border-top: 1px solid #ddd;
+    }
+
+    .seal {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      color: #d4af37;
+      font-size: 13px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 40px 25px; }
+      .header h1 { font-size: 38px; }
+      .commitments-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Harccian</h1>
+    <p class="latin-motto">Fides et Excellentia</p>
+  </div>
+
+  <div class="mission-statement">
+    <span class="card-title">The Manifesto</span>
+    <p>
+      Harccian™ exists to provide <strong>honest, transparent, and genuinely free</strong> Bible and ministry training 
+      to those who seek the Truth — with no hidden costs, no bait-and-switch, and no deception.
+    </p>
+    <p>
+      We believe access to biblical education should be absolute. <strong>What we say is free, is free.</strong> 
+      What is not, will be declared with total clarity, upfront — always.
+    </p>
+    <p style="font-size: 17px; font-weight: 700; color: #555; border: 1px solid #ddd; padding: 20px; background: #fff;">
+      Our courses are <span style="color: #be2834;">strictly non-accredited</span>. We offer spiritual growth and biblical knowledge. 
+      We will never misrepresent our status to the world.
+    </p>
+  </div>
+
+  <div class="divider"></div>
+
+  <span class="card-title" style="text-align: center;">Our Immutable Commitments</span>
+
+  <div class="commitments-grid">
+    <div class="commit-card">
+      <div class="commit-icon">⚖️</div>
+      <strong>Always Transparent</strong>
+      <span>Absolute honesty regarding costs. No hidden fees, no surprises. Upfront always.</span>
+    </div>
+    <div class="commit-card">
+      <div class="commit-icon">🛡️</div>
+      <strong>Biblically Grounded</strong>
+      <span>Uncompromising adherence to Scripture. Designed to strengthen your faith and sharpen your walk.</span>
+    </div>
+    <div class="commit-card">
+      <div class="commit-icon">🏛️</div>
+      <strong>Honest Credentials</strong>
+      <span>Our awards are tokens of merit earned within our community. They are never misrepresented as government degrees.</span>
+    </div>
+    <div class="commit-card">
+      <div class="commit-icon">🤝</div>
+      <strong>No Deception</strong>
+      <span>If our model ever changes, you will be notified before it takes effect. Honesty is our first principle.</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p class="seal">© Harccian™ Bible & Ministry Training</p>
+    <p style="font-size: 11px; margin-top: 12px; color: #be2834; font-weight: 900; letter-spacing: 1.5px;">
+      HONESTY IN FAITH EDUCATION
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
