@@ -368,9 +368,9 @@
   </div>
 
   <div class="welcome-box">
-    <h1>WELCOME, <span id="studentName">STUDENT</span></h1>
+    <h1>WELCOME, <span id="studentName">GUEST</span></h1>
     <p>HARCCIAN BIBLE COLLEGE™ — STUDENT PORTAL</p>
-    <div class="student-badge">STUDENT NO: <span id="studentNum"></span></div>
+    <div class="student-badge">STUDENT NO: <span id="studentNum">—</span></div>
   </div>
 
   <div class="container">
@@ -492,14 +492,18 @@
   <script>
     const student = JSON.parse(sessionStorage.getItem('student'));
 
-    if (!student) {
-      document.body.innerHTML = '<div style="color:white;font-family:Lato,sans-serif;padding:40px;text-align:center;"><h1>Please log in first</h1><p>No student session was found.</p></div>';
-    } else {
+    if (student) {
       document.getElementById('studentName').textContent = student.name || 'STUDENT';
       document.getElementById('studentNum').textContent = student.number || '';
       document.getElementById('studentCourse').textContent = student.course || '—';
       document.getElementById('currentCourse1').textContent = student.course || '—';
       document.getElementById('lockedStudentNum').value = student.number || '';
+    } else {
+      document.getElementById('studentName').textContent = 'GUEST';
+      document.getElementById('studentNum').textContent = '—';
+      document.getElementById('studentCourse').textContent = '—';
+      document.getElementById('currentCourse1').textContent = '—';
+      document.getElementById('lockedStudentNum').value = '';
     }
 
     function logout() {
@@ -579,7 +583,7 @@
         return;
       }
 
-      if (currentPass !== student.password) {
+      if (!student || currentPass !== student.password) {
         errorMsg.textContent = '❌ Current password is incorrect';
         errorMsg.style.display = 'block';
         return;
