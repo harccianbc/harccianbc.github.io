@@ -1,159 +1,220 @@
  <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Apply to Harccian</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
 <style>
-  :root { 
-    --n: #192535;
-    --r: #be2834;
-    --g: #d4af37;
-    --c: #fdfcf7;
-  }
+:root { 
+  --n: #192535;
+  --r: #be2834;
+  --g: #d4af37;
+  --c: #fdfcf7;
+}
 
-  body, html {
-    margin: 0;
-    padding: 0;
-    background: #05070a;
-    overflow-x: hidden;
-  }
+/* RESET */
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background: #05070a;
+  color: white;
+}
 
-  .hbc-power-banner {
-    width: 100%;
-    min-height: 400px;
-    background: radial-gradient(circle at center, #1c2a3b 0%, var(--n) 50%, #2a080a 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 5px solid var(--g);
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    padding: 40px 20px;
-  }
+/* NAV */
+.nav {
+  background: #111827;
+  padding: 15px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
 
-  .light-ray {
-    position: absolute;
-    top: -50%;
-    width: 30vw;
-    height: 200%;
-    background: linear-gradient(to bottom, rgba(212, 175, 55, 0.1), transparent);
-    transform: rotate(35deg);
-    pointer-events: none;
-    z-index: 1;
-    filter: blur(40px);
-  }
-  .ray-left { left: -10%; animation: pulseRay 8s infinite alternate; }
-  .ray-right { right: -10%; transform: rotate(-35deg); animation: pulseRay 10s infinite alternate-reverse; }
+.nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
 
-  @keyframes pulseRay {
-    0% { opacity: 0.2; }
-    100% { opacity: 0.5; }
-  }
+.nav a:hover {
+  color: var(--g);
+}
 
-  .vignette {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, transparent 10%, rgba(0,0,0,0.9) 100%);
-    pointer-events: none;
-    z-index: 3;
-  }
+/* ===== HERO BANNER ===== */
+.hbc-power-banner {
+  width: 100%;
+  min-height: 380px;
+  background: radial-gradient(circle at center, #1c2a3b 0%, var(--n) 50%, #2a080a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 5px solid var(--g);
+  position: relative;
+  padding: 40px 20px;
+  text-align: center;
+}
 
-  .pillar {
-    position: absolute;
-    bottom: 0;
-    width: 60px;
-    height: 100%;
-    background: linear-gradient(to right, #05070a, #1c2a3b, #05070a);
-    border-left: 2px solid var(--r);
-    border-right: 2px solid var(--r);
-    box-shadow: 0 0 60px rgba(0,0,0,1);
-    z-index: 10;
-  }
-  .pillar-left { left: 0; }
-  .pillar-right { right: 0; }
+.apply-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  font-size: clamp(32px, 6vw, 70px);
+  color: var(--g);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  text-shadow: 4px 4px 0 #000;
+}
 
-  .apply-title {
-    font-family: 'Cinzel', serif;
-    font-weight: 900;
-    font-size: clamp(30px, 7vw, 75px);
-    color: var(--g);
-    margin: 0;
-    letter-spacing: clamp(6px, 2vw, 15px);
-    text-indent: clamp(6px, 2vw, 15px);
-    text-shadow: 4px 4px 0px #000, 0 0 40px rgba(212, 175, 55, 0.5);
-    text-transform: uppercase;
-    z-index: 20;
-    text-align: center;
-    position: relative;
-  }
+.manifest-text {
+  margin-top: 20px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 3px;
+  color: #fdfcf7;
+  opacity: 0.9;
+}
 
-  .manifest-text {
-    font-family: 'Cinzel', serif;
-    font-weight: 700;
-    font-size: clamp(14px, 1.8vw, 22px);
-    color: var(--c);
-    margin-top: 30px;
-    letter-spacing: 5px;
-    z-index: 20;
-    text-transform: uppercase;
-    text-align: center;
-    animation: manifest 6s ease-in-out infinite;
-    text-shadow: 0 0 20px var(--r);
-  }
+/* ===== FORM BOX ===== */
+.academic-frame {
+  max-width: 850px;
+  margin: 40px auto;
+  background: var(--c);
+  color: var(--n);
+  padding: 35px 50px;
+  border-top: 12px solid var(--r);
+  border-bottom: 5px solid var(--g);
+  box-shadow: 0 20px 80px rgba(0,0,0,0.7);
+  border-radius: 5px;
+}
 
-  @keyframes manifest {
-    0% { opacity: 0; transform: scale(0.98); filter: blur(8px); }
-    30% { opacity: 1; transform: scale(1); filter: blur(0px); }
-    70% { opacity: 1; transform: scale(1); filter: blur(0px); filter: brightness(1.2); }
-    100% { opacity: 0; transform: scale(1.02); filter: blur(12px); }
-  }
+h1, h2 {
+  font-family: 'Cinzel', serif;
+  text-align: center;
+}
 
-  .divider {
-    width: 300px;
-    max-width: 60%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--r), var(--g), var(--r), transparent);
-    margin-top: 15px;
-    z-index: 20;
-    box-shadow: 0 0 15px var(--r);
-  }
+h1 {
+  color: var(--r);
+  margin-bottom: 5px;
+}
 
-  @media (max-width: 768px) {
-    .hbc-power-banner {
-      min-height: 320px;
-      padding: 30px 15px;
-    }
+h2 {
+  font-size: 18px;
+  border-bottom: 2px solid var(--g);
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+}
 
-    .pillar {
-      width: 40px;
-    }
+.passage {
+  background: #eaedf0;
+  padding: 18px;
+  border-left: 6px solid var(--r);
+  margin-bottom: 20px;
+  color: #222;
+  line-height: 1.6;
+}
 
-    .divider {
-      max-width: 75%;
-    }
-  }
+.check-item {
+  display: block;
+  margin: 12px 0;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.3);
+  margin-right: 10px;
+  accent-color: var(--r);
+}
+
+/* BUTTONS */
+.btn {
+  width: 100%;
+  padding: 18px;
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 2px;
+  margin-top: 15px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.btn-agree {
+  background: #27ae60;
+  color: white;
+}
+
+.btn-agree:hover {
+  background: #2ecc71;
+  transform: translateY(-2px);
+}
+
+.btn-exit {
+  background: var(--r);
+  color: white;
+}
+
+.btn-exit:hover {
+  background: #e74c3c;
+}
 </style>
 </head>
+
 <body>
 
-  <div class="hbc-power-banner">
-    <div class="vignette"></div>
+<!-- NAV -->
+<div class="nav">
+  <a href="index.html">Home</a>
+  <a href="apply.html">Apply</a>
+  <a href="calendar.html">Calendar</a>
+</div>
 
-    <div class="light-ray ray-left"></div>
-    <div class="light-ray ray-right"></div>
+<!-- HERO -->
+<div class="hbc-power-banner">
+  <div class="apply-title">APPLY TO HARCCIAN</div>
+  <div class="manifest-text">NOTHING IS GIVEN FOR FREE AT HARCCIAN</div>
+</div>
 
-    <div class="pillar pillar-left"></div>
-    <div class="pillar pillar-right"></div>
-    
-    <h1 class="apply-title">APPLY TO HARCCIAN</h1>
-    <div class="divider"></div>
-    
-    <div class="manifest-text">"NOTHING IS GIVEN FOR FREE AT HARCCIAN"</div>
-  </div>
+<!-- FORM -->
+<div class="academic-frame">
+
+<h1>Harccian Enrollment</h1>
+<h2>Office of Academic Admissions</h2>
+
+<div class="passage">
+<strong>STUDENT ACKNOWLEDGMENT:</strong><br><br>
+I understand Harccian is a non-accredited online training platform.
+I agree to uphold integrity, discipline, and commitment throughout my studies.
+</div>
+
+<label class="check-item"><input type="checkbox" class="h-check"> I am 18 years of age or older</label>
+<label class="check-item"><input type="checkbox" class="h-check"> I accept non-accredited status</label>
+<label class="check-item"><input type="checkbox" class="h-check"> I agree to the Harccian Oath of Integrity</label>
+<label class="check-item"><input type="checkbox" class="h-check"> I accept the no appeal policy</label>
+
+<button class="btn btn-agree" onclick="submitForm()">I AGREE & CONTINUE</button>
+<button class="btn btn-exit" onclick="window.location.href='index.html'">I DISAGREE (EXIT)</button>
+
+</div>
+
+<script>
+function submitForm() {
+  const boxes = document.querySelectorAll('.h-check');
+  const allChecked = [...boxes].every(c => c.checked);
+
+  if(allChecked) {
+    window.location.href = "assessment.html";
+  } else {
+    alert("You must accept ALL terms before continuing.");
+  }
+}
+</script>
 
 </body>
 </html>
