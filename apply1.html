@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Apply to Harccian</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #05070a;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+
+.header {
+  background: #192535;
+  padding: 40px;
+  border-bottom: 3px solid #d4af37;
+}
+
+h1 {
+  color: #d4af37;
+  font-size: 45px;
+  margin: 0;
+}
+
+p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fdfcf7;
+  color: #192535;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+label {
+  display: block;
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+input {
+  transform: scale(1.3);
+  margin-right: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn {
+  background: #27ae60;
+  color: white;
+}
+
+.btn:hover {
+  background: #2ecc71;
+}
+
+.exit {
+  background: #be2834;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>APPLY TO HARCCIAN</h1>
+  <p>Simple test version (apply1.html)</p>
+</div>
+
+<div class="container">
+
+<h2>Enrollment Check</h2>
+
+<label><input type="checkbox" class="c"> I am 18+</label>
+<label><input type="checkbox" class="c"> I accept non-accredited status</label>
+<label><input type="checkbox" class="c"> I agree to integrity rules</label>
+
+<button class="btn" onclick="go()">CONTINUE</button>
+<button class="exit" onclick="window.location.href='index.html'">EXIT</button>
+
+</div>
+
+<script>
+function go() {
+  const boxes = document.querySelectorAll(".c");
+  const ok = [...boxes].every(b => b.checked);
+
+  if(ok) {
+    window.location.href = "about.html";
+  } else {
+    alert("Please tick all boxes first.");
+  }
+}
+</script>
+
+</body>
+</html>
