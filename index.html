@@ -1,28 +1,30 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MY HARCCIAN — Student Portal</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    * { -webkit-user-select: none; user-select: none; }
-
-    body { 
-      font-family: 'Lato', sans-serif; 
-      background: #192535; 
-      min-height: 100vh; 
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #192535;
+      min-height: 100vh;
     }
-
-    /* SECURITY BANNER */
     .security-banner {
-      width: 100%; background: #be2834; color: #fff; text-align: center;
-      padding: 8px; font-family: 'Cinzel'; font-size: 10px; letter-spacing: 2px;
-      font-weight: 900; border-bottom: 2px solid #d4af37; text-transform: uppercase;
+      width: 100%;
+      background: #be2834;
+      color: #fff;
+      text-align: center;
+      padding: 8px;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 900;
+      border-bottom: 2px solid #d4af37;
+      text-transform: uppercase;
     }
-
-    /* TOP BAR */
     .top-bar {
       background: #0f1a25;
       padding: 15px 30px;
@@ -30,6 +32,7 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 2px solid #be2834;
+      gap: 15px;
     }
     .top-bar img { height: 60px; }
     .top-bar-title {
@@ -38,23 +41,21 @@
       font-size: 22px;
       font-weight: 900;
       letter-spacing: 4px;
+      text-align: center;
+      flex: 1;
     }
     .logout-btn {
       background: #be2834;
       color: white;
       border: none;
       padding: 10px 20px;
-      font-family: 'Cinzel';
+      font-family: 'Cinzel', serif;
       font-weight: 900;
       font-size: 11px;
       cursor: pointer;
       border-radius: 4px;
       letter-spacing: 1px;
-      transition: 0.3s;
     }
-    .logout-btn:hover { background: #ffd700; color: #192535; }
-
-    /* WELCOME BOX */
     .welcome-box {
       background: linear-gradient(135deg, #0f1a25, #192535);
       border-bottom: 3px solid #be2834;
@@ -85,17 +86,13 @@
       font-weight: 900;
       letter-spacing: 2px;
       margin-top: 10px;
-      font-family: 'Cinzel';
+      font-family: 'Cinzel', serif;
     }
-
-    /* MAIN CONTAINER */
     .container {
       max-width: 1100px;
       margin: 30px auto;
       padding: 0 20px;
     }
-
-    /* CARDS */
     .card {
       background: #ffffff;
       border-radius: 6px;
@@ -114,13 +111,9 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-
-    /* TWO COLUMN GRID */
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-
-    /* ACADEMIC RECORDS */
     .status-active {
-      font-family: 'Cinzel';
+      font-family: 'Cinzel', serif;
       font-size: 20px;
       font-weight: 900;
       color: #be2834;
@@ -145,7 +138,7 @@
       background: #192535;
       color: #ffd700;
       border: 2px solid #be2834;
-      font-family: 'Cinzel';
+      font-family: 'Cinzel', serif;
       font-weight: 900;
       cursor: pointer;
       text-transform: uppercase;
@@ -154,16 +147,13 @@
       transition: 0.3s;
       letter-spacing: 1px;
     }
-    .action-btn:hover { background: #be2834; color: white; }
-
-    /* COURSES TABLE */
     .course-table { width: 100%; border-collapse: collapse; }
     .course-table th {
       background: #192535;
       color: #ffd700;
       padding: 10px 15px;
       text-align: left;
-      font-family: 'Cinzel';
+      font-family: 'Cinzel', serif;
       font-size: 11px;
       letter-spacing: 1px;
     }
@@ -173,11 +163,14 @@
       font-size: 13px;
       color: #192535;
     }
-    .course-table tr:hover td { background: #fff5f5; }
-    .badge-active { background: #28a745; color: white; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 900; }
-    .badge-done { background: #d4af37; color: #192535; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 900; }
-
-    /* FINANCIAL LEDGER */
+    .badge-active {
+      background: #28a745;
+      color: white;
+      padding: 3px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 900;
+    }
     .ledger-box {
       background: #192535;
       padding: 20px;
@@ -189,7 +182,7 @@
       gap: 15px;
     }
     .ledger-amount {
-      font-family: 'Cinzel';
+      font-family: 'Cinzel', serif;
       font-size: 28px;
       font-weight: 900;
       color: #ffd700;
@@ -201,12 +194,15 @@
       letter-spacing: 1px;
       margin-bottom: 5px;
     }
-
-    /* CERTIFICATES */
-    .cert-grid {
+    .cert-grid, .resource-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
+    }
+    .cert-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .resource-grid {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     }
     .cert-card {
       background: linear-gradient(135deg, #192535, #0f1a25);
@@ -217,22 +213,22 @@
       color: #ffd700;
     }
     .cert-card .cert-icon { font-size: 30px; margin-bottom: 10px; }
-    .cert-card h4 { font-family: 'Cinzel'; font-size: 12px; letter-spacing: 1px; }
-    .cert-card p { font-size: 11px; color: #aaa; margin-top: 5px; }
-
-    /* RESOURCE GRID */
-    .resource-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 15px;
+    .cert-card h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+    .cert-card p {
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 5px;
     }
     .resource-card {
       background: #fdfcf7;
       border: 1px solid #ddd;
       padding: 20px 10px;
       text-align: center;
-      text-decoration: none;
-      font-family: 'Cinzel';
+      font-family: 'Cinzel', serif;
       font-weight: 900;
       font-size: 11px;
       display: flex;
@@ -246,16 +242,18 @@
       cursor: pointer;
       border-top: 3px solid #be2834;
     }
-    .resource-card:hover { background: #192535; color: #ffd700; border-color: #be2834; transform: translateY(-3px); }
+    .resource-card:hover {
+      background: #192535;
+      color: #ffd700;
+      transform: translateY(-3px);
+    }
     .resource-icon { font-size: 30px; margin-bottom: 10px; }
-
-    /* CALENDAR */
     .calendar-header-bar {
       background: #192535;
       color: white;
       padding: 12px;
       text-align: center;
-      font-family: 'Cinzel';
+      font-family: 'Cinzel', serif;
       font-size: 14px;
       letter-spacing: 2px;
       border-radius: 4px 4px 0 0;
@@ -300,14 +298,11 @@
       color: #192535;
       font-size: 13px;
     }
-    .day:hover { background: #fff5f5; }
     .today {
       background: #fff0f0 !important;
       border: 2px solid #be2834 !important;
     }
     .empty { background: #fcfcfc; }
-
-    /* CHANGE PASSWORD */
     .pass-form input {
       width: 100%;
       padding: 12px;
@@ -318,7 +313,10 @@
       color: #192535;
       box-sizing: border-box;
     }
-    .pass-form input:focus { border-color: #be2834; outline: none; }
+    .pass-form input:focus {
+      border-color: #be2834;
+      outline: none;
+    }
     .pass-form input[disabled] {
       background: #f0f0f0;
       color: #999;
@@ -330,62 +328,53 @@
       color: white;
       border: none;
       border-radius: 5px;
-      font-family: 'Cinzel';
+      font-family: 'Cinzel', serif;
       font-weight: 900;
       font-size: 13px;
       cursor: pointer;
       margin-top: 10px;
-      transition: 0.3s;
       letter-spacing: 1px;
     }
-    .save-btn:hover { background: #192535; color: #ffd700; }
-    .success-msg { color: #28a745; font-size: 13px; margin-top: 10px; display: none; font-weight: bold; }
-    .error-msg { color: #be2834; font-size: 13px; margin-top: 10px; display: none; font-weight: bold; }
-
-    /* FOOTER */
+    .success-msg, .error-msg {
+      font-size: 13px;
+      margin-top: 10px;
+      display: none;
+      font-weight: bold;
+    }
+    .success-msg { color: #28a745; }
+    .error-msg { color: #be2834; }
     .portal-footer {
       text-align: center;
       padding: 20px;
       color: rgba(255,255,255,0.3);
       font-size: 11px;
-      font-family: 'Cinzel';
+      font-family: 'Cinzel', serif;
       letter-spacing: 2px;
       margin-top: 20px;
     }
-
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       .two-col { grid-template-columns: 1fr; }
       .top-bar-title { font-size: 16px; }
     }
   </style>
 </head>
-<body oncontextmenu="return false;">
-
-  <!-- SECURITY BANNER -->
+<body>
   <div class="security-banner">🔒 SECURE HARCCIAN SESSION — AUTHORIZED ACCESS ONLY</div>
 
-  <!-- TOP BAR -->
   <div class="top-bar">
     <img src="HARCCIAN (4).png" alt="HARCCIAN Logo">
     <div class="top-bar-title">MY HARCCIAN</div>
     <button class="logout-btn" onclick="logout()">⏻ LOGOUT</button>
   </div>
 
-  <!-- WELCOME BOX -->
   <div class="welcome-box">
     <h1>WELCOME, <span id="studentName">STUDENT</span></h1>
     <p>HARCCIAN BIBLE COLLEGE™ — STUDENT PORTAL</p>
     <div class="student-badge">STUDENT NO: <span id="studentNum"></span></div>
   </div>
 
-  <!-- MAIN CONTAINER -->
   <div class="container">
-
-    <!-- ACADEMIC RECORDS & FINANCIAL LEDGER -->
     <div class="two-col">
-
-      <!-- ACADEMIC RECORDS -->
       <div class="card">
         <h3>📋 Academic Records</h3>
         <div class="info-row">
@@ -402,7 +391,6 @@
         <button class="action-btn" onclick="requestTranscript()">📄 REQUEST TRANSCRIPT</button>
       </div>
 
-      <!-- FINANCIAL LEDGER -->
       <div class="card">
         <h3>💰 Financial Ledger</h3>
         <div class="ledger-box">
@@ -412,15 +400,13 @@
           </div>
           <div style="text-align:right;">
             <div class="ledger-label">Account Status</div>
-            <div style="color:#28a745; font-weight:900; font-family:'Cinzel'; font-size:13px;">✅ CLEAR</div>
-            <div style="color:rgba(255,255,255,0.5); font-size:10px; margin-top:5px; font-family:'Cinzel';">VERIFIED 2026</div>
+            <div style="color:#28a745; font-weight:900; font-family:'Cinzel', serif; font-size:13px;">✅ CLEAR</div>
+            <div style="color:rgba(255,255,255,0.5); font-size:10px; margin-top:5px; font-family:'Cinzel', serif;">VERIFIED 2026</div>
           </div>
         </div>
       </div>
-
     </div>
 
-    <!-- CURRENT COURSES -->
     <div class="card">
       <h3>📚 My Courses</h3>
       <table class="course-table">
@@ -439,7 +425,6 @@
       <p style="font-size:12px; color:#999;">Completed courses will appear here once finished.</p>
     </div>
 
-    <!-- CERTIFICATES -->
     <div class="card">
       <h3>🎓 My Certificates</h3>
       <div class="cert-grid">
@@ -451,38 +436,18 @@
       </div>
     </div>
 
-    <!-- RESOURCES -->
     <div class="card">
       <h3>🏛️ Campus Resources</h3>
       <div class="resource-grid">
-        <div class="resource-card" onclick="alert('College Anthem coming soon!')">
-          <div class="resource-icon">🎵</div>
-          COLLEGE ANTHEM
-        </div>
-        <div class="resource-card" onclick="alert('Handbook coming soon!')">
-          <div class="resource-icon">📖</div>
-          HANDBOOK
-        </div>
-        <div class="resource-card" onclick="alert('Library coming soon!')">
-          <div class="resource-icon">📚</div>
-          LIBRARY
-        </div>
-        <div class="resource-card" onclick="alert('Fraternities coming soon!')">
-          <div class="resource-icon">🏛️</div>
-          FRATERNITIES
-        </div>
-        <div class="resource-card" onclick="alert('Support coming soon!')">
-          <div class="resource-icon">🙋</div>
-          SUPPORT
-        </div>
-        <div class="resource-card" onclick="alert('Alumni coming soon!')">
-          <div class="resource-icon">👥</div>
-          ALUMNI
-        </div>
+        <div class="resource-card" onclick="alert('College Anthem coming soon!')"><div class="resource-icon">🎵</div>COLLEGE ANTHEM</div>
+        <div class="resource-card" onclick="alert('Handbook coming soon!')"><div class="resource-icon">📖</div>HANDBOOK</div>
+        <div class="resource-card" onclick="alert('Library coming soon!')"><div class="resource-icon">📚</div>LIBRARY</div>
+        <div class="resource-card" onclick="alert('Fraternities coming soon!')"><div class="resource-icon">🏛️</div>FRATERNITIES</div>
+        <div class="resource-card" onclick="alert('Support coming soon!')"><div class="resource-icon">🙋</div>SUPPORT</div>
+        <div class="resource-card" onclick="alert('Alumni coming soon!')"><div class="resource-icon">👥</div>ALUMNI</div>
       </div>
     </div>
 
-    <!-- STUDENT CALENDAR -->
     <div class="card">
       <h3>📅 Student Calendar</h3>
       <div class="calendar-header-bar">STUDENT CALENDAR</div>
@@ -501,7 +466,6 @@
       </div>
     </div>
 
-    <!-- CHANGE PASSWORD -->
     <div class="card">
       <h3>🔐 Change Password</h3>
       <div class="pass-form">
@@ -519,38 +483,34 @@
         <button class="save-btn" onclick="changePassword()">🔐 UPDATE PASSWORD</button>
       </div>
     </div>
-
   </div>
 
-  <!-- FOOTER -->
   <div class="portal-footer">
     HARCCIAN™ | QUEENSLAND, AUSTRALIA | PRIVATE & CONFIDENTIAL
   </div>
 
   <script>
-    // CHECK IF LOGGED IN
     const student = JSON.parse(sessionStorage.getItem('student'));
-    if (!student) { window.location.href = 'index.html'; }
 
-    // POPULATE STUDENT DATA
-    document.getElementById('studentName').textContent = student.name || 'STUDENT';
-    document.getElementById('studentNum').textContent = student.number || '';
-    document.getElementById('studentCourse').textContent = student.course || '—';
-    document.getElementById('currentCourse1').textContent = student.course || '—';
-    document.getElementById('lockedStudentNum').value = student.number || '';
+    if (!student) {
+      document.body.innerHTML = '<div style="color:white;font-family:Lato,sans-serif;padding:40px;text-align:center;"><h1>Please log in first</h1><p>No student session was found.</p></div>';
+    } else {
+      document.getElementById('studentName').textContent = student.name || 'STUDENT';
+      document.getElementById('studentNum').textContent = student.number || '';
+      document.getElementById('studentCourse').textContent = student.course || '—';
+      document.getElementById('currentCourse1').textContent = student.course || '—';
+      document.getElementById('lockedStudentNum').value = student.number || '';
+    }
 
-    // LOGOUT
     function logout() {
       sessionStorage.removeItem('student');
       window.location.href = 'index.html';
     }
 
-    // REQUEST TRANSCRIPT
     function requestTranscript() {
       alert('Your transcript request has been submitted. Please allow 3-5 business days.');
     }
 
-    // CALENDAR
     const monthSelect = document.getElementById('monthSelect');
     const yearSelect = document.getElementById('yearSelect');
     const calendarGrid = document.getElementById('calendarGrid');
@@ -558,12 +518,15 @@
 
     for (let i = new Date().getFullYear(); i <= 2035; i++) {
       let opt = document.createElement('option');
-      opt.value = i; opt.innerHTML = i;
+      opt.value = i;
+      opt.textContent = i;
       yearSelect.appendChild(opt);
     }
+
     months.forEach((m, i) => {
       let opt = document.createElement('option');
-      opt.value = i; opt.innerHTML = m;
+      opt.value = i;
+      opt.textContent = m;
       monthSelect.appendChild(opt);
     });
 
@@ -576,15 +539,17 @@
       const firstDay = new Date(year, month, 1).getDay();
       const daysInMonth = new Date(year, month + 1, 0).getDate();
       const today = new Date();
+
       for (let i = 0; i < firstDay; i++) {
         const e = document.createElement('div');
         e.classList.add('day', 'empty');
         calendarGrid.appendChild(e);
       }
+
       for (let d = 1; d <= daysInMonth; d++) {
         const dayDiv = document.createElement('div');
         dayDiv.classList.add('day');
-        dayDiv.innerHTML = d;
+        dayDiv.textContent = d;
         if (d === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
           dayDiv.classList.add('today');
         }
@@ -592,40 +557,46 @@
       }
     }
 
-    monthSelect.addEventListener('change', updateCalendar);
-    yearSelect.addEventListener('change', updateCalendar);
     monthSelect.value = new Date().getMonth();
     yearSelect.value = new Date().getFullYear();
+    monthSelect.addEventListener('change', updateCalendar);
+    yearSelect.addEventListener('change', updateCalendar);
     updateCalendar();
 
-    // CHANGE PASSWORD
-    async function changePassword() {
+    function changePassword() {
       const currentPass = document.getElementById('currentPass').value.trim();
       const newPass = document.getElementById('newPass').value.trim();
       const confirmPass = document.getElementById('confirmPass').value.trim();
       const successMsg = document.getElementById('passSuccess');
       const errorMsg = document.getElementById('passError');
+
       successMsg.style.display = 'none';
       errorMsg.style.display = 'none';
 
       if (!currentPass || !newPass || !confirmPass) {
         errorMsg.textContent = '❌ Please fill in all fields';
-        errorMsg.style.display = 'block'; return;
-      }
-      if (currentPass !== student.password) {
-        errorMsg.textContent = '❌ Current password is incorrect';
-        errorMsg.style.display = 'block'; return;
-      }
-      if (newPass !== confirmPass) {
-        errorMsg.textContent = '❌ New passwords do not match';
-        errorMsg.style.display = 'block'; return;
-      }
-      if (newPass.length < 6) {
-        errorMsg.textContent = '❌ New password must be at least 6 characters';
-        errorMsg.style.display = 'block'; return;
+        errorMsg.style.display = 'block';
+        return;
       }
 
-      // Update in session
+      if (currentPass !== student.password) {
+        errorMsg.textContent = '❌ Current password is incorrect';
+        errorMsg.style.display = 'block';
+        return;
+      }
+
+      if (newPass !== confirmPass) {
+        errorMsg.textContent = '❌ New passwords do not match';
+        errorMsg.style.display = 'block';
+        return;
+      }
+
+      if (newPass.length < 6) {
+        errorMsg.textContent = '❌ New password must be at least 6 characters';
+        errorMsg.style.display = 'block';
+        return;
+      }
+
       student.password = newPass;
       sessionStorage.setItem('student', JSON.stringify(student));
       successMsg.style.display = 'block';
@@ -634,6 +605,5 @@
       document.getElementById('confirmPass').value = '';
     }
   </script>
-
 </body>
 </html>
