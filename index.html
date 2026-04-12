@@ -106,10 +106,6 @@
       text-align: center;
       box-shadow: 0 0 30px rgba(190,40,52,0.5);
     }
-    .modal-box img {
-      width: 80px;
-      margin-bottom: 15px;
-    }
     .modal-box h2 {
       color: #ffd700;
       font-size: 22px;
@@ -189,6 +185,7 @@
   <!-- NAVIGATION -->
   <hr class="menu-divider">
   <div class="nav-container">
+
     <div class="dropdown">
       <a href="index.html" class="menu-button">HOME ▾</a>
       <div class="dropdown-content">
@@ -199,14 +196,17 @@
         <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
       </div>
     </div>
+
     <a href="#" class="menu-button">PROSPECTUS</a>
     <a href="#" class="menu-button">ABOUT</a>
     <a href="#" class="menu-button">ALUMNI</a>
     <a href="#" class="menu-button">COURSES</a>
     <a href="#" class="menu-button">APPLY</a>
+    <a href="myharccian.html" class="menu-button">MY HARCCIAN</a>
     <a href="#" class="menu-button" onclick="togglePages()">NON-ACCREDITATION</a>
     <a href="#" class="menu-button">SHOP</a>
     <a href="#" class="menu-button" onclick="openLogin()">LOGIN</a>
+
   </div>
   <hr class="menu-divider">
 
@@ -225,14 +225,12 @@
   </div>
 
   <script>
-    // Open and close login modal
     function openLogin() { document.getElementById('loginModal').classList.add('active'); }
     function closeLogin() { 
       document.getElementById('loginModal').classList.remove('active');
       document.getElementById('errorMsg').style.display = 'none';
     }
 
-    // Login function - checks Google Sheet
     async function doLogin() {
       const studentNumber = document.getElementById('studentNumber').value.trim();
       const password = document.getElementById('studentPassword').value.trim();
@@ -246,12 +244,11 @@
       }
 
       try {
-        // Fetch Google Sheet as CSV
         const sheetID = '18owpc1EbKG8aqrB9_s7I9b2WSEmt3aU5EujVsBupO-E';
         const url = `https://docs.google.com/spreadsheets/d/${sheetID}/export?format=csv`;
         const response = await fetch(url);
         const text = await response.text();
-        const rows = text.trim().split('\n').slice(1); // skip header row
+        const rows = text.trim().split('\n').slice(1);
 
         let found = false;
         let studentData = {};
@@ -277,7 +274,6 @@
         }
 
         if (found) {
-          // Save to session and go to portal
           sessionStorage.setItem('student', JSON.stringify(studentData));
           window.location.href = 'myharccian.html';
         } else {
