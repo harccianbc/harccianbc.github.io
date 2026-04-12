@@ -16,166 +16,93 @@
     }
 
     /* BANNER */
-    .banner-container { width: 100%; display: block; }
+    .banner-container {
+      width: 100%;
+      display: block;
+    }
     .banner-container img {
-      width: 60%; height: auto; display: block; margin: 0 auto;
-    }
-
-    /* MAIN BANNER */
-    .mainbanner-container { width: 100%; display: block; margin-top: 10px; }
-    .mainbanner-container img {
-      width: 60%; height: auto; display: block; margin: 0 auto;
-    }
-
-    /* NOTICE BOX */
-    .notice-box {
-      background-color: #be2834;
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: bold;
-      padding: 20px 40px;
-      margin: 20px auto;
       width: 60%;
-      border-radius: 6px;
-      line-height: 1.8;
-      text-align: center;
-      border-left: 6px solid #ffd700;
-      border-right: 6px solid #ffd700;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
-    .notice-box h3 {
-      font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      color: #ffd700;
-      border-bottom: 2px solid #ffd700;
-      padding-bottom: 8px;
+
+    /* BANNER 2 */
+    .banner2-container {
+      width: 100%;
+      display: block;
+      margin-top: 10px;
     }
-    .notice-box p { color: #ffffff; font-size: 14px; line-height: 1.8; margin: 10px 0; }
-    .notice-box .ai-notice {
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 2px solid #ffd700;
-      color: #ffd700;
-      font-size: 13px;
-      letter-spacing: 0.5px;
+    .banner2-container img {
+      width: 60%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
 
     /* NAVIGATION */
-    .nav-container { margin: 10px 0; display: flex; justify-content: center; flex-wrap: wrap; }
+    .nav-container { 
+      margin: 10px 0; 
+      display: flex; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+    }
+
+    /* Dropdown Wrapper */
     .dropdown { position: relative; display: inline-block; }
+
+    /* Main Buttons */
     .menu-button { 
-      display: inline-block; background-color: #be2834; color: white; padding: 10px 18px; 
-      margin: 5px; text-decoration: none; font-weight: bold; border-radius: 5px; 
-      font-size: 13px; transition: 0.3s; cursor: pointer; border: none;
+      display: inline-block; 
+      background-color: #be2834; 
+      color: white; 
+      padding: 10px 18px; 
+      margin: 5px; 
+      text-decoration: none; 
+      font-weight: bold; 
+      border-radius: 5px; 
+      font-size: 13px; 
+      transition: 0.3s; 
+      cursor: pointer; 
+      border: none;
     }
     .menu-button:hover { background-color: #ffffff; color: #be2834; }
+
+    /* Dropdown Content */
     .dropdown-content {
-      display: none; position: absolute; background-color: #192535;
-      min-width: 220px; box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
-      z-index: 10; border: 1px solid #d4af37; border-radius: 4px;
-      text-align: left; margin-left: 5px;
+      display: none;
+      position: absolute;
+      background-color: #192535;
+      min-width: 220px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+      z-index: 10;
+      border: 1px solid #d4af37;
+      border-radius: 4px;
+      text-align: left;
+      margin-left: 5px;
     }
     .dropdown-content a {
-      color: #ffffff; padding: 12px 16px; text-decoration: none; display: block;
-      font-size: 14px; font-weight: bold; letter-spacing: 0.5px;
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-size: 12px;
       border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
     .dropdown-content a:hover { background-color: #be2834; color: white; }
     .dropdown:hover .dropdown-content { display: block; }
-    .menu-divider { border: 0; height: 1px; background: white; width: 90%; margin: 10px auto; }
 
-    /* LOGIN MODAL */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-overlay.active { display: flex; }
-    .modal-box {
-      background: #192535;
-      border: 3px solid #be2834;
-      border-radius: 10px;
-      padding: 40px;
-      width: 350px;
-      text-align: center;
-      box-shadow: 0 0 30px rgba(190,40,52,0.5);
-    }
-    .modal-box h2 {
-      color: #ffd700;
-      font-size: 22px;
-      margin-bottom: 5px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    .modal-box p {
-      color: #aaa;
-      font-size: 12px;
-      margin-bottom: 20px;
-    }
-    .modal-box input {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border-radius: 5px;
-      border: 1px solid #be2834;
-      background: #0f1a25;
-      color: white;
-      font-size: 14px;
-      box-sizing: border-box;
-    }
-    .modal-box input::placeholder { color: #666; }
-    .login-btn {
-      width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      background: #be2834;
-      color: white;
-      font-size: 15px;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      letter-spacing: 1px;
-      transition: 0.3s;
-    }
-    .login-btn:hover { background: #ffd700; color: #192535; }
-    .close-btn {
-      margin-top: 15px;
-      display: block;
-      color: #aaa;
-      font-size: 12px;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-    .close-btn:hover { color: white; }
-    .error-msg {
-      color: #ff6b6b;
-      font-size: 13px;
-      margin-top: 10px;
-      display: none;
+    /* Dividers */
+    .menu-divider { 
+      border: 0; 
+      height: 1px; 
+      background: white; 
+      width: 90%; 
+      margin: 10px auto; 
     }
   </style>
 </head>
 <body>
-
-  <!-- LOGIN MODAL -->
-  <div class="modal-overlay" id="loginModal">
-    <div class="modal-box">
-      <h2>MY HARCCIAN</h2>
-      <p>Student Portal Login</p>
-      <input type="text" id="studentNumber" placeholder="Student Number (e.g. 202600001JS)" />
-      <input type="password" id="studentPassword" placeholder="Password" />
-      <div class="error-msg" id="errorMsg">❌ Invalid student number or password</div>
-      <button class="login-btn" onclick="doLogin()">LOGIN</button>
-      <span class="close-btn" onclick="closeLogin()">Cancel</span>
-    </div>
-  </div>
 
   <!-- BANNER 1 -->
   <div class="banner-container">
@@ -202,91 +129,16 @@
     <a href="#" class="menu-button">ALUMNI</a>
     <a href="#" class="menu-button">COURSES</a>
     <a href="#" class="menu-button">APPLY</a>
-    <a href="myharccian.html" class="menu-button">MY HARCCIAN</a>
     <a href="#" class="menu-button" onclick="togglePages()">NON-ACCREDITATION</a>
     <a href="#" class="menu-button">SHOP</a>
-    <a href="#" class="menu-button" onclick="openLogin()">LOGIN</a>
 
   </div>
   <hr class="menu-divider">
 
-  <!-- MAIN BANNER -->
-  <div class="mainbanner-container">
-    <img src="MAINBANNER.jpeg" alt="HARCCIAN Main Banner">
+  <!-- BANNER 2 -->
+  <div class="banner2-container">
+    <img src="BANNER2.png" alt="HARCCIAN Banner 2">
   </div>
-
-  <!-- NOTICE BOX -->
-  <div class="notice-box">
-    <h3>⚠️ Non-Accreditation Notice</h3>
-    <p>HARCCIAN Bible College™ is a private religious training centre. Our programs are for spiritual development and we are not accredited under the Australian Qualifications Framework (AQF), nor are we a Registered Training Organisation (RTO).</p>
-    <div class="ai-notice">
-      🤖 AI TRANSPARENCY NOTICE — All media used on this site is AI generated.
-    </div>
-  </div>
-
-  <script>
-    function openLogin() { document.getElementById('loginModal').classList.add('active'); }
-    function closeLogin() { 
-      document.getElementById('loginModal').classList.remove('active');
-      document.getElementById('errorMsg').style.display = 'none';
-    }
-
-    async function doLogin() {
-      const studentNumber = document.getElementById('studentNumber').value.trim();
-      const password = document.getElementById('studentPassword').value.trim();
-      const errorMsg = document.getElementById('errorMsg');
-      errorMsg.style.display = 'none';
-
-      if (!studentNumber || !password) {
-        errorMsg.textContent = '❌ Please enter your student number and password';
-        errorMsg.style.display = 'block';
-        return;
-      }
-
-      try {
-        const sheetID = '18owpc1EbKG8aqrB9_s7I9b2WSEmt3aU5EujVsBupO-E';
-        const url = `https://docs.google.com/spreadsheets/d/${sheetID}/export?format=csv`;
-        const response = await fetch(url);
-        const text = await response.text();
-        const rows = text.trim().split('\n').slice(1);
-
-        let found = false;
-        let studentData = {};
-
-        for (let row of rows) {
-          const cols = row.split(',');
-          const sheetNumber = cols[0]?.trim().replace(/"/g, '');
-          const sheetPassword = cols[1]?.trim().replace(/"/g, '');
-          const sheetName = cols[2]?.trim().replace(/"/g, '');
-          const sheetCourse = cols[3]?.trim().replace(/"/g, '');
-          const sheetEmail = cols[4]?.trim().replace(/"/g, '');
-
-          if (sheetNumber === studentNumber && sheetPassword === password) {
-            found = true;
-            studentData = {
-              number: sheetNumber,
-              name: sheetName,
-              course: sheetCourse,
-              email: sheetEmail
-            };
-            break;
-          }
-        }
-
-        if (found) {
-          sessionStorage.setItem('student', JSON.stringify(studentData));
-          window.location.href = 'myharccian.html';
-        } else {
-          errorMsg.textContent = '❌ Invalid student number or password';
-          errorMsg.style.display = 'block';
-        }
-
-      } catch (err) {
-        errorMsg.textContent = '❌ Could not connect. Please try again.';
-        errorMsg.style.display = 'block';
-      }
-    }
-  </script>
 
 </body>
 </html>
