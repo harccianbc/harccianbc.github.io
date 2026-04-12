@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Harccian Bible College Fraternities</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --hbc-gold: #d4af37;
+    --hbc-red: #be2834;
+    --hbc-navy: #192535;
+    --hbc-ink: #05070a;
+    --hbc-cream: #fdfcf7;
+    --hbc-cedar: #a0522d;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    overflow-x: hidden;
+    background: var(--hbc-ink);
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  body { min-height: 100vh; }
+  img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+  }
+  .page { width: 100%; min-height: 100vh; }
+
+  /* Top Nav */
+  .nav-container {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .dropdown { position: relative; display: inline-block; }
+  .menu-button {
+    display: inline-block;
+    background-color: #be2834;
+    color: white;
+    padding: 12px 20px;
+    margin: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 13px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+  }
+  .menu-button:hover { background-color: #ffffff; color: #be2834; }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #192535;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+    z-index: 10;
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+    text-align: left;
+  }
+  .dropdown-content a {
+    color: white;
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  }
+  .dropdown-content a:hover { background-color: #be2834; color: white; }
+  .dropdown:hover .dropdown-content { display: block; }
+  .menu-divider {
+    border: 0;
+    height: 1px;
+    background: #d4af37;
+    width: 80%;
+    margin: 15px auto;
+  }
+
+  /* Banner */
+  .harccian-banner {
+    position: relative;
+    width: 100%;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #192535 0%, #be2834 100%);
+    border-bottom: 3px solid var(--hbc-gold);
+    text-align: center;
+    padding: 30px 20px;
+  }
+  .harccian-banner h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    letter-spacing: 5px;
+    color: var(--hbc-gold);
+    margin: 0 0 8px;
+    text-transform: uppercase;
+  }
+  .harccian-banner p {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fdfcf7;
+    font-size: 0.9rem;
+  }
+
+  .philosophy-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+    line-height: 1.8;
+  }
+  .philosophy-section h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--hbc-gold);
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+  .philosophy-section p { font-size: 1.05rem; color: #cbd5e1; margin: 0; }
+  .statement {
+    margin: 18px auto 0;
+    max-width: 900px;
+    color: #cbd5e1;
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .stack-container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 40px auto;
+    border: 1px solid var(--hbc-gold);
+    background: var(--hbc-navy);
+    overflow: hidden;
+  }
+  .row {
+    position: relative;
+    width: 100%;
+    height: 110px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    background: var(--hbc-navy);
+  }
+  .row.active {
+    height: 700px;
+    background: var(--hbc-cream);
+    color: var(--hbc-ink);
+  }
+  .front-thumb {
+    width: 150px;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-left: 2px solid var(--hbc-gold);
+    flex-shrink: 0;
+  }
+  .row.active .front-thumb { width: 0; opacity: 0; border-left: none; }
+  .row-label {
+    padding-left: 30px;
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    color: var(--hbc-gold);
+    flex: 1;
+  }
+  .row.active .row-label {
+    color: var(--hbc-red);
+    font-size: 32px;
+    transform: translateY(-240px);
+    padding-left: 60px;
+  }
+  .info-slide {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    left: 0; top: 0;
+    visibility: hidden;
+    transition: 0.5s ease 0.3s;
+  }
+  .row.active .info-slide { opacity: 1; visibility: visible; }
+  .info-text {
+    flex: 1;
+    padding: 100px 60px 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .info-text h4 {
+    font-family: 'Cinzel', serif;
+    color: var(--hbc-red);
+    margin: 0 0 10px;
+    letter-spacing: 2px;
+  }
+  .motto {
+    font-family: 'Cinzel', serif;
+    font-style: italic;
+    color: var(--hbc-red);
+    margin-bottom: 10px;
+    font-weight: 900;
+  }
+  .info-text p { font-size: 1.05rem; line-height: 1.7; color: #1a1a1a; }
+  .info-image { flex: 1.2; border-left: 8px solid var(--hbc-red); }
+  .info-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  .protocol-card {
+    width: 95%;
+    max-width: 900px;
+    margin: 60px auto 20px;
+    padding: 40px;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .protocol-card h4 {
+    font-family: 'Cinzel', serif;
+    color: var(--hbc-gold);
+    margin-top: 0;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+  .protocol-list { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: #cbd5e1; }
+  .protocol-list li { margin-bottom: 14px; padding-left: 25px; position: relative; line-height: 1.6; }
+  .protocol-list li::before { content: "◈"; position: absolute; left: 0; color: var(--hbc-gold); }
+
+  .slider-wrap {
+    width: 95%;
+    max-width: 1400px;
+    margin: 30px auto 10px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .slider-track { display: flex; width: 300%; animation: slideBanner 18s infinite; }
+  .slide {
+    flex: 0 0 100%;
+    padding: 22px 28px;
+    text-align: center;
+    background: linear-gradient(90deg, rgba(212,175,55,0.12), rgba(190,40,52,0.08), rgba(25,37,53,0.12));
+  }
+  .slide h3 {
+    margin: 0 0 8px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    color: var(--hbc-gold);
+    text-transform: uppercase;
+  }
+  .slide p { margin: 0; color: #e5e7eb; line-height: 1.6; }
+  @keyframes slideBanner {
+    0% { transform: translateX(0); }
+    28% { transform: translateX(0); }
+    33% { transform: translateX(-33.333%); }
+    61% { transform: translateX(-33.333%); }
+    66% { transform: translateX(-66.666%); }
+    94% { transform: translateX(-66.666%); }
+    100% { transform: translateX(0); }
+  }
+
+  .choice-box { text-align: center; margin: 80px 0 20px; }
+  .choice-box h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    text-shadow: 0 0 10px var(--hbc-gold);
+    margin: 0 0 16px;
+  }
+  .choice-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 0 20px 60px;
+  }
+  .choice-btn {
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    padding: 16px 28px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    text-transform: uppercase;
+  }
+  .choice-btn:hover { transform: translateY(-2px); border-color: var(--hbc-gold); color: var(--hbc-gold); }
+
+  .test-panel {
+    width: 95%;
+    max-width: 900px;
+    margin: 30px auto 80px;
+    padding: 30px;
+    border: 1px solid rgba(212,175,55,0.25);
+    background: rgba(255,255,255,0.03);
+    display: none;
+  }
+  .test-panel.active { display: block; }
+  .test-panel h3 {
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    color: var(--hbc-gold);
+    margin-top: 0;
+    letter-spacing: 2px;
+  }
+  .question {
+    margin-bottom: 20px;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    background: rgba(0,0,0,0.18);
+  }
+  .question h4 { margin: 0 0 12px; color: #fff; font-size: 1rem; }
+  .question input {
+    width: 100%; padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    background: #fff;
+    color: #111;
+  }
+  .submit-btn {
+    display: block;
+    margin: 25px auto 0;
+    border: 1px solid var(--hbc-gold);
+    background: var(--hbc-gold);
+    color: #111;
+    padding: 14px 28px;
+    font-family: 'Cinzel', serif;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 900;
+  }
+  .result-box { margin-top: 22px; padding: 16px; text-align: center; font-weight: 700; }
+  .success { color: #16a34a; }
+  .fail { color: #ef4444; }
+
+  /* Footer */
+  .hbc-footer {
+    background: linear-gradient(135deg, #be2834, #192535);
+    border-top: 4px solid #d4af37;
+    color: rgba(255,255,255,0.9);
+    padding: 25px 20px;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    line-height: 1.8;
+  }
+  .footer-content { max-width: 900px; margin: 0 auto; }
+  .footer-logo { width: 150px; height: auto; margin-bottom: 15px; }
+  .footer-trademark {
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+  .footer-legal-text {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    max-width: 700px;
+    margin: 0 auto;
+    color: rgba(255,255,255,0.8);
+  }
+  .ai-badge {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 15px;
+    border: 1px solid rgba(212,175,55,0.5);
+    color: #d4af37;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+  }
+  .footer-divider { width: 50px; height: 2px; background: #d4af37; margin: 12px auto; }
+
+  @media (max-width: 768px) {
+    .row.active { height: auto; min-height: 700px; flex-direction: column; }
+    .info-slide { flex-direction: column; }
+    .info-image { border-left: none; border-top: 5px solid var(--hbc-red); min-height: 250px; }
+    .info-text { padding: 80px 30px 30px 30px; }
+    .choice-buttons { flex-direction: column; align-items: center; }
+    .choice-btn { width: min(320px, 90%); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<hr class="menu-divider">
+<div class="nav-container">
+  <div class="dropdown">
+    <a href="index.html" class="menu-button">HOME ▾</a>
+    <div class="dropdown-content">
+      <a href="mission.html">OUR MISSION</a>
+      <a href="staff.html">STAFF</a>
+      <a href="terms.html">TERMS / POLICIES</a>
+      <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
+      <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
+    </div>
+  </div>
+  <a href="#" class="menu-button">PROSPECTUS</a>
+  <a href="#" class="menu-button">ABOUT</a>
+  <div class="dropdown">
+    <a href="#" class="menu-button">ALUMNI ▾</a>
+    <div class="dropdown-content">
+      <a href="fraternities.html">FRATERNITIES</a>
+    </div>
+  </div>
+  <a href="#" class="menu-button">COURSES</a>
+  <a href="apply.html" class="menu-button">APPLY</a>
+  <a href="#" class="menu-button">NON-ACCREDITATION</a>
+  <a href="#" class="menu-button">SHOP</a>
+</div>
+<hr class="menu-divider">
+
+<div class="page" id="selectionPage">
+  <div class="harccian-banner">
+    <div>
+      <div style="color:var(--hbc-gold); font-size: 24px; margin-bottom: 8px;">✦</div>
+      <h1>THE HARCCIAN FRATERNITIES</h1>
+      <p>Unity • Discipline • Stewardship</p>
+    </div>
+  </div>
+
+  <div class="philosophy-section">
+    <h3>WHY FRATERNITY?</h3>
+    <p>
+      <strong>Upon acceptance into Harccian Bible College</strong>, students may petition for entry into a
+      virtual fraternity. These are inclusive, values-based guilds built on respect, character, and commitment
+      to the Harccian standard.
+    </p>
+    <p class="statement">
+      We are not a secret society. Harccian fraternities are open, faith-centered, and values-driven.
+      We honor <strong>Chirat</strong> as the head of Harccian Bible College and recognize his leadership over the institution.
+    </p>
+  </div>
+
+  <div class="stack-container">
+    <div class="row" onclick="selectFraternity('cedar', this)">
+      <div class="row-label">CEDAR GUILD</div>
+      <div class="front-thumb" style="background-image: url('cedarguild.jpeg');"></div>
+      <div class="info-slide">
+        <div class="info-text">
+          <div class="motto">"CORPUS TEMPLUM EST"</div>
+          <h4>HEALTH & STEWARDSHIP</h4>
+          <p>
+            The Cedar Guild focuses on physical discipline, stewardship, and balance.
+            It is the home of members who value structure, service, and grounded leadership.
+          </p>
+          <div style="margin-top:20px; font-weight:900; font-size: 0.8rem; color: var(--hbc-navy);">INCLUSIVE • VIRTUAL • DISCIPLINED</div>
+        </div>
+        <div class="info-image">
+          <img src="cedarguild.jpeg" alt="Cedar Guild">
+        </div>
+      </div>
+    </div>
+
+    <div class="row" onclick="selectFraternity('harccian', this)">
+      <div class="row-label">HARCCIAN HOUSE</div>
+      <div class="front-thumb" style="background-image: url('harccianhouse.jpeg');"></div>
+      <div class="info-slide">
+        <div class="info-text">
+          <div class="motto">"FUNDAMENTUM IN FIDE"</div>
+          <h4>INSTITUTIONAL DESIGN</h4>
+          <p>
+            Harccian House is for those called to build, design, and lead.
+            It represents visionaries, planners, and builders committed to the future of the college.
+          </p>
+          <div style="margin-top:20px; font-weight:900; font-size: 0.8rem; color: var(--hbc-navy);">INCLUSIVE • VIRTUAL • ARCHITECTURAL</div>
+        </div>
+        <div class="info-image">
+          <img src="harccianhouse.jpeg" alt="Harccian House">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="protocol-card">
+    <h4>FRATERNITY PROTOCOLS</h4>
+    <ul class="protocol-list">
+      <li><strong>LEADERSHIP:</strong> Each fraternity has a designated leader who oversees the process.</li>
+      <li><strong>INCLUSION:</strong> All students may apply if they respect the Harccian standard.</li>
+      <li><strong>SELECTION:</strong> After choosing a fraternity, the applicant must pass that fraternity's test.</li>
+      <li><strong>FINALITY:</strong> Test results determine acceptance for the chosen fraternity.</li>
+    </ul>
+  </div>
+
+  <div class="slider-wrap">
+    <div class="slider-track">
+      <div class="slide">
+        <h3>Cedar Guild</h3>
+        <p>Discipline, stewardship, and strength rooted in service and balance.</p>
+      </div>
+      <div class="slide">
+        <h3>Harccian House</h3>
+        <p>Leadership, design, and legacy built for the future of the college.</p>
+      </div>
+      <div class="slide">
+        <h3>Harccian Standard</h3>
+        <p>Respect, character, and commitment define every applicant's journey.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="choice-box">
+    <h2>JOIN A FRATERNITY TODAY</h2>
+  </div>
+
+  <div class="choice-buttons">
+    <button class="choice-btn" onclick="openTest('cedar')">Take Cedar Guild Test</button>
+    <button class="choice-btn" onclick="openTest('harccian')">Take Harccian House Test</button>
+  </div>
+</div>
+
+<div class="test-panel" id="testPanel">
+  <h3 id="testTitle">Fraternity Test</h3>
+  <form id="testForm"></form>
+  <button class="submit-btn" onclick="gradeTest(event)">Submit Test</button>
+  <div class="result-box" id="resultBox"></div>
+</div>
+
+<!-- Footer -->
+<footer class="hbc-footer">
+  <div class="footer-content">
+    <img src="h4logo.png" alt="HARCCIAN Bible College Logo" class="footer-logo">
+    <div class="footer-divider"></div>
+    <div class="footer-trademark">
+      © 2026 HARCCIAN BIBLE COLLEGE™. Trademark of the Founder. Proprietary materials.
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-legal-text">
+      Harccian Bible College™ is a non-accredited religious initiative for spiritual enrichment only.
+      Certificates are not recognized for formal qualifications or employment.
+      Not a registered higher education provider.
+    </div>
+    <div class="ai-badge">
+      ALL MEDIA SHOWN ON THIS WEBSITE IS AI-GENERATED
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('cut', e => e.preventDefault());
+  document.addEventListener('paste', e => e.preventDefault());
+  document.addEventListener('dragstart', e => e.preventDefault());
+  document.addEventListener('keydown', function(e) {
+    if (
+      e.key === 'F12' ||
+      (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) ||
+      (e.ctrlKey && e.key.toUpperCase() === 'U')
+    ) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+
+  const tests = {
+    cedar: {
+      title: 'Cedar Guild Test',
+      questions: [
+        { q: 'What does Cedar Guild value most?', a: 'stewardship' },
+        { q: 'What is the Cedar Guild symbol of discipline?', a: 'structure' },
+        { q: 'What kind of leadership does Cedar Guild favor?', a: 'service' },
+        { q: 'Cedar Guild is centered on what kind of strength?', a: 'grounded' },
+        { q: 'What should a Cedar Guild member protect?', a: 'integrity' }
+      ]
+    },
+    harccian: {
+      title: 'Harccian House Test',
+      questions: [
+        { q: 'What does Harccian House represent?', a: 'leadership' },
+        { q: 'Harccian House is built on what kind of vision?', a: 'future' },
+        { q: 'What type of people fit Harccian House?', a: 'builders' },
+        { q: 'Harccian House values what form of planning?', a: 'institutional' },
+        { q: 'What principle anchors Harccian House?', a: 'faith' }
+      ]
+    }
+  };
+
+  let currentFraternity = null;
+
+  function toggleRow(element) {
+    const isActive = element.classList.contains('active');
+    document.querySelectorAll('.row').forEach(row => row.classList.remove('active'));
+    if (!isActive) {
+      element.classList.add('active');
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
+  }
+
+  function selectFraternity(type, element) {
+    currentFraternity = type;
+    toggleRow(element);
+  }
+
+  function openTest(type) {
+    currentFraternity = type;
+    const panel = document.getElementById('testPanel');
+    const form = document.getElementById('testForm');
+    const title = document.getElementById('testTitle');
+    const resultBox = document.getElementById('resultBox');
+    resultBox.innerHTML = '';
+    title.textContent = tests[type].title;
+    form.innerHTML = '';
+    tests[type].questions.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.className = 'question';
+      div.innerHTML = `
+        <h4>${index + 1}. ${item.q}</h4>
+        <input type="text" name="q${index}" placeholder="Type your answer here">
+      `;
+      form.appendChild(div);
+    });
+    panel.classList.add('active');
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function gradeTest(event) {
+    event.preventDefault();
+    if (!currentFraternity) return;
+    const form = document.getElementById('testForm');
+    const resultBox = document.getElementById('resultBox');
+    const answers = tests[currentFraternity].questions;
+    let score = 0;
+    answers.forEach((item, index) => {
+      const input = form.querySelector(`[name="q${index}"]`);
+      const val = (input.value || '').trim().toLowerCase();
+      if (val.includes(item.a.toLowerCase())) score++;
+    });
+    if (score >= 4) {
+      resultBox.className = 'result-box success';
+      resultBox.innerHTML = `TEST PASSED. Score: ${score}/5. You are verified for ${tests[currentFraternity].title}.`;
+    } else {
+      resultBox.className = 'result-box fail';
+      resultBox.innerHTML = `TEST FAILED. Score: ${score}/5. Returning you to the fraternity selection.`;
+      setTimeout(() => {
+        document.getElementById('testPanel').classList.remove('active');
+        document.getElementById('selectionPage').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 1800);
+    }
+  }
+</script>
+
+</body>
+</html>
