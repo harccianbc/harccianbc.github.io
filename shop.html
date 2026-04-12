@@ -1,1 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop | Harccian Bible College</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  body {
+    background: #192535;
+    color: white;
+    font-family: 'Lato', Arial, sans-serif;
+    min-height: 100vh;
+    text-align: center;
+  }
+
+  .nav-container {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .dropdown { position: relative; display: inline-block; }
+  .menu-button {
+    display: inline-block;
+    background-color: #be2834;
+    color: white;
+    padding: 12px 20px;
+    margin: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 13px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+  }
+  .menu-button:hover { background-color: #ffffff; color: #be2834; }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #192535;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+    z-index: 10;
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+    text-align: left;
+  }
+  .dropdown-content a {
+    color: white;
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  }
+  .dropdown-content a:hover { background-color: #be2834; color: white; }
+  .dropdown:hover .dropdown-content { display: block; }
+  .menu-divider {
+    border: 0;
+    height: 1px;
+    background: #d4af37;
+    width: 80%;
+    margin: 15px auto;
+  }
+
+  /* Page Header */
+  .page-header {
+    background: linear-gradient(135deg, #192535, #be2834);
+    padding: 60px 20px;
+    border-bottom: 4px solid #d4af37;
+    margin-bottom: 50px;
+  }
+  .page-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
+    color: #d4af37;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+  }
+  .page-header p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 2px;
+    font-family: 'Cinzel', serif;
+  }
+
+  /* Alumni Discount Banner */
+  .discount-banner {
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    background: #d4af37;
+    color: #192535;
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 18px 30px;
+    letter-spacing: 2px;
+    border-radius: 4px;
+  }
+
+  /* Shop Grid */
+  .shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+  }
+
+  .shop-card {
+    background: #fdfcf7;
+    color: #192535;
+    border-radius: 4px;
+    border: 1.5px solid #d4af37;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+  }
+  .shop-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  }
+
+  .shop-card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 3px solid #be2834;
+    background: #192535;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .shop-card-img-placeholder {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, #192535, #be2834);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 3px solid #d4af37;
+  }
+  .shop-card-img-placeholder span {
+    font-family: 'Cinzel', serif;
+    font-size: 40px;
+    color: #d4af37;
+  }
+
+  .shop-card-body {
+    padding: 25px;
+  }
+  .shop-card-body h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+    color: #be2834;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .shop-card-body p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .shop-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    border-top: 1px solid rgba(212,175,55,0.4);
+    background: #f5f3ec;
+  }
+  .shop-price {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: #192535;
+  }
+  .shop-btn {
+    background: linear-gradient(135deg, #be2834, #192535);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 13px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    border-radius: 3px;
+  }
+  .shop-btn:hover {
+    background: linear-gradient(135deg, #192535, #be2834);
+    transform: scale(1.05);
+  }
+
+  /* Coming Soon Box */
+  .coming-soon {
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212,175,55,0.3);
+    padding: 40px;
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    letter-spacing: 2px;
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  /* Footer */
+  .hbc-footer {
+    background: linear-gradient(135deg, #be2834, #192535);
+    border-top: 4px solid #d4af37;
+    color: rgba(255,255,255,0.9);
+    padding: 25px 20px;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    line-height: 1.8;
+  }
+  .footer-content { max-width: 900px; margin: 0 auto; }
+  .footer-logo { width: 150px; height: auto; margin-bottom: 15px; }
+  .footer-trademark {
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+  .footer-legal-text {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    max-width: 700px;
+    margin: 0 auto;
+    color: rgba(255,255,255,0.8);
+  }
+  .ai-badge {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 15px;
+    border: 1px solid rgba(212,175,55,0.5);
+    color: #d4af37;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+  }
+  .footer-divider { width: 50px; height: 2px; background: #d4af37; margin: 12px auto; }
+
+  @media (max-width: 768px) {
+    .shop-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<hr class="menu-divider">
+<div class="nav-container">
+  <div class="dropdown">
+    <a href="index.html" class="menu-button">HOME ▾</a>
+    <div class="dropdown-content">
+      <a href="mission.html">OUR MISSION</a>
+      <a href="staff.html">STAFF</a>
+      <a href="terms.html">TERMS / POLICIES</a>
+      <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
+      <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
+    </div>
+  </div>
+  <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
+  <a href="about.html" class="menu-button">ABOUT</a>
+  <div class="dropdown">
+    <a href="#" class="menu-button">ALUMNI ▾</a>
+    <div class="dropdown-content">
+      <a href="fraternities.html">FRATERNITIES</a>
+    </div>
+  </div>
+  <a href="courses.html" class="menu-button">COURSES</a>
+  <a href="apply.html" class="menu-button">APPLY</a>
+  <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
+  <a href="shop.html" class="menu-button">SHOP</a>
+</div>
+<hr class="menu-divider">
+
+<div class="page-header">
+  <h1>THE HARCCIAN SHOP</h1>
+  <p>Faith-Inspired Products for the Serious Student</p>
+</div>
+
+<div class="discount-banner">
+  🎓 HARCCIAN ALUMNI RECEIVE 50% OFF ALL STORE PRODUCTS — EARN YOUR CERTIFICATE TO UNLOCK YOUR DISCOUNT
+</div>
+
+<div class="shop-grid">
+
+  <div class="shop-card">
+    <div class="shop-card-img-placeholder"><span>📖</span></div>
+    <div class="shop-card-body">
+      <h2>Harccian Study Journal</h2>
+      <p>Premium leather-bound journal embossed with the Harccian crest. Perfect for sermon notes, theological reflections, and personal study.</p>
+    </div>
+    <div class="shop-card-footer">
+      <span class="shop-price">A$45.00</span>
+      <button class="shop-btn">BUY NOW</button>
+    </div>
+  </div>
+
+  <div class="shop-card">
+    <div class="shop-card-img-placeholder"><span>✒️</span></div>
+    <div class="shop-card-body">
+      <h2>Harccian Signature Pen</h2>
+      <p>Elegant gold-tipped fountain pen engraved with "Fides et Excellentia." A mark of the serious scholar and minister.</p>
+    </div>
+    <div class="shop-card-footer">
+      <span class="shop-price">A$28.00</span>
+      <button class="shop-btn">BUY NOW</button>
+    </div>
+  </div>
+
+  <div class="shop-card">
+    <div class="shop-card-img-placeholder"><span>🏅</span></div>
+    <div class="shop-card-body">
+      <h2>Alumni Certificate Frame</h2>
+      <p>Display your Harccian certificate with pride. Navy and gold hardwood frame, custom fitted for your official certificate.</p>
+    </div>
+    <div class="shop-card-footer">
+      <span class="shop-price">A$55.00</span>
+      <button class="shop-btn">BUY NOW</button>
+    </div>
+  </div>
+
+  <div class="shop-card">
+    <div class="shop-card-img-placeholder"><span>👕</span></div>
+    <div class="shop-card-body">
+      <h2>Harccian Classic Tee</h2>
+      <p>Navy premium cotton t-shirt with the Harccian crest and motto. Wear your faith and your commitment with pride.</p>
+    </div>
+    <div class="shop-card-footer">
+      <span class="shop-price">A$38.00</span>
+      <button class="shop-btn">BUY NOW</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="coming-soon">
+  MORE PRODUCTS COMING SOON<br>
+  <span style="font-size: 11px; color: rgba(212,175,55,0.6);">THE HARCCIAN SHOP IS GROWING — CHECK BACK REGULARLY FOR NEW FAITH-INSPIRED PRODUCTS</span>
+</div>
+
+<footer class="hbc-footer">
+  <div class="footer-content">
+    <img src="h4logo.png" alt="HARCCIAN Bible College Logo" class="footer-logo">
+    <div class="footer-divider"></div>
+    <div class="footer-trademark">
+      © 2026 HARCCIAN BIBLE COLLEGE™. Trademark of the Founder. Proprietary materials.
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-legal-text">
+      Harccian Bible College™ is a non-accredited religious initiative for spiritual enrichment only.
+      Certificates are not recognized for formal qualifications or employment.
+      Not a registered higher education provider.
+    </div>
+    <div class="ai-badge">ALL MEDIA SHOWN ON THIS WEBSITE IS AI-GENERATED</div>
+  </div>
+</footer>
+
+</body>
+</html>
