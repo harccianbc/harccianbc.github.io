@@ -8,28 +8,36 @@
       display: inline-block;
       background-color: #be2834;
       color: white;
-      padding: 12px 20px;
+      padding: 10px 18px;
       margin: 5px;
       text-decoration: none;
       font-weight: bold;
       border-radius: 5px;
-      font-size: 14px;
+      font-size: 13px;
     }
     .menu-button:hover {
       background-color: #ffffff;
       color: #be2834;
     }
+    /* White lines for the menu area */
+    .menu-divider {
+      border: 0;
+      height: 1px;
+      background: white;
+      width: 90%;
+      margin: 10px auto;
+    }
   </style>
 </head>
 <body style="font-family: Arial; text-align:center; padding:0; margin:0; background-color: #192535; color: white;">
 
-  <h1 style="color: #ffffff; font-weight: bold; padding-top: 20px; margin-bottom: 10px;">
-    Harccian Bible College&trade;
-  </h1>
+  <div style="padding-top: 20px;">
+    <img src="HARCCIAN%20(4).png" alt="Harccian Bible College Banner" style="width: 100%; max-width: 800px; height: auto; display: block; margin: 0 auto;">
+  </div>
 
-  <img src="HARCCIAN%20(4).png" alt="Harccian Bible College Banner" style="width: 100%; max-width: 1000px; height: auto; display: block; margin: 0 auto;">
+  <hr class="menu-divider">
 
-  <div style="margin: 25px 0;">
+  <div style="margin: 10px 0;">
     <a href="index.html" class="menu-button">HOME</a>
     <a href="#" class="menu-button">PROSPECTUS</a>
     <a href="#" class="menu-button">ABOUT</a>
@@ -40,14 +48,14 @@
     <a href="#" class="menu-button">SHOP</a>
   </div>
 
-  <hr style="border: 1px solid #be2834; width: 80%; margin: 20px auto;">
+  <hr class="menu-divider">
 
-  <div style="padding: 20px; max-width: 800px; margin: 0 auto;">
-    <h2 style="color: #be2834;">About Us</h2>
-    <p>Harccian is a ministry training pathway focused on biblical study and character formation.</p>
+  <div style="padding: 40px 20px; max-width: 800px; margin: 0 auto;">
+    <h2 style="color: #be2834; font-size: 28px;">About Us</h2>
+    <p style="font-size: 18px; line-height: 1.6;">Harccian is a ministry training pathway focused on biblical study and character formation.</p>
 
-    <h2 style="color: #be2834;">Courses</h2>
-    <p>Biblical Studies, Theology, Ministry Training</p>
+    <h2 style="color: #be2834; font-size: 28px; margin-top: 40px;">Courses</h2>
+    <p style="font-size: 18px;">Biblical Studies, Theology, Ministry Training</p>
   </div>
 
 </body>
