@@ -16,7 +16,7 @@
   --c: #fdfcf7;
 }
 
-/* RESET */
+/* BODY */
 body {
   margin: 0;
   font-family: 'Lato', sans-serif;
@@ -25,100 +25,90 @@ body {
 }
 
 /* NAV */
-.nav {
-  background: #111827;
+.nav-container {
+  background: rgba(25, 37, 53, 0.95);
   padding: 15px;
   text-align: center;
 }
 
-.nav a {
+.nav-container a {
   color: white;
   margin: 0 15px;
   text-decoration: none;
   font-weight: bold;
+  font-family: 'Cinzel', serif;
 }
 
-.nav a:hover {
+.nav-container a:hover {
   color: var(--g);
 }
 
 /* HERO */
-.hbc-power-banner {
-  width: 100%;
-  min-height: 380px;
-  background: radial-gradient(circle at center, #1c2a3b 0%, var(--n) 50%, #2a080a 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 5px solid var(--g);
-  padding: 40px 20px;
+.hero {
+  background: radial-gradient(circle at center, #1c2a3b, #192535);
+  padding: 60px 20px;
   text-align: center;
+  border-bottom: 4px solid var(--g);
 }
 
-.apply-title {
+.hero h1 {
   font-family: 'Cinzel', serif;
-  font-weight: 900;
-  font-size: clamp(32px, 6vw, 70px);
+  font-size: 55px;
   color: var(--g);
-  letter-spacing: 6px;
+  margin: 0;
   text-transform: uppercase;
-  text-shadow: 4px 4px 0 #000;
+  letter-spacing: 5px;
 }
 
-.manifest-text {
-  margin-top: 20px;
+.hero p {
+  margin-top: 15px;
   font-family: 'Cinzel', serif;
-  letter-spacing: 3px;
-  color: #fdfcf7;
-  opacity: 0.9;
+  color: #fff;
+  letter-spacing: 2px;
 }
 
 /* FORM */
-.academic-frame {
+.container {
   max-width: 850px;
   margin: 40px auto;
   background: var(--c);
   color: var(--n);
-  padding: 35px 50px;
-  border-top: 12px solid var(--r);
+  padding: 40px;
+  border-top: 10px solid var(--r);
   border-bottom: 5px solid var(--g);
-  border-radius: 5px;
-  box-shadow: 0 20px 80px rgba(0,0,0,0.7);
-}
-
-h1, h2 {
-  font-family: 'Cinzel', serif;
-  text-align: center;
-}
-
-h1 {
-  color: var(--r);
-  margin-bottom: 5px;
+  border-radius: 6px;
 }
 
 h2 {
-  font-size: 18px;
-  border-bottom: 2px solid var(--g);
-  padding-bottom: 10px;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  color: var(--r);
+  margin-bottom: 10px;
+}
+
+.sub {
+  text-align: center;
+  font-size: 14px;
   margin-bottom: 25px;
 }
 
-.passage {
+/* BOX */
+.notice {
   background: #eaedf0;
-  padding: 18px;
-  border-left: 6px solid var(--r);
-  margin-bottom: 20px;
+  padding: 20px;
+  border-left: 5px solid var(--r);
+  margin-bottom: 25px;
   color: #222;
   line-height: 1.6;
 }
 
-.check-item {
+/* CHECKBOX */
+label {
   display: block;
-  margin: 12px 0;
+  margin: 15px 0;
   font-weight: bold;
+  color: var(--n);
   text-transform: uppercase;
-  color: #192535;
 }
 
 input[type="checkbox"] {
@@ -128,35 +118,32 @@ input[type="checkbox"] {
 }
 
 /* BUTTONS */
-.btn {
+button {
   width: 100%;
   padding: 18px;
+  margin-top: 15px;
   font-family: 'Cinzel', serif;
   font-weight: 900;
+  font-size: 16px;
   cursor: pointer;
   border: none;
-  letter-spacing: 2px;
-  margin-top: 15px;
-  font-size: 16px;
-  transition: 0.3s;
 }
 
-.btn-agree {
+.agree {
   background: #27ae60;
   color: white;
 }
 
-.btn-agree:hover {
+.agree:hover {
   background: #2ecc71;
-  transform: translateY(-2px);
 }
 
-.btn-exit {
+.exit {
   background: var(--r);
   color: white;
 }
 
-.btn-exit:hover {
+.exit:hover {
   background: #e74c3c;
 }
 </style>
@@ -164,61 +151,51 @@ input[type="checkbox"] {
 
 <body>
 
-<!-- NAV -->
-<div class="nav">
-  <a href="index.html">Home</a>
-  <a href="apply.html">Apply</a>
-  <a href="calendar.html">Calendar</a>
+<!-- NAV (FIXED LINKS) -->
+<div class="nav-container">
+  <a href="index.html">HOME</a>
+  <a href="mission.html">MISSION</a>
+  <a href="apply.html">APPLY</a>
+  <a href="calendar.html">CALENDAR</a>
 </div>
 
 <!-- HERO -->
-<div class="hbc-power-banner">
-  <div class="apply-title">APPLY TO HARCCIAN</div>
-  <div class="manifest-text">NOTHING IS GIVEN FOR FREE AT HARCCIAN</div>
+<div class="hero">
+  <h1>Apply to Harccian</h1>
+  <p>Nothing is given for free</p>
 </div>
 
 <!-- FORM -->
-<div class="academic-frame">
+<div class="container">
 
-<h1>Harccian Enrollment</h1>
-<h2>Office of Academic Admissions</h2>
+<h2>Harccian Enrollment</h2>
+<p class="sub">Office of Academic Admissions</p>
 
-<div class="passage">
-<strong>STUDENT ACKNOWLEDGMENT:</strong><br><br>
-I understand Harccian is a non-accredited online training platform.
-I agree to uphold integrity, discipline, and commitment throughout my studies.
+<div class="notice">
+<strong>STUDENT AGREEMENT</strong><br><br>
+Harccian is a non-accredited online training platform focused on biblical and ministry education.
+You must agree to the terms before continuing.
 </div>
 
-<label class="check-item">
-  <input type="checkbox" class="h-check"> I am 18 years of age or older
-</label>
+<label><input type="checkbox" class="chk"> I am 18 years or older</label>
+<label><input type="checkbox" class="chk"> I accept non-accredited status</label>
+<label><input type="checkbox" class="chk"> I will uphold integrity</label>
+<label><input type="checkbox" class="chk"> I accept no appeal policy</label>
 
-<label class="check-item">
-  <input type="checkbox" class="h-check"> I accept non-accredited status
-</label>
-
-<label class="check-item">
-  <input type="checkbox" class="h-check"> I agree to the Harccian Oath of Integrity
-</label>
-
-<label class="check-item">
-  <input type="checkbox" class="h-check"> I accept the no appeal policy
-</label>
-
-<button class="btn btn-agree" onclick="submitForm()">I AGREE & CONTINUE</button>
-<button class="btn btn-exit" onclick="window.location.href='index.html'">I DISAGREE (EXIT)</button>
+<button class="agree" onclick="submitForm()">I AGREE & CONTINUE</button>
+<button class="exit" onclick="window.location.href='index.html'">EXIT</button>
 
 </div>
 
 <script>
 function submitForm() {
-  const boxes = document.querySelectorAll('.h-check');
+  const boxes = document.querySelectorAll('.chk');
   const allChecked = [...boxes].every(c => c.checked);
 
   if(allChecked) {
     window.location.href = "assessment.html";
   } else {
-    alert("You must accept ALL terms before continuing.");
+    alert("You must accept all terms before continuing.");
   }
 }
 </script>
