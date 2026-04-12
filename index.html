@@ -42,8 +42,8 @@
 
     /* NOTICE BOX */
     .notice-box {
-      background-color: #000000;
-      color: #ffd700;
+      background-color: #be2834;
+      color: #ffffff;
       font-size: 14px;
       font-weight: bold;
       padding: 20px 40px;
@@ -52,15 +52,31 @@
       border-radius: 6px;
       line-height: 1.8;
       text-align: center;
+      border-left: 6px solid #ffd700;
+      border-right: 6px solid #ffd700;
     }
     .notice-box h3 {
-      font-size: 16px;
+      font-size: 18px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       margin-bottom: 10px;
       color: #ffd700;
-      border-bottom: 1px solid #ffd700;
+      border-bottom: 2px solid #ffd700;
       padding-bottom: 8px;
+    }
+    .notice-box p {
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 10px 0;
+    }
+    .notice-box .ai-notice {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 2px solid #ffd700;
+      color: #ffd700;
+      font-size: 13px;
+      letter-spacing: 0.5px;
     }
 
     /* NAVIGATION */
@@ -167,10 +183,11 @@
 
   <!-- NOTICE BOX -->
   <div class="notice-box">
-    <h3>⚠️ Non-Accreditation Notice &amp; AI Transparency Notice</h3>
-    HARCCIAN Bible College™ is a private religious training centre. Our programs are for spiritual development and we are not accredited under the Australian Qualifications Framework (AQF), nor are we a Registered Training Organisation (RTO).
-    <br><br>
-    All media used on this site is AI generated.
+    <h3>⚠️ Non-Accreditation Notice</h3>
+    <p>HARCCIAN Bible College™ is a private religious training centre. Our programs are for spiritual development and we are not accredited under the Australian Qualifications Framework (AQF), nor are we a Registered Training Organisation (RTO).</p>
+    <div class="ai-notice">
+      🤖 AI TRANSPARENCY NOTICE — All media used on this site is AI generated.
+    </div>
   </div>
 
 </body>
