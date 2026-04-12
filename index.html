@@ -31,34 +31,27 @@
   .back-page.active { display: block; }
   .front-page.hidden { display: none; }
 
-  /* The New REDUCED, STATIC BANNER1 Section */
-  .branding-header-section {
-    width: 100%; max-width: 1200px; /* Reduced Width */
-    margin: 20px auto 30px auto; /* Centered with Spacing */
-    height: 250px; /* Reduced Fixed Height */
-    background-image: url('BANNER1.png'); /* The Parchment Crest */
+  /* The Corrected, Smaller BANNER1 Branding Section */
+  .branding-header-corrected {
+    width: 100%; max-width: 800px; /* Reduced width to match nav better */
+    margin: 20px auto 10px auto; /* Tighter margins to bring letter up */
+    height: 150px; /* Significantly reduced fixed height */
+    background-image: url('BANNER1.png'); /* Back to the Parchment Crest */
     background-size: cover; background-position: center;
     border: 2px solid #d4af37; /* The Gold Border */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
     position: relative;
     border-radius: 4px;
+    overflow: hidden; /* Clips the child security bar */
   }
   
-  /* Security Alert (Integrated into the Static Banner) */
+  /* Security Alert (Anchored inside the compact BANNER1) */
   .security-alert-overlay {
-    position: absolute; top: 0; left: 0; width: 100%;
-    background: rgba(190, 40, 52, 0.85); /* Semi-transparent Red */
-    color: #ffffff; padding: 10px; font-family: 'Cinzel'; font-size: 11px;
-    letter-spacing: 2px; border-bottom: 2px solid #d4af37; text-align: center;
-    border-top-left-radius: 4px; border-top-right-radius: 4px;
-  }
-
-  /* Warning Text (Sitting below the main graphic section) */
-  .warning-strip-live {
-    width: 100%; text-align: center; margin-bottom: 30px;
-    font-family: 'Cinzel'; font-size: 12px; font-weight: bold;
-    color: #ffd700; /* Real Gold Text */
-    letter-spacing: 0.5px; line-height: 1.6;
+    position: absolute; bottom: 0; left: 0; width: 100%;
+    background: rgba(190, 40, 52, 0.9); /* More opaque red */
+    color: #ffffff; padding: 6px; font-family: 'Cinzel'; font-size: 11px;
+    letter-spacing: 2px; border-top: 1px solid #d4af37; text-align: center;
+    z-index: 2; /* Ensures it sits over the image */
   }
 
   /* Formal Letter Box (The Dear Friend Section) */
@@ -114,13 +107,8 @@
 
     <div id="frontPage" class="front-page">
       
-      <div class="branding-header-section">
-        <div class="security-alert-overlay">[!] SECURITY ALERT: ENCRYPTED SESSION — NO TAMPERING PERMITTED</div>
-      </div>
-
-      <div class="warning-strip-live">
-        HARCCIAN BIBLE COLLEGE IS A PRIVATE RELIGIOUS TRAINING CENTER.<br>
-        OUR PROGRAMS ARE NOT ACCREDITED UNDER THE AQF.
+      <div class="branding-header-corrected">
+        <div class="security-alert-overlay"> SECURITY ALERT: ENCRYPTED SESSION — NO TAMPERING PERMITTED</div>
       </div>
 
       <div class="letter-box">
