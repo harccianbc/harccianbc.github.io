@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
+
     body {
       background: #192535;
       color: white;
@@ -20,6 +20,7 @@
       width: 100%;
       margin: 15px 0;
     }
+
     .banner-container img, .mainbanner-container img {
       width: 60%;
       height: auto;
@@ -35,8 +36,7 @@
       flex-wrap: wrap;
       gap: 8px;
     }
-    .dropdown { position: relative; display: inline-block; }
-    
+
     .menu-button {
       display: inline-block;
       background-color: #be2834;
@@ -53,35 +53,11 @@
       font-family: 'Cinzel', serif;
       letter-spacing: 1px;
     }
-    .menu-button:hover { 
-      background-color: #ffffff; 
-      color: #be2834; 
-    }
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #192535;
-      min-width: 220px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
-      z-index: 10;
-      border: 1px solid #d4af37;
-      border-radius: 4px;
-      text-align: left;
+    .menu-button:hover {
+      background-color: #ffffff;
+      color: #be2834;
     }
-    .dropdown-content a {
-      color: white;
-      padding: 12px 18px;
-      text-decoration: none;
-      display: block;
-      font-size: 14px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-    }
-    .dropdown-content a:hover { 
-      background-color: #be2834; 
-      color: white; 
-    }
-    .dropdown:hover .dropdown-content { display: block; }
 
     .menu-divider {
       border: 0;
@@ -104,6 +80,7 @@
       border-left: 8px solid #ffd700;
       border-right: 8px solid #ffd700;
     }
+
     .notice-box h3 {
       font-size: 19px;
       text-transform: uppercase;
@@ -111,6 +88,7 @@
       margin-bottom: 12px;
       color: #ffd700;
     }
+
     .notice-box .ai-notice {
       margin-top: 18px;
       padding-top: 15px;
@@ -131,12 +109,14 @@
       box-shadow: 0 30px 60px rgba(0,0,0,0.6);
       text-align: left;
     }
+
     .letter-header {
       text-align: center;
       margin-bottom: 30px;
       border-bottom: 2px solid #be2834;
       padding-bottom: 20px;
     }
+
     .letter-header h2 {
       font-family: 'Cinzel', serif;
       font-size: 28px;
@@ -144,6 +124,7 @@
       margin: 0;
       letter-spacing: 3px;
     }
+
     .letter-motto {
       font-family: 'Cinzel', serif;
       font-size: 13px;
@@ -151,6 +132,7 @@
       margin-top: 8px;
       color: #192535;
     }
+
     .letter-box p {
       font-family: 'Lato', sans-serif;
       font-size: 17px;
@@ -159,6 +141,7 @@
       color: #192535;
       text-align: justify;
     }
+
     .letter-dear {
       font-size: 20px;
       font-weight: 900;
@@ -166,6 +149,7 @@
       color: #192535;
       font-family: 'Lato', sans-serif;
     }
+
     .quote-container {
       margin: 35px 0;
       background: #192535;
@@ -174,22 +158,26 @@
       border-radius: 8px;
       text-align: center;
     }
+
     .quote-text {
       font-family: 'Cinzel', serif;
       font-size: 22px;
       font-weight: 900;
       color: #ffd700;
     }
+
     .signature-block {
       margin-top: 40px;
       text-align: right;
     }
+
     .signature-name {
       font-family: 'Great Vibes', cursive;
       font-size: 48px;
       color: #be2834;
       margin: 0;
     }
+
     .signature-title {
       font-family: 'Cinzel', serif;
       font-size: 13px;
@@ -208,6 +196,7 @@
       text-align: center;
       box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     }
+
     .apply-box h2 {
       font-family: 'Cinzel', serif;
       font-size: 36px;
@@ -215,6 +204,7 @@
       letter-spacing: 4px;
       margin-bottom: 15px;
     }
+
     .apply-box p {
       font-family: 'Lato', sans-serif;
       font-size: 16px;
@@ -222,6 +212,7 @@
       margin-bottom: 30px;
       line-height: 1.7;
     }
+
     .apply-btn {
       display: inline-block;
       background: #ffd700;
@@ -235,6 +226,7 @@
       letter-spacing: 2px;
       transition: 0.3s;
     }
+
     .apply-btn:hover {
       background: #ffffff;
       color: #be2834;
@@ -249,8 +241,11 @@
       text-align: center;
       line-height: 1.8;
     }
+
     .footer-content { max-width: 900px; margin: 0 auto; }
+
     .footer-logo { width: 150px; height: auto; margin-bottom: 15px; }
+
     .footer-trademark {
       font-family: 'Cinzel', serif;
       color: #d4af37;
@@ -260,6 +255,7 @@
       text-transform: uppercase;
       font-size: 0.9rem;
     }
+
     .footer-legal-text {
       font-size: 0.8rem;
       letter-spacing: 1px;
@@ -267,6 +263,7 @@
       margin: 0 auto;
       color: rgba(255,255,255,0.8);
     }
+
     .ai-badge {
       display: inline-block;
       margin-top: 15px;
@@ -277,6 +274,7 @@
       font-size: 0.65rem;
       letter-spacing: 2px;
     }
+
     .footer-divider { width: 50px; height: 2px; background: #d4af37; margin: 12px auto; }
   </style>
 </head>
@@ -288,28 +286,9 @@
 
   <hr class="menu-divider">
   <div class="nav-container">
-    <div class="dropdown">
-      <a href="index.html" class="menu-button">HOME ▾</a>
-      <div class="dropdown-content">
-        <a href="mission.html">OUR MISSION</a>
-        <a href="staff.html">STAFF</a>
-        <a href="terms.html">TERMS / POLICIES</a>
-        <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
-        <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
-      </div>
-    </div>
-    <a href="#" class="menu-button">PROSPECTUS</a>
-    <a href="#" class="menu-button">ABOUT</a>
-    <div class="dropdown">
-      <a href="#" class="menu-button">ALUMNI ▾</a>
-      <div class="dropdown-content">
-        <a href="fraternities.html">FRATERNITIES</a>
-      </div>
-    </div>
-    <a href="#" class="menu-button">COURSES</a>
-    <a href="apply.html" class="menu-button">APPLY</a>
-    <a href="#" class="menu-button" onclick="togglePages()">NON-ACCREDITATION</a>
-    <a href="#" class="menu-button">SHOP</a>
+    <a href="index.html" class="menu-button">HOME</a>
+    <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
+    <a href="shop.html" class="menu-button">SHOP</a>
   </div>
   <hr class="menu-divider">
 
@@ -325,7 +304,6 @@
     </div>
   </div>
 
-  <!-- Founder's Letter -->
   <div class="letter-box">
     <div class="letter-header">
       <h2>Harccian Bible College™</h2>
@@ -344,14 +322,12 @@
     </div>
   </div>
 
-  <!-- Apply Today Box -->
   <div class="apply-box">
     <h2>APPLY TODAY</h2>
     <p>Take the first step toward your biblical education journey.<br>Applications are open — begin your enrollment now.</p>
     <a href="apply.html" class="apply-btn">BEGIN YOUR APPLICATION →</a>
   </div>
 
-  <!-- Footer -->
   <footer class="hbc-footer">
     <div class="footer-content">
       <img src="h4logo.png" alt="HARCCIAN Bible College Logo" class="footer-logo">
@@ -365,9 +341,7 @@
         Certificates are not recognized for formal qualifications or employment.
         Not a registered higher education provider.
       </div>
-      <div class="ai-badge">
-        ALL MEDIA SHOWN ON THIS WEBSITE IS AI-GENERATED
-      </div>
+      <div class="ai-badge">ALL MEDIA SHOWN ON THIS WEBSITE IS AI-GENERATED</div>
     </div>
   </footer>
 
