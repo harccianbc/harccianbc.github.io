@@ -14,6 +14,14 @@
     color: white;
     font-family: 'Lato', Arial, sans-serif;
     text-align: center;
+    overflow-x: hidden;
+  }
+
+  /* Prevent text selection for a secure feel */
+  * {
+    -webkit-user-select: none;
+    user-select: none;
+    box-sizing: border-box;
   }
 
   /* Menu Button Styles */
@@ -41,22 +49,26 @@
     margin: 10px auto;
   }
 
-  /* Formal Letter & Disclosure Styles */
-  .page-wrap { position: relative; width: 100%; min-height: 100vh; background: #192535; }
-  .back-page { display: none; background: #fdfcf7; color: #192535; padding: 40px 20px; }
+  /* Formal Section Wrappers */
+  .page-wrap { position: relative; width: 100%; min-height: 100vh; }
+  .back-page { display: none; background: linear-gradient(135deg, #192535 0%, #fdfcf7 100%); padding: 40px 20px; min-height: 100vh; }
   .back-page.active { display: block; }
   .front-page.hidden { display: none; }
 
+  /* Security Alert Bar */
   .security-alert {
     width: 100%; background: #be2834; color: #ffffff; padding: 10px;
     font-family: 'Cinzel'; font-size: 11px; letter-spacing: 2px;
+    border-bottom: 2px solid #d4af37;
   }
 
+  /* Warning Box */
   .unaccredited-warning {
     width: 100%; background: #8B0000; color: #FFD700; padding: 14px 20px;
-    font-family: 'Cinzel'; font-size: 14px; font-weight: 900; border-bottom: 3px solid #d4af37;
+    font-family: 'Cinzel'; font-size: 14px; font-weight: 900; line-height: 1.5; border-bottom: 3px solid #d4af37;
   }
 
+  /* The Letter Box */
   .letter-box {
     max-width: 850px; width: 92%; margin: 30px auto; padding: 50px 60px;
     background: #fdfcf7; color: #192535; border: 1.5px solid #d4af37; border-radius: 4px;
@@ -64,19 +76,27 @@
   }
 
   .header-section { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #be2834; padding-bottom: 20px; }
-  h1.letter-title { font-family: 'Cinzel'; font-size: 32px; color: #be2834; margin: 0; }
+  h1.letter-title { font-family: 'Cinzel'; font-size: 32px; color: #be2834; margin: 0; letter-spacing: 2px; }
   
   .clause-btn {
     display: block; width: 100%; background: #be2834; color: #fff; font-family: 'Cinzel';
     font-weight: 900; padding: 20px; text-align: center; cursor: pointer; border: 2px solid #d4af37;
+    margin-bottom: 20px; transition: 0.3s;
   }
+  .clause-btn:hover { background: #192535; }
 
   .quote-container {
-    margin: 40px 0; background: #192535; padding: 35px; border: 3px solid #d4af37; text-align: center;
+    margin: 40px 0; background: #192535; padding: 35px; border: 3px solid #d4af37; border-radius: 8px; text-align: center;
   }
   .quote-text { font-family: 'Cinzel'; font-size: 26px; font-weight: 900; color: #ffd700; }
   
-  .signature-name { font-family: 'Great Vibes'; font-size: 48px; color: #be2834; text-align: right; }
+  .signature-block { margin-top: 50px; text-align: right; }
+  .signature-name { font-family: 'Great Vibes'; font-size: 48px; color: #be2834; margin: 0; }
+
+  .back-card {
+    max-width: 800px; margin: 0 auto; background: #fdfcf7; border: 1.5px solid #d4af37;
+    padding: 60px 40px; color: #192535; position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  }
 </style>
 </head>
 <body oncontextmenu="return false;">
@@ -101,13 +121,19 @@
   <div class="page-wrap">
     
     <div id="backPage" class="back-page">
-      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <span style="float:right; cursor:pointer; font-size:30px; color:#be2834;" onclick="togglePages()">&times;</span>
-        <h2 style="font-family:'Cinzel'; color:#be2834;">Legal Disclosure & Non-Accreditation Clause</h2>
-        <p style="text-transform: uppercase; font-weight: bold; line-height: 2;">
-          Harccian Bible College is a private religious training center. Our programs are for spiritual development and are not accredited under the Australian Qualifications Framework (AQF). We are not a Registered Training Organisation (RTO).
-        </p>
-        <button class="clause-btn" onclick="togglePages()">GO BACK</button>
+      <div class="back-card">
+        <span style="position:absolute; top:10px; right:20px; font-size:40px; cursor:pointer; color:#be2834;" onclick="togglePages()">&times;</span>
+        <h2 style="font-family:'Cinzel'; color:#be2834; text-decoration: underline;">Legal Disclosure & Non-Accreditation Clause</h2>
+        <div style="font-family:'Lato'; font-size:16px; font-weight:900; text-transform:uppercase; line-height:2;">
+          <strong>Harccian Bible College is a private religious training center.</strong><br>
+          OUR PROGRAMS ARE FOR SPIRITUAL DEVELOPMENT AND ARE NOT ACCREDITED UNDER THE AUSTRALIAN QUALIFICATIONS FRAMEWORK (AQF).<br>
+          <hr style="border: 0; border-top: 1px solid #be2834; margin: 20px 0;">
+          WE ARE NOT A REGISTERED TRAINING ORGANISATION (RTO).<br>
+          NOT NATIONALLY RECOGNISED IN AUSTRALIA.<br><br>
+          CERTIFICATES ARE FOR PERSONAL SPIRITUAL GROWTH ONLY AND ARE NOT FORMAL ACADEMIC OR VOCATIONAL QUALIFICATIONS.
+        </div>
+        <br>
+        <button class="clause-btn" onclick="togglePages()">CLOSE & RETURN</button>
       </div>
     </div>
 
@@ -116,27 +142,34 @@
 
       <div class="unaccredited-warning">
         HARCCIAN BIBLE COLLEGE IS A PRIVATE RELIGIOUS TRAINING CENTER.<br>
+        OUR PROGRAMS ARE FOR SPIRITUAL DEVELOPMENT AND ARE NOT ACCREDITED UNDER THE AUSTRALIAN QUALIFICATIONS FRAMEWORK (AQF).<br>
         <span style="font-size: 11px; opacity: 0.8;">NOT A REGISTERED TRAINING ORGANISATION (RTO) • INDEPENDENT CURRICULUM</span>
       </div>
 
       <div class="letter-box">
         <div class="header-section">
           <h1 class="letter-title">Harccian Bible College™</h1>
-          <div style="font-family:'Cinzel'; color:#192535; font-weight:700;">“Fides et Excellentia” — Faith and Excellence</div>
+          <div style="font-family:'Cinzel'; color:#192535; font-weight:700; font-size:14px; margin-top:5px;">“Fides et Excellentia” — Faith and Excellence</div>
         </div>
 
         <div class="clause-btn" onclick="togglePages()">READ OUR NON-ACCREDITATION CLAUSE</div>
 
-        <div style="font-size:22px; font-weight:900; margin:25px 0; color:#192535;">Dear Friend,</div>
+        <div style="font-size:22px; font-weight:900; margin-bottom:25px; color:#192535;">Dear Friend,</div>
         
-        <p style="color:#192535;">Welcome to <strong>Harccian Bible College™</strong>. The vision for this project was born many years ago... [Your Story Here]</p>
+        <p style="color:#192535; font-size:18px; line-height:1.8; text-align:justify;">Welcome to <strong>Harccian Bible College™</strong>. The vision for this project was born many years ago during my time as the founder of a dedicated ministry. Together with my board, we recognized a profound need for deep, structured biblical training. We established our first campus in India, where we were privileged to see several classes of graduates emerge equipped for the work of the Kingdom.</p>
+        
+        <p style="color:#192535; font-size:18px; line-height:1.8; text-align:justify;">Today, <strong>Harccian Bible College™</strong> is the evolution of that mission. We have transitioned into a borderless digital platform to reach the globe—specifically designed for those who are desperate enough for the challenge of rigorous, uncompromising study without the excessive financial burdens of traditional setups.</p>
 
         <div class="quote-container">
           <div class="quote-text">Nothing is ever given —<br>it is always earned at H.B.C.</div>
         </div>
 
-        <div class="signature-name">The Founder</div>
-        <div style="font-family:'Cinzel'; font-size:13px; font-weight:900; color:#192535; text-align:right;">Harccian Bible College™</div>
+        <p style="color:#192535; font-size:18px; line-height:1.8; text-align:justify;">When you complete a program here, you receive a certificate of participation. This recognizes your personal effort, discipline, and dedication within our global community.</p>
+
+        <div class="signature-block">
+          <div class="signature-name">The Founder</div>
+          <div style="font-family:'Cinzel'; font-size:13px; font-weight:900; color:#192535;">Harccian Bible College™</div>
+        </div>
       </div>
     </div>
   </div>
@@ -145,6 +178,12 @@
   function togglePages() {
     document.getElementById('frontPage').classList.toggle('hidden');
     document.getElementById('backPage').classList.toggle('active');
+    window.scrollTo(0,0); // Jumps back to top when switching
+  }
+  
+  // Security lock for keyboard shortcuts
+  document.onkeydown = function(e) {
+    if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73) || (e.ctrlKey && e.keyCode == 85)) return false;
   }
 </script>
 </body>
