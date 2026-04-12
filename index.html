@@ -1,70 +1,125 @@
- <style>
-  /* Base Styles */
-  body { margin: 0; padding: 0; background: #192535; color: white; font-family: 'Lato', Arial, sans-serif; text-align: center; }
-  /* NAVIGATION & DROPDOWN LOGIC */
-  .nav-container { 
-    margin: 10px 0; 
-    display: flex; 
-    justify-content: center; 
-    flex-wrap: wrap; 
-  }
-  /* The Dropdown Wrapper */
-  .dropdown { position: relative; display: inline-block; }
-  /* Main Buttons */
-  .menu-button { 
-    display: inline-block; background-color: #be2834; color: white; padding: 10px 18px; 
-    margin: 5px; text-decoration: none; font-weight: bold; border-radius: 5px; 
-    font-size: 13px; transition: 0.3s; cursor: pointer; border: none;
-  }
-  .menu-button:hover { background-color: #ffffff; color: #be2834; }
-  /* The Hidden Menu Content */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #192535;
-    min-width: 220px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
-    z-index: 10;
-    border: 1px solid #d4af37;
-    border-radius: 4px;
-    text-align: left;
-    margin-left: 5px;
-  }
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 12px;
-    font-family: 'Cinzel', serif;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-  }
-  .dropdown-content a:hover { background-color: #be2834; color: white; }
-  /* Show the menu on hover */
-  .dropdown:hover .dropdown-content { display: block; }
-  .menu-divider { border: 0; height: 1px; background: white; width: 90%; margin: 10px auto; }
-</style>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HARCCIAN</title>
+  <style>
+    /* Base Styles */
+    body { 
+      margin: 0; 
+      padding: 0; 
+      background: #192535; 
+      color: white; 
+      font-family: 'Lato', Arial, sans-serif; 
+      text-align: center; 
+    }
 
-<hr class="menu-divider">
-<div class="nav-container">
-  
-  <div class="dropdown">
-    <a href="index.html" class="menu-button">HOME ▾</a>
-    <div class="dropdown-content">
-      <a href="mission.html">OUR MISSION</a>
-      <a href="staff.html">STAFF</a>
-      <a href="terms.html">TERMS / POLICIES</a>
-      <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
-      <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
-    </div>
+    /* BANNER */
+    .banner-container {
+      width: 100%;
+      display: block;
+    }
+    .banner-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* NAVIGATION */
+    .nav-container { 
+      margin: 10px 0; 
+      display: flex; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+    }
+
+    /* Dropdown Wrapper */
+    .dropdown { position: relative; display: inline-block; }
+
+    /* Main Buttons */
+    .menu-button { 
+      display: inline-block; 
+      background-color: #be2834; 
+      color: white; 
+      padding: 10px 18px; 
+      margin: 5px; 
+      text-decoration: none; 
+      font-weight: bold; 
+      border-radius: 5px; 
+      font-size: 13px; 
+      transition: 0.3s; 
+      cursor: pointer; 
+      border: none;
+    }
+    .menu-button:hover { background-color: #ffffff; color: #be2834; }
+
+    /* Dropdown Content */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #192535;
+      min-width: 220px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+      z-index: 10;
+      border: 1px solid #d4af37;
+      border-radius: 4px;
+      text-align: left;
+      margin-left: 5px;
+    }
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-size: 12px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .dropdown-content a:hover { background-color: #be2834; color: white; }
+    .dropdown:hover .dropdown-content { display: block; }
+
+    /* Dividers */
+    .menu-divider { 
+      border: 0; 
+      height: 1px; 
+      background: white; 
+      width: 90%; 
+      margin: 10px auto; 
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BANNER -->
+  <div class="banner-container">
+    <img src="HARCCIAN (4).png" alt="HARCCIAN Banner">
   </div>
-  <a href="#" class="menu-button">PROSPECTUS</a>
-  <a href="#" class="menu-button">ABOUT</a>
-  <a href="#" class="menu-button">ALUMNI</a>
-  <a href="#" class="menu-button">COURSES</a>
-  <a href="#" class="menu-button">APPLY</a>
-  <a href="#" class="menu-button" onclick="togglePages()">NON-ACCREDITATION</a>
-  <a href="#" class="menu-button">SHOP</a>
-</div>
-<hr class="menu-divider">
+
+  <!-- NAVIGATION -->
+  <hr class="menu-divider">
+  <div class="nav-container">
+
+    <div class="dropdown">
+      <a href="index.html" class="menu-button">HOME ▾</a>
+      <div class="dropdown-content">
+        <a href="mission.html">OUR MISSION</a>
+        <a href="staff.html">STAFF</a>
+        <a href="terms.html">TERMS / POLICIES</a>
+        <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
+        <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
+      </div>
+    </div>
+
+    <a href="#" class="menu-button">PROSPECTUS</a>
+    <a href="#" class="menu-button">ABOUT</a>
+    <a href="#" class="menu-button">ALUMNI</a>
+    <a href="#" class="menu-button">COURSES</a>
+    <a href="#" class="menu-button">APPLY</a>
+    <a href="#" class="menu-button" onclick="togglePages()">NON-ACCREDITATION</a>
+    <a href="#" class="menu-button">SHOP</a>
+
+  </div>
+  <hr class="menu-divider">
+
+</body>
+</html>
