@@ -1,1 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courses | Harccian Bible College</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --navy: #192535; --red: #be2834; --gold: #d4af37; --white: #fdfcf7; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  body {
+    background: var(--navy);
+    color: white;
+    font-family: 'Lato', Arial, sans-serif;
+    min-height: 100vh;
+    text-align: center;
+  }
+
+  .nav-container {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .dropdown { position: relative; display: inline-block; }
+  .menu-button {
+    display: inline-block;
+    background-color: var(--red);
+    color: white;
+    padding: 12px 20px;
+    margin: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 13px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+  }
+  .menu-button:hover { background-color: #ffffff; color: var(--red); }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--navy);
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+    z-index: 10;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    text-align: left;
+  }
+  .dropdown-content a {
+    color: white;
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  }
+  .dropdown-content a:hover { background-color: var(--red); color: white; }
+  .dropdown:hover .dropdown-content { display: block; }
+  .menu-divider {
+    border: 0;
+    height: 1px;
+    background: var(--gold);
+    width: 80%;
+    margin: 15px auto;
+  }
+
+  /* Page Header */
+  .page-header {
+    background: linear-gradient(135deg, var(--navy), var(--red));
+    padding: 60px 20px;
+    border-bottom: 4px solid var(--gold);
+    margin-bottom: 40px;
+  }
+  .page-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+  }
+  .page-header p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 2px;
+    font-family: 'Cinzel', serif;
+  }
+
+  /* Course Portal Box */
+  .portal-wrap {
+    max-width: 950px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+  }
+
+  .portal-box {
+    background: var(--white);
+    color: var(--navy);
+    border-radius: 4px;
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    padding: 40px;
+  }
+
+  /* Search */
+  .search-box {
+    position: relative;
+    margin-bottom: 30px;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 20px 20px 20px 55px;
+    background: var(--navy);
+    border: 3px solid var(--red);
+    border-radius: 6px;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 18px;
+    outline: none;
+  }
+  .search-box::before {
+    content: "🔍";
+    position: absolute;
+    left: 18px;
+    top: 16px;
+    font-size: 22px;
+  }
+
+  /* Subject Cards */
+  .subject-card {
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+    text-align: left;
+  }
+  .subject-card.active {
+    border-color: var(--red);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  .subject-header {
+    width: 100%;
+    padding: 22px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 17px;
+    color: var(--navy);
+    text-align: left;
+  }
+  .subject-header span:last-child {
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+  .level-grid {
+    display: none;
+    padding: 20px;
+    background: #f5f5f5;
+    gap: 10px;
+    border-top: 1px solid #ddd;
+    flex-direction: column;
+  }
+  .subject-card.active .level-grid { display: flex; }
+  .level-row {
+    background: white;
+    padding: 16px 22px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #eee;
+  }
+  .level-title { font-size: 15px; font-weight: 900; color: var(--navy); }
+  .btn-prc {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 4px;
+    font-weight: 900;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+  }
+  .btn-prc:hover { background: var(--navy); }
+
+  /* Directory Tabs */
+  .dir-head {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    color: var(--red);
+    margin: 35px 0 15px;
+    font-weight: 900;
+    letter-spacing: 2px;
+  }
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .tab {
+    background: #e8e8e8;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 900;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: 1px solid #ccc;
+    color: var(--navy);
+    font-family: 'Cinzel', serif;
+  }
+  .tab:hover { background: var(--red); color: white; border-color: var(--red); }
+
+  /* Modal */
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 10;
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    max-width: 520px;
+    background: var(--white);
+    border-top: 12px solid var(--red);
+    border-radius: 8px;
+    padding: 40px;
+    z-index: 11;
+    text-align: left;
+  }
+  .modal h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--red);
+    font-size: 24px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  .modal p { font-size: 14px; font-weight: 900; margin-bottom: 20px; color: var(--navy); }
+  .modal select {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    border: 2px solid #ddd;
+    color: var(--navy);
+  }
+  .price-display {
+    background: #f0f0f0;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .price-val {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--red);
+    display: block;
+    margin-bottom: 15px;
+    font-family: 'Cinzel', serif;
+  }
+  .btn-enroll {
+    display: none;
+    width: 100%;
+    padding: 18px;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    letter-spacing: 1px;
+  }
+  .btn-close {
+    width: 100%;
+    margin-top: 15px;
+    padding: 14px;
+    background: none;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: 'Cinzel', serif;
+    color: var(--navy);
+    border-radius: 6px;
+  }
+  .btn-close:hover { background: #f0f0f0; }
+
+  /* Footer */
+  .hbc-footer {
+    background: linear-gradient(135deg, var(--red), var(--navy));
+    border-top: 4px solid var(--gold);
+    color: rgba(255,255,255,0.9);
+    padding: 25px 20px;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    line-height: 1.8;
+  }
+  .footer-content { max-width: 900px; margin: 0 auto; }
+  .footer-logo { width: 150px; height: auto; margin-bottom: 15px; }
+  .footer-trademark {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+  .footer-legal-text {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    max-width: 700px;
+    margin: 0 auto;
+    color: rgba(255,255,255,0.8);
+  }
+  .ai-badge {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 15px;
+    border: 1px solid rgba(212,175,55,0.5);
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+  }
+  .footer-divider { width: 50px; height: 2px; background: var(--gold); margin: 12px auto; }
+
+  @media (max-width: 768px) {
+    .portal-box { padding: 20px; }
+    .page-header h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="overlay" id="overlay" onclick="closeModal()"></div>
+
+<div class="modal" id="priceModal">
+  <h2>Tuition Guide</h2>
+  <p id="modalSub"></p>
+  <select id="regSel" onchange="app.updateCountries()">
+    <option value="">Select Region</option>
+    <option value="AU">Australia</option>
+    <option value="ASIA">Asia</option>
+    <option value="AFRICA">Africa</option>
+  </select>
+  <select id="ctySel" onchange="app.calc()">
+    <option value="">Select Country</option>
+  </select>
+  <div class="price-display">
+    <span class="price-val" id="priceAmt">—</span>
+    <a href="apply.html" id="enrollLink" class="btn-enroll"></a>
+  </div>
+  <button class="btn-close" onclick="closeModal()">✕ Close</button>
+</div>
+
+<hr class="menu-divider">
+<div class="nav-container">
+  <div class="dropdown">
+    <a href="index.html" class="menu-button">HOME ▾</a>
+    <div class="dropdown-content">
+      <a href="mission.html">OUR MISSION</a>
+      <a href="staff.html">STAFF</a>
+      <a href="terms.html">TERMS / POLICIES</a>
+      <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
+      <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
+    </div>
+  </div>
+  <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
+  <a href="about.html" class="menu-button">ABOUT</a>
+  <div class="dropdown">
+    <a href="alumni.html" class="menu-button">ALUMNI ▾</a>
+    <div class="dropdown-content">
+      <a href="fraternities.html">FRATERNITIES</a>
+    </div>
+  </div>
+  <a href="courses.html" class="menu-button">COURSES</a>
+  <a href="apply.html" class="menu-button">APPLY</a>
+  <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
+  <a href="shop.html" class="menu-button">SHOP</a>
+</div>
+<hr class="menu-divider">
+
+<div class="page-header">
+  <h1>COURSE CATALOG</h1>
+  <p>Bible & Ministry Training — Harccian Bible College</p>
+</div>
+
+<div class="portal-wrap">
+  <div class="portal-box">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="SEARCH COURSES..." onkeyup="app.render()">
+    </div>
+    <div id="courseList"></div>
+    <p class="dir-head">INSTITUTIONAL DIRECTORY</p>
+    <div class="tabs" id="tabGrid"></div>
+  </div>
+</div>
+
+<footer class="hbc-footer">
+  <div class="footer-content">
+    <img src="h4logo.png" alt="HARCCIAN Bible College Logo" class="footer-logo">
+    <div class="footer-divider"></div>
+    <div class="footer-trademark">
+      © 2026 HARCCIAN BIBLE COLLEGE™. Trademark of the Founder. Proprietary materials.
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-legal-text">
+      Harccian Bible College™ is a non-accredited religious initiative for spiritual enrichment only.
+      Certificates are not recognized for formal qualifications or employment.
+      Not a registered higher education provider.
+    </div>
+    <div class="ai-badge">ALL MEDIA SHOWN ON THIS WEBSITE IS AI-GENERATED</div>
+  </div>
+</footer>
+
+<script>
+const COURSES = [
+  "Apostolic Scriptural Survey (NT)", "Hebraic Scriptural Survey (OT)", "Bible College Design & Administration",
+  "Chaplaincy & Pastoral Care", "Christian Business Principles", "Christian Education",
+  "Christian Environmentalism", "Christian Ethics", "Christian Health", "Christian Humanities",
+  "Christian Philosophy", "Christian Politics", "Christian Social Impact & Community Care",
+  "Church History", "Divinity Studies", "Ministry", "Missions & Intercultural Studies",
+  "Pastoral Studies", "Theology"
+].sort();
+
+const PRICING = {
+  AU: { sym: "A$", rates: { p1: 600, p2: 1200, p3: 1800 }, countries: ["Australia"] },
+  ASIA: { sym: "₱", rates: { p1: 3500, p2: 7000, p3: 10500 }, countries: ["Philippines"] },
+  AFRICA: { sym: "₦", rates: { p1: 60000, p2: 120000, p3: 180000 }, countries: ["Nigeria"] }
+};
+
+const LEVELS = [
+  { id: 'free', title: "Certificate of Completion", paid: false },
+  { id: 'free', title: "Advanced Certificate", paid: false },
+  { id: 'free', title: "Mastery Certificate", paid: false },
+  { id: 'p1', title: "Mastery of Divinity I", paid: true },
+  { id: 'p2', title: "Mastery of Divinity II", paid: true },
+  { id: 'p3', title: "Mastery of Divinity III", paid: true }
+];
+
+const app = {
+  activePaid: false, activeLvlId: '', activeSubject: '',
+
+  render() {
+    const term = document.getElementById('searchInput').value.toUpperCase();
+    const list = document.getElementById('courseList');
+    list.innerHTML = COURSES.filter(c => c.toUpperCase().includes(term)).map((c, i) => `
+      <div class="subject-card" id="card-${i}">
+        <button class="subject-header" onclick="app.toggle(${i})">
+          <span>${c}</span>
+          <span>6 LEVELS ▾</span>
+        </button>
+        <div class="level-grid">
+          ${LEVELS.map(l => `
+            <div class="level-row">
+              <span class="level-title">${l.title}</span>
+              <button class="btn-prc" onclick="app.openPrice('${c}', '${l.title}', ${l.paid}, '${l.id}')">PRICING</button>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+  },
+
+  initTabs() {
+    document.getElementById('tabGrid').innerHTML = COURSES.map(c =>
+      `<div class="tab" onclick="app.setSearch('${c}')">${c}</div>`
+    ).join('');
+  },
+
+  setSearch(val) { document.getElementById('searchInput').value = val; this.render(); },
+
+  toggle(i) {
+    const card = document.getElementById(`card-${i}`);
+    const isOpen = card.classList.contains('active');
+    document.querySelectorAll('.subject-card').forEach(c => c.classList.remove('active'));
+    if (!isOpen) card.classList.add('active');
+  },
+
+  openPrice(sub, lvl, paid, id) {
+    this.activeSubject = sub; this.activePaid = paid; this.activeLvlId = id;
+    document.getElementById('modalSub').innerText = `${sub} — ${lvl}`;
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('priceModal').style.display = 'block';
+    document.getElementById('priceAmt').innerText = '—';
+    document.getElementById('enrollLink').style.display = 'none';
+    document.getElementById('regSel').value = '';
+    document.getElementById('ctySel').innerHTML = '<option value="">Select Country</option>';
+  },
+
+  updateCountries() {
+    const reg = document.getElementById('regSel').value;
+    const drop = document.getElementById('ctySel');
+    drop.innerHTML = '<option value="">Select Country</option>';
+    if (reg) PRICING[reg].countries.forEach(c => drop.innerHTML += `<option value="${c}">${c}</option>`);
+  },
+
+  calc() {
+    const reg = document.getElementById('regSel').value;
+    const btn = document.getElementById('enrollLink');
+    if (!reg) return;
+    const data = PRICING[reg];
+    const price = this.activePaid ? `${data.sym}${data.rates[this.activeLvlId].toLocaleString()}` : "FREE";
+    document.getElementById('priceAmt').innerText = price;
+    btn.style.display = 'block';
+    btn.style.background = this.activePaid ? "#27ae60" : "var(--navy)";
+    btn.innerText = this.activePaid ? "Begin Entrance Exam" : "Start Free Enrollment";
+  }
+};
+
+function closeModal() {
+  document.querySelectorAll('.modal, .overlay').forEach(e => e.style.display = 'none');
+}
+
+app.render();
+app.initTabs();
+</script>
+
+</body>
+</html>
