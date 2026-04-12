@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Transparency | HARCCIAN Bible College</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: #192535;
+      color: white;
+      font-family: 'Lato', Arial, sans-serif;
+      text-align: center;
+      min-height: 100vh;
+      padding-bottom: 50px;
+    }
+
+    /* NAVIGATION STYLES (Matching Home) */
+    .nav-container {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .dropdown { position: relative; display: inline-block; }
+    .menu-button {
+      display: inline-block;
+      background-color: #be2834;
+      color: white;
+      padding: 12px 20px;
+      margin: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      font-size: 13px;
+      transition: 0.3s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
+    }
+    .menu-button:hover { background-color: #ffffff; color: #be2834; }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #192535;
+      min-width: 220px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+      z-index: 10;
+      border: 1px solid #d4af37;
+      text-align: left;
+    }
+    .dropdown-content a {
+      color: white;
+      padding: 12px 18px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .dropdown-content a:hover { background-color: #be2834; }
+    .dropdown:hover .dropdown-content { display: block; }
+    .menu-divider { border: 0; height: 1px; background: #d4af37; width: 80%; margin: 15px auto; }
+
+    /* THE MAIN DISCLAIMER BOX */
+    .ai-disclaimer-container {
+      max-width: 900px;
+      width: 92%;
+      margin: 40px auto;
+      background: linear-gradient(135deg, #192535, #be2834);
+      color: #ffffff;
+      border: 3px solid #be2834;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+      padding: 50px;
+      text-align: left;
+      border-radius: 15px;
+      line-height: 1.8;
+    }
+
+    .ai-disclaimer-container h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      color: #ffd700;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #ffd700;
+      padding-bottom: 15px;
+      text-align: center;
+    }
+
+    .ai-disclaimer-container p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #ffd700;
+    }
+
+    .back-home {
+      display: inline-block;
+      margin-top: 30px;
+      background: #ffd700;
+      color: #192535;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .back-home:hover {
+      background: #ffffff;
+      color: #be2834;
+    }
+  </style>
+</head>
+<body>
+
+  <div style="margin-top: 20px;">
+    <img src="HARCCIAN (4).png" alt="HARCCIAN" style="width: 40%; height: auto;">
+  </div>
+
+  <hr class="menu-divider">
+  <nav class="nav-container">
+    <div class="dropdown">
+      <a href="index.html" class="menu-button">HOME ▾</a>
+      <div class="dropdown-content">
+        <a href="mission.html">OUR MISSION</a>
+        <a href="staff.html">STAFF</a>
+        <a href="terms.html">TERMS / POLICIES</a>
+        <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
+        <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
+      </div>
+    </div>
+    <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
+    <a href="about.html" class="menu-button">ABOUT</a>
+    <a href="courses.html" class="menu-button">COURSES</a>
+    <a href="apply.html" class="menu-button">APPLY</a>
+  </nav>
+  <hr class="menu-divider">
+
+  <div class="ai-disclaimer-container">
+    <h1>🤖 AI Transparency & Legal Disclaimer</h1>
+
+    <p><span class="highlight">Important Notice:</span> Harccian Bible College™ is a <span class="highlight">virtual, online platform</span> and is <span class="highlight">not a physical institution</span>. All visual media, including images and videos presented on this site, are <span class="highlight">AI-generated</span> for illustrative and educational purposes.</p>
+
+    <p>We are fully committed to <span class="highlight">absolute transparency</span>. Any representation of people, locations, or campus events is <span class="highlight">entirely virtual and fictional</span>, created to provide a visual context for our spiritual and informational resources.</p>
+
+    <p>By using this website, you acknowledge that Harccian™ is a <span class="highlight">non-accredited, virtual platform</span>. No media or course offered here should be interpreted as representing real-world legal or formal academic standing. Our focus remains solely on <span class="highlight">personal spiritual growth and biblical understanding</span>.</p>
+
+    <p>We encourage all users to engage with our content for educational purposes only. Any certificates issued carry <span class="highlight">informational value only</span> and are not recognized for formal qualifications or employment.</p>
+
+    <div style="text-align: center;">
+      <a href="index.html" class="back-home">RETURN TO HOME PAGE</a>
+    </div>
+  </div>
+
+  <p style="color: rgba(255,255,255,0.5); font-size: 12px; font-family: 'Cinzel', serif;">
+    © 2026 HARCCIAN BIBLE COLLEGE™ | PROPRIETARY AI-GENERATED CONTENT
+  </p>
+
+</body>
+</html>
