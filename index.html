@@ -1,159 +1,140 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HARCCIAN</title>
+  <title>HARCCIAN Bible College</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
-    /* Base Styles */
-    body { 
-      margin: 0; 
-      padding: 0; 
-      background: #192535; 
-      color: white; 
-      font-family: 'Lato', Arial, sans-serif; 
-      text-align: center; 
-    }
-
-    /* BANNER */
-    .banner-container {
-      width: 100%;
-      display: block;
-    }
-    .banner-container img {
-      width: 60%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-
-    /* MAIN BANNER */
-    .mainbanner-container {
-      width: 100%;
-      display: block;
-      margin-top: 10px;
-    }
-    .mainbanner-container img {
-      width: 60%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-
-    /* NOTICE BOX */
-    .notice-box {
-      background-color: #be2834;
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: bold;
-      padding: 20px 40px;
-      margin: 20px auto;
-      width: 60%;
-      border-radius: 6px;
-      line-height: 1.8;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: #192535;
+      color: white;
+      font-family: 'Lato', Arial, sans-serif;
       text-align: center;
-      border-left: 6px solid #ffd700;
-      border-right: 6px solid #ffd700;
-    }
-    .notice-box h3 {
-      font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      color: #ffd700;
-      border-bottom: 2px solid #ffd700;
-      padding-bottom: 8px;
-    }
-    .notice-box p {
-      color: #ffffff;
-      font-size: 14px;
-      line-height: 1.8;
-      margin: 10px 0;
-    }
-    .notice-box .ai-notice {
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 2px solid #ffd700;
-      color: #ffd700;
-      font-size: 13px;
-      letter-spacing: 0.5px;
+      min-height: 100vh;
     }
 
-    /* NAVIGATION */
-    .nav-container { 
-      margin: 10px 0; 
-      display: flex; 
-      justify-content: center; 
-      flex-wrap: wrap; 
+    /* Banners */
+    .banner-container, .mainbanner-container {
+      width: 100%;
+      margin: 15px 0;
+    }
+    .banner-container img, .mainbanner-container img {
+      width: 60%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
     }
 
-    /* Dropdown Wrapper */
+    /* Navigation */
+    .nav-container {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
     .dropdown { position: relative; display: inline-block; }
-
-    /* Main Buttons */
-    .menu-button { 
-      display: inline-block; 
-      background-color: #be2834; 
-      color: white; 
-      padding: 10px 18px; 
-      margin: 5px; 
-      text-decoration: none; 
-      font-weight: bold; 
-      border-radius: 5px; 
-      font-size: 13px; 
-      transition: 0.3s; 
-      cursor: pointer; 
+    
+    .menu-button {
+      display: inline-block;
+      background-color: #be2834;
+      color: white;
+      padding: 12px 20px;
+      margin: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      font-size: 13px;
+      transition: 0.3s;
+      cursor: pointer;
       border: none;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
     }
-    .menu-button:hover { background-color: #ffffff; color: #be2834; }
+    .menu-button:hover { 
+      background-color: #ffffff; 
+      color: #be2834; 
+    }
 
-    /* Dropdown Content */
+    /* Dropdown */
     .dropdown-content {
       display: none;
       position: absolute;
       background-color: #192535;
       min-width: 220px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
       z-index: 10;
       border: 1px solid #d4af37;
       border-radius: 4px;
       text-align: left;
-      margin-left: 5px;
     }
     .dropdown-content a {
-      color: #ffffff;
-      padding: 12px 16px;
+      color: white;
+      padding: 12px 18px;
       text-decoration: none;
       display: block;
-      font-size: 14px;
-      font-weight: bold;
-      letter-spacing: 0.5px;
+      font-size: 13px;
       border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
-    .dropdown-content a:hover { background-color: #be2834; color: white; }
+    .dropdown-content a:hover { 
+      background-color: #be2834; 
+      color: white; 
+    }
     .dropdown:hover .dropdown-content { display: block; }
 
-    /* Dividers */
-    .menu-divider { 
-      border: 0; 
-      height: 1px; 
-      background: white; 
-      width: 90%; 
-      margin: 10px auto; 
+    /* Divider */
+    .menu-divider {
+      border: 0;
+      height: 1px;
+      background: #d4af37;
+      width: 80%;
+      margin: 15px auto;
+    }
+
+    /* Notice Box */
+    .notice-box {
+      background-color: #be2834;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 25px 40px;
+      margin: 30px auto;
+      max-width: 700px;
+      border-radius: 8px;
+      line-height: 1.7;
+      border-left: 8px solid #ffd700;
+      border-right: 8px solid #ffd700;
+    }
+    .notice-box h3 {
+      font-size: 19px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      color: #ffd700;
+    }
+    .notice-box .ai-notice {
+      margin-top: 18px;
+      padding-top: 15px;
+      border-top: 2px solid #ffd700;
+      color: #ffd700;
+      font-size: 13px;
     }
   </style>
 </head>
 <body>
 
-  <!-- BANNER 1 -->
+  <!-- Top Banner -->
   <div class="banner-container">
     <img src="HARCCIAN (4).png" alt="HARCCIAN Banner">
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- Navigation - LOGIN button removed -->
   <hr class="menu-divider">
   <div class="nav-container">
-
     <div class="dropdown">
       <a href="index.html" class="menu-button">HOME ▾</a>
       <div class="dropdown-content">
@@ -164,7 +145,6 @@
         <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
       </div>
     </div>
-
     <a href="#" class="menu-button">PROSPECTUS</a>
     <a href="#" class="menu-button">ABOUT</a>
     <a href="#" class="menu-button">ALUMNI</a>
@@ -172,17 +152,16 @@
     <a href="#" class="menu-button">APPLY</a>
     <a href="#" class="menu-button" onclick="togglePages()">NON-ACCREDITATION</a>
     <a href="#" class="menu-button">SHOP</a>
-    <a href="#" class="menu-button">LOGIN</a>
-
+    <!-- LOGIN button has been removed -->
   </div>
   <hr class="menu-divider">
 
-  <!-- MAIN BANNER -->
+  <!-- Main Banner -->
   <div class="mainbanner-container">
     <img src="MAINBANNER.jpeg" alt="HARCCIAN Main Banner">
   </div>
 
-  <!-- NOTICE BOX -->
+  <!-- Notice Box -->
   <div class="notice-box">
     <h3>⚠️ Non-Accreditation Notice</h3>
     <p>HARCCIAN Bible College™ is a private religious training centre. Our programs are for spiritual development and we are not accredited under the Australian Qualifications Framework (AQF), nor are we a Registered Training Organisation (RTO).</p>
