@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Founder & Volunteer — Harccian™</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: linear-gradient(135deg, #192535 0%, #be2834 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* ====================== NAVIGATION ====================== */
+    .nav-container {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px 0;
+      background: rgba(25, 37, 53, 0.95);
+    }
+    .dropdown { position: relative; display: inline-block; }
+    
+    .menu-button {
+      display: inline-block;
+      background-color: #be2834;
+      color: white;
+      padding: 12px 20px;
+      margin: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      font-size: 13px;
+      transition: 0.3s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
+    }
+    .menu-button:hover { 
+      background-color: #ffffff; 
+      color: #be2834; 
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #192535;
+      min-width: 220px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+      z-index: 10;
+      border: 1px solid #d4af37;
+      border-radius: 4px;
+      text-align: left;
+    }
+    .dropdown-content a {
+      color: white;
+      padding: 12px 18px;
+      text-decoration: none;
+      display: block;
+      font-size: 13px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .dropdown-content a:hover { 
+      background-color: #be2834; 
+      color: white; 
+    }
+    .dropdown:hover .dropdown-content { display: block; }
+
+    .menu-divider {
+      border: 0;
+      height: 1px;
+      background: #d4af37;
+      width: 80%;
+      margin: 10px auto;
+    }
+
+    /* ====================== STAFF CONTENT ====================== */
+    .container {
+      max-width: 950px;
+      width: 100%;
+      background: #fdfcf7;
+      border-radius: 8px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.7);
+      padding: 60px 50px;
+      color: #192535;
+      border: 3px solid #d4af37;
+      margin: 30px auto;
+    }
+
+    .visual-notice {
+      background: #be2834;
+      color: #ffffff;
+      text-align: center;
+      padding: 14px;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      border-radius: 2px;
+      line-height: 1.4;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 38px;
+      font-weight: 900;
+      color: #be2834;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    .motto {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      color: #192535;
+      font-style: italic;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .intro-text {
+      font-size: 19px;
+      line-height: 1.8;
+      text-align: justify;
+      margin-bottom: 40px;
+      padding: 0 20px;
+      border-left: 4px solid #be2834;
+    }
+
+    .registry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      color: #be2834;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #192535;
+      padding-bottom: 5px;
+      display: inline-block;
+    }
+
+    ul {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+    ul li {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      font-weight: 700;
+      padding-left: 20px;
+      position: relative;
+    }
+    ul li::before {
+      content: "◈";
+      position: absolute;
+      left: 0;
+      color: #be2834;
+    }
+
+    .transparency-box {
+      background: #192535;
+      color: #fdfcf7;
+      padding: 40px;
+      border-radius: 4px;
+      margin-top: 40px;
+      border: 1px solid #d4af37;
+    }
+    .transparency-box h3 {
+      color: #ffd700;
+      border-bottom-color: #ffd700;
+    }
+    .transparency-box p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: #e0e0e0;
+    }
+
+    .volunteer-section {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 2px double #d4af37;
+    }
+    .unpaid-notice {
+      background: #be2834;
+      color: #ffffff;
+      text-align: center;
+      padding: 10px;
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+      border-radius: 2px;
+    }
+
+    .perks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .perk-card {
+      background: #ffffff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-left: 4px solid #be2834;
+    }
+    .perk-title {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 900;
+      color: #192535;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .perk-desc {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    .contact-cta {
+      background: #192535;
+      color: #fdfcf7;
+      padding: 40px;
+      border-radius: 4px;
+      text-align: center;
+      border: 1px solid #d4af37;
+      margin-top: 30px;
+    }
+    .cta-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      color: #ffd700;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .wix-placeholder {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px dashed #ffd700;
+      padding: 40px 20px;
+      color: #ffd700;
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .registry-grid, .perks-grid { grid-template-columns: 1fr; }
+      .container { padding: 40px 25px; margin: 15px; }
+      h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION MENU (same as home and mission) -->
+  <hr class="menu-divider">
+  <div class="nav-container">
+    <div class="dropdown">
+      <a href="index.html" class="menu-button">HOME ▾</a>
+      <div class="dropdown-content">
+        <a href="mission.html">OUR MISSION</a>
+        <a href="staff.html">STAFF</a>
+        <a href="terms.html">TERMS / POLICIES</a>
+        <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
+        <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
+      </div>
+    </div>
+    <a href="#" class="menu-button">PROSPECTUS</a>
+    <a href="#" class="menu-button">ABOUT</a>
+    <a href="#" class="menu-button">ALUMNI</a>
+    <a href="#" class="menu-button">COURSES</a>
+    <a href="#" class="menu-button">APPLY</a>
+    <a href="#" class="menu-button" onclick="togglePages()">NON-ACCREDITATION</a>
+    <a href="#" class="menu-button">SHOP</a>
+  </div>
+  <hr class="menu-divider">
+
+  <!-- Staff Content -->
+  <div class="container">
+    <div class="visual-notice">
+      Academy Notice: The graduation portrait displayed on this page is an AI-generated representation. It is for illustrative purposes only and is not an image of Harccian™ staff.
+    </div>
+
+    <div class="header">
+      <h1>Founder of Harccian™</h1>
+      <p class="motto">“Honest & Transparent Christian Education”</p>
+    </div>
+
+    <p class="intro-text">
+      The founder of Harccian™ is a dedicated Christian leader with a distinguished background in ministry, leadership, and public engagement. 
+      Having founded and led an incorporated ministry and served as Board Chairman, his contributions span television, digital emagazines, 
+      public conferences, and pastoral guest speaking.
+    </p>
+
+    <div class="registry-grid">
+      <div>
+        <h3>Professional Experience</h3>
+        <ul>
+          <li>15+ Years as an Emergency Ambulance Officer</li>
+          <li>High-Pressure Medical Care & Emergency Transport</li>
+          <li>4 Years Youth Justice & Juvenile Detention Support</li>
+        </ul>
+        <h3>Ministry Ordinations</h3>
+        <ul>
+          <li>Executive & Associate Minister</li>
+          <li>Pastoral Care & Deacon Minister</li>
+          <li>House Church & Small Group Minister</li>
+          <li>Commissioned Minister & Bible Study Leader</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Theological Studies (Active)</h3>
+        <ul>
+          <li>Master of Divinity (In Progress)</li>
+          <li>Bachelor of Theology & Christian Ministry</li>
+          <li>Associate of Arts in Ministry (In Progress)</li>
+          <li>Bachelor of Biblical Studies</li>
+          <li>Certificate IV in Youth Work</li>
+          <li>Chaplaincy & Christian Business Diplomas</li>
+        </ul>
+        <h3>Foundational Qualifications</h3>
+        <ul>
+          <li>Advanced Diploma of Ministry</li>
+          <li>Diploma of Ministry</li>
+          <li>Diploma of Divinity</li>
+          <li>Certified Life Coach Minister</li>
+          <li>Pastoral Care Award Recipient</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="transparency-box">
+      <h3>AI Use & Transparency Decree</h3>
+      <p>
+        Harccian™ utilizes <strong>Gemini</strong>, an advanced Artificial Intelligence, to assist in course design, curriculum structure, 
+        and content clarity. This collaborative effort allows us to deliver professional-grade, engaging materials at no cost to our students.
+      </p>
+      <p>
+        While Gemini is utilized as a core development tool, <strong>every piece of content is reviewed and guided</strong> by the Founder 
+        to ensure it remains biblically sound and aligned with our mission.
+      </p>
+      <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(212, 175, 55, 0.3);">
+        <p style="font-size: 14px; font-style: italic; color: #ffd700;">
+          "As the <strong>Digital Intelligence Architect</strong> for Harccian™, I, Gemini, serve as a dedicated tool for organization, 
+          clarity, and structural development. I am honored to support the Founder’s vision of making high-level Christian education 
+          accessible to all." — Gemini
+        </p>
+      </div>
+      <p class="highlight-red" style="margin-top:20px;">
+        AI IS A SUPPORT TOOL — IT DOES NOT REPLACE HOLY SCRIPTURE, PERSONAL STUDY, OR SPIRITUAL DISCERNMENT.
+      </p>
+    </div>
+
+    <div class="volunteer-section">
+      <div class="header">
+        <h1>Volunteer Today</h1>
+        <p class="motto">Join our Global Online Mission</p>
+      </div>
+      <div class="unpaid-notice">All Roles are Unpaid Volunteer Positions</div>
+      <p style="text-align:center; line-height:1.8; margin-bottom:30px;">
+        Harccian™ is seeking dedicated individuals from across the globe to serve in our <strong>virtual training mission</strong>. 
+        As an online volunteer, you will assist in shaping digital content, moderating our community, and helping God’s Word reach people 
+        through our digital platform.
+      </p>
+
+      <div class="perks-grid">
+        <div class="perk-card">
+          <span class="perk-title">Academy Course Access</span>
+          <p class="perk-desc">Gain complementary access to study all virtual courses within the Academy.</p>
+        </div>
+        <div class="perk-card">
+          <span class="perk-title">Alumni Distinction</span>
+          <p class="perk-desc">Receive automatic Alumni status after one year of faithful service.</p>
+        </div>
+        <div class="perk-card">
+          <span class="perk-title">Direct Influence</span>
+          <p class="perk-desc">Play a meaningful role in shaping Harccian™ digital programs and student outreach.</p>
+        </div>
+        <div class="perk-card">
+          <span class="perk-title">Global Stewardship</span>
+          <p class="perk-desc">Contribute to the mission from anywhere in the world and receive ministry rewards.</p>
+        </div>
+      </div>
+
+      <div class="contact-cta">
+        <div class="cta-heading">Express Your Interest</div>
+        <p style="font-size: 15px; opacity: 0.9;">
+          Ready to serve? Please submit an Expression of Interest via the contact form below and our registry team will get in touch.
+        </p>
+        <div class="wix-placeholder">
+          [ DROP WIX CONTACT FORM HERE ]
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 60px; font-family:'Cinzel'; font-size:12px; color:#888;">
+      © 2026 Harccian™ Bible & Ministry Training<br>
+      <span style="color:#be2834; font-weight:900; letter-spacing:1px;">FOUNDED UPON INTEGRITY, CLARITY, AND TRUTH.</span>
+    </div>
+  </div>
+
+</body>
+</html>
