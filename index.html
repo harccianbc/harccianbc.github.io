@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Student Portal</title>
+  <title>Student Portal</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -20,17 +20,15 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 3px solid #be2834;
-      gap: 15px;
     }
-    .top-bar img { height: 60px; }
     .top-bar-title {
       font-family: 'Cinzel', serif;
       color: #ffd700;
       font-size: 24px;
       font-weight: 900;
       letter-spacing: 3px;
-      text-align: center;
       flex: 1;
+      text-align: center;
     }
     .logout-btn {
       background: #be2834;
@@ -99,10 +97,10 @@
       text-transform: uppercase;
       letter-spacing: 1.5px;
     }
-    .two-col { 
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      gap: 25px; 
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
     }
     .status-active {
       font-family: 'Cinzel', serif;
@@ -143,9 +141,9 @@
       background: #be2834;
       color: white;
     }
-    .course-table { 
-      width: 100%; 
-      border-collapse: collapse; 
+    .course-table {
+      width: 100%;
+      border-collapse: collapse;
       margin-top: 10px;
     }
     .course-table th {
@@ -295,13 +293,13 @@
 </head>
 <body>
   <div class="top-bar">
-    <div class="top-bar-title">MY STUDENT PORTAL</div>
+    <div class="top-bar-title">STUDENT PORTAL</div>
     <button class="logout-btn" onclick="logout()">⏻ LOGOUT</button>
   </div>
 
   <div class="welcome-box">
     <h1>WELCOME, <span id="studentName">STUDENT</span></h1>
-    <p>Student Portal — Academic Year 2026</p>
+    <p>Academic Year 2026</p>
     <div class="student-badge">STUDENT NO: <span id="studentNum">—</span></div>
   </div>
 
@@ -377,19 +375,18 @@
       <div class="pass-form">
         <div class="label-sm">Student Number (cannot be changed)</div>
         <input type="text" id="lockedStudentNum" disabled />
-        
+       
         <div class="label-sm" style="margin-top:12px;">Current Password</div>
         <input type="password" id="currentPass" placeholder="Enter current password" />
-        
+       
         <div class="label-sm" style="margin-top:12px;">New Password</div>
         <input type="password" id="newPass" placeholder="Enter new password" />
-        
+       
         <div class="label-sm" style="margin-top:12px;">Confirm New Password</div>
         <input type="password" id="confirmPass" placeholder="Confirm new password" />
 
         <div class="success-msg" id="passSuccess">✅ Password changed successfully!</div>
         <div class="error-msg" id="passError"></div>
-
         <button class="save-btn" onclick="changePassword()">🔐 UPDATE PASSWORD</button>
       </div>
     </div>
@@ -402,7 +399,6 @@
   <script>
     const student = JSON.parse(sessionStorage.getItem('student')) || {};
 
-    // Populate student info
     document.getElementById('studentName').textContent = student.name || 'STUDENT';
     document.getElementById('studentNum').textContent = student.number || '—';
     document.getElementById('studentCourse').textContent = student.course || '—';
@@ -411,66 +407,52 @@
 
     function logout() {
       sessionStorage.removeItem('student');
-      window.location.href = 'index.html';   // Change this if your login page has a different name
+      window.location.href = 'index.html';
     }
 
     function requestTranscript() {
       alert('Your transcript request has been submitted.\nYou will be notified once it is ready.');
     }
 
-    // Calendar Setup
+    // Calendar
     const monthSelect = document.getElementById('monthSelect');
     const yearSelect = document.getElementById('yearSelect');
     const calendarGrid = document.getElementById('calendarGrid');
-
     const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
-    // Populate years
     for (let i = new Date().getFullYear(); i <= 2035; i++) {
       let opt = document.createElement('option');
-      opt.value = i;
-      opt.textContent = i;
+      opt.value = i; opt.textContent = i;
       yearSelect.appendChild(opt);
     }
-
-    // Populate months
     months.forEach((m, i) => {
       let opt = document.createElement('option');
-      opt.value = i;
-      opt.textContent = m;
+      opt.value = i; opt.textContent = m;
       monthSelect.appendChild(opt);
     });
 
     function updateCalendar() {
       calendarGrid.innerHTML = `
-        <div class="weekday">SUN</div>
-        <div class="weekday">MON</div>
-        <div class="weekday">TUE</div>
-        <div class="weekday">WED</div>
-        <div class="weekday">THU</div>
-        <div class="weekday">FRI</div>
+        <div class="weekday">SUN</div><div class="weekday">MON</div>
+        <div class="weekday">TUE</div><div class="weekday">WED</div>
+        <div class="weekday">THU</div><div class="weekday">FRI</div>
         <div class="weekday">SAT</div>
       `;
-
       const month = parseInt(monthSelect.value);
       const year = parseInt(yearSelect.value);
       const firstDay = new Date(year, month, 1).getDay();
       const daysInMonth = new Date(year, month + 1, 0).getDate();
       const today = new Date();
 
-      // Empty slots
       for (let i = 0; i < firstDay; i++) {
         const e = document.createElement('div');
         e.classList.add('day', 'empty');
         calendarGrid.appendChild(e);
       }
-
-      // Actual days
       for (let d = 1; d <= daysInMonth; d++) {
         const dayDiv = document.createElement('div');
         dayDiv.classList.add('day');
         dayDiv.textContent = d;
-
         if (d === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
           dayDiv.classList.add('today');
         }
@@ -484,7 +466,7 @@
     yearSelect.addEventListener('change', updateCalendar);
     updateCalendar();
 
-    // Change Password Function
+    // Change Password
     function changePassword() {
       const currentPass = document.getElementById('currentPass').value.trim();
       const newPass = document.getElementById('newPass').value.trim();
@@ -500,7 +482,7 @@
         errorMsg.style.display = 'block';
         return;
       }
-      if (!student || currentPass !== (student.password || '')) {
+      if (currentPass !== (student.password || '')) {
         errorMsg.textContent = '❌ Current password is incorrect';
         errorMsg.style.display = 'block';
         return;
@@ -518,8 +500,8 @@
 
       student.password = newPass;
       sessionStorage.setItem('student', JSON.stringify(student));
-
       successMsg.style.display = 'block';
+
       document.getElementById('currentPass').value = '';
       document.getElementById('newPass').value = '';
       document.getElementById('confirmPass').value = '';
