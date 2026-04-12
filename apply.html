@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root { 
+    --n: #192535;
+    --r: #be2834;
+    --g: #d4af37;
+    --c: #fdfcf7;
+  }
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    background: #05070a;
+    overflow-x: hidden;
+  }
+
+  .hbc-power-banner {
+    width: 100%;
+    min-height: 400px;
+    background: radial-gradient(circle at center, #1c2a3b 0%, var(--n) 50%, #2a080a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 5px solid var(--g);
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px;
+  }
+
+  .light-ray {
+    position: absolute;
+    top: -50%;
+    width: 30vw;
+    height: 200%;
+    background: linear-gradient(to bottom, rgba(212, 175, 55, 0.1), transparent);
+    transform: rotate(35deg);
+    pointer-events: none;
+    z-index: 1;
+    filter: blur(40px);
+  }
+  .ray-left { left: -10%; animation: pulseRay 8s infinite alternate; }
+  .ray-right { right: -10%; transform: rotate(-35deg); animation: pulseRay 10s infinite alternate-reverse; }
+
+  @keyframes pulseRay {
+    0% { opacity: 0.2; }
+    100% { opacity: 0.5; }
+  }
+
+  .vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 10%, rgba(0,0,0,0.9) 100%);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .pillar {
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    height: 100%;
+    background: linear-gradient(to right, #05070a, #1c2a3b, #05070a);
+    border-left: 2px solid var(--r);
+    border-right: 2px solid var(--r);
+    box-shadow: 0 0 60px rgba(0,0,0,1);
+    z-index: 10;
+  }
+  .pillar-left { left: 0; }
+  .pillar-right { right: 0; }
+
+  .apply-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(30px, 7vw, 75px);
+    color: var(--g);
+    margin: 0;
+    letter-spacing: clamp(6px, 2vw, 15px);
+    text-indent: clamp(6px, 2vw, 15px);
+    text-shadow: 4px 4px 0px #000, 0 0 40px rgba(212, 175, 55, 0.5);
+    text-transform: uppercase;
+    z-index: 20;
+    text-align: center;
+    position: relative;
+  }
+
+  .manifest-text {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(14px, 1.8vw, 22px);
+    color: var(--c);
+    margin-top: 30px;
+    letter-spacing: 5px;
+    z-index: 20;
+    text-transform: uppercase;
+    text-align: center;
+    animation: manifest 6s ease-in-out infinite;
+    text-shadow: 0 0 20px var(--r);
+  }
+
+  @keyframes manifest {
+    0% { opacity: 0; transform: scale(0.98); filter: blur(8px); }
+    30% { opacity: 1; transform: scale(1); filter: blur(0px); }
+    70% { opacity: 1; transform: scale(1); filter: blur(0px); filter: brightness(1.2); }
+    100% { opacity: 0; transform: scale(1.02); filter: blur(12px); }
+  }
+
+  .divider {
+    width: 300px;
+    max-width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--r), var(--g), var(--r), transparent);
+    margin-top: 15px;
+    z-index: 20;
+    box-shadow: 0 0 15px var(--r);
+  }
+
+  @media (max-width: 768px) {
+    .hbc-power-banner {
+      min-height: 320px;
+      padding: 30px 15px;
+    }
+
+    .pillar {
+      width: 40px;
+    }
+
+    .divider {
+      max-width: 75%;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="hbc-power-banner">
+    <div class="vignette"></div>
+
+    <div class="light-ray ray-left"></div>
+    <div class="light-ray ray-right"></div>
+
+    <div class="pillar pillar-left"></div>
+    <div class="pillar pillar-right"></div>
+    
+    <h1 class="apply-title">APPLY TO HARCCIAN</h1>
+    <div class="divider"></div>
+    
+    <div class="manifest-text">"NOTHING IS GIVEN FOR FREE AT HARCCIAN"</div>
+  </div>
+
+</body>
+</html>
