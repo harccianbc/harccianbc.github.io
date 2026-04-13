@@ -311,7 +311,15 @@
     </div>
 
     <a href="courses.html" class="menu-button">COURSES</a>
-    <a href="apply.html" class="menu-button">APPLY</a>
+    
+    <div class="dropdown">
+      <a href="#" class="menu-button">APPLY ▾</a>
+      <div class="dropdown-content">
+        <a href="entrancetest.html">ENTRANCE EXAMINATION</a>
+        <a href="apply.html">OFFICIAL APPLICATION</a>
+      </div>
+    </div>
+
     <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
     <a href="shop.html" class="menu-button">SHOP</a>
   </nav>
@@ -354,7 +362,7 @@
   <div class="apply-box">
     <h2>APPLY TODAY</h2>
     <p>Take the first step toward your biblical education journey.<br>Applications are open — begin your enrollment now.</p>
-    <a href="apply.html" class="apply-btn">BEGIN YOUR APPLICATION →</a>
+    <a href="entrancetest.html" class="apply-btn">BEGIN YOUR ENTRANCE TEST →</a>
   </div>
 
   <footer class="hbc-footer">
@@ -377,9 +385,9 @@
   </footer>
 
   <script>
-    // This script helps prevent dead links while you are building
     document.querySelectorAll('a[href="#"]').forEach(link => {
       link.addEventListener('click', function(e) {
+        if (this.innerText.includes('ALUMNI') || this.innerText.includes('APPLY')) return;
         e.preventDefault();
         alert("This page is coming soon!");
       });
