@@ -1,149 +1,281 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrance Exam | HARCCIAN Bible College</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #192535; color: white; font-family: 'Lato', sans-serif; text-align: center; padding-bottom: 50px; }
-    
-    /* NAV STYLES - EXACT MATCH TO INDEX */
-    .nav-container { margin: 15px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
-    .dropdown { position: relative; display: inline-block; }
-    
-    .menu-button {
-      display: inline-block;
-      background-color: #be2834;
-      color: white;
-      padding: 12px 20px;
-      margin: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-      font-size: 13px;
-      transition: 0.3s;
-      cursor: pointer;
-      border: none;
-      font-family: 'Cinzel', serif;
-      letter-spacing: 1px;
-    }
-    .menu-button:hover { background-color: #ffffff; color: #be2834; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #192535;
-      min-width: 220px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
-      z-index: 10;
-      border: 1px solid #d4af37;
-      border-radius: 4px;
-      text-align: left;
-    }
-    .dropdown-content a {
-      color: white;
-      padding: 12px 18px;
-      text-decoration: none;
-      display: block;
-      font-size: 14px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-    }
-    .dropdown-content a:hover { background-color: #be2834; color: white; }
-    .dropdown:hover .dropdown-content { display: block; }
+<title>Harccian Entrance Exam</title>
 
-    .menu-divider { border: 0; height: 1px; background: #d4af37; width: 80%; margin: 15px auto; }
+<style>
+body {
+    font-family: Arial;
+    background: #111;
+    color: #eee;
+    padding: 20px;
+    user-select: none;
+}
 
-    /* TEST PAGE SPECIFIC STYLES */
-    .welcome-banner { background: linear-gradient(135deg, #be2834, #192535); border: 3px solid #ffd700; max-width: 900px; width: 92%; margin: 30px auto; padding: 30px; border-radius: 8px; }
-    .quiz-container { max-width: 800px; width: 92%; margin: 30px auto; background: #fdfcf7; color: #192535; padding: 40px; border-radius: 4px; text-align: left; border: 1.5px solid #d4af37; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    .section-header { background: #192535; color: #ffd700; padding: 15px; font-family: 'Cinzel', serif; margin: 30px 0 20px 0; border-radius: 4px; border-left: 5px solid #be2834; }
-    .question { margin-bottom: 25px; border-bottom: 1px solid #ddd; padding-bottom: 15px; }
-    .question p { font-weight: bold; margin-bottom: 12px; font-size: 17px; line-height: 1.5; }
-    input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
-    label { display: block; margin: 10px 0; cursor: pointer; }
-    
-    #result-box { display: none; max-width: 800px; width: 92%; margin: 30px auto; padding: 40px; border-radius: 8px; text-align: center; }
-    .pass { background: #2ecc71; color: white; border: 4px solid #ffd700; }
-    .fail { background: #be2834; color: white; border: 4px solid #192535; }
-    .submit-btn { background: #192535; color: #ffd700; padding: 25px 40px; border: 2px solid #ffd700; font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; cursor: pointer; width: 100%; border-radius: 5px; }
-    .apply-btn-final { display: inline-block; background: #ffd700; color: #192535; padding: 20px 40px; text-decoration: none; font-weight: 900; margin-top: 20px; border-radius: 5px; font-family: 'Cinzel', serif; }
-  </style>
+.container {
+    background: #1c1c1c;
+    padding: 25px;
+    max-width: 900px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+/* WARNING BOX */
+.warning {
+    background: #8b0000;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border: 2px solid red;
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    background: #333;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.progress {
+    height: 20px;
+    width: 0%;
+    background: red;
+    border-radius: 20px;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 5px 0;
+}
+
+button {
+    padding: 15px;
+    width: 100%;
+    background: red;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+// 🚫 Anti-Cheat Protections
+
+// Disable right click
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+// Disable keys (inspect, copy, etc)
+document.onkeydown = function(e) {
+    if (
+        e.keyCode == 123 || // F12
+        (e.ctrlKey && e.shiftKey && e.keyCode == 73) || // Ctrl+Shift+I
+        (e.ctrlKey && e.keyCode == 85) || // Ctrl+U
+        (e.ctrlKey && e.keyCode == 67) || // Ctrl+C
+        (e.ctrlKey && e.keyCode == 65) // Ctrl+A
+    ) {
+        alert("⚠️ SECURITY WARNING: Tampering detected. Exam will be terminated.");
+        window.location.href = "index.html";
+        return false;
+    }
+};
+</script>
+
 </head>
+
 <body>
 
-  <div style="margin-top: 20px;">
-    <img src="HARCCIAN (4).png" alt="HARCCIAN" style="width: 300px;">
-  </div>
+<div class="container">
 
-  <hr class="menu-divider">
-  
-  <nav class="nav-container">
-    <div class="dropdown">
-      <a href="index.html" class="menu-button">HOME ▾</a>
-      <div class="dropdown-content">
-        <a href="mission.html">OUR MISSION</a>
-        <a href="staff.html">STAFF</a>
-        <a href="terms.html">TERMS / POLICIES</a>
-        <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
-        <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
-      </div>
-    </div>
+<h1>HARCCIAN ENTRANCE EXAM</h1>
 
-    <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
-    <a href="about.html" class="menu-button">ABOUT</a>
-    
-    <div class="dropdown">
-      <a href="#" class="menu-button">ALUMNI ▾</a>
-      <div class="dropdown-content">
-        <a href="fraternities.html">FRATERNITIES</a>
-      </div>
-    </div>
+<div class="warning">
+⚠️ SECURITY WARNING ⚠️ <br>
+Any attempt to inspect, copy, or tamper with this exam will result in immediate termination.
+</div>
 
-    <a href="courses.html" class="menu-button">COURSES</a>
-    
-    <div class="dropdown">
-      <a href="#" class="menu-button" style="background:white; color:#be2834;">APPLY ▾</a>
-      <div class="dropdown-content">
-        <a href="entrancetest.html">ENTRANCE EXAMINATION</a>
-        <a href="https://harccianbc.github.io/apply.html">OFFICIAL APPLICATION</a>
-      </div>
-    </div>
+<div class="progress-bar">
+<div class="progress" id="progress"></div>
+</div>
 
-    <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
-    <a href="shop.html" class="menu-button">SHOP</a>
-  </nav>
+<p><strong>This exam must be completed in ONE sitting. Progress will NOT be saved.</strong></p>
 
-  <hr class="menu-divider">
+<form id="examForm">
 
-  <div class="welcome-banner">
-    <h2 style="font-family: 'Cinzel', serif; color: #ffd700;">HARCCIAN ENTRANCE EXAMINATION</h2>
-    <p>You must score at least <strong>90% (45/50)</strong> to proceed.</p>
-  </div>
+<!-- QUESTIONS -->
+<div id="questions"></div>
 
-  <form id="quizForm" class="quiz-container">
-    <div class="section-header">Section 1: Bible Knowledge & Scripture</div>
-    
-    <div class="question">
-        <p>1. "In the beginning, God created the _______ and the earth."</p>
-        <input type="text" id="ans1" placeholder="Type here...">
-    </div>
+<button type="button" onclick="submitExam()">Submit Exam</button>
 
-    <button type="button" class="submit-btn" onclick="checkScore()">SUBMIT EXAMINATION</button>
-  </form>
+</form>
 
-  <div id="result-box">
-    <h2 id="result-title"></h2>
-    <p id="result-text"></p>
-    <div id="apply-link-container"></div>
-  </div>
+</div>
 
-  <script>
-    function checkScore() {
-      // (Your scoring logic as provided previously)
+<script>
+
+// ANSWERS
+const answers = [
+"B","B","B","B","B","B","B","B","B","B",
+"B","B","B","B","A","B","B","B","A","A",
+"B","B","B","A","A",
+"B","A","B","A","B","B","B","B","A","C",
+"A","B","B","B","B","B","B","B","A","B",
+"B","B","B","A","B","B",
+"B","B","B","B","B","B","B","B","C","C",
+"C","B","B","B","B","B","B","B","B","C"
+];
+
+// FULL QUESTIONS TEXT
+const questions = [
+"He doesn’t like apples",
+"Correct spelling of Receive",
+"She is going to school",
+"Noun in sentence (cowboy)",
+"Correct punctuation It's",
+"They are playing",
+"Past tense ran",
+"She has a book",
+"Verb barked",
+"There are many people",
+"Correct spelling Definitely",
+"I saw him yesterday",
+"Adjective big",
+"Don't go there",
+"He has finished",
+"Plural children",
+"We were late",
+"Pronoun him",
+"I am going",
+"Correct spelling Separate",
+"They have arrived",
+"Adverb quickly",
+"Who's there",
+"She is happy",
+"I did nothing",
+
+"God created world",
+"Noah built ark",
+"6 days creation",
+"Adam first man",
+"Eve first woman",
+"Moses led Israel",
+"Red Sea Moses",
+"David defeated Goliath",
+"Jonah swallowed",
+"Bethlehem birth",
+"Mary mother",
+"John baptized",
+"12 disciples",
+"Judas betrayed",
+"3 days tomb",
+"Genesis first book",
+"Revelation last book",
+"David Psalms",
+"Daniel lions den",
+"Joseph dreams",
+"Water to wine",
+"Peter walked water",
+"Love God",
+"Bible is Word of God",
+"Jesus Son of God",
+
+"HBC Harccian Bible College",
+"Motto Fides et Excellentia",
+"Not accredited",
+"Independent online platform",
+"Biblical training focus",
+"Non-accredited courses",
+"Rigorous study",
+"Fully online",
+"Self governed",
+"No affiliation",
+"Internal recognition",
+"Spiritual growth",
+"Started in India",
+"Removes financial barriers",
+"Disciplined environment",
+"Serious students",
+"Founder reviews AI",
+"AI support only",
+"Minimal data collection",
+"Never shares data",
+"Google storage",
+"All must follow privacy",
+"Volunteer unpaid",
+"Alumni after 1 year",
+"Internal achievement"
+];
+
+// Render questions
+const container = document.getElementById("questions");
+
+for (let i = 0; i < questions.length; i++) {
+    let div = document.createElement("div");
+    div.classList.add("question");
+
+    div.innerHTML = `
+        <p><strong>Question ${i+1}:</strong> ${questions[i]}</p>
+        <label><input type="radio" name="q${i}" value="A"> A</label>
+        <label><input type="radio" name="q${i}" value="B"> B</label>
+        <label><input type="radio" name="q${i}" value="C"> C</label>
+    `;
+
+    container.appendChild(div);
+}
+
+// Progress tracking
+document.addEventListener("change", () => {
+    let answered = 0;
+
+    for (let i = 0; i < 75; i++) {
+        if (document.querySelector(`input[name="q${i}"]:checked`)) {
+            answered++;
+        }
     }
-  </script>
+
+    let percent = (answered / 75) * 100;
+    document.getElementById("progress").style.width = percent + "%";
+});
+
+// Submit
+function submitExam() {
+    let score = 0;
+
+    for (let i = 0; i < 75; i++) {
+        let selected = document.querySelector(`input[name="q${i}"]:checked`);
+
+        if (!selected) {
+            alert("You must answer ALL questions.");
+            return;
+        }
+
+        if (selected.value === answers[i]) {
+            score++;
+        }
+    }
+
+    if (score >= 68) {
+        alert("PASS — You may proceed.");
+        window.location.href = "apply1.html";
+    } else {
+        alert("FAIL — You need 90%.");
+    }
+}
+
+</script>
 
 </body>
 </html>
