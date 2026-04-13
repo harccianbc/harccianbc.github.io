@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CERTIFICATES - HARCCIAN Bible College</title>
+<title>Certificates - HARCCIAN Bible College</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 
@@ -15,15 +15,13 @@ body {
   color: white;
   font-family: 'Lato', Arial, sans-serif;
   text-align: center;
-  min-height: 100vh;
 }
 
-/* HEADER (same as your index) */
+/* HEADER */
 .banner-container {
   width: 100%;
   margin: 15px 0;
 }
-
 .banner-container img {
   width: 60%;
   display: block;
@@ -31,22 +29,48 @@ body {
   border-radius: 8px;
 }
 
+/* MENU */
+.nav-container {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.menu-button {
+  display: inline-block;
+  background: #be2834;
+  color: white;
+  padding: 12px 20px;
+  margin: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  font-family: 'Cinzel', serif;
+}
+
+.menu-button:hover {
+  background: white;
+  color: #be2834;
+}
+
 .menu-divider {
-  border: 0;
   height: 1px;
   background: #d4af37;
   width: 80%;
   margin: 15px auto;
+  border: none;
 }
 
-/* SIMPLE CONTENT BOX */
+/* PAGE */
 .page-box {
   max-width: 900px;
   margin: 40px auto;
   background: #fdfcf7;
   color: #192535;
   padding: 50px;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 2px solid #d4af37;
   text-align: left;
 }
@@ -58,43 +82,54 @@ body {
   margin-bottom: 20px;
 }
 
-/* FOOTER (simple match) */
+/* FOOTER */
 .footer {
   margin-top: 40px;
-  padding: 20px;
+  padding: 25px;
   background: linear-gradient(135deg, #be2834, #192535);
   text-align: center;
 }
 
 .footer img {
   width: 120px;
+  margin-bottom: 10px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- HEADER IMAGE -->
 <div class="banner-container">
-  <img src="HARCCIAN (4).png" alt="banner">
+  <img src="HARCCIAN (4).png" alt="Banner">
 </div>
 
 <hr class="menu-divider">
 
-<!-- PAGE CONTENT -->
+<!-- MENU -->
+<nav class="nav-container">
+  <a href="index.html" class="menu-button">HOME</a>
+  <a href="courses.html" class="menu-button">COURSES</a>
+  <a href="about.html" class="menu-button">ABOUT</a>
+  <a href="certificates.html" class="menu-button">CERTIFICATES</a>
+</nav>
+
+<hr class="menu-divider">
+
+<!-- CONTENT -->
 <div class="page-box">
   <h1>CERTIFICATES</h1>
 
+  <p><strong>This page is now connected to your website.</strong></p>
+
   <p>
-    Welcome to the certificate page.
-    <br><br>
-    This is where students will access their completion certificates.
+    Here you can later add:
     <br><br>
     ✔ Certificate display  
     <br>
-    ✔ Certificate verification  
+    ✔ Download certificates  
     <br>
-    ✔ Student records (future update)
+    ✔ Student verification system  
   </p>
 </div>
 
