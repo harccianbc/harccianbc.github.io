@@ -1,198 +1,373 @@
- <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>HARCCIAN Bible College</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HARCCIAN Bible College</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
-    background: #192535;
-    color: white;
-    font-family: 'Lato', Arial, sans-serif;
-    text-align: center;
-    min-height: 100vh;
-  }
-  .banner-container, .mainbanner-container {
-    width: 100%;
-    margin: 15px 0;
-  }
-  .banner-container img, .mainbanner-container img {
-    width: 60%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 8px;
-  }
-  .nav-container {
-    margin: 15px 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .dropdown { position: relative; display: inline-block; }
-  .menu-button {
-    display: inline-block;
-    background-color: #be2834;
-    color: white;
-    padding: 12px 20px;
-    margin: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    font-size: 13px;
-    transition: 0.3s;
-    cursor: pointer;
-    border: none;
-    font-family: 'Cinzel', serif;
-    letter-spacing: 1px;
-  }
-  .menu-button:hover {
-    background-color: #ffffff;
-    color: #be2834;
-  }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #192535;
-    min-width: 220px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
-    z-index: 10;
-    border: 1px solid #d4af37;
-    border-radius: 4px;
-  }
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  .dropdown-content a {
-    color: white;
-    padding: 12px 18px;
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-  }
-  .dropdown-content a:hover {
-    background-color: #be2834;
-    color: white;
-  }
-  .menu-divider {
-    border: 0;
-    height: 1px;
-    background: #d4af37;
-    width: 80%;
-    margin: 15px auto;
-  }
-
-  /* Your existing styles for content */
-  .notice-box {
-    background-color: #be2834;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 25px 40px;
-    margin: 30px auto;
-    max-width: 700px;
-    border-radius: 8px;
-    line-height: 1.7;
-    border-left: 8px solid #ffd700;
-    border-right: 8px solid #ffd700;
-  }
-  .notice-box h3 {
-    font-size: 19px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-    color: #ffd700;
-  }
-  .notice-box .ai-notice {
-    margin-top: 18px;
-    padding-top: 15px;
-    border-top: 2px solid #ffd700;
-    color: #ffd700;
-    font-size: 13px;
-  }
-  .letter-box {
-    max-width: 850px;
-    width: 92%;
-    margin: 40px auto;
-    padding: 50px 60px;
-    background: #fdfcf7;
-    color: #192535;
-    border-radius: 4px;
-    border: 1.5px solid #d4af37;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-    text-align: left;
-  }
-  /* Add your other styles as needed here */
-</style>
+    body {
+      background: #192535;
+      color: white;
+      font-family: 'Lato', Arial, sans-serif;
+      text-align: center;
+      min-height: 100vh;
+    }
+    .banner-container, .mainbanner-container {
+      width: 100%;
+      margin: 15px 0;
+    }
+    .banner-container img, .mainbanner-container img {
+      width: 60%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
+    .nav-container {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .dropdown { position: relative; display: inline-block; }
+    .menu-button {
+      display: inline-block;
+      background-color: #be2834;
+      color: white;
+      padding: 12px 20px;
+      margin: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      font-size: 13px;
+      transition: 0.3s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
+    }
+    .menu-button:hover {
+      background-color: #ffffff;
+      color: #be2834;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #192535;
+      min-width: 220px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+      z-index: 10;
+      border: 1px solid #d4af37;
+      border-radius: 4px;
+      text-align: left;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown-content a {
+      color: white;
+      padding: 12px 18px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .dropdown-content a:hover {
+      background-color: #be2834;
+      color: white;
+    }
+    .menu-divider {
+      border: 0;
+      height: 1px;
+      background: #d4af37;
+      width: 80%;
+      margin: 15px auto;
+    }
+    .notice-box {
+      background-color: #be2834;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 25px 40px;
+      margin: 30px auto;
+      max-width: 700px;
+      border-radius: 8px;
+      line-height: 1.7;
+      border-left: 8px solid #ffd700;
+      border-right: 8px solid #ffd700;
+    }
+    .notice-box h3 {
+      font-size: 19px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      color: #ffd700;
+    }
+    .notice-box .ai-notice {
+      margin-top: 18px;
+      padding-top: 15px;
+      border-top: 2px solid #ffd700;
+      color: #ffd700;
+      font-size: 13px;
+    }
+    .letter-box {
+      max-width: 850px;
+      width: 92%;
+      margin: 40px auto;
+      padding: 50px 60px;
+      background: #fdfcf7;
+      color: #192535;
+      border-radius: 4px;
+      border: 1.5px solid #d4af37;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      text-align: left;
+    }
+    .letter-header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #be2834;
+      padding-bottom: 20px;
+    }
+    .letter-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      color: #be2834;
+      margin: 0;
+      letter-spacing: 3px;
+    }
+    .letter-motto {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 8px;
+      color: #192535;
+    }
+    .letter-dear {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      color: #192535;
+      font-family: 'Lato', sans-serif;
+    }
+    .letter-box p {
+      font-family: 'Lato', sans-serif;
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #192535;
+      text-align: justify;
+    }
+    .quote-container {
+      margin: 35px 0;
+      background: #192535;
+      padding: 30px;
+      border: 3px solid #d4af37;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .quote-text {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffd700;
+    }
+    .signature-block {
+      margin-top: 40px;
+      text-align: right;
+    }
+    .signature-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      color: #be2834;
+      margin: 0;
+    }
+    .signature-title {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 900;
+      color: #192535;
+    }
+    .apply-box {
+      max-width: 850px;
+      width: 92%;
+      margin: 0 auto 60px auto;
+      background: linear-gradient(135deg, #be2834, #192535);
+      border: 3px solid #d4af37;
+      border-radius: 8px;
+      padding: 50px 40px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    }
+    .apply-box h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 36px;
+      color: #ffd700;
+      letter-spacing: 4px;
+      margin-bottom: 15px;
+    }
+    .apply-box p {
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      color: #ffffff;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+    .apply-btn {
+      display: inline-block;
+      background: #ffd700;
+      color: #192535;
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 900;
+      padding: 18px 50px;
+      border-radius: 5px;
+      text-decoration: none;
+      letter-spacing: 2px;
+      transition: 0.3s;
+    }
+    .apply-btn:hover {
+      background: #ffffff;
+      color: #be2834;
+    }
+    .hbc-footer {
+      background: linear-gradient(135deg, #be2834, #192535);
+      border-top: 3px solid #d4af37;
+      color: rgba(255, 255, 255, 0.85);
+      padding: 12px 20px;
+      font-family: 'Lato', sans-serif;
+      text-align: center;
+      line-height: 1.5;
+      font-size: 11px;
+    }
+    .footer-divider {
+      border: 0;
+      height: 1px;
+      background: rgba(212, 175, 55, 0.4);
+      width: 60%;
+      margin: 6px auto;
+    }
+    .footer-trademark {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #ffd700;
+    }
+    .footer-legal-text {
+      font-size: 10px;
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .ai-badge {
+      margin-top: 6px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  </style>
 </head>
 <body>
+  <div class="banner-container">
+    <img src="HARCCIAN (4).png" alt="HARCCIAN Banner" />
+  </div>
+  <hr class="menu-divider" />
 
-<!-- Banner -->
-<div class="banner-container">
-  <img src="HARCCIAN (4).png" alt="HARCCIAN Banner" />
-</div>
-<hr class="menu-divider" />
+  <nav class="nav-container">
+    <div class="dropdown">
+      <a href="index.html" class="menu-button">HOME ▾</a>
+      <div class="dropdown-content">
+        <a href="mission.html">OUR MISSION</a>
+        <a href="staff.html">STAFF</a>
+        <a href="terms.html">TERMS / POLICIES</a>
+        <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
+        <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
+        <a href="certificatetest.html">CERTIFICATE TEST</a>
+      </div>
+    </div>
+    <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
+    <a href="about.html" class="menu-button">ABOUT</a>
+    <div class="dropdown">
+      <a href="#" class="menu-button">ALUMNI ▾</a>
+      <div class="dropdown-content">
+        <a href="fraternities.html">FRATERNITIES</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="courses.html" class="menu-button">COURSES ▾</a>
+      <div class="dropdown-content">
+        <a href="courses.html">ALL COURSES</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#" class="menu-button">APPLY ▾</a>
+      <div class="dropdown-content">
+        <a href="entrancetest.html">ENTRANCE EXAMINATION</a>
+        <a href="https://harccianbc.github.io/apply.html">OFFICIAL APPLICATION</a>
+      </div>
+    </div>
+    <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
+    <a href="shop.html" class="menu-button">SHOP</a>
+  </nav>
+  <hr class="menu-divider" />
 
-<!-- Main Navigation Menu -->
-<nav class="nav-container">
-  <div class="dropdown">
-    <a href="index.html" class="menu-button">HOME ▾</a>
-    <div class="dropdown-content">
-      <a href="mission.html">OUR MISSION</a>
-      <a href="staff.html">STAFF</a>
-      <a href="terms.html">TERMS / POLICIES</a>
-      <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
-      <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
-      <a href="certificatetest.html">CERTIFICATE TEST</a>
-      <!-- "The Chapel" link added here -->
-      <a href="chapel.html">The Chapel</a>
+  <div class="mainbanner-container">
+    <img src="MAINBANNER.jpeg" alt="HARCCIAN Main Banner" />
+  </div>
+
+  <div class="notice-box">
+    <h3>⚠️ Non-Accreditation Notice</h3>
+    <p>HARCCIAN Bible College™ is a private religious training centre. Our programs are for spiritual development and we are not accredited under the Australian Qualifications Framework (AQF), nor are we a Registered Training Organisation (RTO).</p>
+    <div class="ai-notice">🤖 AI TRANSPARENCY NOTICE — All media used on this site is AI generated.</div>
+  </div>
+
+  <div class="letter-box">
+    <div class="letter-header">
+      <h2>Harccian Bible College™</h2>
+      <div class="letter-motto">"Fides et Excellentia" — Faith and Excellence</div>
+    </div>
+    <div class="letter-dear">Dear Friend,</div>
+    <p>Welcome to <strong>Harccian Bible College™</strong>. The vision for this project was born many years ago during my time as the founder of a dedicated ministry. Together with my board, we recognized a profound need for deep, structured biblical training. We established our first campus in India, where we were privileged to see several classes of graduates emerge equipped for the work of the Kingdom.</p>
+    <p>Today, <strong>Harccian Bible College™</strong> is the evolution of that mission. We have transitioned into a borderless digital platform to reach the globe — specifically designed for those who are desperate enough for the challenge of rigorous, uncompromising study without the excessive financial burdens of traditional setups.</p>
+
+    <div class="quote-container">
+      <div class="quote-text">Nothing is ever given —<br>it is always earned at H.B.C.</div>
+    </div>
+
+    <p>When you complete a program here, you receive a certificate of participation. This recognizes your personal effort, discipline, and dedication within our global community.</p>
+
+    <div class="signature-block">
+      <div class="signature-name">The Founder</div>
+      <div class="signature-title">Harccian Bible College™</div>
     </div>
   </div>
-  <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
-  <a href="about.html" class="menu-button">ABOUT</a>
-  <div class="dropdown">
-    <a href="#" class="menu-button">ALUMNI ▾</a>
-    <div class="dropdown-content">
-      <a href="fraternities.html">FRATERNITIES</a>
-    </div>
+
+  <div class="apply-box">
+    <h2>APPLY TODAY</h2>
+    <p>Take the first step toward your biblical education journey.<br>Applications are open — begin your enrollment now.</p>
+    <a href="entrancetest.html" class="apply-btn">BEGIN YOUR ENTRANCE TEST →</a>
   </div>
-  <div class="dropdown">
-    <a href="courses.html" class="menu-button">COURSES ▾</a>
-    <div class="dropdown-content">
-      <a href="courses.html">ALL COURSES</a>
+
+  <footer class="hbc-footer">
+    <div class="footer-content">
+      <div class="footer-trademark">
+        © 2026 HARCCIAN BIBLE COLLEGE™. Trademark of the Founder. Proprietary materials.
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-legal-text">
+        Harccian Bible College™ is a non-accredited religious initiative for spiritual enrichment only.
+        Certificates are not recognized for formal qualifications or employment.
+        Not a registered higher education provider.
+      </div>
+      <div class="ai-badge">
+        ALL MEDIA SHOWN ON THIS WEBSITE IS AI-GENERATED
+      </div>
     </div>
-  </div>
-  <div class="dropdown">
-    <a href="#" class="menu-button">APPLY ▾</a>
-    <div class="dropdown-content">
-      <a href="entrancetest.html">ENTRANCE EXAMINATION</a>
-      <a href="https://harccianbc.github.io/apply.html">OFFICIAL APPLICATION</a>
-    </div>
-  </div>
-  <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
-  <a href="shop.html" class="menu-button">SHOP</a>
-</nav>
-<hr class="menu-divider" />
-
-<!-- Your main page content -->
-<!-- You can keep your existing content here -->
-
-<!-- Example: -->
-<div class="notice-box">
-  <h3>⚠️ Non-Accreditation Notice</h3>
-  <p>HARCCIAN Bible College™ is a private religious training centre. Our programs are for spiritual development and we are not accredited under the Australian Qualifications Framework (AQF), nor are we a Registered Training Organisation (RTO).</p>
-  <div class="ai-notice">🤖 AI TRANSPARENCY NOTICE — All media used on this site is AI generated.</div>
-</div>
-
-<!-- Add your other content here -->
-
-<!-- Footer -->
-<!-- Your footer content -->
+  </footer>
 
 </body>
 </html>
