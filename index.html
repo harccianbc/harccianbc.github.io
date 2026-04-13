@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HARCCIAN Bible College</title>
+  <title>Certificates - HARCCIAN Bible College</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
+
     body {
       background: #192535;
       color: white;
@@ -20,14 +22,15 @@
       width: 100%;
       margin: 15px 0;
     }
+
     .banner-container img, .mainbanner-container img {
       width: 60%;
-      height: auto;
       display: block;
       margin: 0 auto;
       border-radius: 8px;
     }
 
+    /* NAV (same as index) */
     .nav-container {
       margin: 15px 0;
       display: flex;
@@ -35,10 +38,10 @@
       flex-wrap: wrap;
       gap: 8px;
     }
+
     .dropdown { position: relative; display: inline-block; }
-    
+
     .menu-button {
-      display: inline-block;
       background-color: #be2834;
       color: white;
       padding: 12px 20px;
@@ -47,15 +50,14 @@
       font-weight: bold;
       border-radius: 5px;
       font-size: 13px;
-      transition: 0.3s;
       cursor: pointer;
       border: none;
       font-family: 'Cinzel', serif;
-      letter-spacing: 1px;
     }
-    .menu-button:hover { 
-      background-color: #ffffff; 
-      color: #be2834; 
+
+    .menu-button:hover {
+      background: white;
+      color: #be2834;
     }
 
     .dropdown-content {
@@ -63,289 +65,186 @@
       position: absolute;
       background-color: #192535;
       min-width: 220px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
-      z-index: 10;
       border: 1px solid #d4af37;
-      border-radius: 4px;
+      z-index: 10;
       text-align: left;
     }
+
     .dropdown-content a {
       color: white;
-      padding: 12px 18px;
-      text-decoration: none;
+      padding: 12px;
       display: block;
+      text-decoration: none;
       font-size: 14px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
-    .dropdown-content a:hover { 
-      background-color: #be2834; 
-      color: white; 
-    }
+
     .dropdown:hover .dropdown-content { display: block; }
 
     .menu-divider {
-      border: 0;
       height: 1px;
       background: #d4af37;
       width: 80%;
       margin: 15px auto;
     }
 
-    .notice-box {
-      background-color: #be2834;
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: bold;
-      padding: 25px 40px;
-      margin: 30px auto;
-      max-width: 700px;
-      border-radius: 8px;
-      line-height: 1.7;
-      border-left: 8px solid #ffd700;
-      border-right: 8px solid #ffd700;
-    }
-    .notice-box h3 {
-      font-size: 19px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-      color: #ffd700;
-    }
-    .notice-box .ai-notice {
-      margin-top: 18px;
-      padding-top: 15px;
-      border-top: 2px solid #ffd700;
-      color: #ffd700;
-      font-size: 13px;
-    }
-
-    .letter-box {
-      max-width: 850px;
-      width: 92%;
+    /* CERTIFICATE PAGE */
+    .cert-box {
+      max-width: 800px;
       margin: 40px auto;
-      padding: 50px 60px;
       background: #fdfcf7;
       color: #192535;
-      border-radius: 4px;
-      border: 1.5px solid #d4af37;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-      text-align: left;
-    }
-
-    .letter-header {
-      text-align: center;
-      margin-bottom: 30px;
-      border-bottom: 2px solid #be2834;
-      padding-bottom: 20px;
-    }
-    .letter-header h2 {
-      font-family: 'Cinzel', serif;
-      font-size: 28px;
-      color: #be2834;
-      margin: 0;
-      letter-spacing: 3px;
-    }
-    .letter-motto {
-      font-family: 'Cinzel', serif;
-      font-size: 13px;
-      font-weight: 700;
-      margin-top: 8px;
-      color: #192535;
-    }
-
-    .letter-box p {
-      font-family: 'Lato', sans-serif;
-      font-size: 17px;
-      line-height: 1.8;
-      margin-bottom: 20px;
-      color: #192535;
-      text-align: justify;
-    }
-
-    .letter-dear {
-      font-size: 20px;
-      font-weight: 900;
-      margin-bottom: 20px;
-      color: #192535;
-      font-family: 'Lato', sans-serif;
-    }
-
-    .quote-container {
-      margin: 35px 0;
-      background: #192535;
-      padding: 30px;
-      border: 3px solid #d4af37;
+      padding: 40px;
       border-radius: 8px;
+      border: 2px solid #d4af37;
       text-align: center;
     }
-    .quote-text {
-      font-family: 'Cinzel', serif;
-      font-size: 22px;
-      font-weight: 900;
-      color: #ffd700;
-    }
 
-    .signature-block {
-      margin-top: 40px;
-      text-align: right;
-    }
-    .signature-name {
-      font-family: 'Great Vibes', cursive;
-      font-size: 48px;
+    .cert-box h1 {
+      font-family: 'Cinzel', serif;
       color: #be2834;
-      margin: 0;
-    }
-    .signature-title {
-      font-family: 'Cinzel', serif;
-      font-size: 13px;
-      font-weight: 900;
-      color: #192535;
-    }
-
-    .apply-box {
-      max-width: 850px;
-      width: 92%;
-      margin: 0 auto 60px auto;
-      background: linear-gradient(135deg, #be2834, #192535);
-      border: 3px solid #d4af37;
-      border-radius: 8px;
-      padding: 50px 40px;
-      text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-    }
-
-    .apply-box h2 {
-      font-family: 'Cinzel', serif;
-      font-size: 36px;
-      color: #ffd700;
-      letter-spacing: 4px;
       margin-bottom: 15px;
     }
 
-    .apply-box p {
-      font-family: 'Lato', sans-serif;
-      font-size: 16px;
-      color: #ffffff;
-      margin-bottom: 30px;
-      line-height: 1.7;
+    .quiz {
+      margin-top: 20px;
+      text-align: left;
     }
 
-    .apply-btn {
-      display: inline-block;
+    .quiz p {
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 12px 20px;
       background: #ffd700;
-      color: #192535;
-      font-family: 'Cinzel', serif;
-      font-size: 18px;
-      font-weight: 900;
-      padding: 18px 50px;
-      border-radius: 5px;
-      text-decoration: none;
-      letter-spacing: 2px;
-      transition: 0.3s;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: 'Cinzel';
     }
 
-    .apply-btn:hover {
-      background: #ffffff;
-      color: #be2834;
+    #formBox {
+      display: none;
+      margin-top: 20px;
     }
 
+    .cert-result {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      border: 2px dashed #be2834;
+      background: white;
+      color: black;
+    }
+
+    /* FOOTER */
     .hbc-footer {
-      background: linear-gradient(135deg, #be2834, #192535);
-      border-top: 4px solid #d4af37;
-      color: rgba(255, 255, 255, 0.9);
-      padding: 25px 20px;
-      font-family: 'Lato', sans-serif;
-      text-align: center;
-      line-height: 1.8;
+      margin-top: 50px;
+      background: #be2834;
+      padding: 20px;
+      color: white;
     }
 
-    .footer-content { max-width: 900px; margin: 0 auto; }
-    .footer-logo { width: 150px; height: auto; margin-bottom: 15px; }
-
-    .footer-trademark {
-      font-family: 'Cinzel', serif;
-      color: #d4af37;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-    }
-
-    .footer-legal-text {
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      max-width: 700px;
-      margin: 0 auto;
-      color: rgba(255,255,255,0.8);
-    }
-
-    .ai-badge {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 5px 15px;
-      border: 1px solid rgba(212, 175, 55, 0.5);
-      color: #d4af37;
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-    }
-
-    .footer-divider { width: 50px; height: 2px; background: #d4af37; margin: 12px auto; }
   </style>
 </head>
+
 <body>
 
-  <div class="banner-container">
-    <img src="HARCCIAN (4).png" alt="HARCCIAN Banner">
+<!-- HEADER / MENU (FULL COPIED STYLE) -->
+<div class="banner-container">
+  <img src="HARCCIAN (4).png">
+</div>
+
+<hr class="menu-divider">
+
+<nav class="nav-container">
+
+  <div class="dropdown">
+    <a href="index.html" class="menu-button">HOME ▾</a>
+    <div class="dropdown-content">
+      <a href="mission.html">OUR MISSION</a>
+      <a href="staff.html">STAFF</a>
+      <a href="terms.html">TERMS</a>
+    </div>
   </div>
 
-  <hr class="menu-divider">
-  
-  <nav class="nav-container">
-    <div class="dropdown">
-      <a href="index.html" class="menu-button">HOME ▾</a>
-      <div class="dropdown-content">
-        <a href="mission.html">OUR MISSION</a>
-        <a href="staff.html">STAFF</a>
-        <a href="terms.html">TERMS / POLICIES</a>
-        <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
-        <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
-        <a href="certificates.html">CERTIFICATES</a>
-      </div>
-    </div>
+  <a href="courses.html" class="menu-button">COURSES</a>
+  <a href="certificates.html" class="menu-button">CERTIFICATES</a>
 
-    <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
-    <a href="about.html" class="menu-button">ABOUT</a>
-    
-    <div class="dropdown">
-      <a href="#" class="menu-button">ALUMNI ▾</a>
-      <div class="dropdown-content">
-        <a href="fraternities.html">FRATERNITIES</a>
-      </div>
-    </div>
+</nav>
 
-    <a href="courses.html" class="menu-button">COURSES</a>
-    
-    <div class="dropdown">
-      <a href="#" class="menu-button">APPLY ▾</a>
-      <div class="dropdown-content">
-        <a href="entrancetest.html">ENTRANCE EXAMINATION</a>
-        <a href="https://harccianbc.github.io/apply.html">OFFICIAL APPLICATION</a>
-      </div>
-    </div>
+<hr class="menu-divider">
 
-    <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
-    <a href="shop.html" class="menu-button">SHOP</a>
-  </nav>
+<!-- CERT PAGE CONTENT -->
+<div class="cert-box">
 
-  <hr class="menu-divider">
+  <h1>Certificate Entry Test</h1>
 
-  <div class="mainbanner-container">
-    <img src="MAINBANNER.jpeg" alt="HARCCIAN Main Banner">
+  <p>Answer these questions to continue</p>
+
+  <div class="quiz">
+    <p>1. What is 1 + 1?</p>
+    <input id="q1">
+
+    <p>2. What color is red?</p>
+    <input id="q2">
+
+    <button onclick="checkQuiz()">Submit Answers</button>
   </div>
 
-  <!-- rest of your page stays unchanged -->
+  <div id="formBox">
+    <h2>Generate Certificate</h2>
+
+    <input id="fullname" placeholder="Full Name">
+    <input id="date" placeholder="Date">
+
+    <button onclick="generateCert()">Generate</button>
+  </div>
+
+  <div class="cert-result" id="resultBox">
+    <h2>HARCCIAN CERTIFICATE</h2>
+    <p>This certifies</p>
+    <h3 id="nameOut"></h3>
+    <p id="dateOut"></p>
+  </div>
+
+</div>
+
+<script>
+function checkQuiz() {
+  const a1 = document.getElementById("q1").value;
+  const a2 = document.getElementById("q2").value.toLowerCase();
+
+  if (a1 == "2" && a2.includes("red")) {
+    document.getElementById("formBox").style.display = "block";
+    alert("Great job — you passed!");
+  } else {
+    alert("Try again!");
+  }
+}
+
+function generateCert() {
+  document.getElementById("nameOut").innerText =
+    document.getElementById("fullname").value;
+
+  document.getElementById("dateOut").innerText =
+    document.getElementById("date").value;
+
+  document.getElementById("resultBox").style.display = "block";
+}
+</script>
+
+<!-- FOOTER -->
+<div class="hbc-footer">
+  © 2026 HARCCIAN BIBLE COLLEGE™
+</div>
 
 </body>
 </html>
