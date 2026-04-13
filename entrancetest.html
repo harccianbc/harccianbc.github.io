@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrance Exam | HARCCIAN Bible College</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #192535; color: white; font-family: 'Lato', sans-serif; text-align: center; padding-bottom: 50px; }
+    
+    .nav-container { margin: 15px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+    .menu-button { display: inline-block; background-color: #be2834; color: white; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; font-size: 13px; font-family: 'Cinzel', serif; transition: 0.3s; }
+    .menu-divider { border: 0; height: 1px; background: #d4af37; width: 80%; margin: 15px auto; }
+
+    .welcome-banner { background: linear-gradient(135deg, #be2834, #192535); border: 3px solid #ffd700; max-width: 900px; width: 92%; margin: 30px auto; padding: 30px; border-radius: 8px; }
+    
+    .quiz-container { max-width: 800px; width: 92%; margin: 30px auto; background: #fdfcf7; color: #192535; padding: 40px; border-radius: 4px; text-align: left; border: 1.5px solid #d4af37; }
+    
+    .section-header { background: #192535; color: #ffd700; padding: 10px; font-family: 'Cinzel', serif; margin: 20px 0; border-radius: 4px; }
+    
+    .question { margin-bottom: 25px; border-bottom: 1px solid #ddd; padding-bottom: 15px; }
+    .question p { font-weight: bold; margin-bottom: 10px; font-size: 17px; }
+    
+    label { display: block; margin: 8px 0; cursor: pointer; }
+    
+    #result-box { display: none; margin-top: 30px; padding: 30px; border-radius: 8px; text-align: center; }
+    .pass { background: #2ecc71; color: white; }
+    .fail { background: #be2834; color: white; }
+    
+    .submit-btn { background: #192535; color: #ffd700; padding: 20px 40px; border: none; font-family: 'Cinzel', serif; font-size: 20px; cursor: pointer; width: 100%; border-radius: 5px; }
+    .apply-btn { display: inline-block; background: #ffd700; color: #192535; padding: 15px 30px; text-decoration: none; font-weight: 900; margin-top: 20px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+
+  <div style="margin-top: 20px;">
+    <img src="HARCCIAN (4).png" alt="HARCCIAN" style="width: 300px;">
+  </div>
+
+  <hr class="menu-divider">
+  <nav class="nav-container">
+    <a href="index.html" class="menu-button">HOME</a>
+    <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
+    <a href="entrancetest.html" class="menu-button" style="background:white; color:#be2834;">ENTRANCE TEST</a>
+  </nav>
+
+  <div class="welcome-banner">
+    <h2 style="font-family: 'Cinzel', serif; color: #ffd700;">Welcome to Harccian Bible College™</h2>
+    <p>You must score at least <strong>90% (45/50)</strong> to unlock the Application Page. High standards are expected.</p>
+  </div>
+
+  <form id="quizForm" class="quiz-container">
+    
+    <div class="section-header">Section 1: Bible Knowledge & Scripture</div>
+    
+    <div class="question">
+        <p>1. "In the beginning, God created the _______ and the earth." (Missing Word)</p>
+        <input type="text" name="q1" placeholder="Type here...">
+    </div>
+
+    <div class="question">
+        <p>2. True or False: Noah had four sons on the Ark.</p>
+        <label><input type="radio" name="q2" value="false"> False</label>
+        <label><input type="radio" name="q2" value="true"> True</label>
+    </div>
+
+    <p style="text-align:center; font-style:italic;">[... 28 More Bible Questions regarding Gospels, Prophets, and Epistles ...]</p>
+
+    <div class="section-header">Section 2: Harccian Bible College Knowledge</div>
+    
+    <div class="question">
+        <p>31. What is the official Harccian motto?</p>
+        <label><input type="radio" name="q31" value="correct"> Fides et Excellentia</label>
+        <label><input type="radio" name="q31" value="wrong"> Sola Scriptura</label>
+    </div>
+
+    <div class="question">
+        <p>32. True or False: Harccian is a physical campus located in London.</p>
+        <label><input type="radio" name="q32" value="correct"> False (It is a Virtual Platform)</label>
+        <label><input type="radio" name="q32" value="wrong"> True</label>
+    </div>
+
+    <p style="text-align:center; font-style:italic;">[... 8 More Harccian Policy Questions ...]</p>
+
+    <div class="section-header">Section 3: English Proficiency</div>
+    
+    <div class="question">
+        <p>41. Which sentence is grammatically correct?</p>
+        <label><input type="radio" name="q41" value="wrong"> He seen the light.</label>
+        <label><input type="radio" name="q41" value="correct"> He saw the light.</label>
+    </div>
+
+    <div class="question">
+        <p>42. Define 'Sovereignty' in one word:</p>
+        <input type="text" name="q42" placeholder="Type answer...">
+    </div>
+
+    <button type="button" class="submit-btn" onclick="checkScore()">SUBMIT EXAMINATION</button>
+  </form>
+
+  <div id="result-box">
+    <h2 id="result-title"></h2>
+    <p id="result-text"></p>
+    <div id="apply-link-container"></div>
+  </div>
+
+  <script>
+    function checkScore() {
+      // In a real scenario, you'd check every input. Here is the logic:
+      let score = 0;
+      let totalQuestions = 50;
+      
+      // MOCK LOGIC: For this demo, let's assume they passed if they filled out the name 
+      // (You will eventually replace this with specific answer checking)
+      let form = document.getElementById('quizForm');
+      let inputs = form.querySelectorAll('input[type="text"], input:checked');
+      
+      score = inputs.length; // This is a placeholder for your 50-answer logic
+
+      let percentage = (score / totalQuestions) * 100;
+      let resultBox = document.getElementById('result-box');
+      let resultTitle = document.getElementById('result-title');
+      let resultText = document.getElementById('result-text');
+      let applyContainer = document.getElementById('apply-link-container');
+
+      resultBox.style.display = "block";
+      window.scrollTo(0, document.body.scrollHeight);
+
+      if (percentage >= 90) {
+        resultBox.className = "pass";
+        resultTitle.innerText = "EXAMINATION PASSED";
+        resultText.innerText = "You scored " + percentage + "%. Your dedication is evident.";
+        applyContainer.innerHTML = '<a href="apply.html" class="apply-btn">PROCEED TO OFFICIAL APPLICATION</a>';
+      } else {
+        resultBox.className = "fail";
+        resultTitle.innerText = "EXAMINATION FAILED";
+        resultText.innerText = "You scored " + percentage + "%. We require a 90% to proceed. Please study and try again.";
+        applyContainer.innerHTML = '<button onclick="location.reload()" class="menu-button">RETRY EXAM</button>';
+      }
+    }
+  </script>
+
+</body>
+</html>
