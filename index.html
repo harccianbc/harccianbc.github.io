@@ -119,7 +119,6 @@
       box-shadow: 0 30px 60px rgba(0,0,0,0.6);
       text-align: left;
     }
-    /* (Styles shortened for brevity but preserved in functionality) */
     .letter-header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #be2834; padding-bottom: 20px; }
     .letter-header h2 { font-family: 'Cinzel', serif; font-size: 28px; color: #be2834; letter-spacing: 3px; }
     .quote-container { margin: 35px 0; background: #192535; padding: 30px; border: 3px solid #d4af37; border-radius: 8px; text-align: center; color: #ffd700; font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; }
@@ -127,7 +126,7 @@
     .signature-name { font-family: 'Great Vibes', cursive; font-size: 48px; color: #be2834; }
 
     /* APPLY BOX */
-    .apply-box { max-width: 850px; width: 92%; margin: 0 auto 60px auto; background: linear-gradient(135deg, #be2834, #192535); border: 3px solid #d4af37; border-radius: 8px; padding: 50px 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+    .apply-box { max-width: 850px; width: 92%; margin: 0 auto 60px auto; background: linear-gradient(135deg, #be2834, #192535); border: 3px solid #d4af37; border-radius: 8px; padding: 50px 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); text-align: center;}
     .apply-btn { display: inline-block; background: #ffd700; color: #192535; font-family: 'Cinzel', serif; padding: 18px 50px; border-radius: 5px; text-decoration: none; font-weight: 900; }
 
     /* FOOTER */
@@ -153,16 +152,27 @@
         <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
       </div>
     </div>
+    
     <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
     <a href="about.html" class="menu-button">ABOUT</a>
+    
     <div class="dropdown">
-      <a href="#" class="menu-button">ALUMNI ▾</a>
+      <a href="alumni.html" class="menu-button">ALUMNI ▾</a>
       <div class="dropdown-content">
         <a href="fraternities.html">FRATERNITIES</a>
       </div>
     </div>
+    
     <a href="courses.html" class="menu-button">COURSES</a>
-    <a href="apply.html" class="menu-button">APPLY</a>
+
+    <div class="dropdown">
+      <a href="entrancetest.html" class="menu-button">APPLY ▾</a>
+      <div class="dropdown-content">
+        <a href="entrancetest.html">ENTRANCE EXAMINATION</a>
+        <a href="apply.html">OFFICIAL APPLICATION</a>
+      </div>
+    </div>
+
     <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
     <a href="shop.html" class="menu-button">SHOP</a>
   </nav>
@@ -203,12 +213,13 @@
 
   <div class="apply-box">
     <h2 style="color: #ffd700; font-family: 'Cinzel', serif; font-size: 36px; margin-bottom: 15px;">APPLY TODAY</h2>
-    <a href="apply.html" class="apply-btn">BEGIN YOUR APPLICATION →</a>
+    <p style="color: white; margin-bottom: 25px; font-family: 'Lato', sans-serif;">All prospective students must first complete the Entrance Examination.</p>
+    <a href="entrancetest.html" class="apply-btn">BEGIN ENTRANCE TEST →</a>
   </div>
 
   <footer class="hbc-footer">
     <div class="footer-content">
-      <img src="h4logo.png" alt="Logo" style="width: 150px; margin-bottom: 15px;">
+      <img src="h4logo.png" alt="Logo" style="width: 150px; margin-bottom: 15px; display: block; margin-left: auto; margin-right: auto;">
       <div style="color: #d4af37; font-family: 'Cinzel', serif; letter-spacing: 2px;">© 2026 HARCCIAN BIBLE COLLEGE™</div>
     </div>
   </footer>
