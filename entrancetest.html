@@ -10,8 +10,8 @@ body {
     font-family: Arial;
     background: #111;
     color: #eee;
-    padding: 20px;
     user-select: none;
+    padding: 20px;
 }
 
 .container {
@@ -26,50 +26,61 @@ body {
     background: darkred;
     padding: 12px;
     text-align: center;
-    margin-bottom: 15px;
     font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.info {
+    background:#222;
+    padding:15px;
+    margin-bottom:15px;
+    border-left:4px solid red;
 }
 
 .progress-bar {
-    width: 100%;
-    background: #333;
-    border-radius: 20px;
-    margin-bottom: 15px;
+    width:100%;
+    background:#333;
+    border-radius:20px;
+    margin-bottom:15px;
 }
 
 .progress {
-    height: 18px;
-    width: 0%;
-    background: red;
-    border-radius: 20px;
+    height:18px;
+    width:0%;
+    background:red;
+    border-radius:20px;
 }
 
 .question {
-    margin-bottom: 15px;
+    margin-bottom:15px;
 }
 
-button {
-    padding: 12px;
-    width: 48%;
-    margin-top: 10px;
-    background: red;
-    color: white;
-    border: none;
-    cursor: pointer;
+label {
+    display:block;
 }
 
 .nav {
-    display: flex;
-    justify-content: space-between;
+    display:flex;
+    justify-content:space-between;
+    margin-top:15px;
+}
+
+button {
+    padding:12px;
+    width:48%;
+    background:red;
+    border:none;
+    color:white;
+    cursor:pointer;
 }
 </style>
 
 <script>
-// Anti-cheat
+// basic anti-cheat (browser limited)
 document.addEventListener("contextmenu", e => e.preventDefault());
 document.onkeydown = function(e){
-    if(e.keyCode==123 || (e.ctrlKey && e.shiftKey && e.keyCode==73)){
-        window.location.href="index.html";
+    if(e.keyCode==123){
+        alert("Security warning");
         return false;
     }
 };
@@ -82,50 +93,58 @@ document.onkeydown = function(e){
 <div class="container">
 
 <div class="warning">
-⚠️ SECURITY WARNING: Any tampering will terminate the exam
+⚠ SECURITY WARNING: Any tampering may terminate the exam
+</div>
+
+<div class="info">
+<strong>IMPORTANT:</strong> This exam must be completed in ONE sitting.<br>
+Answers are NOT saved if you leave or refresh.<br><br>
+
+Pass mark: <strong>90% (68/75)</strong><br>
+Fail = retry unlimited times<br>
+Pass = application page
 </div>
 
 <div class="progress-bar">
 <div class="progress" id="progress"></div>
 </div>
 
-<h2>HARCCIAN ENTRANCE EXAM</h2>
-
 <div id="page"></div>
 
 <div class="nav">
-<button onclick="prevPage()">Back</button>
-<button onclick="nextPage()">Next</button>
+<button onclick="back()">Back</button>
+<button onclick="next()">Next</button>
 </div>
 
-<button style="width:100%; margin-top:10px;" onclick="submitExam()">Submit Exam</button>
+<br>
+<button onclick="submitExam()" style="width:100%">Submit Exam</button>
 
 </div>
 
 <script>
 
-// ---------------------- QUESTIONS ----------------------
+// ================= QUESTIONS =================
 const questions = [
 "He doesn’t like apples","Receive spelling","She is going","Cowboy noun","Its raining",
-"They are playing","Past tense run","She has book","Verb barked","There are people",
+"They are playing","Past run","She has book","Verb barked","There are people",
 "Definitely spelling","I saw him","Adjective big","Dont go","Has finished",
 "Plural child","We were late","Pronoun him","I am going","Separate spelling",
-"They have arrived","Adverb quickly","Who’s there","She is happy","I did nothing",
+"They arrived","Adverb quickly","Who’s there","She is happy","I did nothing",
 
-"God created world","Noah ark","6 days creation","Adam","Eve",
-"Moses Israel","Red Sea","David Goliath","Jonah fish","Bethlehem",
-"Mary","John Baptist","12 disciples","Judas","3 days tomb",
-"Genesis","Revelation","Psalms","Daniel lions","Joseph dreams",
-"Water wine","Peter water","Love God","Bible Word","Jesus Son",
+"God created world","Noah ark","6 days","Adam","Eve",
+"Moses","Red Sea","David","Jonah","Bethlehem",
+"Mary","John Baptist","12 disciples","Judas","3 days",
+"Genesis","Revelation","Psalms","Daniel","Joseph",
+"Wine miracle","Peter water","Love God","Bible","Jesus",
 
-"HBC","Motto","Accredited?","Harccian","Focus",
-"Course type","Study","Platform","Govern","Affiliated",
+"HBC","Motto","Accredited","Harccian","Focus",
+"Course","Study","Platform","Govern","Affiliated",
 "Certificates","Why study","Started","Barrier","Environment",
 "Who for","AI review","AI role","Data","Share",
 "Storage","Rules","Volunteers","Alumni","Meaning"
 ];
 
-// ---------------------- ANSWERS ----------------------
+// ================= ANSWERS =================
 const answers = [
 "B","B","B","B","B",
 "B","B","B","B","B",
@@ -146,12 +165,12 @@ const answers = [
 "C","B","B","B","C"
 ];
 
-// ---------------------- STATE ----------------------
+// ================= STATE =================
 let page = 0;
-const perPage = 25;
-let storedAnswers = new Array(75).fill(null);
+let perPage = 25;
+let stored = new Array(75).fill(null);
 
-// ---------------------- RENDER ----------------------
+// ================= RENDER =================
 function render(){
     let start = page * perPage;
     let end = start + perPage;
@@ -161,7 +180,7 @@ function render(){
     for(let i=start;i<end;i++){
         html += `
         <div class="question">
-            <p><strong>Question ${i+1}:</strong> ${questions[i]}</p>
+            <p><b>Question ${i+1}:</b> ${questions[i]}</p>
             <label><input type="radio" name="q${i}" value="A" onchange="save(${i},'A')"> A</label>
             <label><input type="radio" name="q${i}" value="B" onchange="save(${i},'B')"> B</label>
             <label><input type="radio" name="q${i}" value="C" onchange="save(${i},'C')"> C</label>
@@ -170,64 +189,55 @@ function render(){
     }
 
     document.getElementById("page").innerHTML = html;
-
     updateProgress();
 }
 
-// ---------------------- SAVE ANSWERS ----------------------
-function save(i,val){
-    storedAnswers[i] = val;
+// ================= SAVE =================
+function save(i,v){
+    stored[i]=v;
     updateProgress();
 }
 
-// ---------------------- PROGRESS ----------------------
+// ================= PROGRESS =================
 function updateProgress(){
-    let answered = storedAnswers.filter(x=>x!==null).length;
-    document.getElementById("progress").style.width = (answered/75*100)+"%";
+    let done = stored.filter(x=>x!==null).length;
+    document.getElementById("progress").style.width = (done/75*100)+"%";
 }
 
-// ---------------------- NAV ----------------------
-function nextPage(){
-    if(page < 2){
-        page++;
-        render();
-    }
+// ================= NAV =================
+function next(){
+    if(page<2){page++;render();}
+}
+function back(){
+    if(page>0){page--;render();}
 }
 
-function prevPage(){
-    if(page > 0){
-        page--;
-        render();
-    }
-}
-
-// ---------------------- SUBMIT ----------------------
+// ================= SUBMIT =================
 function submitExam(){
+
     for(let i=0;i<75;i++){
-        if(!storedAnswers[i]){
+        if(!stored[i]){
             alert("You must answer ALL questions.");
             return;
         }
     }
 
-    let score = 0;
+    let score=0;
 
     for(let i=0;i<75;i++){
-        if(storedAnswers[i] === answers[i]){
-            score++;
-        }
+        if(stored[i]===answers[i]) score++;
     }
 
-    if(score >= 68){
-        alert("PASS: 90% achieved. Redirecting...");
+    if(score>=68){
+        alert("PASS: 90% achieved. Redirecting to application.");
         window.location.href="apply1.html";
     } else {
-        alert("FAIL: You may retry the exam.");
+        alert("FAIL: Try again. You may retry unlimited times.");
     }
 }
 
-// init
 render();
+
 </script>
 
 </body>
