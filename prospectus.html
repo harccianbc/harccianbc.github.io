@@ -14,7 +14,7 @@
 
   body { font-family: 'Lato', sans-serif; background-color: #000; overflow-x: hidden; color: var(--navy); }
 
-  /* Banner with flip animation */
+  /* Banner static image (no animation) */
   .banner {
     margin-top: 20px;
     display: flex;
@@ -25,14 +25,6 @@
     max-width: 100%;
     height: auto;
     display: block;
-    /* Flip animation */
-    animation: flip 4s infinite ease-in-out;
-    transform-style: preserve-3d;
-  }
-  @keyframes flip {
-    0% { transform: rotateY(0deg); }
-    50% { transform: rotateY(15deg); }
-    100% { transform: rotateY(0deg); }
   }
 
   /* MENU STYLES - EXACT MATCH TO HOME */
@@ -89,7 +81,7 @@
 </head>
 <body>
 
-<!-- PROSPECTUS IMAGE WITH FLIP ANIMATION -->
+<!-- PROSPECTUS IMAGE STATIC BANNER -->
 <div class="banner">
   <img src="prospectus.jpg" alt="Prospectus Banner" />
 </div>
