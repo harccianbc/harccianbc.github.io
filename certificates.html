@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 
 <style>
+/* SAME BASE STYLE AS INDEX */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -18,14 +19,10 @@ body {
 }
 
 /* HEADER */
-.banner-container {
-  width: 100%;
-  margin: 15px 0;
-}
 .banner-container img {
   width: 60%;
+  margin: 15px auto;
   display: block;
-  margin: 0 auto;
   border-radius: 8px;
 }
 
@@ -40,14 +37,16 @@ body {
 
 .menu-button {
   display: inline-block;
-  background: #be2834;
+  background-color: #be2834;
   color: white;
   padding: 12px 20px;
   margin: 5px;
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
+  font-size: 13px;
   font-family: 'Cinzel', serif;
+  transition: 0.3s;
 }
 
 .menu-button:hover {
@@ -55,89 +54,243 @@ body {
   color: #be2834;
 }
 
-.menu-divider {
-  height: 1px;
-  background: #d4af37;
-  width: 80%;
-  margin: 15px auto;
-  border: none;
-}
+.dropdown { position: relative; display: inline-block; }
 
-/* PAGE */
-.page-box {
-  max-width: 900px;
-  margin: 40px auto;
-  background: #fdfcf7;
-  color: #192535;
-  padding: 50px;
-  border-radius: 8px;
-  border: 2px solid #d4af37;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #192535;
+  min-width: 220px;
+  border: 1px solid #d4af37;
+  z-index: 10;
   text-align: left;
 }
 
-.page-box h1 {
-  font-family: 'Cinzel', serif;
+.dropdown-content a {
+  display: block;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background: #be2834;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* PAGE */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-family: Cinzel;
+  color: #ffd700;
+}
+
+/* QUIZ */
+.quiz-box {
+  background: white;
+  color: #192535;
+  padding: 25px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.question {
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+input {
+  padding: 10px;
+  width: 80%;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  background: #ffd700;
+  font-weight: bold;
+}
+
+/* POPUP */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: white;
+  color: black;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+/* CERTIFICATE */
+.certificate {
+  display: none;
+  margin-top: 30px;
+  padding: 40px;
+  background: #fdfcf7;
+  color: #192535;
+  border: 5px solid #d4af37;
+}
+
+.certificate h2 {
+  font-family: Cinzel;
   color: #be2834;
-  text-align: center;
-  margin-bottom: 20px;
 }
 
 /* FOOTER */
 .footer {
-  margin-top: 40px;
-  padding: 25px;
-  background: linear-gradient(135deg, #be2834, #192535);
-  text-align: center;
-}
-
-.footer img {
-  width: 120px;
-  margin-bottom: 10px;
+  margin-top: 50px;
+  padding: 20px;
+  background: #111c2a;
+  font-size: 12px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER IMAGE -->
+<!-- HEADER -->
 <div class="banner-container">
-  <img src="HARCCIAN (4).png" alt="Banner">
+  <img src="HARCCIAN (4).png">
 </div>
-
-<hr class="menu-divider">
 
 <!-- MENU -->
 <nav class="nav-container">
-  <a href="index.html" class="menu-button">HOME</a>
-  <a href="courses.html" class="menu-button">COURSES</a>
+
+  <div class="dropdown">
+    <a href="index.html" class="menu-button">HOME ▾</a>
+    <div class="dropdown-content">
+      <a href="mission.html">MISSION</a>
+      <a href="staff.html">STAFF</a>
+      <a href="terms.html">TERMS</a>
+      <a href="certificates.html">CERTIFICATES</a>
+    </div>
+  </div>
+
+  <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
   <a href="about.html" class="menu-button">ABOUT</a>
-  <a href="certificates.html" class="menu-button">CERTIFICATES</a>
+  <a href="courses.html" class="menu-button">COURSES</a>
+  <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
+  <a href="shop.html" class="menu-button">SHOP</a>
+
 </nav>
 
-<hr class="menu-divider">
+<hr>
 
-<!-- CONTENT -->
-<div class="page-box">
-  <h1>CERTIFICATES</h1>
+<!-- PAGE CONTENT -->
+<div class="container">
 
-  <p><strong>This page is now connected to your website.</strong></p>
+<h1>CERTIFICATES</h1>
 
-  <p>
-    Here you can later add:
-    <br><br>
-    ✔ Certificate display  
-    <br>
-    ✔ Download certificates  
-    <br>
-    ✔ Student verification system  
-  </p>
+<p>This page is now connected to your website.</p>
+
+<div class="quiz-box">
+
+  <h3>Entrance Quiz</h3>
+
+  <div class="question">
+    What color is red?
+    <input id="q1">
+  </div>
+
+  <div class="question">
+    What is 1 + 1?
+    <input id="q2">
+  </div>
+
+  <div class="question">
+    What is the opposite of dark?
+    <input id="q3">
+  </div>
+
+  <button onclick="checkQuiz()">Submit</button>
+
+  <p id="result"></p>
+
+  <button id="genBtn" style="display:none;" onclick="openPopup()">
+    GENERATE YOUR FREE CERTIFICATE
+  </button>
+
+</div>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h3>Enter Details</h3>
+    <input id="name" placeholder="Full Name"><br><br>
+    <input id="date" type="date"><br><br>
+    <button onclick="generateCertificate()">Generate</button>
+  </div>
+</div>
+
+<!-- CERTIFICATE -->
+<div class="certificate" id="certificate">
+  <h2>HARCCIAN BIBLE COLLEGE</h2>
+  <h3>CERTIFICATE OF COMPLETION</h3>
+
+  <p>Presented to</p>
+  <h2 id="cName"></h2>
+
+  <p>Date</p>
+  <p id="cDate"></p>
+
+  <p><b>“Earned, not given.”</b></p>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-  <img src="h4logo.png" alt="logo">
-  <p>© 2026 HARCCIAN BIBLE COLLEGE™</p>
+© 2026 HARCCIAN BIBLE COLLEGE™
 </div>
+
+<script>
+
+function checkQuiz() {
+  let q1 = document.getElementById("q1").value;
+  let q2 = document.getElementById("q2").value;
+  let q3 = document.getElementById("q3").value;
+
+  if(q1 && q2 && q3) {
+    document.getElementById("result").innerText = "Great — you passed!";
+    document.getElementById("genBtn").style.display = "inline-block";
+  } else {
+    document.getElementById("result").innerText = "Answer all questions.";
+  }
+}
+
+function openPopup() {
+  document.getElementById("popup").style.display = "flex";
+}
+
+function generateCertificate() {
+  document.getElementById("cName").innerText = document.getElementById("name").value;
+  document.getElementById("cDate").innerText = document.getElementById("date").value;
+
+  document.getElementById("popup").style.display = "none";
+  document.getElementById("certificate").style.display = "block";
+}
+
+</script>
 
 </body>
 </html>
