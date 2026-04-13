@@ -24,7 +24,7 @@
     color: var(--text-color); 
   }
 
-  /* Top Banner Image - Fixed height */
+  /* Top Banner Image */
   .banner {
     display: flex;
     justify-content: center;
@@ -32,13 +32,13 @@
   }
   .banner img {
     max-width: 100%;
-    width: 1200px; /* match your original PNG size */
-    height: 200px; /* fixed height for consistency */
+    width: 1200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 8px;
   }
 
-  /* Navigation Menu Styles */
+  /* Navigation styles (unchanged) */
   .nav-container {
     display: flex;
     flex-wrap: wrap;
@@ -62,7 +62,7 @@
     color: var(--red);
     transform: translateY(-2px);
   }
-  /* Dropdown for submenus */
+  /* Dropdowns */
   .dropdown {
     position: relative;
     display: inline-block;
@@ -90,7 +90,7 @@
     background-color: var(--hover-color);
   }
 
-  /* Divider line */
+  /* Divider */
   .divider {
     height: 1px;
     background: var(--gold);
@@ -98,45 +98,48 @@
     width: 80%;
   }
 
-  /* Content Sections */
-  .section {
+  /* Accordion styles */
+  .accordion {
     max-width: 900px;
     margin: 30px auto;
-    padding: 30px;
-    background: var(--background);
-    border: 2px solid var(--gold);
     border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-    transition: box-shadow 0.3s;
+    overflow: hidden;
   }
-  .section:hover {
-    box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+  .accordion-item {
+    border-top: 1px solid #ccc;
   }
-  .section h1 {
+  .accordion-header {
+    background-color: var(--background);
+    cursor: pointer;
+    padding: 20px;
     font-family: 'Cinzel', serif;
-    font-size: 2.5em;
-    text-align: center;
-    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
     color: var(--red);
+    transition: background 0.3s;
   }
-  .section h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8em;
-    margin-top: 40px;
-    margin-bottom: 15px;
-    color: var(--red);
-    border-bottom: 2px solid var(--red);
-    padding-bottom: 5px;
+  .accordion-header:hover {
+    background-color: #eaeaea;
   }
-  p {
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    padding: 0 20px;
+    background-color: #f9f9f9;
+  }
+  .accordion-content p {
+    padding: 15px 0;
     font-size: 17px;
     line-height: 1.6;
+    color: var(--text-color);
   }
-  /* Highlight and bold styles */
-  .highlight-red { color: var(--red); font-weight: bold; }
-  .bold { font-weight: bold; }
+  /* Active class to expand */
+  .active .accordion-content {
+    max-height: 1000px; /* large enough to show content */
+  }
 
-  /* Call-to-action button */
+  /* Call to Action Button */
   .cta-btn {
     display: inline-block;
     background-color: var(--red);
@@ -159,7 +162,7 @@
 </head>
 <body>
 
-<!-- Top Banner Image -->
+<!-- Banner Image -->
 <div class="banner">
   <img src="prospectus.jpg" alt="Prospectus Banner" />
 </div>
@@ -192,84 +195,104 @@
 </nav>
 <div class="divider"></div>
 
-<!-- Main Prospectus Content -->
-<div class="section">
-  <h1>Harccian Bible College</h1>
-  <h2>Prospectus 2026</h2>
-  <p>Welcome to <span class="highlight-red">Harccian Bible College</span> — a <strong>virtual</strong>, <strong>non-accredited</strong>, and <strong>non-registered</strong> training organization. We offer elite theological education online for students worldwide seeking deep spiritual growth without the constraints of traditional accreditation.</p>
-  <p>Our curriculum is rooted in Scripture and calling, designed for serious learners who desire flexible, accessible biblical studies. We are committed to integrity, excellence, and spiritual depth.</p>
-</div>
+<!-- Interactive Accordion Prospectus Content -->
+<div class="accordion">
 
-<div class="section">
-  <h2>What Sets Us Apart</h2>
-  <p><strong>Harccian Bible College</strong> is a **virtual college** operating outside the accreditation system. We are not a registered training organization, but our courses aim to foster genuine spiritual and theological development for committed students worldwide.</p>
-  <p>Whether you're in a remote area or seeking flexible online study, our programs are designed for accessibility—regardless of socioeconomic background or location.</p>
-</div>
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">Welcome to Harccian Bible College</div>
+    <div class="accordion-content">
+      <p>Harccian Bible College is a <strong>virtual</strong>, <strong>non-accredited</strong>, and <strong>non-registered</strong> training organization. We provide elite theological education online for students worldwide seeking deep spiritual growth without the constraints of traditional accreditation.</p>
+    </div>
+  </div>
 
-<div class="section">
-  <h2>Our Mission & Philosophy</h2>
-  <p><em>Fides et Excellentia</em> — Faith and Excellence. We aim to cultivate serious biblical study and spiritual growth through accessible online courses rooted in Scripture.</p>
-  <p>We believe that **financial status** should never hinder a calling. We welcome students over 18 from all backgrounds. Our challenging coursework ensures that certificates carry real weight and value.</p>
-</div>
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">What Makes Us Unique</div>
+    <div class="accordion-content">
+      <p>We operate outside the traditional accreditation system. Our courses are designed to foster genuine spiritual and theological development for dedicated learners globally, regardless of location or socioeconomic background.</p>
+    </div>
+  </div>
 
-<div class="section">
-  <h2>Courses & Certifications</h2>
-  <ul>
-    <li><strong>Level I – Harccian Certificate of Completion</strong></li>
-    <ul>
-      <li>Tuition: Free</li>
-      <li>Prerequisite: Open Enrollment</li>
-    </ul>
-    <li><strong>Level II – Harccian Advanced Certificate</strong></li>
-    <ul>
-      <li>Tuition: Region Specific</li>
-      <li>Prerequisite: Level I Completion</li>
-    </ul>
-    <li><strong>Level III – Harccian Mastery Certificate</strong></li>
-    <ul>
-      <li>Tuition: Region Specific</li>
-      <li>Prerequisite: Level II & Approval</li>
-    </ul>
-  </ul>
-</div>
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">Our Mission & Philosophy</div>
+    <div class="accordion-content">
+      <p><em>Fides et Excellentia</em> — Faith and Excellence. We aim to cultivate serious biblical study and spiritual growth through accessible online courses rooted in Scripture. Financial status should never hinder a calling.</p>
+    </div>
+  </div>
 
-<div class="section">
-  <h2>Our History</h2>
-  <p>The mission was pioneered in India, providing curriculum and certificates to dedicated pastors. The vision for this **online college** was born in 2024, creating a digital bridge for elite, non-accredited theological training designed for the modern era.</p>
-</div>
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">Courses & Certifications</div>
+    <div class="accordion-content">
+      <ul>
+        <li><strong>Level I – Harccian Certificate of Completion</strong></li>
+        <ul>
+          <li>Tuition: Free</li>
+          <li>Prerequisite: Open Enrollment</li>
+        </ul>
+        <li><strong>Level II – Harccian Advanced Certificate</strong></li>
+        <ul>
+          <li>Tuition: Region Specific</li>
+          <li>Prerequisite: Level I Completion</li>
+        </ul>
+        <li><strong>Level III – Harccian Mastery Certificate</strong></li>
+        <ul>
+          <li>Tuition: Region Specific</li>
+          <li>Prerequisite: Level II & Approval</li>
+        </ul>
+      </ul>
+    </div>
+  </div>
 
-<div class="section">
-  <h2>Why Choose Harccian?</h2>
-  <p>We aim to fill a vital gap in faith-based education by offering courses built on Scripture and calling, not bureaucracy. Our rigorous coursework ensures that certificates are meaningful and carry weight.</p>
-  <p><em>Note:</em> Applicants must be over 18 years old.</p>
-</div>
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">Our History</div>
+    <div class="accordion-content">
+      <p>The mission began in India, providing curriculum and certificates to dedicated pastors. The vision for this online college was born in 2024, creating a digital bridge for elite, non-accredited theological training designed for the modern era.</p>
+    </div>
+  </div>
 
-<div class="section">
-  <h2>The Founder</h2>
-  <p><strong>Experience:</strong></p>
-  <ul>
-    <li>15 Years Ambulance Service</li>
-    <li>3.5 Years Youth Detention Worker</li>
-    <li>Emergency Medical Care & Transport</li>
-  </ul>
-  <p><strong>Ministry Experience:</strong></p>
-  <ul>
-    <li>Ordained Minister (3 Years)</li>
-    <li>Lay Pastor (3.5 Years)</li>
-    <li>Executive & Associate Minister</li>
-  </ul>
-  <p>As the Digital Architect, I, Gemini, oversee content integrity, ensuring teachings align with biblical truth.</p>
-</div>
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">Why Choose Harccian?</div>
+    <div class="accordion-content">
+      <p>We fill a vital gap in faith-based education with courses built on Scripture and calling, not bureaucracy. Our coursework is challenging to ensure certificates carry weight and value. Applicants must be over 18.</p>
+    </div>
+  </div>
 
-<div class="section">
-  <h2>The Lion & Shield</h2>
-  <p>Our identity is rooted in the <strong>Shield of Faith</strong>. The crowned lion symbolizes Christ’s authority, guiding our pursuit of truth and excellence.</p>
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">The Founder</div>
+    <div class="accordion-content">
+      <p><strong>Experience:</strong></p>
+      <ul>
+        <li>15 Years Ambulance Service</li>
+        <li>3.5 Years Youth Detention Worker</li>
+        <li>Emergency Medical Care & Transport</li>
+      </ul>
+      <p><strong>Ministry Experience:</strong></p>
+      <ul>
+        <li>Ordained Minister (3 Years)</li>
+        <li>Lay Pastor (3.5 Years)</li>
+        <li>Executive & Associate Minister</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">The Lion & Shield</div>
+    <div class="accordion-content">
+      <p>Our identity rests within the <strong>Shield of Faith</strong>. The crowned lion signifies Christ, who leads our pursuit of truth and excellence.</p>
+    </div>
+  </div>
+
 </div>
 
 <!-- Call to Action -->
 <div style="text-align:center; margin:50px 0;">
   <a class="cta-btn" href="https://harccianbc.github.io/entrancetest.html">Apply Now</a>
 </div>
+
+<script>
+  function toggleAccordion(element) {
+    element.parentElement.classList.toggle("active");
+  }
+</script>
 
 </body>
 </html>
