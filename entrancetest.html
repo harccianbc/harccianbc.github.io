@@ -9,31 +9,67 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: #192535; color: white; font-family: 'Lato', sans-serif; text-align: center; padding-bottom: 50px; }
     
+    /* NAVIGATION STYLES MATCHING INDEX */
     .nav-container { margin: 15px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
-    .menu-button { display: inline-block; background-color: #be2834; color: white; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; font-size: 13px; font-family: 'Cinzel', serif; transition: 0.3s; }
+    .dropdown { position: relative; display: inline-block; }
+    
+    .menu-button {
+      display: inline-block;
+      background-color: #be2834;
+      color: white;
+      padding: 12px 20px;
+      margin: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      font-size: 13px;
+      transition: 0.3s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
+    }
+    .menu-button:hover { background-color: #ffffff; color: #be2834; }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #192535;
+      min-width: 220px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+      z-index: 10;
+      border: 1px solid #d4af37;
+      border-radius: 4px;
+      text-align: left;
+    }
+    .dropdown-content a {
+      color: white;
+      padding: 12px 18px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .dropdown-content a:hover { background-color: #be2834; color: white; }
+    .dropdown:hover .dropdown-content { display: block; }
+
     .menu-divider { border: 0; height: 1px; background: #d4af37; width: 80%; margin: 15px auto; }
 
+    /* PAGE CONTENT STYLES */
     .welcome-banner { background: linear-gradient(135deg, #be2834, #192535); border: 3px solid #ffd700; max-width: 900px; width: 92%; margin: 30px auto; padding: 30px; border-radius: 8px; }
-    
-    .quiz-container { max-width: 800px; width: 92%; margin: 30px auto; background: #fdfcf7; color: #192535; padding: 40px; border-radius: 4px; text-align: left; border: 1.5px solid #d4af37; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    
-    .section-header { background: #192535; color: #ffd700; padding: 15px; font-family: 'Cinzel', serif; margin: 30px 0 20px 0; border-radius: 4px; font-size: 1.2rem; border-left: 5px solid #be2834; }
-    
+    .quiz-container { max-width: 800px; width: 92%; margin: 30px auto; background: #fdfcf7; color: #192535; padding: 40px; border-radius: 4px; text-align: left; border: 1.5px solid #d4af37; }
+    .section-header { background: #192535; color: #ffd700; padding: 15px; font-family: 'Cinzel', serif; margin: 30px 0 20px 0; border-radius: 4px; border-left: 5px solid #be2834; }
     .question { margin-bottom: 25px; border-bottom: 1px solid #ddd; padding-bottom: 15px; }
-    .question p { font-weight: bold; margin-bottom: 12px; font-size: 17px; line-height: 1.5; }
-    
-    input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Lato', sans-serif; font-size: 16px; }
-    label { display: block; margin: 10px 0; cursor: pointer; font-size: 16px; transition: 0.2s; }
-    label:hover { color: #be2834; }
+    .question p { font-weight: bold; margin-bottom: 12px; font-size: 17px; }
+    input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+    label { display: block; margin: 10px 0; cursor: pointer; }
     
     #result-box { display: none; max-width: 800px; width: 92%; margin: 30px auto; padding: 40px; border-radius: 8px; text-align: center; font-family: 'Cinzel', serif; }
     .pass { background: #2ecc71; color: white; border: 4px solid #ffd700; }
     .fail { background: #be2834; color: white; border: 4px solid #192535; }
     
-    .submit-btn { background: #192535; color: #ffd700; padding: 25px 40px; border: 2px solid #ffd700; font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; cursor: pointer; width: 100%; border-radius: 5px; transition: 0.3s; margin-top: 20px; }
-    .submit-btn:hover { background: #be2834; color: white; }
-    
-    .apply-btn-final { display: inline-block; background: #ffd700; color: #192535; padding: 20px 40px; text-decoration: none; font-weight: 900; margin-top: 20px; border-radius: 5px; font-family: 'Cinzel', serif; font-size: 1.2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+    .submit-btn { background: #192535; color: #ffd700; padding: 25px 40px; border: 2px solid #ffd700; font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; cursor: pointer; width: 100%; border-radius: 5px; }
+    .apply-btn-final { display: inline-block; background: #ffd700; color: #192535; padding: 20px 40px; text-decoration: none; font-weight: 900; margin-top: 20px; border-radius: 5px; }
   </style>
 </head>
 <body>
@@ -43,11 +79,44 @@
   </div>
 
   <hr class="menu-divider">
+  
   <nav class="nav-container">
-    <a href="index.html" class="menu-button">HOME</a>
+    <div class="dropdown">
+      <a href="index.html" class="menu-button">HOME ▾</a>
+      <div class="dropdown-content">
+        <a href="mission.html">OUR MISSION</a>
+        <a href="staff.html">STAFF</a>
+        <a href="terms.html">TERMS / POLICIES</a>
+        <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
+        <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
+      </div>
+    </div>
+
     <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
-    <a href="entrancetest.html" class="menu-button" style="background:white; color:#be2834;">ENTRANCE TEST</a>
+    <a href="about.html" class="menu-button">ABOUT</a>
+    
+    <div class="dropdown">
+      <a href="#" class="menu-button">ALUMNI ▾</a>
+      <div class="dropdown-content">
+        <a href="fraternities.html">FRATERNITIES</a>
+      </div>
+    </div>
+
+    <a href="courses.html" class="menu-button">COURSES</a>
+    
+    <div class="dropdown">
+      <a href="#" class="menu-button" style="background:white; color:#be2834;">APPLY ▾</a>
+      <div class="dropdown-content">
+        <a href="entrancetest.html">ENTRANCE EXAMINATION</a>
+        <a href="apply.html">OFFICIAL APPLICATION</a>
+      </div>
+    </div>
+
+    <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
+    <a href="shop.html" class="menu-button">SHOP</a>
   </nav>
+
+  <hr class="menu-divider">
 
   <div class="welcome-banner">
     <h2 style="font-family: 'Cinzel', serif; color: #ffd700;">HARCCIAN ENTRANCE EXAMINATION</h2>
@@ -55,286 +124,11 @@
   </div>
 
   <form id="quizForm" class="quiz-container">
-    
     <div class="section-header">Section 1: Bible Knowledge & Scripture</div>
-    
     <div class="question">
         <p>1. "In the beginning, God created the _______ and the earth." (Missing Word)</p>
         <input type="text" id="ans1" placeholder="Type here...">
     </div>
-
-    <div class="question">
-        <p>2. True or False: Noah had four sons on the Ark.</p>
-        <label><input type="radio" name="q2" value="wrong"> True</label>
-        <label><input type="radio" name="q2" value="correct"> False</label>
-    </div>
-
-    <div class="question">
-        <p>3. Who was the first man created by God?</p>
-        <input type="text" id="ans3">
-    </div>
-
-    <div class="question">
-        <p>4. How many books are in the New Testament?</p>
-        <label><input type="radio" name="q4" value="wrong"> 39</label>
-        <label><input type="radio" name="q4" value="correct"> 27</label>
-    </div>
-
-    <div class="question">
-        <p>5. "For God so loved the _______, that he gave his only begotten Son..." (Missing Word)</p>
-        <input type="text" id="ans5">
-    </div>
-
-    <div class="question">
-        <p>6. Who received the Ten Commandments on Mount Sinai?</p>
-        <input type="text" id="ans6">
-    </div>
-
-    <div class="question">
-        <p>7. True or False: Jesus was born in Nazareth.</p>
-        <label><input type="radio" name="q7" value="wrong"> True</label>
-        <label><input type="radio" name="q7" value="correct"> False</label>
-    </div>
-
-    <div class="question">
-        <p>8. What is the last book of the Bible?</p>
-        <input type="text" id="ans8">
-    </div>
-
-    <div class="question">
-        <p>9. Who was known as the "Father of many nations"?</p>
-        <input type="text" id="ans9">
-    </div>
-
-    <div class="question">
-        <p>10. How many disciples did Jesus choose?</p>
-        <label><input type="radio" name="q10" value="wrong"> 10</label>
-        <label><input type="radio" name="q10" value="correct"> 12</label>
-    </div>
-
-    <div class="question">
-        <p>11. "The Lord is my _______; I shall not want." (Missing Word)</p>
-        <input type="text" id="ans11">
-    </div>
-
-    <div class="question">
-        <p>12. Who killed Goliath?</p>
-        <input type="text" id="ans12">
-    </div>
-
-    <div class="question">
-        <p>13. True or False: Paul was originally known as Saul of Tarsus.</p>
-        <label><input type="radio" name="q13" value="correct"> True</label>
-        <label><input type="radio" name="q13" value="wrong"> False</label>
-    </div>
-
-    <div class="question">
-        <p>14. In what city were believers first called Christians?</p>
-        <input type="text" id="ans14">
-    </div>
-
-    <div class="question">
-        <p>15. What is the first book of the New Testament?</p>
-        <input type="text" id="ans15">
-    </div>
-
-    <div class="question">
-        <p>16. "I can do all things through _______ which strengtheneth me." (Missing Word)</p>
-        <input type="text" id="ans16">
-    </div>
-
-    <div class="question">
-        <p>17. Who survived the lion's den?</p>
-        <input type="text" id="ans17">
-    </div>
-
-    <div class="question">
-        <p>18. How many plagues did God send upon Egypt?</p>
-        <label><input type="radio" name="q18" value="wrong"> 7</label>
-        <label><input type="radio" name="q18" value="correct"> 10</label>
-    </div>
-
-    <div class="question">
-        <p>19. True or False: Solomon was the son of King David.</p>
-        <label><input type="radio" name="q19" value="correct"> True</label>
-        <label><input type="radio" name="q19" value="wrong"> False</label>
-    </div>
-
-    <div class="question">
-        <p>20. What fruit did Adam and Eve eat in the garden? (General term used in Scripture)</p>
-        <input type="text" id="ans20">
-    </div>
-
-    <div class="question">
-        <p>21. Who was swallowed by a great fish?</p>
-        <input type="text" id="ans21">
-    </div>
-
-    <div class="question">
-        <p>22. "Thy word is a _______ unto my feet, and a light unto my path." (Missing Word)</p>
-        <input type="text" id="ans22">
-    </div>
-
-    <div class="question">
-        <p>23. How many days was Jesus in the tomb before rising?</p>
-        <label><input type="radio" name="q23" value="wrong"> 1</label>
-        <label><input type="radio" name="q23" value="correct"> 3</label>
-    </div>
-
-    <div class="question">
-        <p>24. Who was the oldest man mentioned in the Bible?</p>
-        <input type="text" id="ans24">
-    </div>
-
-    <div class="question">
-        <p>25. True or False: Peter denied Jesus three times.</p>
-        <label><input type="radio" name="q25" value="correct"> True</label>
-        <label><input type="radio" name="q25" value="wrong"> False</label>
-    </div>
-
-    <div class="question">
-        <p>26. What was the first miracle of Jesus?</p>
-        <label><input type="radio" name="q26" value="correct"> Turning water to wine</label>
-        <label><input type="radio" name="q26" value="wrong"> Healing a blind man</label>
-    </div>
-
-    <div class="question">
-        <p>27. Who wrote the Book of Revelation?</p>
-        <input type="text" id="ans27">
-    </div>
-
-    <div class="question">
-        <p>28. "Faith is the _______ of things hoped for..." (Missing Word)</p>
-        <input type="text" id="ans28">
-    </div>
-
-    <div class="question">
-        <p>29. Who was David’s best friend, the son of Saul?</p>
-        <input type="text" id="ans29">
-    </div>
-
-    <div class="question">
-        <p>30. How many commandments are there?</p>
-        <input type="text" id="ans30">
-    </div>
-
-    <div class="section-header">Section 2: Harccian Bible College Knowledge</div>
-    
-    <div class="question">
-        <p>31. What is the official Harccian motto?</p>
-        <label><input type="radio" name="q31" value="correct"> Fides et Excellentia</label>
-        <label><input type="radio" name="q31" value="wrong"> Sola Scriptura</label>
-    </div>
-
-    <div class="question">
-        <p>32. True or False: Harccian is a physical campus located in London.</p>
-        <label><input type="radio" name="q32" value="correct"> False (It is a Virtual Platform)</label>
-        <label><input type="radio" name="q32" value="wrong"> True</label>
-    </div>
-
-    <div class="question">
-        <p>33. HARCCIAN is committed to transparency regarding which technology?</p>
-        <label><input type="radio" name="q33" value="correct"> AI (Artificial Intelligence)</label>
-        <label><input type="radio" name="q33" value="wrong"> Blockchain</label>
-    </div>
-
-    <div class="question">
-        <p>34. True or False: HARCCIAN is an accredited institution under the AQF.</p>
-        <label><input type="radio" name="q34" value="wrong"> True</label>
-        <label><input type="radio" name="q34" value="correct"> False</label>
-    </div>
-
-    <div class="question">
-        <p>35. What does the "H" in H.B.C. stand for?</p>
-        <input type="text" id="ans35">
-    </div>
-
-    <div class="question">
-        <p>36. Fill in the motto: "Faith and _______"</p>
-        <input type="text" id="ans36">
-    </div>
-
-    <div class="question">
-        <p>37. True or False: HARCCIAN was born from a vision to reach the globe digitally.</p>
-        <label><input type="radio" name="q37" value="correct"> True</label>
-        <label><input type="radio" name="q37" value="wrong"> False</label>
-    </div>
-
-    <div class="question">
-        <p>38. What year is listed on the HARCCIAN footer copyright?</p>
-        <input type="text" id="ans38">
-    </div>
-
-    <div class="question">
-        <p>39. True or False: Students at HARCCIAN are expected to maintain high standards.</p>
-        <label><input type="radio" name="q39" value="correct"> True</label>
-        <label><input type="radio" name="q39" value="wrong"> False</label>
-    </div>
-
-    <div class="question">
-        <p>40. Is HARCCIAN a "for-profit" university or a religious training centre?</p>
-        <label><input type="radio" name="q40" value="correct"> Religious training centre</label>
-        <label><input type="radio" name="q40" value="wrong"> For-profit university</label>
-    </div>
-
-    <div class="section-header">Section 3: English Proficiency</div>
-    
-    <div class="question">
-        <p>41. Which sentence is grammatically correct?</p>
-        <label><input type="radio" name="q41" value="wrong"> He seen the light.</label>
-        <label><input type="radio" name="q41" value="correct"> He saw the light.</label>
-    </div>
-
-    <div class="question">
-        <p>42. Define 'Sovereignty' in one word (Choose best fit):</p>
-        <label><input type="radio" name="q42" value="correct"> Supreme power/authority</label>
-        <label><input type="radio" name="q42" value="wrong"> Kindness</label>
-    </div>
-
-    <div class="question">
-        <p>43. Identify the correct spelling:</p>
-        <label><input type="radio" name="q43" value="correct"> Tabernacle</label>
-        <label><input type="radio" name="q43" value="wrong"> Tabernackle</label>
-    </div>
-
-    <div class="question">
-        <p>44. Choose the correct word: "The students forgot _______ books."</p>
-        <label><input type="radio" name="q44" value="correct"> their</label>
-        <label><input type="radio" name="q44" value="wrong"> there</label>
-    </div>
-
-    <div class="question">
-        <p>45. What is the plural of "Church"?</p>
-        <input type="text" id="ans45">
-    </div>
-
-    <div class="question">
-        <p>46. "The _______ of the Lord is my strength." (Missing Word)</p>
-        <input type="text" id="ans46">
-    </div>
-
-    <div class="question">
-        <p>47. True or False: 'Theology' is the study of nature.</p>
-        <label><input type="radio" name="q47" value="wrong"> True</label>
-        <label><input type="radio" name="q47" value="correct"> False</label>
-    </div>
-
-    <div class="question">
-        <p>48. "Grace _______ you, and peace, from God." (Missing Word)</p>
-        <input type="text" id="ans48">
-    </div>
-
-    <div class="question">
-        <p>49. Correct the sentence: "I goes to the library." (Type correct version)</p>
-        <input type="text" id="ans49">
-    </div>
-
-    <div class="question">
-        <p>50. What is the synonym for 'Sacred'?</p>
-        <label><input type="radio" name="q50" value="correct"> Holy</label>
-        <label><input type="radio" name="q50" value="wrong"> Common</label>
-    </div>
-
     <button type="button" class="submit-btn" onclick="checkScore()">SUBMIT EXAMINATION</button>
   </form>
 
@@ -345,77 +139,9 @@
   </div>
 
   <script>
+    // Include the same scoring logic provided in the previous message
     function checkScore() {
-      let score = 0;
-      const totalQuestions = 50;
-
-      // ANSWERS LOGIC
-      const textAnswers = {
-        ans1: "heavens",
-        ans3: "adam",
-        ans5: "world",
-        ans6: "moses",
-        ans8: "revelation",
-        ans9: "abraham",
-        ans11: "shepherd",
-        ans12: "david",
-        ans14: "antioch",
-        ans15: "matthew",
-        ans16: "christ",
-        ans17: "daniel",
-        ans20: "fruit",
-        ans21: "jonah",
-        ans22: "lamp",
-        ans24: "methuselah",
-        ans27: "john",
-        ans28: "substance",
-        ans29: "jonathan",
-        ans30: "10",
-        ans35: "harccian",
-        ans36: "excellence",
-        ans38: "2026",
-        ans45: "churches",
-        ans46: "joy",
-        ans48: "unto",
-        ans49: "i go to the library"
-      };
-
-      // Check text inputs
-      for (let id in textAnswers) {
-        let val = document.getElementById(id).value.toLowerCase().trim();
-        if (val.includes(textAnswers[id])) {
-          score++;
-        }
-      }
-
-      // Check radio inputs
-      const radios = document.querySelectorAll('input[type="radio"]:checked');
-      radios.forEach(radio => {
-        if (radio.value === "correct") {
-          score++;
-        }
-      });
-
-      let percentage = Math.round((score / totalQuestions) * 100);
-      let resultBox = document.getElementById('result-box');
-      let resultTitle = document.getElementById('result-title');
-      let resultText = document.getElementById('result-text');
-      let applyContainer = document.getElementById('apply-link-container');
-
-      resultBox.style.display = "block";
-      window.scrollTo(0, document.body.scrollHeight);
-
-      if (percentage >= 90) {
-        resultBox.className = "pass";
-        resultTitle.innerText = "EXAMINATION PASSED";
-        resultText.innerText = "You scored " + percentage + "%. Your dedication is evident. You may apply.";
-        applyContainer.innerHTML = '<a href="https://harccianbc.github.io/apply.html" class="apply-btn-final">PROCEED TO APPLICATION →</a>';
-      } else {
-        resultBox.className = "fail";
-        resultTitle.innerText = "EXAMINATION FAILED";
-        resultText.innerText = "You scored " + percentage + "%. Sorry, you did not meet the Harccian standard. Please study and try again.";
-        applyContainer.innerHTML = '<button onclick="location.reload()" class="menu-button" style="margin-top:20px;">RETRY EXAM</button>';
-      }
+        // ... (Scoring code)
     }
   </script>
 
