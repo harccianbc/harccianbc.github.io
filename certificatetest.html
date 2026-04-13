@@ -1,70 +1,149 @@
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Certificate Test</title>
+  <title>Certificate Test - HARCCIAN Bible College</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
-    body{
-      font-family: Arial, sans-serif;
-      background:#192535;
-      color:#fff;
-      text-align:center;
-      padding:40px;
+    body {
+      font-family: 'Lato', Arial, sans-serif;
+      background: #192535;
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+      min-height: 100vh;
     }
-    input, button{
-      padding:12px;
-      font-size:16px;
-      margin:10px;
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: #ffd700;
+      font-size: 36px;
+      margin-bottom: 30px;
     }
-    button{
-      background:#be2834;
-      color:#fff;
-      border:none;
-      cursor:pointer;
+    input {
+      padding: 14px;
+      font-size: 17px;
+      width: 320px;
+      max-width: 90%;
+      border-radius: 5px;
+      border: 2px solid #d4af37;
+      background: #fff;
+      color: #192535;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 14px 30px;
+      font-size: 16px;
+      margin: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .download-btn {
+      background: #be2834;
+      color: white;
+      border: none;
+    }
+    .download-btn:hover {
+      background: #ffffff;
+      color: #be2834;
+    }
+    .home-btn {
+      background: #d4af37;
+      color: #192535;
+      border: none;
+    }
+    .home-btn:hover {
+      background: #ffffff;
+      color: #be2834;
+    }
+    .notice {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #d4af37;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
 <body>
   <h1>Certificate Test</h1>
-  <input id="studentName" type="text" placeholder="Enter your name">
+  
+  <input id="studentName" type="text" placeholder="Enter your full name">
   <br>
-  <button onclick="generateCert()">Download PDF Certificate</button>
+  <button class="download-btn" onclick="generateCert()">Download PDF Certificate</button>
+  
+  <div id="backButton" style="display: none; margin-top: 30px;">
+    <button class="home-btn" onclick="goHome()">← Back to Home</button>
+  </div>
+
+  <div class="notice">
+    All certificates are for participation only.<br>
+    Make sure <strong>h4logo.png</strong> is uploaded in the same folder.
+  </div>
 
   <script>
     function generateCert() {
-      const name = document.getElementById('studentName').value || 'Student';
+      const name = document.getElementById('studentName').value.trim() || 'Student';
+
       const { jsPDF } = window.jspdf;
       const pdf = new jsPDF('landscape', 'mm', 'a4');
 
+      // Background
       pdf.setFillColor(25, 37, 53);
       pdf.rect(0, 0, 297, 210, 'F');
 
+      // Gold border
       pdf.setDrawColor(212, 175, 55);
-      pdf.setLineWidth(2);
+      pdf.setLineWidth(5);
       pdf.rect(10, 10, 277, 190);
 
+      // Add Logo (h4logo.png)
+      try {
+        pdf.addImage('h4logo.png', 'PNG', 118, 22, 60, 45);   // x, y, width, height
+      } catch(e) {
+        console.log("Logo not found - continuing without logo");
+      }
+
+      // Title
       pdf.setTextColor(255, 215, 0);
       pdf.setFont('helvetica', 'bold');
-      pdf.setFontSize(28);
-      pdf.text('CERTIFICATE OF COMPLETION', 148.5, 55, { align: 'center' });
+      pdf.setFontSize(32);
+      pdf.text('CERTIFICATE OF COMPLETION', 148.5, 85, { align: 'center' });
 
+      // "This certifies that"
       pdf.setTextColor(255, 255, 255);
       pdf.setFontSize(18);
-      pdf.text('This certifies that', 148.5, 80, { align: 'center' });
+      pdf.text('This certifies that', 148.5, 105, { align: 'center' });
 
-      pdf.setFontSize(24);
-      pdf.text(name, 148.5, 100, { align: 'center' });
+      // Student Name
+      pdf.setFontSize(26);
+      pdf.text(name.toUpperCase(), 148.5, 125, { align: 'center' });
 
+      // Completion text
       pdf.setFontSize(16);
-      pdf.text('has successfully completed the test certificate page.', 148.5, 120, { align: 'center' });
+      pdf.text('has successfully completed the Certificate Test', 148.5, 145, { align: 'center' });
 
+      // College name
+      pdf.setFontSize(14);
+      pdf.text('HARCCIAN Bible College™', 148.5, 170, { align: 'center' });
+
+      // Date
+      const today = new Date().toLocaleDateString('en-GB');
       pdf.setFontSize(12);
-      pdf.text('HARCCIAN Bible College', 148.5, 170, { align: 'center' });
+      pdf.text('Date: ' + today, 148.5, 185, { align: 'center' });
 
-      pdf.save('certificate.pdf');
+      // Save the PDF
+      pdf.save(name + '_Certificate.pdf');
+
+      // Show Back to Home button after download
+      document.getElementById('backButton').style.display = 'block';
+    }
+
+    function goHome() {
+      window.location.href = 'index.html';
     }
   </script>
 </body>
