@@ -7,129 +7,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    body {
-      background: #192535;
-      color: white;
-      font-family: 'Lato', Arial, sans-serif;
-      text-align: center;
-      min-height: 100vh;
-    }
-
-    .banner-container, .mainbanner-container {
-      width: 100%;
-      margin: 15px 0;
-    }
-    .banner-container img, .mainbanner-container img {
-      width: 60%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      border-radius: 8px;
-    }
-
-    .nav-container {
-      margin: 15px 0;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    body { background: #192535; color: white; font-family: 'Lato', Arial, sans-serif; text-align: center; min-height: 100vh; }
+    .banner-container, .mainbanner-container { width: 100%; margin: 15px 0; }
+    .banner-container img, .mainbanner-container img { width: 60%; height: auto; display: block; margin: 0 auto; border-radius: 8px; }
+    .nav-container { margin: 15px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
     .dropdown { position: relative; display: inline-block; }
-    
-    .menu-button {
-      display: inline-block;
-      background-color: #be2834;
-      color: white;
-      padding: 12px 20px;
-      margin: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-      font-size: 13px;
-      transition: 0.3s;
-      cursor: pointer;
-      border: none;
-      font-family: 'Cinzel', serif;
-      letter-spacing: 1px;
-    }
-    .menu-button:hover { 
-      background-color: #ffffff; 
-      color: #be2834; 
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #192535;
-      min-width: 220px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
-      z-index: 10;
-      border: 1px solid #d4af37;
-      border-radius: 4px;
-      text-align: left;
-    }
-    .dropdown-content a {
-      color: white;
-      padding: 12px 18px;
-      text-decoration: none;
-      display: block;
-      font-size: 14px;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-    }
-    .dropdown-content a:hover { 
-      background-color: #be2834; 
-      color: white; 
-    }
+    .menu-button { display: inline-block; background-color: #be2834; color: white; padding: 12px 20px; margin: 5px; text-decoration: none; font-weight: bold; border-radius: 5px; font-size: 13px; transition: 0.3s; cursor: pointer; border: none; font-family: 'Cinzel', serif; letter-spacing: 1px; }
+    .menu-button:hover { background-color: #ffffff; color: #be2834; }
+    .dropdown-content { display: none; position: absolute; background-color: #192535; min-width: 220px; box-shadow: 0px 8px 16px rgba(0,0,0,0.6); z-index: 10; border: 1px solid #d4af37; border-radius: 4px; text-align: left; }
+    .dropdown-content a { color: white; padding: 12px 18px; text-decoration: none; display: block; font-size: 14px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+    .dropdown-content a:hover { background-color: #be2834; color: white; }
     .dropdown:hover .dropdown-content { display: block; }
-
-    .menu-divider {
-      border: 0;
-      height: 1px;
-      background: #d4af37;
-      width: 80%;
-      margin: 15px auto;
-    }
-
-    /* THE NOTICE BOX */
-    .notice-box {
-      background-color: #be2834;
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: bold;
-      padding: 25px 40px;
-      margin: 30px auto;
-      max-width: 700px;
-      border-radius: 8px;
-      line-height: 1.7;
-      border-left: 8px solid #ffd700;
-      border-right: 8px solid #ffd700;
-    }
-
-    /* THE LETTER BOX */
-    .letter-box {
-      max-width: 850px;
-      width: 92%;
-      margin: 40px auto;
-      padding: 50px 60px;
-      background: #fdfcf7;
-      color: #192535;
-      border-radius: 4px;
-      border: 1.5px solid #d4af37;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-      text-align: left;
-    }
+    .menu-divider { border: 0; height: 1px; background: #d4af37; width: 80%; margin: 15px auto; }
+    .notice-box { background-color: #be2834; color: #ffffff; font-size: 14px; font-weight: bold; padding: 25px 40px; margin: 30px auto; max-width: 700px; border-radius: 8px; line-height: 1.7; border-left: 8px solid #ffd700; border-right: 8px solid #ffd700; }
+    .letter-box { max-width: 850px; width: 92%; margin: 40px auto; padding: 50px 60px; background: #fdfcf7; color: #192535; border-radius: 4px; border: 1.5px solid #d4af37; box-shadow: 0 30px 60px rgba(0,0,0,0.6); text-align: left; }
     .letter-header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #be2834; padding-bottom: 20px; }
     .letter-header h2 { font-family: 'Cinzel', serif; font-size: 28px; color: #be2834; letter-spacing: 3px; }
     .quote-container { margin: 35px 0; background: #192535; padding: 30px; border: 3px solid #d4af37; border-radius: 8px; text-align: center; color: #ffd700; font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; }
     .signature-block { margin-top: 40px; text-align: right; }
     .signature-name { font-family: 'Great Vibes', cursive; font-size: 48px; color: #be2834; }
-
-    /* APPLY BOX */
-    .apply-box { max-width: 850px; width: 92%; margin: 0 auto 60px auto; background: linear-gradient(135deg, #be2834, #192535); border: 3px solid #d4af37; border-radius: 8px; padding: 50px 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); text-align: center;}
+    .apply-box { max-width: 850px; width: 92%; margin: 0 auto 60px auto; background: linear-gradient(135deg, #be2834, #192535); border: 3px solid #d4af37; border-radius: 8px; padding: 50px 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
     .apply-btn { display: inline-block; background: #ffd700; color: #192535; font-family: 'Cinzel', serif; padding: 18px 50px; border-radius: 5px; text-decoration: none; font-weight: 900; }
-
-    /* FOOTER */
     .hbc-footer { background: linear-gradient(135deg, #be2834, #192535); border-top: 4px solid #d4af37; padding: 25px 20px; font-size: 0.8rem; }
   </style>
 </head>
@@ -152,39 +50,23 @@
         <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
       </div>
     </div>
-    
     <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
     <a href="about.html" class="menu-button">ABOUT</a>
-    
     <div class="dropdown">
       <a href="alumni.html" class="menu-button">ALUMNI ▾</a>
       <div class="dropdown-content">
         <a href="fraternities.html">FRATERNITIES</a>
       </div>
     </div>
-    
     <a href="courses.html" class="menu-button">COURSES</a>
-
-    <div class="dropdown">
-      <a href="entrancetest.html" class="menu-button">APPLY ▾</a>
-      <div class="dropdown-content">
-        <a href="entrancetest.html">ENTRANCE EXAMINATION</a>
-        <a href="apply.html">OFFICIAL APPLICATION</a>
-      </div>
-    </div>
+    
+    <a href="entrancetest.html" class="menu-button">APPLY</a>
 
     <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
     <a href="shop.html" class="menu-button">SHOP</a>
   </nav>
 
   <hr class="menu-divider">
-
-  <div class="ai-disclaimer" style="background: linear-gradient(135deg, #192535, #be2834); color: #ffffff; border: 3px solid #be2834; box-shadow: 0 10px 25px rgba(0,0,0,0.5); padding: 30px; text-align: left; border-radius: 12px; margin: 30px auto; font-size: 16px; line-height: 1.8; max-width: 850px; width: 92%;">
-    <h2 style="color: #ffffff; text-shadow: 1px 1px 2px #000000; font-size: 26px; margin-bottom: 20px; font-family: 'Cinzel', serif;">🤖 AI Transparency & Legal Disclaimer</h2>
-    <p style="margin-bottom: 15px;"><span style="font-weight:bold; color:#ffd700;">Important Notice:</span> Harccian™ is a <span style="font-weight:bold; color:#ffd700;">virtual, online platform</span>. All images, videos, and media presented on this website are <span style="font-weight:bold; color:#ffd700;">AI-generated</span> for illustrative purposes.</p>
-    <p style="margin-bottom: 15px;">By using this website, you acknowledge that all content is AI-generated and Harccian™ is a <span style="font-weight:bold; color:#ffd700;">non-accredited, virtual platform</span>.</p>
-    <p style="font-style:italic; color:#ffd700; border-top: 1px solid rgba(255,215,0,0.3); padding-top: 15px;">Harccian™ — Committed to transparency and honesty in all content.</p>
-  </div>
 
   <div class="mainbanner-container">
     <img src="MAINBANNER.jpeg" alt="HARCCIAN Main Banner">
@@ -213,8 +95,7 @@
 
   <div class="apply-box">
     <h2 style="color: #ffd700; font-family: 'Cinzel', serif; font-size: 36px; margin-bottom: 15px;">APPLY TODAY</h2>
-    <p style="color: white; margin-bottom: 25px; font-family: 'Lato', sans-serif;">All prospective students must first complete the Entrance Examination.</p>
-    <a href="entrancetest.html" class="apply-btn">BEGIN ENTRANCE TEST →</a>
+    <a href="entrancetest.html" class="apply-btn">BEGIN YOUR APPLICATION →</a>
   </div>
 
   <footer class="hbc-footer">
