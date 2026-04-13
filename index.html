@@ -301,7 +301,6 @@
       <a href="courses.html" class="menu-button">COURSES ▾</a>
       <div class="dropdown-content">
         <a href="courses.html">ALL COURSES</a>
-        <a href="myharccian.html">My Harccian</a>
       </div>
     </div>
     <div class="dropdown">
@@ -353,17 +352,6 @@
     <a href="entrancetest.html" class="apply-btn">BEGIN YOUR ENTRANCE TEST →</a>
   </div>
 
-  <div style="margin:40px auto; max-width:900px; padding:20px;">
-    <div style="border: 3px solid red; border-radius:8px; padding:20px; max-width:400px; margin:auto;">
-      <h3 style="color:#ffd700; font-family:'Cinzel', serif;">Student Log In</h3>
-      <form id="loginForm" onsubmit="return handleLogin(event)">
-        <input type="text" id="studentNumber" placeholder="Enter your Student Number" value="123456" required style="padding:10px; font-size:1em; border-radius:5px; border:none; width:100%; max-width:250px; text-align:center;" />
-        <button type="submit" style="background-color:#be2834; color:#fff; padding:12px 20px; border:none; border-radius:5px; font-family:'Cinzel', serif; font-size:1.2em; cursor:pointer; margin-top:15px;">Log In</button>
-      </form>
-      <div id="loginMessage" style="margin-top:15px; font-family:'Lato', sans-serif; font-size:1em; color:#ffd700; text-align:center;"></div>
-    </div>
-  </div>
-
   <footer class="hbc-footer">
     <div class="footer-content">
       <div class="footer-trademark">
@@ -381,16 +369,5 @@
     </div>
   </footer>
 
-  <script>
-    function handleLogin(e) {
-      e.preventDefault();
-      const num = document.getElementById('studentNumber').value.trim();
-      if (num === '123456') {
-        window.location.href = 'myharccian.html';
-      } else {
-        document.getElementById('loginMessage').innerHTML = "Invalid Student Number. Please try again.";
-      }
-    }
-  </script>
 </body>
 </html>
