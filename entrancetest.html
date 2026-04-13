@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Harccian Entrance Exam</title>
 
 <style>
@@ -16,79 +15,61 @@ body {
 }
 
 .container {
-    background: #1c1c1c;
-    padding: 25px;
     max-width: 900px;
     margin: auto;
+    background: #1c1c1c;
+    padding: 20px;
     border-radius: 10px;
 }
 
-h1, h2 {
-    text-align: center;
-}
-
-/* WARNING BOX */
 .warning {
-    background: #8b0000;
-    padding: 15px;
+    background: darkred;
+    padding: 12px;
     text-align: center;
+    margin-bottom: 15px;
     font-weight: bold;
-    margin-bottom: 20px;
-    border: 2px solid red;
 }
 
-/* Progress Bar */
 .progress-bar {
     width: 100%;
     background: #333;
     border-radius: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .progress {
-    height: 20px;
+    height: 18px;
     width: 0%;
     background: red;
     border-radius: 20px;
 }
 
 .question {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin: 5px 0;
+    margin-bottom: 15px;
 }
 
 button {
-    padding: 15px;
-    width: 100%;
+    padding: 12px;
+    width: 48%;
+    margin-top: 10px;
     background: red;
     color: white;
     border: none;
-    font-size: 16px;
     cursor: pointer;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
 }
 </style>
 
 <script>
-// 🚫 Anti-Cheat Protections
-
-// Disable right click
+// Anti-cheat
 document.addEventListener("contextmenu", e => e.preventDefault());
-
-// Disable keys (inspect, copy, etc)
-document.onkeydown = function(e) {
-    if (
-        e.keyCode == 123 || // F12
-        (e.ctrlKey && e.shiftKey && e.keyCode == 73) || // Ctrl+Shift+I
-        (e.ctrlKey && e.keyCode == 85) || // Ctrl+U
-        (e.ctrlKey && e.keyCode == 67) || // Ctrl+C
-        (e.ctrlKey && e.keyCode == 65) // Ctrl+A
-    ) {
-        alert("⚠️ SECURITY WARNING: Tampering detected. Exam will be terminated.");
-        window.location.href = "index.html";
+document.onkeydown = function(e){
+    if(e.keyCode==123 || (e.ctrlKey && e.shiftKey && e.keyCode==73)){
+        window.location.href="index.html";
         return false;
     }
 };
@@ -100,181 +81,153 @@ document.onkeydown = function(e) {
 
 <div class="container">
 
-<h1>HARCCIAN ENTRANCE EXAM</h1>
-
 <div class="warning">
-⚠️ SECURITY WARNING ⚠️ <br>
-Any attempt to inspect, copy, or tamper with this exam will result in immediate termination.
+⚠️ SECURITY WARNING: Any tampering will terminate the exam
 </div>
 
 <div class="progress-bar">
 <div class="progress" id="progress"></div>
 </div>
 
-<p><strong>This exam must be completed in ONE sitting. Progress will NOT be saved.</strong></p>
+<h2>HARCCIAN ENTRANCE EXAM</h2>
 
-<form id="examForm">
+<div id="page"></div>
 
-<!-- QUESTIONS -->
-<div id="questions"></div>
+<div class="nav">
+<button onclick="prevPage()">Back</button>
+<button onclick="nextPage()">Next</button>
+</div>
 
-<button type="button" onclick="submitExam()">Submit Exam</button>
-
-</form>
+<button style="width:100%; margin-top:10px;" onclick="submitExam()">Submit Exam</button>
 
 </div>
 
 <script>
 
-// ANSWERS
-const answers = [
-"B","B","B","B","B","B","B","B","B","B",
-"B","B","B","B","A","B","B","B","A","A",
-"B","B","B","A","A",
-"B","A","B","A","B","B","B","B","A","C",
-"A","B","B","B","B","B","B","B","A","B",
-"B","B","B","A","B","B",
-"B","B","B","B","B","B","B","B","C","C",
-"C","B","B","B","B","B","B","B","B","C"
-];
-
-// FULL QUESTIONS TEXT
+// ---------------------- QUESTIONS ----------------------
 const questions = [
-"He doesn’t like apples",
-"Correct spelling of Receive",
-"She is going to school",
-"Noun in sentence (cowboy)",
-"Correct punctuation It's",
-"They are playing",
-"Past tense ran",
-"She has a book",
-"Verb barked",
-"There are many people",
-"Correct spelling Definitely",
-"I saw him yesterday",
-"Adjective big",
-"Don't go there",
-"He has finished",
-"Plural children",
-"We were late",
-"Pronoun him",
-"I am going",
-"Correct spelling Separate",
-"They have arrived",
-"Adverb quickly",
-"Who's there",
-"She is happy",
-"I did nothing",
+"He doesn’t like apples","Receive spelling","She is going","Cowboy noun","Its raining",
+"They are playing","Past tense run","She has book","Verb barked","There are people",
+"Definitely spelling","I saw him","Adjective big","Dont go","Has finished",
+"Plural child","We were late","Pronoun him","I am going","Separate spelling",
+"They have arrived","Adverb quickly","Who’s there","She is happy","I did nothing",
 
-"God created world",
-"Noah built ark",
-"6 days creation",
-"Adam first man",
-"Eve first woman",
-"Moses led Israel",
-"Red Sea Moses",
-"David defeated Goliath",
-"Jonah swallowed",
-"Bethlehem birth",
-"Mary mother",
-"John baptized",
-"12 disciples",
-"Judas betrayed",
-"3 days tomb",
-"Genesis first book",
-"Revelation last book",
-"David Psalms",
-"Daniel lions den",
-"Joseph dreams",
-"Water to wine",
-"Peter walked water",
-"Love God",
-"Bible is Word of God",
-"Jesus Son of God",
+"God created world","Noah ark","6 days creation","Adam","Eve",
+"Moses Israel","Red Sea","David Goliath","Jonah fish","Bethlehem",
+"Mary","John Baptist","12 disciples","Judas","3 days tomb",
+"Genesis","Revelation","Psalms","Daniel lions","Joseph dreams",
+"Water wine","Peter water","Love God","Bible Word","Jesus Son",
 
-"HBC Harccian Bible College",
-"Motto Fides et Excellentia",
-"Not accredited",
-"Independent online platform",
-"Biblical training focus",
-"Non-accredited courses",
-"Rigorous study",
-"Fully online",
-"Self governed",
-"No affiliation",
-"Internal recognition",
-"Spiritual growth",
-"Started in India",
-"Removes financial barriers",
-"Disciplined environment",
-"Serious students",
-"Founder reviews AI",
-"AI support only",
-"Minimal data collection",
-"Never shares data",
-"Google storage",
-"All must follow privacy",
-"Volunteer unpaid",
-"Alumni after 1 year",
-"Internal achievement"
+"HBC","Motto","Accredited?","Harccian","Focus",
+"Course type","Study","Platform","Govern","Affiliated",
+"Certificates","Why study","Started","Barrier","Environment",
+"Who for","AI review","AI role","Data","Share",
+"Storage","Rules","Volunteers","Alumni","Meaning"
 ];
 
-// Render questions
-const container = document.getElementById("questions");
+// ---------------------- ANSWERS ----------------------
+const answers = [
+"B","B","B","B","B",
+"B","B","B","B","B",
+"B","B","B","B","A",
+"B","B","B","A","A",
+"B","B","B","A","A",
 
-for (let i = 0; i < questions.length; i++) {
-    let div = document.createElement("div");
-    div.classList.add("question");
+"B","A","B","A","B",
+"B","B","B","A","C",
+"A","B","B","B","B",
+"B","B","B","A","B",
+"B","B","B","A","B",
 
-    div.innerHTML = `
-        <p><strong>Question ${i+1}:</strong> ${questions[i]}</p>
-        <label><input type="radio" name="q${i}" value="A"> A</label>
-        <label><input type="radio" name="q${i}" value="B"> B</label>
-        <label><input type="radio" name="q${i}" value="C"> C</label>
-    `;
+"B","B","B","B","B",
+"B","B","C","C","C",
+"B","B","B","B","B",
+"B","B","B","B","C",
+"C","B","B","B","C"
+];
 
-    container.appendChild(div);
-}
+// ---------------------- STATE ----------------------
+let page = 0;
+const perPage = 25;
+let storedAnswers = new Array(75).fill(null);
 
-// Progress tracking
-document.addEventListener("change", () => {
-    let answered = 0;
+// ---------------------- RENDER ----------------------
+function render(){
+    let start = page * perPage;
+    let end = start + perPage;
 
-    for (let i = 0; i < 75; i++) {
-        if (document.querySelector(`input[name="q${i}"]:checked`)) {
-            answered++;
-        }
+    let html = "";
+
+    for(let i=start;i<end;i++){
+        html += `
+        <div class="question">
+            <p><strong>Question ${i+1}:</strong> ${questions[i]}</p>
+            <label><input type="radio" name="q${i}" value="A" onchange="save(${i},'A')"> A</label>
+            <label><input type="radio" name="q${i}" value="B" onchange="save(${i},'B')"> B</label>
+            <label><input type="radio" name="q${i}" value="C" onchange="save(${i},'C')"> C</label>
+        </div>
+        `;
     }
 
-    let percent = (answered / 75) * 100;
-    document.getElementById("progress").style.width = percent + "%";
-});
+    document.getElementById("page").innerHTML = html;
 
-// Submit
-function submitExam() {
-    let score = 0;
+    updateProgress();
+}
 
-    for (let i = 0; i < 75; i++) {
-        let selected = document.querySelector(`input[name="q${i}"]:checked`);
+// ---------------------- SAVE ANSWERS ----------------------
+function save(i,val){
+    storedAnswers[i] = val;
+    updateProgress();
+}
 
-        if (!selected) {
+// ---------------------- PROGRESS ----------------------
+function updateProgress(){
+    let answered = storedAnswers.filter(x=>x!==null).length;
+    document.getElementById("progress").style.width = (answered/75*100)+"%";
+}
+
+// ---------------------- NAV ----------------------
+function nextPage(){
+    if(page < 2){
+        page++;
+        render();
+    }
+}
+
+function prevPage(){
+    if(page > 0){
+        page--;
+        render();
+    }
+}
+
+// ---------------------- SUBMIT ----------------------
+function submitExam(){
+    for(let i=0;i<75;i++){
+        if(!storedAnswers[i]){
             alert("You must answer ALL questions.");
             return;
         }
+    }
 
-        if (selected.value === answers[i]) {
+    let score = 0;
+
+    for(let i=0;i<75;i++){
+        if(storedAnswers[i] === answers[i]){
             score++;
         }
     }
 
-    if (score >= 68) {
-        alert("PASS — You may proceed.");
-        window.location.href = "apply1.html";
+    if(score >= 68){
+        alert("PASS: 90% achieved. Redirecting...");
+        window.location.href="apply1.html";
     } else {
-        alert("FAIL — You need 90%.");
+        alert("FAIL: You may retry the exam.");
     }
 }
 
+// init
+render();
 </script>
 
 </body>
