@@ -14,20 +14,20 @@
 
   body { font-family: 'Lato', sans-serif; background-color: #000; overflow-x: hidden; color: var(--navy); }
 
-  /* Banner static image (no animation) */
+  /* Fixed size banner image at top */
   .banner {
     margin-top: 20px;
     display: flex;
     justify-content: center;
   }
   .banner img {
-    width: 1200px; /* same as your original PNG size */
     max-width: 100%;
-    height: auto;
+    width: 1200px; /* fixed width matching your PNG size */
+    height: auto; /* maintains aspect ratio */
     display: block;
   }
 
-  /* MENU STYLES - EXACT MATCH TO HOME */
+  /* Menu styles */
   .nav-container { margin: 15px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
   .dropdown { position: relative; display: inline-block; }
   .menu-button {
@@ -57,14 +57,6 @@
     border: 1px solid #d4af37;
     border-radius: 4px;
   }
-  .dropdown-content a {
-    color: white;
-    padding: 12px 18px;
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-  }
   .dropdown:hover .dropdown-content { display: block; }
   .menu-divider {
     border: 0;
@@ -74,19 +66,19 @@
     margin: 15px auto;
   }
 
-  /* PAGE CONTENT */
+  /* Page content styles */
   .content-section { max-width: 900px; width: 92%; margin: 50px auto; padding: 40px; background: #fdfcf7; color: #192535; border-radius: 4px; text-align: left; border: 1.5px solid #d4af37; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
   .content-section h2 { font-family: 'Cinzel', serif; color: #be2834; border-bottom: 2px solid #be2834; margin: 25px 0 15px 0; padding-bottom: 5px; }
 </style>
 </head>
 <body>
 
-<!-- PROSPECTUS IMAGE STATIC BANNER -->
+<!-- THE TOP IMAGE FIXED SIZE -->
 <div class="banner">
   <img src="prospectus.jpg" alt="Prospectus Banner" />
 </div>
 
-<!-- Your Menu -->
+<!-- MAIN MENU -->
 <hr class="menu-divider" />
 <nav class="nav-container">
   <div class="dropdown">
@@ -117,7 +109,7 @@
 </nav>
 <hr class="menu-divider" />
 
-<!-- Rest of your content -->
+<!-- PAGE CONTENT STARTS HERE -->
 <div class="content-section">
   <h1 style="font-family: 'Cinzel', serif; text-align: center; color: #be2834;">2026 PROSPECTUS</h1>
   <h2>Academic Vision</h2>
@@ -126,6 +118,25 @@
   <h2>Course Focus</h2>
   <p>Our curriculum covers everything from Foundational Theology to Kingdom Leadership, specifically designed for those who cannot attend a physical campus but desire a high standard of education.</p>
 </div>
+
+<!-- Optional: Add your scripts here if needed -->
+<script>
+  let currentPage = 0;
+  const container = document.getElementById('journey');
+  function movePage(direction) {
+    currentPage += direction;
+    container.style.transform = `translateX(-${currentPage * 100}vw)`;
+  }
+  function setLvl(lvl) {
+    const d = document.getElementById('courseDisplay');
+    const a = document.getElementById('lvlAward');
+    const c = document.getElementById('lvlCost');
+    const p = document.getElementById('lvlPre');
+    if(lvl === 1) { d.style.borderTopColor = 'var(--level1)'; a.innerText="Harccian Certificate of Completion"; c.innerText="TUITION: FREE"; p.innerText="PREREQUISITE: Open Enrollment"; }
+    else if(lvl === 2) { d.style.borderTopColor = 'var(--level2)'; a.innerText="Harccian Advanced Certificate"; c.innerText="TUITION: Region Specific"; p.innerText="PREREQUISITE: Level I Completion"; }
+    else { d.style.borderTopColor = 'var(--level3)'; a.innerText="Harccian Mastery Certificate"; c.innerText="TUITION: Region Specific"; p.innerText="PREREQUISITE: Level II & Approval"; }
+  }
+</script>
 
 </body>
 </html>
