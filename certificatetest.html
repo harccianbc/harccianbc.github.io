@@ -20,6 +20,10 @@
       font-size: 36px;
       margin-bottom: 30px;
     }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
     input {
       padding: 14px;
       font-size: 17px;
@@ -62,26 +66,26 @@
       margin-top: 40px;
       font-size: 14px;
       color: #d4af37;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
     }
   </style>
 </head>
 <body>
-  <h1>Certificate Test</h1>
-  
-  <input id="studentName" type="text" placeholder="Enter your full name">
-  <br>
-  <button class="download-btn" onclick="generateCert()">Download PDF Certificate</button>
-  
-  <div id="backButton" style="display: none; margin-top: 30px;">
+  <div class="container">
+    <h1>Certificate Test</h1>
+    
+    <input id="studentName" type="text" placeholder="Enter your full name">
+    <br><br>
+    
+    <button class="download-btn" onclick="generateCert()">Download PDF Certificate</button>
+    
+    <!-- Back to Home button - always visible -->
+    <br><br>
     <button class="home-btn" onclick="goHome()">← Back to Home</button>
-  </div>
 
-  <div class="notice">
-    All certificates are for participation only.<br>
-    Make sure <strong>h4logo.png</strong> is uploaded in the same folder.
+    <div class="notice">
+      All certificates are for participation only.<br>
+      Make sure the file <strong>h4logo.png</strong> is uploaded in the same folder.
+    </div>
   </div>
 
   <script>
@@ -100,11 +104,11 @@
       pdf.setLineWidth(5);
       pdf.rect(10, 10, 277, 190);
 
-      // Add Logo (h4logo.png)
+      // Add Logo at the top
       try {
-        pdf.addImage('h4logo.png', 'PNG', 118, 22, 60, 45);   // x, y, width, height
+        pdf.addImage('h4logo.png', 'PNG', 118, 22, 60, 45);  // centered logo
       } catch(e) {
-        console.log("Logo not found - continuing without logo");
+        console.log("Logo could not be loaded");
       }
 
       // Title
@@ -133,13 +137,10 @@
       // Date
       const today = new Date().toLocaleDateString('en-GB');
       pdf.setFontSize(12);
-      pdf.text('Date: ' + today, 148.5, 185, { align: 'center' });
+      pdf.text('Issued on: ' + today, 148.5, 185, { align: 'center' });
 
-      // Save the PDF
-      pdf.save(name + '_Certificate.pdf');
-
-      // Show Back to Home button after download
-      document.getElementById('backButton').style.display = 'block';
+      // Save PDF
+      pdf.save(name + '_HARCCIAN_Certificate.pdf');
     }
 
     function goHome() {
