@@ -9,7 +9,7 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #192535; color: white; font-family: 'Lato', sans-serif; text-align: center; }
 
-  /* Banner style for the image */
+  /* Banner style for the image - set to same size as original PNG */
   .banner {
     width: 100%;
     display: flex;
@@ -17,8 +17,9 @@
     margin-top: 20px;
   }
   .banner img {
-    max-width: 100%;
-    height: auto;
+    width: 1200px; /* same as your PNG size */
+    height: 300px; /* same as your PNG size */
+    object-fit: cover; /* optional: crop if needed */
   }
 
   /* MENU STYLES - EXACT MATCH TO HOME */
@@ -49,12 +50,25 @@
     box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
     z-index: 10;
     border: 1px solid #d4af37;
+    border-radius: 4px;
     text-align: left;
   }
-  .dropdown-content a { color: white; padding: 12px 18px; text-decoration: none; display: block; font-size: 14px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+  .dropdown-content a {
+    color: white;
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  }
   .dropdown:hover .dropdown-content { display: block; }
-  .menu-divider { border: 0; height: 1px; background: #d4af37; width: 80%; margin: 15px auto; }
-
+  .menu-divider {
+    border: 0;
+    height: 1px;
+    background: #d4af37;
+    width: 80%;
+    margin: 15px auto;
+  }
   /* PAGE CONTENT */
   .content-section { max-width: 900px; width: 92%; margin: 50px auto; padding: 40px; background: #fdfcf7; color: #192535; border-radius: 4px; text-align: left; border: 1.5px solid #d4af37; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
   .content-section h2 { font-family: 'Cinzel', serif; color: #be2834; border-bottom: 2px solid #be2834; margin: 25px 0 15px 0; padding-bottom: 5px; }
@@ -62,12 +76,12 @@
 </head>
 <body>
 
-<!-- Banner image acting as a header/banner -->
+<!-- Prospectus Banner Image at the top -->
 <div class="banner">
-  <img src="prospectus.jpg" alt="Prospectus Banner">
+  <img src="prospectus.jpg" alt="Prospectus Banner" />
 </div>
 
-<!-- Your menu -->
+<!-- Navigation Menu -->
 <hr class="menu-divider" />
 <nav class="nav-container">
   <div class="dropdown">
@@ -98,7 +112,7 @@
 </nav>
 <hr class="menu-divider" />
 
-<!-- Rest of your content -->
+<!-- Your main content -->
 <div class="content-section">
   <h1 style="font-family: 'Cinzel', serif; text-align: center; color: #be2834;">2026 PROSPECTUS</h1>
   <h2>Academic Vision</h2>
