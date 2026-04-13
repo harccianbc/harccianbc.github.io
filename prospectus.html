@@ -1,216 +1,413 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harccian Bible College | Prospectus 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-<style>
-  :root { 
-    --navy: #192535; --red: #be2834; --gold: #d4af37; --white: #fdfcf7; 
-    --level1: #2e7d32; --level2: #1565c0; --level3: #be2834;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HARCCIAN Bible College | Prospectus 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #192535; --red: #be2834; --gold: #d4af37; --white: #fdfcf7;
+      --level1: #2e7d32; --level2: #1565c0; --level3: #be2834;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body { font-family: 'Lato', sans-serif; background-color: #000; overflow: hidden; color: var(--navy); }
+    body {
+      background: #192535;
+      color: white;
+      font-family: 'Lato', Arial, sans-serif;
+      text-align: center;
+      min-height: 100vh;
+    }
 
-  .journey-container { width: 100vw; height: 100vh; display: flex; transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1); }
+    /* --- HEADER / NAV --- */
+    .banner-container {
+      width: 100%;
+      margin: 15px 0;
+    }
+    .banner-container img {
+      width: 60%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
+    .nav-container {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .dropdown { position: relative; display: inline-block; }
+    .menu-button {
+      display: inline-block;
+      background-color: #be2834;
+      color: white;
+      padding: 12px 20px;
+      margin: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      font-size: 13px;
+      transition: 0.3s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
+    }
+    .menu-button:hover { background-color: #ffffff; color: #be2834; }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #192535;
+      min-width: 220px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+      z-index: 100;
+      border: 1px solid #d4af37;
+      border-radius: 4px;
+      text-align: left;
+    }
+    .dropdown:hover .dropdown-content { display: block; }
+    .dropdown-content a {
+      color: white;
+      padding: 12px 18px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .dropdown-content a:hover { background-color: #be2834; color: white; }
+    .menu-divider {
+      border: 0;
+      height: 1px;
+      background: #d4af37;
+      width: 80%;
+      margin: 15px auto;
+    }
 
-  section {
-    min-width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: center;
-    align-items: center; padding: 40px; background-color: var(--white); position: relative;
-    border: 20px solid var(--navy); outline: 2px solid var(--gold); outline-offset: -10px;
-  }
+    /* --- PROSPECTUS SLIDER --- */
+    .prospectus-wrapper {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      background: #000;
+    }
+    .journey-container {
+      display: flex;
+      transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    .slide {
+      min-width: 100vw;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background-color: var(--white);
+      position: relative;
+      border: 20px solid var(--navy);
+      outline: 2px solid var(--gold);
+      outline-offset: -10px;
+      color: var(--navy);
+    }
 
-  @keyframes slowReveal { 0% { opacity: 0; transform: translateY(10px); filter: blur(8px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0); } }
-  .reveal-1 { animation: slowReveal 1.5s ease-out forwards; }
-  .reveal-2 { animation: slowReveal 1.5s ease-out 1.2s both; }
-  .reveal-3 { animation: slowReveal 1.5s ease-out 2.4s both; }
-  .reveal-btn { animation: slowReveal 1s ease-out 3.5s both; }
+    @keyframes slowReveal {
+      0% { opacity: 0; transform: translateY(10px); filter: blur(8px); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+    .reveal-1 { animation: slowReveal 1.5s ease-out forwards; }
+    .reveal-2 { animation: slowReveal 1.5s ease-out 1.2s both; }
+    .reveal-3 { animation: slowReveal 1.5s ease-out 2.4s both; }
+    .reveal-btn { animation: slowReveal 1s ease-out 3.5s both; }
 
-  .info-card { 
-    background: white; padding: 40px; border-left: 12px solid var(--red); 
-    box-shadow: 15px 15px 40px rgba(0,0,0,0.1); max-width: 950px; 
-    text-align: left; overflow-y: auto; max-height: 75vh;
-  }
-  h2 { font-family: 'Cinzel'; font-size: 28px; color: var(--red); margin-bottom: 20px; text-transform: uppercase; text-align: center; }
-  p { font-size: 17px; line-height: 1.6; margin-bottom: 15px; color: var(--navy); }
-  .bold-navy { color: var(--navy); font-weight: 900; }
-  .highlight-red { color: var(--red); font-weight: 900; }
+    .info-card {
+      background: white;
+      padding: 40px;
+      border-left: 12px solid var(--red);
+      box-shadow: 15px 15px 40px rgba(0,0,0,0.1);
+      max-width: 950px;
+      text-align: left;
+      overflow-y: auto;
+      max-height: 75vh;
+    }
+    .info-card h2 {
+      font-family: 'Cinzel';
+      font-size: 28px;
+      color: var(--red);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .info-card p {
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: var(--navy);
+    }
+    .bold-navy { color: var(--navy); font-weight: 900; }
+    .highlight-red { color: var(--red); font-weight: 900; }
 
-  .nav-btn { 
-    position: absolute; bottom: 40px; right: 40px; background: var(--red); color: white; 
-    padding: 18px 40px; border: none; font-family: 'Cinzel'; font-weight: 900; cursor: pointer; 
-    font-size: 18px; box-shadow: 6px 6px 0 var(--gold); transition: 0.2s; z-index: 10; 
-  }
-  .nav-btn:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--navy); }
-  .prev-btn { right: auto; left: 40px; background: var(--navy); box-shadow: 6px 6px 0 var(--red); }
+    .slide-nav-btn {
+      position: absolute;
+      bottom: 30px;
+      right: 40px;
+      background: var(--red);
+      color: white;
+      padding: 15px 35px;
+      border: none;
+      font-family: 'Cinzel';
+      font-weight: 900;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 6px 6px 0 var(--gold);
+      transition: 0.2s;
+      z-index: 10;
+    }
+    .slide-nav-btn:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--navy); }
+    .prev-btn { right: auto; left: 40px; background: var(--navy); box-shadow: 6px 6px 0 var(--red); }
 
-  .page-indicator {
-    position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);
-    display: flex; gap: 10px; z-index: 10;
-  }
-  .dot {
-    width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3);
-    border: 1px solid var(--gold); cursor: pointer; transition: 0.3s;
-  }
-  .dot.active { background: var(--gold); }
+    .motto-fixed {
+      font-family: 'Great Vibes', cursive;
+      font-size: 55px;
+      margin-top: 15px;
+      color: var(--red);
+      text-shadow: 0 0 15px rgba(190, 40, 52, 0.4);
+    }
+    .grid-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+    .stat-list { list-style: none; font-size: 15px; font-weight: 700; line-height: 1.6; }
+    .stat-list li::before { content: "◈ "; color: var(--red); }
 
-  .motto-fixed { font-family: 'Great Vibes', cursive; font-size: 55px; margin-top: 15px; color: var(--red); text-shadow: 0 0 15px rgba(190, 40, 52, 0.4); font-weight: 400; }
-  .grid-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
-  .stat-list { list-style: none; font-size: 15px; font-weight: 700; line-height: 1.6; }
-  .stat-list li::before { content: "◈ "; color: var(--red); }
-</style>
+    /* --- FOOTER --- */
+    .hbc-footer {
+      background: linear-gradient(135deg, #be2834, #192535);
+      border-top: 3px solid #d4af37;
+      color: rgba(255,255,255,0.85);
+      padding: 12px 20px;
+      font-family: 'Lato', sans-serif;
+      text-align: center;
+      line-height: 1.5;
+      font-size: 11px;
+    }
+    .footer-divider {
+      border: 0;
+      height: 1px;
+      background: rgba(212,175,55,0.4);
+      width: 60%;
+      margin: 6px auto;
+    }
+    .footer-trademark { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: #ffd700; }
+    .footer-legal-text { font-size: 10px; color: rgba(255,255,255,0.65); max-width: 600px; margin: 0 auto; }
+    .ai-badge { margin-top: 6px; font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; }
+  </style>
 </head>
 <body>
 
-<div class="journey-container" id="journey">
+  <!-- BANNER -->
+  <div class="banner-container">
+    <img src="HARCCIAN (4).png" alt="HARCCIAN Banner" />
+  </div>
+  <hr class="menu-divider" />
 
-  <!-- SLIDE 0: SPLASH -->
-  <section style="background: var(--navy); border-color: var(--gold); text-align: center;">
-    <div class="reveal-1"><h1 style="font-family:'Great Vibes'; font-size:70px; color:var(--gold);">Welcome to</h1></div>
-    <div class="reveal-2"><h2 style="font-family:'Cinzel'; font-size:40px; color:white; letter-spacing:5px;">Harccian Bible College</h2></div>
-    <div class="reveal-3"><div style="color:var(--red); font-family:'Cinzel'; font-weight:900; font-size:36px; letter-spacing:10px; margin-top:30px;">PROSPECTUS 2026</div></div>
-    <button class="nav-btn reveal-btn" onclick="movePage(1)">ENTER ➔</button>
-  </section>
-
-  <!-- SLIDE 1: TITLE -->
-  <section style="background: linear-gradient(135deg, var(--navy) 0%, #0a0f16 100%); color:white; border-color: var(--red);">
-    <h1 style="font-family:'Cinzel'; font-size: clamp(40px, 8vw, 85px); color:var(--gold); text-align:center; line-height:1.1;">HARCCIAN<br>BIBLE COLLEGE</h1>
-    <p class="motto-fixed">Fides et Excellentia</p>
-    <div class="page-indicator" id="dots"></div>
-    <button class="nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
-    <button class="nav-btn" onclick="movePage(1)">BEGIN ➔</button>
-  </section>
-
-  <!-- SLIDE 2: ACCESSIBILITY -->
-  <section>
-    <div class="info-card">
-      <h2>Accessibility & Excellence</h2>
-      <p>Harccian is a place for <span class="bold-navy">serious study.</span> If you have a desire for deep theological truth, you are in the right place, regardless of your <span class="highlight-red">socioeconomic background.</span></p>
-      <p>We believe financial status should never hinder a calling. We welcome everyone — all ages (18+), genders, and beliefs — provided you respect our faith and learning environment.</p>
-      <div style="background: var(--navy); color: white; padding: 25px; border-radius: 8px; margin-top: 20px; border-left: 5px solid var(--gold);">
-        <p style="color: var(--gold); font-family: 'Cinzel'; font-weight: 900; margin-bottom: 10px; letter-spacing: 1px;">WORLD GRADING STANDARD</p>
-        <p style="font-size: 15px;">Our rigorous assessments follow a global excellence scale:<br>
-        <span style="color: var(--red);">POOR</span> • <span style="color: #ff9800;">AVERAGE</span> • <span style="color: #ffeb3b;">GOOD</span> • <span style="color: #4caf50;">EXCELLENT</span> • <span style="color: var(--gold);">OUTSTANDING</span></p>
+  <!-- NAV -->
+  <nav class="nav-container">
+    <div class="dropdown">
+      <a href="index.html" class="menu-button">HOME ▾</a>
+      <div class="dropdown-content">
+        <a href="mission.html">OUR MISSION</a>
+        <a href="staff.html">STAFF</a>
+        <a href="terms.html">TERMS / POLICIES</a>
+        <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
+        <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
+        <a href="certificatetest.html">CERTIFICATE TEST</a>
       </div>
     </div>
-    <div class="page-indicator" id="dots2"></div>
-    <button class="nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
-    <button class="nav-btn" onclick="movePage(1)">COURSES ➔</button>
-  </section>
-
-  <!-- SLIDE 3: COURSES -->
-  <section>
-    <div class="info-card">
-      <h2>Institutional Course Directory</h2>
-      <p>We provide a wide range of elite subjects including <span class="bold-navy">Apostolic (NT) & Hebraic (OT) Surveys</span>, chaplaincy, ethics, and ministry administration.</p>
-      <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-        <button onclick="setLvl(1)" style="flex:1; padding:12px; cursor:pointer; font-family:'Cinzel'; background:var(--level1); color:white; border:none;">LEVEL I</button>
-        <button onclick="setLvl(2)" style="flex:1; padding:12px; cursor:pointer; font-family:'Cinzel'; background:var(--level2); color:white; border:none;">LEVEL II</button>
-        <button onclick="setLvl(3)" style="flex:1; padding:12px; cursor:pointer; font-family:'Cinzel'; background:var(--level3); color:white; border:none;">LEVEL III</button>
-      </div>
-      <div id="courseDisplay" style="background: var(--navy); color: white; padding: 30px; text-align: center; border-radius: 4px; border-top: 10px solid var(--level1);">
-        <h3 id="lvlAward" style="font-family:'Cinzel'; color: var(--gold);">Harccian Certificate of Completion</h3>
-        <p id="lvlCost" style="margin-top:10px; font-size:14px; color:#ccc;">TUITION: FREE</p>
-        <p id="lvlPre" style="font-size:14px; color:#ccc;">PREREQUISITE: Open Enrollment</p>
+    <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
+    <a href="about.html" class="menu-button">ABOUT</a>
+    <div class="dropdown">
+      <a href="#" class="menu-button">ALUMNI ▾</a>
+      <div class="dropdown-content">
+        <a href="fraternities.html">FRATERNITIES</a>
       </div>
     </div>
-    <button class="nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
-    <button class="nav-btn" onclick="movePage(1)">HISTORY ➔</button>
-  </section>
-
-  <!-- SLIDE 4: HISTORY -->
-  <section>
-    <div class="info-card">
-      <h2>Our History</h2>
-      <p>The mission was tested many years ago in <span class="bold-navy">India</span>, where we provided curriculum and certificates to dedicated pastors in the field.</p>
-      <p>The vision for this Online Bible College was birthed in <span class="bold-navy">2024</span>, creating a digital bridge to <span class="highlight-red">non-accredited elite</span> theological training for the modern era.</p>
+    <div class="dropdown">
+      <a href="courses.html" class="menu-button">COURSES ▾</a>
+      <div class="dropdown-content">
+        <a href="courses.html">ALL COURSES</a>
+      </div>
     </div>
-    <button class="nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
-    <button class="nav-btn" onclick="movePage(1)">WHY HARCCIAN? ➔</button>
-  </section>
-
-  <!-- SLIDE 5: WHY HARCCIAN -->
-  <section>
-    <div class="info-card">
-      <h2>Why Harccian?</h2>
-      <p>Harccian exists to fill the gap in faith-based education with elite courses built on Scripture and calling rather than bureaucracy.</p>
-      <p><span class="bold-navy">Not everyone earns a Harccian certificate.</span> Our workload is deliberately challenging to ensure completion carries genuine weight.</p>
-      <p class="highlight-red">Note: Must be over 18 years old to apply.</p>
+    <div class="dropdown">
+      <a href="#" class="menu-button">APPLY ▾</a>
+      <div class="dropdown-content">
+        <a href="entrancetest.html">ENTRANCE EXAMINATION</a>
+        <a href="https://harccianbc.github.io/apply.html">OFFICIAL APPLICATION</a>
+      </div>
     </div>
-    <button class="nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
-    <button class="nav-btn" onclick="movePage(1)">THE FOUNDER ➔</button>
-  </section>
+    <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
+    <a href="shop.html" class="menu-button">SHOP</a>
+  </nav>
+  <hr class="menu-divider" />
 
-  <!-- SLIDE 6: THE FOUNDER -->
-  <section>
-    <div class="info-card">
-      <h2>The Founder</h2>
-      <div class="grid-stats">
-        <div>
-          <p class="highlight-red" style="font-size: 13px; letter-spacing: 1px;">PROFESSIONAL EXPERIENCE</p>
-          <ul class="stat-list">
-            <li>15 Years Ambulance Service</li>
-            <li>3.5 Years Youth Detention Worker</li>
-            <li>Emergency Medical Care & Transport</li>
-          </ul>
+  <!-- PROSPECTUS SLIDER -->
+  <div class="prospectus-wrapper">
+    <div class="journey-container" id="journey">
+
+      <!-- SLIDE 0: SPLASH -->
+      <div class="slide" style="background: var(--navy); border-color: var(--gold);">
+        <div class="reveal-1"><h1 style="font-family:'Great Vibes'; font-size:70px; color:var(--gold);">Welcome to</h1></div>
+        <div class="reveal-2"><h2 style="font-family:'Cinzel'; font-size:40px; color:white; letter-spacing:5px;">Harccian Bible College</h2></div>
+        <div class="reveal-3"><div style="color:var(--red); font-family:'Cinzel'; font-weight:900; font-size:36px; letter-spacing:10px; margin-top:30px;">PROSPECTUS 2026</div></div>
+        <button class="slide-nav-btn reveal-btn" onclick="movePage(1)">ENTER ➔</button>
+      </div>
+
+      <!-- SLIDE 1: TITLE -->
+      <div class="slide" style="background: linear-gradient(135deg, var(--navy) 0%, #0a0f16 100%); color:white; border-color: var(--red);">
+        <h1 style="font-family:'Cinzel'; font-size: clamp(40px, 8vw, 85px); color:var(--gold); text-align:center; line-height:1.1;">HARCCIAN<br>BIBLE COLLEGE</h1>
+        <p class="motto-fixed">Fides et Excellentia</p>
+        <button class="slide-nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
+        <button class="slide-nav-btn" onclick="movePage(1)">BEGIN ➔</button>
+      </div>
+
+      <!-- SLIDE 2: ACCESSIBILITY -->
+      <div class="slide">
+        <div class="info-card">
+          <h2>Accessibility & Excellence</h2>
+          <p>Harccian is a place for <span class="bold-navy">serious study.</span> If you have a desire for deep theological truth, you are in the right place, regardless of your <span class="highlight-red">socioeconomic background.</span></p>
+          <p>We believe financial status should never hinder a calling. We welcome everyone — all ages (18+), genders, and beliefs — provided you respect our faith and learning environment.</p>
+          <div style="background: var(--navy); color: white; padding: 25px; border-radius: 8px; margin-top: 20px; border-left: 5px solid var(--gold);">
+            <p style="color: var(--gold); font-family: 'Cinzel'; font-weight: 900; margin-bottom: 10px; letter-spacing: 1px;">WORLD GRADING STANDARD</p>
+            <p style="font-size: 15px;">Our rigorous assessments follow a global excellence scale:<br>
+            <span style="color: var(--red);">POOR</span> • <span style="color: #ff9800;">AVERAGE</span> • <span style="color: #ffeb3b;">GOOD</span> • <span style="color: #4caf50;">EXCELLENT</span> • <span style="color: var(--gold);">OUTSTANDING</span></p>
+          </div>
         </div>
-        <div>
-          <p class="highlight-red" style="font-size: 13px; letter-spacing: 1px;">MINISTRY EXPERIENCE</p>
-          <ul class="stat-list">
-            <li>Ordained Minister (3 Years)</li>
-            <li>Lay Pastor (3.5 Years)</li>
-            <li>Executive & Associate Minister</li>
-          </ul>
-        </div>
+        <button class="slide-nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
+        <button class="slide-nav-btn" onclick="movePage(1)">COURSES ➔</button>
       </div>
+
+      <!-- SLIDE 3: COURSES -->
+      <div class="slide">
+        <div class="info-card">
+          <h2>Institutional Course Directory</h2>
+          <p>We provide a wide range of elite subjects including <span class="bold-navy">Apostolic (NT) & Hebraic (OT) Surveys</span>, chaplaincy, ethics, and ministry administration.</p>
+          <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+            <button onclick="setLvl(1)" style="flex:1; padding:12px; cursor:pointer; font-family:'Cinzel'; background:var(--level1); color:white; border:none; border-radius:4px;">LEVEL I</button>
+            <button onclick="setLvl(2)" style="flex:1; padding:12px; cursor:pointer; font-family:'Cinzel'; background:var(--level2); color:white; border:none; border-radius:4px;">LEVEL II</button>
+            <button onclick="setLvl(3)" style="flex:1; padding:12px; cursor:pointer; font-family:'Cinzel'; background:var(--level3); color:white; border:none; border-radius:4px;">LEVEL III</button>
+          </div>
+          <div id="courseDisplay" style="background: var(--navy); color: white; padding: 30px; text-align: center; border-radius: 4px; border-top: 10px solid var(--level1);">
+            <h3 id="lvlAward" style="font-family:'Cinzel'; color: var(--gold);">Harccian Certificate of Completion</h3>
+            <p id="lvlCost" style="margin-top:10px; font-size:14px; color:#ccc;">TUITION: FREE</p>
+            <p id="lvlPre" style="font-size:14px; color:#ccc;">PREREQUISITE: Open Enrollment</p>
+          </div>
+        </div>
+        <button class="slide-nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
+        <button class="slide-nav-btn" onclick="movePage(1)">HISTORY ➔</button>
+      </div>
+
+      <!-- SLIDE 4: HISTORY -->
+      <div class="slide">
+        <div class="info-card">
+          <h2>Our History</h2>
+          <p>The mission was tested many years ago in <span class="bold-navy">India</span>, where we provided curriculum and certificates to dedicated pastors in the field.</p>
+          <p>The vision for this Online Bible College was birthed in <span class="bold-navy">2024</span>, creating a digital bridge to <span class="highlight-red">non-accredited elite</span> theological training for the modern era.</p>
+        </div>
+        <button class="slide-nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
+        <button class="slide-nav-btn" onclick="movePage(1)">WHY HARCCIAN? ➔</button>
+      </div>
+
+      <!-- SLIDE 5: WHY HARCCIAN -->
+      <div class="slide">
+        <div class="info-card">
+          <h2>Why Harccian?</h2>
+          <p>Harccian exists to fill the gap in faith-based education with elite courses built on Scripture and calling rather than bureaucracy.</p>
+          <p><span class="bold-navy">Not everyone earns a Harccian certificate.</span> Our workload is deliberately challenging to ensure completion carries genuine weight.</p>
+          <p class="highlight-red">Note: Must be over 18 years old to apply.</p>
+        </div>
+        <button class="slide-nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
+        <button class="slide-nav-btn" onclick="movePage(1)">THE FOUNDER ➔</button>
+      </div>
+
+      <!-- SLIDE 6: FOUNDER -->
+      <div class="slide">
+        <div class="info-card">
+          <h2>The Founder</h2>
+          <div class="grid-stats">
+            <div>
+              <p class="highlight-red" style="font-size: 13px; letter-spacing: 1px;">PROFESSIONAL EXPERIENCE</p>
+              <ul class="stat-list">
+                <li>15 Years Ambulance Service</li>
+                <li>3.5 Years Youth Detention Worker</li>
+                <li>Emergency Medical Care & Transport</li>
+              </ul>
+            </div>
+            <div>
+              <p class="highlight-red" style="font-size: 13px; letter-spacing: 1px;">MINISTRY EXPERIENCE</p>
+              <ul class="stat-list">
+                <li>Ordained Minister (3 Years)</li>
+                <li>Lay Pastor (3.5 Years)</li>
+                <li>Executive & Associate Minister</li>
+              </ul>
+            </div>
+          </div>
+          <p style="margin-top: 20px; font-style: italic; font-size: 14px; border-top: 1px solid #ddd; padding-top: 15px;">
+            As the Digital Intelligence Architect, I, Claude, serve as a dedicated tool for organization. Every piece of content is reviewed by the Founder to remain biblically sound.
+          </p>
+        </div>
+        <button class="slide-nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
+        <button class="slide-nav-btn" onclick="movePage(1)">EMBLEMS ➔</button>
+      </div>
+
+      <!-- SLIDE 7: EMBLEMS -->
+      <div class="slide">
+        <div class="info-card" style="text-align: center;">
+          <h2>The Lion & Shield</h2>
+          <p>Our identity rests within the <span class="bold-navy">Shield of Faith</span>. The Crowned Lion signifies the authority of Christ, who leads our academic pursuit.</p>
+        </div>
+        <button class="slide-nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
+        <button class="slide-nav-btn" onclick="movePage(1)">ADMISSIONS ➔</button>
+      </div>
+
+      <!-- SLIDE 8: ADMISSIONS -->
+      <div class="slide" style="background: var(--navy); color: white; border-color: var(--gold);">
+        <h1 style="font-family:'Cinzel'; color: var(--gold); font-size: 50px; text-align: center;">ADMISSIONS 2026</h1>
+        <a href="entrancetest.html" style="margin-top: 50px; display:inline-block; background:var(--red); color:white; padding: 25px 60px; text-decoration:none; font-family:'Cinzel'; font-size:24px; font-weight: 900; box-shadow: 10px 10px 0 var(--gold);">APPLY TODAY</a>
+        <button class="slide-nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
+      </div>
+
     </div>
-    <button class="nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
-    <button class="nav-btn" onclick="movePage(1)">EMBLEMS ➔</button>
-  </section>
+  </div>
 
-  <!-- SLIDE 7: EMBLEMS -->
-  <section>
-    <div class="info-card" style="text-align: center;">
-      <h2>The Lion & Shield</h2>
-      <p>Our identity rests within the <span class="bold-navy">Shield of Faith</span>. The Crowned Lion signifies the authority of Christ, who leads our academic pursuit.</p>
+  <!-- FOOTER -->
+  <footer class="hbc-footer">
+    <div class="footer-trademark">© 2026 HARCCIAN BIBLE COLLEGE™. Trademark of the Founder. Proprietary materials.</div>
+    <div class="footer-divider"></div>
+    <div class="footer-legal-text">
+      Harccian Bible College™ is a non-accredited religious initiative for spiritual enrichment only.
+      Certificates are not recognized for formal qualifications or employment.
+      Not a registered higher education provider.
     </div>
-    <button class="nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
-    <button class="nav-btn" onclick="movePage(1)">ADMISSIONS ➔</button>
-  </section>
+    <div class="ai-badge">ALL MEDIA SHOWN ON THIS WEBSITE IS AI-GENERATED</div>
+  </footer>
 
-  <!-- SLIDE 8: ADMISSIONS -->
-  <section style="background: var(--navy); color: white; border-color: var(--gold);">
-    <h1 style="font-family:'Cinzel'; color: var(--gold); font-size: 50px; text-align: center;">ADMISSIONS 2026</h1>
-    <button onclick="window.location.href='entrancetest.html'" style="margin-top: 50px; background:var(--red); color:white; padding: 25px 60px; border:none; font-family:'Cinzel'; font-size:24px; cursor:pointer; font-weight: 900; box-shadow: 10px 10px 0 var(--gold);">APPLY TODAY</button>
-    <button class="nav-btn prev-btn" onclick="movePage(-1)">BACK</button>
-  </section>
-
-</div>
-
-<script>
-  let currentPage = 0;
-  const totalPages = 9;
-  const container = document.getElementById('journey');
-
-  function movePage(direction) {
-    currentPage += direction;
-    if (currentPage < 0) currentPage = 0;
-    if (currentPage >= totalPages) currentPage = totalPages - 1;
-    container.style.transform = `translateX(-${currentPage * 100}vw)`;
-  }
-
-  function setLvl(lvl) {
-    const d = document.getElementById('courseDisplay');
-    const a = document.getElementById('lvlAward');
-    const c = document.getElementById('lvlCost');
-    const p = document.getElementById('lvlPre');
-    if (lvl === 1) { d.style.borderTopColor = 'var(--level1)'; a.innerText = "Harccian Certificate of Completion"; c.innerText = "TUITION: FREE"; p.innerText = "PREREQUISITE: Open Enrollment"; }
-    else if (lvl === 2) { d.style.borderTopColor = 'var(--level2)'; a.innerText = "Harccian Advanced Certificate"; c.innerText = "TUITION: Region Specific"; p.innerText = "PREREQUISITE: Level I Completion"; }
-    else { d.style.borderTopColor = 'var(--level3)'; a.innerText = "Harccian Mastery Certificate"; c.innerText = "TUITION: Region Specific"; p.innerText = "PREREQUISITE: Level II & Approval"; }
-  }
-</script>
+  <script>
+    let currentPage = 0;
+    const container = document.getElementById('journey');
+    function movePage(direction) {
+      const total = document.querySelectorAll('.slide').length;
+      currentPage = Math.max(0, Math.min(currentPage + direction, total - 1));
+      container.style.transform = `translateX(-${currentPage * 100}vw)`;
+    }
+    function setLvl(lvl) {
+      const d = document.getElementById('courseDisplay');
+      const a = document.getElementById('lvlAward');
+      const c = document.getElementById('lvlCost');
+      const p = document.getElementById('lvlPre');
+      if (lvl === 1) { d.style.borderTopColor = 'var(--level1)'; a.innerText = "Harccian Certificate of Completion"; c.innerText = "TUITION: FREE"; p.innerText = "PREREQUISITE: Open Enrollment"; }
+      else if (lvl === 2) { d.style.borderTopColor = 'var(--level2)'; a.innerText = "Harccian Advanced Certificate"; c.innerText = "TUITION: Region Specific"; p.innerText = "PREREQUISITE: Level I Completion"; }
+      else { d.style.borderTopColor = 'var(--level3)'; a.innerText = "Harccian Mastery Certificate"; c.innerText = "TUITION: Region Specific"; p.innerText = "PREREQUISITE: Level II & Approval"; }
+    }
+  </script>
 
 </body>
 </html>
