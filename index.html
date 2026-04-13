@@ -3,55 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HARCCIAN Bible College</title>
+  <title>Alumni | HARCCIAN Bible College</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #192535; color: white; font-family: 'Lato', Arial, sans-serif; text-align: center; min-height: 100vh; }
-    
-    .banner-container { width: 100%; margin: 15px 0; }
-    .banner-container img { width: 60%; height: auto; display: block; margin: 0 auto; border-radius: 8px; }
+    body { background: #192535; color: white; font-family: 'Lato', sans-serif; text-align: center; line-height: 1.6; }
 
+    /* SHARED MENU STYLES */
     .nav-container { margin: 15px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
     .dropdown { position: relative; display: inline-block; }
-    
-    /* STANDARD MENU BUTTONS */
-    .menu-button { display: inline-block; background-color: #be2834; color: white; padding: 12px 20px; margin: 5px; text-decoration: none; font-weight: bold; border-radius: 5px; font-size: 13px; transition: 0.3s; cursor: pointer; border: none; font-family: 'Cinzel', serif; letter-spacing: 1px; }
+    .menu-button {
+      display: inline-block;
+      background-color: #be2834;
+      color: white;
+      padding: 12px 20px;
+      margin: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      font-size: 13px;
+      transition: 0.3s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
+    }
     .menu-button:hover { background-color: #ffffff; color: #be2834; }
-
-    /* YOUR SPECIFIC GREEN AND RED APPLY BUTTON */
-    .apply-nav-button { 
-      background-color: #2ecc71 !important; /* Green */
-      color: #ffffff !important;
-      border: 2px solid #be2834 !important; /* Red Border */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #192535;
+      min-width: 220px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+      z-index: 10;
+      border: 1px solid #d4af37;
+      text-align: left;
     }
-    .apply-nav-button:hover { 
-      background-color: #be2834 !important; /* Red on hover */
-      color: #ffffff !important; 
-    }
-
-    .dropdown-content { display: none; position: absolute; background-color: #192535; min-width: 220px; z-index: 10; border: 1px solid #d4af37; border-radius: 4px; text-align: left; }
-    .dropdown-content a { color: white; padding: 12px 18px; text-decoration: none; display: block; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+    .dropdown-content a { color: white; padding: 12px 18px; text-decoration: none; display: block; font-size: 14px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+    .dropdown-content a:hover { background-color: #be2834; }
     .dropdown:hover .dropdown-content { display: block; }
-    
     .menu-divider { border: 0; height: 1px; background: #d4af37; width: 80%; margin: 15px auto; }
 
-    .mainbanner-container img { width: 60%; height: auto; display: block; margin: 0 auto; border-radius: 8px; }
-
-    .letter-box { max-width: 850px; width: 92%; margin: 40px auto; padding: 50px 60px; background: #fdfcf7; color: #192535; border-radius: 4px; border: 1.5px solid #d4af37; text-align: left; }
-    .quote-container { margin: 35px 0; background: #192535; padding: 30px; border: 3px solid #d4af37; text-align: center; color: #ffd700; font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; }
+    /* ALUMNI PAGE CONTENT */
+    .alumni-header {
+      background: linear-gradient(rgba(25, 37, 53, 0.9), rgba(25, 37, 53, 0.9)), url('MAINBANNER.jpeg');
+      background-size: cover;
+      background-position: center;
+      padding: 80px 20px;
+      border-bottom: 4px solid #d4af37;
+    }
+    .alumni-header h1 { font-family: 'Cinzel', serif; font-size: 38px; color: #ffd700; letter-spacing: 4px; }
     
-    .apply-box { max-width: 850px; width: 92%; margin: 0 auto 60px auto; background: linear-gradient(135deg, #be2834, #192535); border: 3px solid #d4af37; padding: 50px 40px; border-radius: 8px; }
-    .apply-btn { display: inline-block; background: #2ecc71; color: white; font-family: 'Cinzel', serif; padding: 18px 50px; border-radius: 5px; text-decoration: none; font-weight: 900; border: 3px solid #be2834; }
-    .apply-btn:hover { background: #be2834; }
+    .intro-box { max-width: 850px; margin: 50px auto; padding: 0 20px; text-align: center; }
+    .intro-box h2 { font-family: 'Cinzel', serif; color: #be2834; font-size: 28px; margin-bottom: 20px; }
+    .intro-box p { font-size: 18px; color: #e0e0e0; margin-bottom: 20px; }
 
-    .hbc-footer { background: linear-gradient(135deg, #be2834, #192535); border-top: 4px solid #d4af37; padding: 25px 20px; }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .benefit-card {
+      background: #fdfcf7;
+      color: #192535;
+      padding: 30px;
+      border-radius: 8px;
+      border-top: 5px solid #be2834;
+      text-align: left;
+      transition: transform 0.3s;
+    }
+    .benefit-card:hover { transform: translateY(-10px); }
+    .benefit-card h3 { font-family: 'Cinzel', serif; color: #be2834; margin-bottom: 15px; font-size: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+    .benefit-card p { font-size: 15px; line-height: 1.7; }
+
+    .scripture-quote {
+      background: #192535;
+      border: 2px solid #d4af37;
+      padding: 40px;
+      max-width: 800px;
+      margin: 60px auto;
+      border-radius: 12px;
+    }
+    .scripture-text { font-family: 'Cinzel', serif; font-size: 22px; color: #ffd700; font-weight: bold; font-style: italic; }
+    .scripture-ref { font-family: 'Lato', sans-serif; font-size: 14px; color: white; margin-top: 15px; letter-spacing: 2px; }
+
+    .footer-note { font-family: 'Cinzel', serif; color: #d4af37; font-size: 14px; margin-bottom: 40px; }
   </style>
 </head>
 <body>
 
-  <div class="banner-container">
-    <img src="HARCCIAN (4).png" alt="HARCCIAN Banner">
+  <div style="margin-top: 20px;">
+    <img src="HARCCIAN (4).png" alt="HARCCIAN" style="width: 300px;">
   </div>
 
   <hr class="menu-divider">
@@ -63,45 +109,62 @@
         <a href="mission.html">OUR MISSION</a>
         <a href="staff.html">STAFF</a>
         <a href="terms.html">TERMS / POLICIES</a>
+        <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
+        <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
       </div>
     </div>
     <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
     <a href="about.html" class="menu-button">ABOUT</a>
     <div class="dropdown">
-      <a href="alumni.html" class="menu-button">ALUMNI ▾</a>
+      <a href="alumni.html" class="menu-button" style="background:white; color:#be2834;">ALUMNI ▾</a>
       <div class="dropdown-content">
         <a href="fraternities.html">FRATERNITIES</a>
       </div>
     </div>
     <a href="courses.html" class="menu-button">COURSES</a>
-    
-    <a href="entrancetest.html" class="menu-button apply-nav-button">APPLY</a>
-
+    <a href="apply.html" class="menu-button">APPLY</a>
     <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
     <a href="shop.html" class="menu-button">SHOP</a>
   </nav>
 
   <hr class="menu-divider">
 
-  <div class="mainbanner-container">
-    <img src="MAINBANNER.jpeg" alt="HARCCIAN Main Banner">
+  <header class="alumni-header">
+    <h1>HARCCIAN™ ALUMNI</h1>
+    <p style="font-family: 'Cinzel', serif; letter-spacing: 2px; color: #ffd700;">Where Your Hard Work Takes You</p>
+  </header>
+
+  <div class="intro-box">
+    <h2>More Than Just a Student</h2>
+    <p>At Harccian™, we believe every certificate earned is a milestone worth celebrating. From the moment you are awarded your very first Harccian™ certificate — at any level — you are no longer just a student. You become something more. <strong>You become Harccian™ Alumni.</strong></p>
+    <p>Being Harccian™ Alumni is not a title handed out freely. It is earned with integrity, late nights, and the refusal to quit. It is a brotherhood and sisterhood of serious students of the Word.</p>
   </div>
 
-  <div class="letter-box">
-    <h2 style="font-family: 'Cinzel', serif; color: #be2834; text-align: center;">Harccian Bible College™</h2>
-    <div class="quote-container">Nothing is ever given — it is always earned at H.B.C.</div>
-    <p>Welcome to Harccian Bible College™...</p>
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <h3>🔐 Private Community</h3>
+      <p>Gain exclusive password access to our global alumni network. Connect, encourage, and grow alongside fellow graduates who have walked the same rigorous path.</p>
+    </div>
+    <div class="benefit-card">
+      <h3>📜 Alumni Certificate</h3>
+      <p>Receive your official Harccian™ Alumni Certificate—a formal recognition of your dedication, faith, and commitment to uncompromising biblical study.</p>
+    </div>
+    <div class="benefit-card">
+      <h3>🛍️ Lifetime 50% Discount</h3>
+      <p>As a lifelong thank you for your investment, alumni receive a 50% discount on all products in the Harccian™ store.</p>
+    </div>
+    <div class="benefit-card">
+      <h3>✋ Opportunity to Give Back</h3>
+      <p>Exceptional alumni are invited to share testimonies, inspire students, or even volunteer as teachers, pouring back into the next generation.</p>
+    </div>
   </div>
 
-  <div class="apply-box">
-    <h2 style="color: #ffd700; font-family: 'Cinzel', serif; font-size: 36px; margin-bottom: 15px;">APPLY TODAY</h2>
-    <a href="entrancetest.html" class="apply-btn">BEGIN YOUR APPLICATION →</a>
+  <div class="scripture-quote">
+    <div class="scripture-text">"Study to shew thyself approved unto God, a workman that needeth not to be ashamed, rightly dividing the word of truth."</div>
+    <div class="scripture-ref">— 2 TIMOTHY 2:15</div>
   </div>
 
-  <footer class="hbc-footer">
-    <img src="h4logo.png" alt="Logo" style="width: 150px; display: block; margin: 0 auto;">
-    <div style="color: #d4af37; font-family: 'Cinzel', serif; margin-top: 10px;">© 2026 HARCCIAN BIBLE COLLEGE™</div>
-  </footer>
+  <p class="footer-note">STUDY HARD. COMPLETE THE WORK. JOIN THE LEGACY.</p>
 
 </body>
 </html>
