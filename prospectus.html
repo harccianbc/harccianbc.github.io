@@ -3,23 +3,36 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Prospectus | HARCCIAN Bible College</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+<title>Harccian Bible College | Prospectus 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: #192535; color: white; font-family: 'Lato', sans-serif; text-align: center; }
+  :root { 
+    --navy: #192535; --red: #be2834; --gold: #d4af37; --white: #fdfcf7; 
+    --level1: #2e7d32; --level2: #1565c0; --level3: #be2834;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* Banner style for the image - set to same size as original PNG */
+  body { font-family: 'Lato', sans-serif; background-color: #000; overflow-x: hidden; color: var(--navy); }
+
+  /* Banner with flip animation */
   .banner {
-    width: 100%;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
   }
   .banner img {
-    width: 1200px; /* same as your PNG size */
-    height: 300px; /* same as your PNG size */
-    object-fit: cover; /* optional: crop if needed */
+    width: 1200px; /* same as your original PNG size */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    /* Flip animation */
+    animation: flip 4s infinite ease-in-out;
+    transform-style: preserve-3d;
+  }
+  @keyframes flip {
+    0% { transform: rotateY(0deg); }
+    50% { transform: rotateY(15deg); }
+    100% { transform: rotateY(0deg); }
   }
 
   /* MENU STYLES - EXACT MATCH TO HOME */
@@ -51,7 +64,6 @@
     z-index: 10;
     border: 1px solid #d4af37;
     border-radius: 4px;
-    text-align: left;
   }
   .dropdown-content a {
     color: white;
@@ -69,6 +81,7 @@
     width: 80%;
     margin: 15px auto;
   }
+
   /* PAGE CONTENT */
   .content-section { max-width: 900px; width: 92%; margin: 50px auto; padding: 40px; background: #fdfcf7; color: #192535; border-radius: 4px; text-align: left; border: 1.5px solid #d4af37; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
   .content-section h2 { font-family: 'Cinzel', serif; color: #be2834; border-bottom: 2px solid #be2834; margin: 25px 0 15px 0; padding-bottom: 5px; }
@@ -76,12 +89,12 @@
 </head>
 <body>
 
-<!-- Prospectus Banner Image at the top -->
+<!-- PROSPECTUS IMAGE WITH FLIP ANIMATION -->
 <div class="banner">
   <img src="prospectus.jpg" alt="Prospectus Banner" />
 </div>
 
-<!-- Navigation Menu -->
+<!-- Your Menu -->
 <hr class="menu-divider" />
 <nav class="nav-container">
   <div class="dropdown">
@@ -112,7 +125,7 @@
 </nav>
 <hr class="menu-divider" />
 
-<!-- Your main content -->
+<!-- Rest of your content -->
 <div class="content-section">
   <h1 style="font-family: 'Cinzel', serif; text-align: center; color: #be2834;">2026 PROSPECTUS</h1>
   <h2>Academic Vision</h2>
