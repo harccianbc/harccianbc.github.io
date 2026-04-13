@@ -4,16 +4,108 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Prospectus | HARCCIAN Bible College</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #192535; color: white; font-family: 'Lato', sans-serif; text-align: center; }
+
+  /* Banner style for the image */
+  .banner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .banner img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* MENU STYLES - EXACT MATCH TO HOME */
+  .nav-container { margin: 15px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+  .dropdown { position: relative; display: inline-block; }
+  .menu-button {
+    display: inline-block;
+    background-color: #be2834;
+    color: white;
+    padding: 12px 20px;
+    margin: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 13px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+  }
+  .menu-button:hover { background-color: #ffffff; color: #be2834; }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #192535;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+    z-index: 10;
+    border: 1px solid #d4af37;
+    text-align: left;
+  }
+  .dropdown-content a { color: white; padding: 12px 18px; text-decoration: none; display: block; font-size: 14px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+  .dropdown:hover .dropdown-content { display: block; }
+  .menu-divider { border: 0; height: 1px; background: #d4af37; width: 80%; margin: 15px auto; }
+
+  /* PAGE CONTENT */
+  .content-section { max-width: 900px; width: 92%; margin: 50px auto; padding: 40px; background: #fdfcf7; color: #192535; border-radius: 4px; text-align: left; border: 1.5px solid #d4af37; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+  .content-section h2 { font-family: 'Cinzel', serif; color: #be2834; border-bottom: 2px solid #be2834; margin: 25px 0 15px 0; padding-bottom: 5px; }
 </style>
 </head>
 <body>
 
-<!-- The image at the top -->
-<div style="margin-top:20px; text-align:center;">
-  <img src="prospectus.jpg" alt="Prospectus" style="width:100%; max-width:600px;">
+<!-- Banner image acting as a header/banner -->
+<div class="banner">
+  <img src="prospectus.jpg" alt="Prospectus Banner">
+</div>
+
+<!-- Your menu -->
+<hr class="menu-divider" />
+<nav class="nav-container">
+  <div class="dropdown">
+    <a href="index.html" class="menu-button">HOME ▾</a>
+    <div class="dropdown-content">
+      <a href="mission.html">OUR MISSION</a>
+      <a href="staff.html">STAFF</a>
+      <a href="terms.html">TERMS / POLICIES</a>
+      <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
+      <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
+    </div>
+  </div>
+
+  <a href="prospectus.html" class="menu-button" style="background:white; color:#be2834;">PROSPECTUS</a>
+  <a href="about.html" class="menu-button">ABOUT</a>
+  
+  <div class="dropdown">
+    <a href="#" class="menu-button">ALUMNI ▾</a>
+    <div class="dropdown-content">
+      <a href="fraternities.html">FRATERNITIES</a>
+    </div>
+  </div>
+
+  <a href="courses.html" class="menu-button">COURSES</a>
+  <a href="apply.html" class="menu-button">APPLY</a>
+  <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
+  <a href="shop.html" class="menu-button">SHOP</a>
+</nav>
+<hr class="menu-divider" />
+
+<!-- Rest of your content -->
+<div class="content-section">
+  <h1 style="font-family: 'Cinzel', serif; text-align: center; color: #be2834;">2026 PROSPECTUS</h1>
+  <h2>Academic Vision</h2>
+  <p>Harccian Bible College™ provides an uncompromising digital environment for theological study. We focus on the "Fides et Excellentia" motto, ensuring that every student earns their progress through discipline and deep scriptural engagement.</p>
+  
+  <h2>Course Focus</h2>
+  <p>Our curriculum covers everything from Foundational Theology to Kingdom Leadership, specifically designed for those who cannot attend a physical campus but desire a high standard of education.</p>
 </div>
 
 </body>
