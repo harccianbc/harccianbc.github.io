@@ -8,100 +8,119 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
 <style>
   :root { 
-    --navy: #132535; /* changed to your blue color */
-    --red: #be2834; /* Harccian red */
+    --navy: #132535; 
+    --red: #be2834; 
     --gold: #d4af37; 
     --white: #fdfcf7; 
-    --level1: #2e7d32; 
-    --level2: #1565c0; 
-    --level3: #be2834;
+    --background: #fdfcf7; 
+    --text-color: #132535; 
+    --hover-color: #e0e0e0; 
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body { font-family: 'Lato', sans-serif; background-color: #000; overflow-x: hidden; color: var(--navy); }
+  body {
+    font-family: 'Lato', sans-serif; 
+    background-color: #000; 
+    color: var(--text-color); 
+    line-height: 1.6; 
+  }
 
-  /* Top image fixed height */
+  /* Top Banner Image - Fixed height for clarity */
   .banner {
-    margin-top: 20px;
     display: flex;
     justify-content: center;
+    margin-top: 20px;
   }
   .banner img {
     max-width: 100%;
-    width: 1200px; /* match your original PNG size */
-    height: 200px; /* fixed height of 200px */
-    object-fit: cover; /* crop to fit nicely */
-    display: block;
+    width: 1200px; /* Match your original PNG size */
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover;
+    border-radius: 8px;
   }
 
-  /* Menu styles */
-  .nav-container { margin: 15px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
-  .dropdown { position: relative; display: inline-block; }
-  .menu-button {
-    display: inline-block;
-    background-color: var(--red);
-    color: white;
-    padding: 12px 20px;
-    margin: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    font-size: 13px;
-    transition: 0.3s;
-    cursor: pointer;
-    border: none;
-    font-family: 'Cinzel', serif;
-    letter-spacing: 1px;
+  /* Navigation Menu Styles */
+  .nav-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 10px;
   }
-  .menu-button:hover { background-color: #ffffff; color: var(--red); }
+  .menu-button {
+    background-color: var(--red);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    font-size: 13px;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .menu-button:hover {
+    background-color: #fff;
+    color: var(--red);
+    transform: translateY(-2px);
+  }
+  /* Dropdowns for submenus */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
   .dropdown-content {
     display: none;
     position: absolute;
     background-color: var(--navy);
-    min-width: 220px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+    min-width: 200px;
     z-index: 10;
-    border: 1px solid #d4af37;
+    border: 1px solid var(--gold);
     border-radius: 4px;
   }
-  .dropdown:hover .dropdown-content { display: block; }
-  .dropdown-content a {
-    color: #fdfcf7;
-    padding: 12px 18px;
-    text-decoration: none;
+  .dropdown:hover .dropdown-content {
     display: block;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
   }
-  /* Divider line */
-  .menu-divider {
-    border: 0;
-    height: 1px;
-    background: #d4af37;
-    width: 80%;
-    margin: 15px auto;
+  .dropdown-content a {
+    display: block;
+    padding: 10px;
+    color: #fdfcf7;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .dropdown-content a:hover {
+    background-color: var(--hover-color);
   }
 
-  /* Content Section Style */
-  .content-section {
-    max-width: 900px;
-    width: 92%;
-    margin: 50px auto;
-    padding: 40px;
-    background: #fdfcf7;
-    color: #132535;
-    border-radius: 4px;
-    border: 1.5px solid #d4af37;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  /* Divider line */
+  .divider {
+    height: 1px;
+    background: var(--gold);
+    margin: 20px auto;
+    width: 80%;
   }
-  .content-section h1 {
+
+  /* Content Section Styles */
+  .section {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background: var(--background);
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    transition: box-shadow 0.3s;
+  }
+  .section:hover {
+    box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+  }
+  .section h1 {
     font-family: 'Cinzel', serif;
     font-size: 2.5em;
     text-align: center;
     margin-bottom: 20px;
     color: var(--red);
   }
-  .content-section h2 {
+  .section h2 {
     font-family: 'Cinzel', serif;
     font-size: 1.8em;
     margin-top: 40px;
@@ -113,41 +132,44 @@
   p {
     font-size: 17px;
     line-height: 1.6;
-    margin-bottom: 15px;
   }
-  /* Custom styles for emphasis */
-  .bold-navy { color: var(--navy); font-weight: 900; }
-  .highlight-red { color: var(--red); font-weight: 900; }
+  /* Emphasis styles */
+  .highlight-red { color: var(--red); font-weight: bold; }
+  .bold { font-weight: bold; }
 
-  /* Button styles in content (if needed) */
-  .btn {
+  /* Call to Action Button */
+  .cta-btn {
     display: inline-block;
     background-color: var(--red);
     color: #fff;
-    padding: 12px 20px;
-    margin-top: 20px;
-    text-decoration: none;
+    padding: 15px 30px;
+    margin: 30px auto;
     font-family: 'Cinzel', serif;
-    font-weight: 900;
-    font-size: 14px;
-    border-radius: 5px;
-    transition: 0.3s;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
   }
-  .btn:hover { background-color: #fff; color: var(--red); }
+  .cta-btn:hover {
+    background-color: #fff;
+    color: var(--red);
+    transform: translateY(-2px);
+  }
 </style>
 </head>
 <body>
 
-<!-- Fixed top image -->
+<!-- Banner Image -->
 <div class="banner">
   <img src="prospectus.jpg" alt="Prospectus Banner" />
 </div>
 
 <!-- Navigation Menu -->
-<hr class="menu-divider" />
+<div class="divider"></div>
 <nav class="nav-container">
   <div class="dropdown">
-    <a href="index.html" class="menu-button">HOME ▾</a>
+    <a class="menu-button" href="index.html">HOME ▾</a>
     <div class="dropdown-content">
       <a href="mission.html">OUR MISSION</a>
       <a href="staff.html">STAFF</a>
@@ -156,42 +178,99 @@
       <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
     </div>
   </div>
-
-  <a href="prospectus.html" class="menu-button" style="background:white; color: #132535;">PROSPECTUS</a>
-  <a href="about.html" class="menu-button">ABOUT</a>
+  <a class="menu-button" href="prospectus.html" style="background:#fff; color: #132535;">PROSPECTUS</a>
+  <a class="menu-button" href="about.html">ABOUT</a>
   <div class="dropdown">
-    <a href="#" class="menu-button">ALUMNI ▾</a>
+    <a class="menu-button" href="#">ALUMNI ▾</a>
     <div class="dropdown-content">
       <a href="fraternities.html">FRATERNITIES</a>
     </div>
   </div>
-  <a href="courses.html" class="menu-button">COURSES</a>
-  <a href="apply.html" class="menu-button">APPLY</a>
-  <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
-  <a href="shop.html" class="menu-button">SHOP</a>
+  <a class="menu-button" href="courses.html">COURSES</a>
+  <a class="menu-button" href="apply.html">APPLY</a>
+  <a class="menu-button" href="non-accreditation.html">NON-ACCREDITATION</a>
+  <a class="menu-button" href="shop.html">SHOP</a>
 </nav>
-<hr class="menu-divider" />
+<div class="divider"></div>
 
-<!-- Your Content Sections -->
-<div class="content-section">
-  <h1>2026 PROSPECTUS</h1>
-  <h2>Academic Vision</h2>
-  <p>Harccian Bible College™ provides an uncompromising digital environment for theological study. We focus on the "Fides et Excellentia" motto, ensuring that every student earns their progress through discipline and deep scriptural engagement.</p>
-  
-  <h2>Course Focus</h2>
-  <p>Our curriculum covers everything from Foundational Theology to Kingdom Leadership, specifically designed for those who cannot attend a physical campus but desire a high standard of education.</p>
+<!-- Main Content -->
+<div class="section">
+  <h1>Harccian Bible College</h1>
+  <h2>Prospectus 2026</h2>
+  <p>Welcome to <span class="highlight-red">Harccian Bible College</span> — a *virtual*, **non-accredited**, and **non-registered** training organization. We provide elite theological education online, designed for serious students seeking deep spiritual growth.</p>
+  <p>Our courses are built on Scripture and calling, not bureaucracy or accreditation. We are committed to offering quality, accessible, and flexible biblical studies for all who desire to learn.</p>
 </div>
 
-<!-- You can continue adding more sections similar to your original structure -->
+<div class="section">
+  <h2>What Makes Us Unique</h2>
+  <p><strong>Harccian Bible College</strong> is a **virtual college** that operates outside the traditional accreditation system. We are not a registered training organization, but our curriculum is designed to foster genuine spiritual and theological development for dedicated learners worldwide.</p>
+  <p>Whether you're in a remote location or seeking flexible online study, our programs are accessible to everyone—no matter your socioeconomic background or location.</p>
+</div>
 
-<script>
-  // Your scripts for page interaction if needed
-  let currentPage = 0;
-  function movePage(direction) {
-    currentPage += direction;
-    // Logic for page transition if needed
-  }
-</script>
+<div class="section">
+  <h2>Our Mission & Philosophy</h2>
+  <p><em>Fides et Excellentia</em> — Faith and Excellence. We aim to cultivate serious study and deep biblical understanding through accessible online courses rooted in Scripture.</p>
+  <p>We believe that **financial status** should never hinder a calling, and we welcome students over 18 from all backgrounds. Our workload is designed to ensure genuine achievement, not just participation.</p>
+</div>
+
+<div class="section">
+  <h2>Courses & Certifications</h2>
+  <ul>
+    <li><strong>Level I - Harccian Certificate of Completion</strong></li>
+    <ul>
+      <li>Tuition: Free</li>
+      <li>Prerequisite: Open Enrollment</li>
+    </ul>
+    <li><strong>Level II - Harccian Advanced Certificate</strong></li>
+    <ul>
+      <li>Tuition: Region Specific</li>
+      <li>Prerequisite: Level I Completion</li>
+    </ul>
+    <li><strong>Level III - Harccian Mastery Certificate</strong></li>
+    <ul>
+      <li>Tuition: Region Specific</li>
+      <li>Prerequisite: Level II & Approval</li>
+    </ul>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Our History</h2>
+  <p>The mission began years ago in India, where we provided curriculum and certificates to dedicated pastors. The vision for this **online** college was born in 2024, creating a digital bridge for elite, non-accredited theological training suitable for the modern era.</p>
+</div>
+
+<div class="section">
+  <h2>Why Choose Harccian?</h2>
+  <p>We fill a vital gap in faith-based education by offering courses rooted in Scripture and calling, not bureaucracy. Our challenging workload ensures that certificates carry weight and value.</p>
+  <p><em>Note:</em> Applicants must be over 18 years old.</p>
+</div>
+
+<div class="section">
+  <h2>The Founder</h2>
+  <p><strong>Experience:</strong></p>
+  <ul>
+    <li>15 Years Ambulance Service</li>
+    <li>3.5 Years Youth Detention Worker</li>
+    <li>Emergency Medical Care & Transport</li>
+  </ul>
+  <p><strong>Ministry Experience:</strong></p>
+  <ul>
+    <li>Ordained Minister (3 Years)</li>
+    <li>Lay Pastor (3.5 Years)</li>
+    <li>Executive & Associate Minister</li>
+  </ul>
+  <p>As the Digital Architect, I, Gemini, oversee content integrity, ensuring all teachings align with biblical truth.</p>
+</div>
+
+<div class="section">
+  <h2>The Lion & Shield</h2>
+  <p>Our identity is rooted in the <strong>Shield of Faith</strong>. The crowned lion symbolizes Christ's authority, guiding our pursuit of truth and excellence.</p>
+</div>
+
+<!-- Call to Action -->
+<div style="text-align:center; margin:50px 0;">
+  <a class="cta-btn" href="https://harccian.wixsite.com/online/apply">Apply Today</a>
+</div>
 
 </body>
 </html>
