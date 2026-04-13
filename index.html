@@ -247,8 +247,13 @@
       text-align: center;
       line-height: 1.8;
     }
-    /* ... other footer styles ... */
-    /* Add your existing styles here as needed */
+    /* Footer image specific style to control size, keep original size, but lower it */
+    .footer-logo {
+      width: 150px;
+      height: auto;
+      margin-bottom: 50px; /* increased margin to lower the image */
+    }
+    /* additional footer styles if any */
   </style>
 </head>
 <body>
@@ -279,7 +284,6 @@
         <a href="fraternities.html">FRATERNITIES</a>
       </div>
     </div>
-    <!-- Courses with My Harccian as submenu -->
     <div class="dropdown">
       <a href="courses.html" class="menu-button">COURSES ▾</a>
       <div class="dropdown-content">
@@ -340,7 +344,7 @@
     <a href="entrancetest.html" class="apply-btn">BEGIN YOUR ENTRANCE TEST →</a>
   </div>
 
-  <!-- Student Login Box -->
+  <!-- Student Log In -->
   <div style="margin:40px auto; max-width:900px; padding:20px;">
     <div style="border: 3px solid red; border-radius:8px; padding:20px; max-width:400px; margin:auto;">
       <h3 style="color:#ffd700; font-family:'Cinzel', serif;">Student Log In</h3>
@@ -355,7 +359,7 @@
   <!-- Footer -->
   <footer class="hbc-footer">
     <div class="footer-content">
-      <img src="h4logo.png" alt="HARCCIAN Logo" class="footer-logo" />
+      <img src="h4logo.png" alt="HARCCIAN Logo" class="footer-logo" style="width:150px; height:auto; margin-bottom:50px;" />
       <div class="footer-divider"></div>
       <div class="footer-trademark">
         © 2026 HARCCIAN BIBLE COLLEGE™. Trademark of the Founder. Proprietary materials.
@@ -377,7 +381,7 @@
       e.preventDefault();
       const num = document.getElementById('studentNumber').value.trim();
       if (num === '123456') {
-        window.location.href = 'myharccian.html'; // redirect to your student page
+        window.location.href = 'myharccian.html';
       } else {
         document.getElementById('loginMessage').innerHTML = "Invalid Student Number. Please try again.";
       }
