@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Harccian - Student Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    body {
+      background: #192535;
+      color: white;
+      font-family: 'Lato', Arial, sans-serif;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5em;
+      color: #ffd700;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .welcome {
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 0 auto 40px auto;
+      background: transparent;
+      padding: 20px;
+      border-radius: 8px;
+      border: 2px solid #d4af37;
+    }
+
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2em;
+      margin-bottom: 15px;
+      color: #ffd700;
+      border-bottom: 2px solid #ffd700;
+      padding-bottom: 5px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #be2834;
+      color: #fff;
+      padding: 12px 25px;
+      margin-top: 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 1.2em;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background-color: #fff;
+      color: #be2834;
+    }
+
+    /* Additional styling for layout */
+    .logout-btn {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<h1>My Harccian - Student Dashboard</h1>
+
+<div class="welcome">
+  Welcome, Student #123456
+</div>
+
+<div class="section">
+  <h2>Your Courses & Progress</h2>
+  <ul>
+    <li>Course 1: Foundations of Faith - In Progress</li>
+    <li>Course 2: Advanced Theology - Completed</li>
+    <li>Course 3: Biblical Leadership - Not Started</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Your Certificates</h2>
+  <ul>
+    <li><a href="#" style="color:#ffd700; text-decoration:underline;">Certificate of Completion - Foundations of Faith</a></li>
+    <li><a href="#" style="color:#ffd700; text-decoration:underline;">Certificate of Excellence - Theology</a></li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Download Transcripts</h2>
+  <a class="button" href="#">Download Your Transcript</a>
+</div>
+
+<!-- Log Out Button -->
+<div class="logout-btn">
+  <a class="button" href="index.html">Log Out</a>
+</div>
+
+</body>
+</html>
