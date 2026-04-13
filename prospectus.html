@@ -4,17 +4,23 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Harccian Bible College | Prospectus 2026</title>
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
 <style>
   :root { 
-    --navy: #192535; --red: #be2834; --gold: #d4af37; --white: #fdfcf7; 
-    --level1: #2e7d32; --level2: #1565c0; --level3: #be2834;
+    --navy: #132535; /* changed to your blue color */
+    --red: #be2834; /* Harccian red */
+    --gold: #d4af37; 
+    --white: #fdfcf7; 
+    --level1: #2e7d32; 
+    --level2: #1565c0; 
+    --level3: #be2834;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body { font-family: 'Lato', sans-serif; background-color: #000; overflow-x: hidden; color: var(--navy); }
 
-  /* Fixed size banner image at top */
+  /* Top image fixed height */
   .banner {
     margin-top: 20px;
     display: flex;
@@ -22,8 +28,9 @@
   }
   .banner img {
     max-width: 100%;
-    width: 1200px; /* fixed width matching your PNG size */
-    height: auto; /* maintains aspect ratio */
+    width: 1200px; /* match your original PNG size */
+    height: 200px; /* fixed height of 200px */
+    object-fit: cover; /* crop to fit nicely */
     display: block;
   }
 
@@ -32,7 +39,7 @@
   .dropdown { position: relative; display: inline-block; }
   .menu-button {
     display: inline-block;
-    background-color: #be2834;
+    background-color: var(--red);
     color: white;
     padding: 12px 20px;
     margin: 5px;
@@ -46,11 +53,11 @@
     font-family: 'Cinzel', serif;
     letter-spacing: 1px;
   }
-  .menu-button:hover { background-color: #ffffff; color: #be2834; }
+  .menu-button:hover { background-color: #ffffff; color: var(--red); }
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #192535;
+    background-color: var(--navy);
     min-width: 220px;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
     z-index: 10;
@@ -58,6 +65,15 @@
     border-radius: 4px;
   }
   .dropdown:hover .dropdown-content { display: block; }
+  .dropdown-content a {
+    color: #fdfcf7;
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  }
+  /* Divider line */
   .menu-divider {
     border: 0;
     height: 1px;
@@ -66,19 +82,68 @@
     margin: 15px auto;
   }
 
-  /* Page content styles */
-  .content-section { max-width: 900px; width: 92%; margin: 50px auto; padding: 40px; background: #fdfcf7; color: #192535; border-radius: 4px; text-align: left; border: 1.5px solid #d4af37; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-  .content-section h2 { font-family: 'Cinzel', serif; color: #be2834; border-bottom: 2px solid #be2834; margin: 25px 0 15px 0; padding-bottom: 5px; }
+  /* Content Section Style */
+  .content-section {
+    max-width: 900px;
+    width: 92%;
+    margin: 50px auto;
+    padding: 40px;
+    background: #fdfcf7;
+    color: #132535;
+    border-radius: 4px;
+    border: 1.5px solid #d4af37;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+  .content-section h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--red);
+  }
+  .content-section h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8em;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    color: var(--red);
+    border-bottom: 2px solid var(--red);
+    padding-bottom: 5px;
+  }
+  p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  /* Custom styles for emphasis */
+  .bold-navy { color: var(--navy); font-weight: 900; }
+  .highlight-red { color: var(--red); font-weight: 900; }
+
+  /* Button styles in content (if needed) */
+  .btn {
+    display: inline-block;
+    background-color: var(--red);
+    color: #fff;
+    padding: 12px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  .btn:hover { background-color: #fff; color: var(--red); }
 </style>
 </head>
 <body>
 
-<!-- THE TOP IMAGE FIXED SIZE -->
+<!-- Fixed top image -->
 <div class="banner">
   <img src="prospectus.jpg" alt="Prospectus Banner" />
 </div>
 
-<!-- MAIN MENU -->
+<!-- Navigation Menu -->
 <hr class="menu-divider" />
 <nav class="nav-container">
   <div class="dropdown">
@@ -92,16 +157,14 @@
     </div>
   </div>
 
-  <a href="prospectus.html" class="menu-button" style="background:white; color:#be2834;">PROSPECTUS</a>
+  <a href="prospectus.html" class="menu-button" style="background:white; color: #132535;">PROSPECTUS</a>
   <a href="about.html" class="menu-button">ABOUT</a>
-  
   <div class="dropdown">
     <a href="#" class="menu-button">ALUMNI ▾</a>
     <div class="dropdown-content">
       <a href="fraternities.html">FRATERNITIES</a>
     </div>
   </div>
-
   <a href="courses.html" class="menu-button">COURSES</a>
   <a href="apply.html" class="menu-button">APPLY</a>
   <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
@@ -109,9 +172,9 @@
 </nav>
 <hr class="menu-divider" />
 
-<!-- PAGE CONTENT STARTS HERE -->
+<!-- Your Content Sections -->
 <div class="content-section">
-  <h1 style="font-family: 'Cinzel', serif; text-align: center; color: #be2834;">2026 PROSPECTUS</h1>
+  <h1>2026 PROSPECTUS</h1>
   <h2>Academic Vision</h2>
   <p>Harccian Bible College™ provides an uncompromising digital environment for theological study. We focus on the "Fides et Excellentia" motto, ensuring that every student earns their progress through discipline and deep scriptural engagement.</p>
   
@@ -119,22 +182,14 @@
   <p>Our curriculum covers everything from Foundational Theology to Kingdom Leadership, specifically designed for those who cannot attend a physical campus but desire a high standard of education.</p>
 </div>
 
-<!-- Optional: Add your scripts here if needed -->
+<!-- You can continue adding more sections similar to your original structure -->
+
 <script>
+  // Your scripts for page interaction if needed
   let currentPage = 0;
-  const container = document.getElementById('journey');
   function movePage(direction) {
     currentPage += direction;
-    container.style.transform = `translateX(-${currentPage * 100}vw)`;
-  }
-  function setLvl(lvl) {
-    const d = document.getElementById('courseDisplay');
-    const a = document.getElementById('lvlAward');
-    const c = document.getElementById('lvlCost');
-    const p = document.getElementById('lvlPre');
-    if(lvl === 1) { d.style.borderTopColor = 'var(--level1)'; a.innerText="Harccian Certificate of Completion"; c.innerText="TUITION: FREE"; p.innerText="PREREQUISITE: Open Enrollment"; }
-    else if(lvl === 2) { d.style.borderTopColor = 'var(--level2)'; a.innerText="Harccian Advanced Certificate"; c.innerText="TUITION: Region Specific"; p.innerText="PREREQUISITE: Level I Completion"; }
-    else { d.style.borderTopColor = 'var(--level3)'; a.innerText="Harccian Mastery Certificate"; c.innerText="TUITION: Region Specific"; p.innerText="PREREQUISITE: Level II & Approval"; }
+    // Logic for page transition if needed
   }
 </script>
 
