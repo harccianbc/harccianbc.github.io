@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HARCCIAN Certificate Generator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  background: #192535;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  color: #ffd700;
+}
+
+input, select {
+  padding: 10px;
+  margin: 8px;
+  width: 250px;
+  border-radius: 5px;
+  border: none;
+}
+
+button {
+  padding: 12px 25px;
+  background: #be2834;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: white;
+  color: #be2834;
+}
+
+#certificate {
+  width: 800px;
+  height: 500px;
+  margin: 30px auto;
+  background: white;
+  color: #192535;
+  border: 10px solid #d4af37;
+  padding: 40px;
+  text-align: center;
+  display: none;
+}
+
+.cert-title {
+  font-size: 32px;
+  font-family: 'Cinzel', serif;
+  margin-bottom: 20px;
+}
+
+.cert-name {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.cert-course {
+  font-size: 20px;
+}
+
+.cert-date {
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>HARCCIAN CERTIFICATE GENERATOR</h1>
+
+<input id="fullname" placeholder="Full Name"><br>
+<input id="course" placeholder="Course Name"><br>
+
+<select id="country">
+  <option value="Unknown">Select Country (Optional)</option>
+  <option>Australia</option>
+  <option>India</option>
+  <option>USA</option>
+  <option>UK</option>
+  <option>Other</option>
+</select><br>
+
+<button onclick="generate()">Generate Certificate</button>
+<button onclick="downloadCert()">Download</button>
+
+<div id="certificate">
+  <div class="cert-title">HARCCIAN BIBLE COLLEGE™</div>
+  <div>Certificate of Completion</div>
+
+  <div class="cert-name" id="cname"></div>
+  <div class="cert-course" id="ccourse"></div>
+
+  <div class="cert-date" id="cdate"></div>
+  <div id="ccountry"></div>
+</div>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<script>
+function generate() {
+  const name = document.getElementById("fullname").value;
+  const course = document.getElementById("course").value;
+  const country = document.getElementById("country").value;
+
+  const date = new Date().toLocaleDateString();
+
+  document.getElementById("cname").innerText = name;
+  document.getElementById("ccourse").innerText = course;
+  document.getElementById("cdate").innerText = "Date: " + date;
+  document.getElementById("ccountry").innerText = "Country: " + country;
+
+  document.getElementById("certificate").style.display = "block";
+}
+
+function downloadCert() {
+  html2canvas(document.getElementById("certificate")).then(canvas => {
+    const link = document.createElement("a");
+    link.download = "Harccian-Certificate.png";
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+}
+</script>
+
+</body>
+</html>
