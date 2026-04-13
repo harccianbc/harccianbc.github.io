@@ -1,10 +1,10 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HARCCIAN Bible College</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
    
@@ -66,6 +66,9 @@
       border-radius: 4px;
       text-align: left;
     }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
     .dropdown-content a {
       color: white;
       padding: 12px 18px;
@@ -78,7 +81,6 @@
       background-color: #be2834;
       color: white;
     }
-    .dropdown:hover .dropdown-content { display: block; }
     .menu-divider {
       border: 0;
       height: 1px;
@@ -86,152 +88,126 @@
       width: 80%;
       margin: 15px auto;
     }
-    .notice-box {
-      background-color: #be2834;
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: bold;
-      padding: 25px 40px;
+    /* Prospectus Header Section */
+    .section {
+      max-width: 900px;
       margin: 30px auto;
-      max-width: 700px;
-      border-radius: 8px;
-      line-height: 1.7;
-      border-left: 8px solid #ffd700;
-      border-right: 8px solid #ffd700;
-    }
-    .notice-box h3 {
-      font-size: 19px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-      color: #ffd700;
-    }
-    .notice-box .ai-notice {
-      margin-top: 18px;
-      padding-top: 15px;
-      border-top: 2px solid #ffd700;
-      color: #ffd700;
-      font-size: 13px;
-    }
-    .letter-box {
-      max-width: 850px;
-      width: 92%;
-      margin: 40px auto;
-      padding: 50px 60px;
-      background: #fdfcf7;
-      color: #192535;
-      border-radius: 4px;
-      border: 1.5px solid #d4af37;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-      text-align: left;
-    }
-    .letter-header {
-      text-align: center;
-      margin-bottom: 30px;
-      border-bottom: 2px solid #be2834;
-      padding-bottom: 20px;
-    }
-    .letter-header h2 {
-      font-family: 'Cinzel', serif;
-      font-size: 28px;
-      color: #be2834;
-      margin: 0;
-      letter-spacing: 3px;
-    }
-    .letter-motto {
-      font-family: 'Cinzel', serif;
-      font-size: 13px;
-      font-weight: 700;
-      margin-top: 8px;
-      color: #192535;
-    }
-    .letter-box p {
-      font-family: 'Lato', sans-serif;
-      font-size: 17px;
-      line-height: 1.8;
-      margin-bottom: 20px;
-      color: #192535;
-      text-align: justify;
-    }
-    .letter-dear {
-      font-size: 20px;
-      font-weight: 900;
-      margin-bottom: 20px;
-      color: #192535;
-      font-family: 'Lato', sans-serif;
-    }
-    .quote-container {
-      margin: 35px 0;
-      background: #192535;
       padding: 30px;
-      border: 3px solid #d4af37;
+      background: var(--background);
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transition: box-shadow 0.3s;
+    }
+    .section:hover {
+      box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+    }
+    .section h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--red);
+    }
+    .section h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8em;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      color: var(--red);
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 5px;
+    }
+    p {
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    /* Banner below header */
+    .core-quote-banner {
+      background-color: var(--red);
+      padding: 15px;
+      margin-top: 20px;
       border-radius: 8px;
       text-align: center;
     }
-    .quote-text {
+    .core-quote-banner h3 {
+      color: #fff;
       font-family: 'Cinzel', serif;
-      font-size: 22px;
-      font-weight: 900;
-      color: #ffd700;
-    }
-    .signature-block {
-      margin-top: 40px;
-      text-align: right;
-    }
-    .signature-name {
-      font-family: 'Great Vibes', cursive;
-      font-size: 48px;
-      color: #be2834;
+      font-size: 1.5em;
       margin: 0;
     }
-    .signature-title {
-      font-family: 'Cinzel', serif;
-      font-size: 13px;
-      font-weight: 900;
-      color: #192535;
-    }
-    .apply-box {
-      max-width: 850px;
-      width: 92%;
-      margin: 0 auto 60px auto;
-      background: linear-gradient(135deg, #be2834, #192535);
-      border: 3px solid #d4af37;
+    /* Accordion styles */
+    .accordion {
+      max-width: 900px;
+      margin: 30px auto;
       border-radius: 8px;
-      padding: 50px 40px;
-      text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      overflow: hidden;
     }
-    .apply-box h2 {
+    .accordion-item {
+      border-top: 1px solid #ccc;
+    }
+    .accordion-header {
+      background-color: var(--background);
+      cursor: pointer;
+      padding: 20px;
       font-family: 'Cinzel', serif;
-      font-size: 36px;
-      color: #ffd700;
-      letter-spacing: 4px;
-      margin-bottom: 15px;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: var(--red);
+      transition: background 0.3s;
     }
-    .apply-box p {
-      font-family: 'Lato', sans-serif;
-      font-size: 16px;
-      color: #ffffff;
-      margin-bottom: 30px;
-      line-height: 1.7;
+    .accordion-header:hover {
+      background-color: #eaeaea;
     }
-    .apply-btn {
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      padding: 0 20px;
+      background-color: #f9f9f9;
+    }
+    .accordion-content p {
+      padding: 15px 0;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--text-color);
+    }
+    .active .accordion-content {
+      max-height: 1000px; /* big enough to show content */
+    }
+    /* Call to Action Button */
+    .cta-btn {
       display: inline-block;
-      background: #ffd700;
-      color: #192535;
+      background-color: var(--red);
+      color: #fff;
+      padding: 15px 30px;
+      margin: 50px auto;
       font-family: 'Cinzel', serif;
-      font-size: 18px;
-      font-weight: 900;
-      padding: 18px 50px;
-      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1.4em;
+      border-radius: 8px;
       text-decoration: none;
-      letter-spacing: 2px;
-      transition: 0.3s;
+      transition: background 0.3s, transform 0.2s;
     }
-    .apply-btn:hover {
-      background: #ffffff;
-      color: #be2834;
+    .cta-btn:hover {
+      background-color: #fff;
+      color: var(--red);
+      transform: translateY(-2px);
     }
+    /* Student Login Section */
+    .student-login-section {
+      margin: 40px auto;
+      max-width: 900px;
+      padding: 20px;
+      background: transparent;
+    }
+    .student-login-section h3 {
+      color: #ffd700;
+      font-family: 'Cinzel', serif;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    /* Footer styles (unchanged) */
     .hbc-footer {
       background: linear-gradient(135deg, #be2834, #192535);
       border-top: 4px solid #d4af37;
@@ -352,10 +328,22 @@
     <p>Take the first step toward your biblical education journey.<br>Applications are open — begin your enrollment now.</p>
     <a href="entrancetest.html" class="apply-btn">BEGIN YOUR ENTRANCE TEST →</a>
   </div>
-  
+
+<!-- START OF STUDENT LOGIN SECTION -->
+<div class="student-login-section">
+  <h3 style="color:#ffd700; font-family:'Cinzel', serif; font-size:2em;">Student Log In</h3>
+  <form id="studentLoginForm" onsubmit="return handleLogin(event)" style="display:flex; flex-direction:column; align-items:center; gap:15px;">
+    <label style="color:#fff; font-family:'Lato', sans-serif; font-size:1.2em;">Student Number:</label>
+    <input type="text" id="studentNumber" placeholder="Enter your Student Number" value="123456" style="padding:10px; font-size:1em; border-radius:5px; border:none; width:200px; text-align:center;" required />
+    <button type="submit" style="background-color:#be2834; color:#fff; padding:12px 25px; border:none; border-radius:5px; font-family:'Cinzel', serif; font-size:1.2em; cursor:pointer; transition:0.3s;">Log In</button>
+  </form>
+  <div id="loginMessage" style="margin-top:15px; font-family:'Lato', sans-serif; font-size:1em; color:#ffd700;"></div>
+</div>
+<!-- END OF STUDENT LOGIN SECTION -->
+
   <footer class="hbc-footer">
     <div class="footer-content">
-      <img src="h4logo.png" alt="HARCCIAN Bible College Logo" class="footer-logo">
+      <img src="h4logo.png" alt="HARCCIAN Bible College Logo" class="footer-logo" />
       <div class="footer-divider"></div>
       <div class="footer-trademark">
         © 2026 HARCCIAN BIBLE COLLEGE™. Trademark of the Founder. Proprietary materials.
@@ -371,5 +359,24 @@
       </div>
     </div>
   </footer>
+
+<script>
+// Basic login handler
+function handleLogin(event) {
+  event.preventDefault();
+  const studentNumberInput = document.getElementById('studentNumber');
+  const messageDiv = document.getElementById('loginMessage');
+  const enteredNumber = studentNumberInput.value.trim();
+
+  // Fake password check: only "123456" is valid
+  if (enteredNumber === "123456") {
+    messageDiv.innerHTML = "Login successful! Welcome to <strong>My Harccian</strong>.";
+    // Here, you could redirect to the student portal page
+    // window.location.href = 'myharccian.html';
+  } else {
+    messageDiv.innerHTML = "Invalid Student Number. Please try again.";
+  }
+}
+</script>
 </body>
 </html>
