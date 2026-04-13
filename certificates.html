@@ -1,141 +1,108 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HARCCIAN Certificate Generator</title>
+<title>CERTIFICATES - HARCCIAN Bible College</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 
 <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
   background: #192535;
   color: white;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lato', Arial, sans-serif;
   text-align: center;
-  padding: 20px;
+  min-height: 100vh;
 }
 
-h1 {
-  font-family: 'Cinzel', serif;
-  color: #ffd700;
+/* HEADER (same as your index) */
+.banner-container {
+  width: 100%;
+  margin: 15px 0;
 }
 
-input, select {
-  padding: 10px;
-  margin: 8px;
-  width: 250px;
-  border-radius: 5px;
-  border: none;
+.banner-container img {
+  width: 60%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
 }
 
-button {
-  padding: 12px 25px;
-  background: #be2834;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin: 10px;
-  font-weight: bold;
-  border-radius: 5px;
+.menu-divider {
+  border: 0;
+  height: 1px;
+  background: #d4af37;
+  width: 80%;
+  margin: 15px auto;
 }
 
-button:hover {
-  background: white;
-  color: #be2834;
-}
-
-#certificate {
-  width: 800px;
-  height: 500px;
-  margin: 30px auto;
-  background: white;
+/* SIMPLE CONTENT BOX */
+.page-box {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fdfcf7;
   color: #192535;
-  border: 10px solid #d4af37;
-  padding: 40px;
-  text-align: center;
-  display: none;
+  padding: 50px;
+  border-radius: 6px;
+  border: 2px solid #d4af37;
+  text-align: left;
 }
 
-.cert-title {
-  font-size: 32px;
+.page-box h1 {
   font-family: 'Cinzel', serif;
+  color: #be2834;
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.cert-name {
-  font-size: 28px;
-  font-weight: bold;
-  margin: 20px 0;
+/* FOOTER (simple match) */
+.footer {
+  margin-top: 40px;
+  padding: 20px;
+  background: linear-gradient(135deg, #be2834, #192535);
+  text-align: center;
 }
 
-.cert-course {
-  font-size: 20px;
-}
-
-.cert-date {
-  margin-top: 20px;
+.footer img {
+  width: 120px;
 }
 </style>
 </head>
 
 <body>
 
-<h1>HARCCIAN CERTIFICATE GENERATOR</h1>
-
-<input id="fullname" placeholder="Full Name"><br>
-<input id="course" placeholder="Course Name"><br>
-
-<select id="country">
-  <option value="Unknown">Select Country (Optional)</option>
-  <option>Australia</option>
-  <option>India</option>
-  <option>USA</option>
-  <option>UK</option>
-  <option>Other</option>
-</select><br>
-
-<button onclick="generate()">Generate Certificate</button>
-<button onclick="downloadCert()">Download</button>
-
-<div id="certificate">
-  <div class="cert-title">HARCCIAN BIBLE COLLEGE™</div>
-  <div>Certificate of Completion</div>
-
-  <div class="cert-name" id="cname"></div>
-  <div class="cert-course" id="ccourse"></div>
-
-  <div class="cert-date" id="cdate"></div>
-  <div id="ccountry"></div>
+<!-- HEADER -->
+<div class="banner-container">
+  <img src="HARCCIAN (4).png" alt="banner">
 </div>
 
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<hr class="menu-divider">
 
-<script>
-function generate() {
-  const name = document.getElementById("fullname").value;
-  const course = document.getElementById("course").value;
-  const country = document.getElementById("country").value;
+<!-- PAGE CONTENT -->
+<div class="page-box">
+  <h1>CERTIFICATES</h1>
 
-  const date = new Date().toLocaleDateString();
+  <p>
+    Welcome to the certificate page.
+    <br><br>
+    This is where students will access their completion certificates.
+    <br><br>
+    ✔ Certificate display  
+    <br>
+    ✔ Certificate verification  
+    <br>
+    ✔ Student records (future update)
+  </p>
+</div>
 
-  document.getElementById("cname").innerText = name;
-  document.getElementById("ccourse").innerText = course;
-  document.getElementById("cdate").innerText = "Date: " + date;
-  document.getElementById("ccountry").innerText = "Country: " + country;
-
-  document.getElementById("certificate").style.display = "block";
-}
-
-function downloadCert() {
-  html2canvas(document.getElementById("certificate")).then(canvas => {
-    const link = document.createElement("a");
-    link.download = "Harccian-Certificate.png";
-    link.href = canvas.toDataURL();
-    link.click();
-  });
-}
-</script>
+<!-- FOOTER -->
+<div class="footer">
+  <img src="h4logo.png" alt="logo">
+  <p>© 2026 HARCCIAN BIBLE COLLEGE™</p>
+</div>
 
 </body>
 </html>
