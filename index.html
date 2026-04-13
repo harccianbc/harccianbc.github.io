@@ -8,27 +8,44 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: #192535; color: white; font-family: 'Lato', Arial, sans-serif; text-align: center; min-height: 100vh; }
-    .banner-container, .mainbanner-container { width: 100%; margin: 15px 0; }
-    .banner-container img, .mainbanner-container img { width: 60%; height: auto; display: block; margin: 0 auto; border-radius: 8px; }
+    
+    .banner-container { width: 100%; margin: 15px 0; }
+    .banner-container img { width: 60%; height: auto; display: block; margin: 0 auto; border-radius: 8px; }
+
     .nav-container { margin: 15px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
     .dropdown { position: relative; display: inline-block; }
+    
+    /* STANDARD MENU BUTTONS */
     .menu-button { display: inline-block; background-color: #be2834; color: white; padding: 12px 20px; margin: 5px; text-decoration: none; font-weight: bold; border-radius: 5px; font-size: 13px; transition: 0.3s; cursor: pointer; border: none; font-family: 'Cinzel', serif; letter-spacing: 1px; }
     .menu-button:hover { background-color: #ffffff; color: #be2834; }
-    .dropdown-content { display: none; position: absolute; background-color: #192535; min-width: 220px; box-shadow: 0px 8px 16px rgba(0,0,0,0.6); z-index: 10; border: 1px solid #d4af37; border-radius: 4px; text-align: left; }
-    .dropdown-content a { color: white; padding: 12px 18px; text-decoration: none; display: block; font-size: 14px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
-    .dropdown-content a:hover { background-color: #be2834; color: white; }
+
+    /* YOUR SPECIFIC GREEN AND RED APPLY BUTTON */
+    .apply-nav-button { 
+      background-color: #2ecc71 !important; /* Green */
+      color: #ffffff !important;
+      border: 2px solid #be2834 !important; /* Red Border */
+    }
+    .apply-nav-button:hover { 
+      background-color: #be2834 !important; /* Red on hover */
+      color: #ffffff !important; 
+    }
+
+    .dropdown-content { display: none; position: absolute; background-color: #192535; min-width: 220px; z-index: 10; border: 1px solid #d4af37; border-radius: 4px; text-align: left; }
+    .dropdown-content a { color: white; padding: 12px 18px; text-decoration: none; display: block; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
     .dropdown:hover .dropdown-content { display: block; }
+    
     .menu-divider { border: 0; height: 1px; background: #d4af37; width: 80%; margin: 15px auto; }
-    .notice-box { background-color: #be2834; color: #ffffff; font-size: 14px; font-weight: bold; padding: 25px 40px; margin: 30px auto; max-width: 700px; border-radius: 8px; line-height: 1.7; border-left: 8px solid #ffd700; border-right: 8px solid #ffd700; }
-    .letter-box { max-width: 850px; width: 92%; margin: 40px auto; padding: 50px 60px; background: #fdfcf7; color: #192535; border-radius: 4px; border: 1.5px solid #d4af37; box-shadow: 0 30px 60px rgba(0,0,0,0.6); text-align: left; }
-    .letter-header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #be2834; padding-bottom: 20px; }
-    .letter-header h2 { font-family: 'Cinzel', serif; font-size: 28px; color: #be2834; letter-spacing: 3px; }
-    .quote-container { margin: 35px 0; background: #192535; padding: 30px; border: 3px solid #d4af37; border-radius: 8px; text-align: center; color: #ffd700; font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; }
-    .signature-block { margin-top: 40px; text-align: right; }
-    .signature-name { font-family: 'Great Vibes', cursive; font-size: 48px; color: #be2834; }
-    .apply-box { max-width: 850px; width: 92%; margin: 0 auto 60px auto; background: linear-gradient(135deg, #be2834, #192535); border: 3px solid #d4af37; border-radius: 8px; padding: 50px 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
-    .apply-btn { display: inline-block; background: #ffd700; color: #192535; font-family: 'Cinzel', serif; padding: 18px 50px; border-radius: 5px; text-decoration: none; font-weight: 900; }
-    .hbc-footer { background: linear-gradient(135deg, #be2834, #192535); border-top: 4px solid #d4af37; padding: 25px 20px; font-size: 0.8rem; }
+
+    .mainbanner-container img { width: 60%; height: auto; display: block; margin: 0 auto; border-radius: 8px; }
+
+    .letter-box { max-width: 850px; width: 92%; margin: 40px auto; padding: 50px 60px; background: #fdfcf7; color: #192535; border-radius: 4px; border: 1.5px solid #d4af37; text-align: left; }
+    .quote-container { margin: 35px 0; background: #192535; padding: 30px; border: 3px solid #d4af37; text-align: center; color: #ffd700; font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; }
+    
+    .apply-box { max-width: 850px; width: 92%; margin: 0 auto 60px auto; background: linear-gradient(135deg, #be2834, #192535); border: 3px solid #d4af37; padding: 50px 40px; border-radius: 8px; }
+    .apply-btn { display: inline-block; background: #2ecc71; color: white; font-family: 'Cinzel', serif; padding: 18px 50px; border-radius: 5px; text-decoration: none; font-weight: 900; border: 3px solid #be2834; }
+    .apply-btn:hover { background: #be2834; }
+
+    .hbc-footer { background: linear-gradient(135deg, #be2834, #192535); border-top: 4px solid #d4af37; padding: 25px 20px; }
   </style>
 </head>
 <body>
@@ -46,8 +63,6 @@
         <a href="mission.html">OUR MISSION</a>
         <a href="staff.html">STAFF</a>
         <a href="terms.html">TERMS / POLICIES</a>
-        <a href="accessibility.html">ACCESSIBILITY STATEMENT</a>
-        <a href="ai-transparency.html">AI TRANSPARENCY STATEMENT</a>
       </div>
     </div>
     <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
@@ -60,7 +75,7 @@
     </div>
     <a href="courses.html" class="menu-button">COURSES</a>
     
-    <a href="entrancetest.html" class="menu-button">APPLY</a>
+    <a href="entrancetest.html" class="menu-button apply-nav-button">APPLY</a>
 
     <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
     <a href="shop.html" class="menu-button">SHOP</a>
@@ -72,25 +87,10 @@
     <img src="MAINBANNER.jpeg" alt="HARCCIAN Main Banner">
   </div>
 
-  <div class="notice-box">
-    <h3>⚠️ Non-Accreditation Notice</h3>
-    <p>HARCCIAN Bible College™ is a private religious training centre. Not accredited under the AQF or an RTO.</p>
-  </div>
-
   <div class="letter-box">
-    <div class="letter-header">
-      <h2>Harccian Bible College™</h2>
-      <div style="font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700; margin-top: 8px;">"Fides et Excellentia" — Faith and Excellence</div>
-    </div>
-    <div style="font-size: 20px; font-weight: 900; margin-bottom: 20px;">Dear Friend,</div>
-    <p style="margin-bottom: 20px; line-height: 1.8;">Welcome to Harccian Bible College™. Our mission is to provide rigorous biblical training through a borderless digital platform...</p>
-    <div class="quote-container">
-      Nothing is ever given — it is always earned at H.B.C.
-    </div>
-    <div class="signature-block">
-      <div class="signature-name">The Founder</div>
-      <div style="font-family: 'Cinzel', serif; font-size: 13px; font-weight: 900;">Harccian Bible College™</div>
-    </div>
+    <h2 style="font-family: 'Cinzel', serif; color: #be2834; text-align: center;">Harccian Bible College™</h2>
+    <div class="quote-container">Nothing is ever given — it is always earned at H.B.C.</div>
+    <p>Welcome to Harccian Bible College™...</p>
   </div>
 
   <div class="apply-box">
@@ -99,10 +99,8 @@
   </div>
 
   <footer class="hbc-footer">
-    <div class="footer-content">
-      <img src="h4logo.png" alt="Logo" style="width: 150px; margin-bottom: 15px; display: block; margin-left: auto; margin-right: auto;">
-      <div style="color: #d4af37; font-family: 'Cinzel', serif; letter-spacing: 2px;">© 2026 HARCCIAN BIBLE COLLEGE™</div>
-    </div>
+    <img src="h4logo.png" alt="Logo" style="width: 150px; display: block; margin: 0 auto;">
+    <div style="color: #d4af37; font-family: 'Cinzel', serif; margin-top: 10px;">© 2026 HARCCIAN BIBLE COLLEGE™</div>
   </footer>
 
 </body>
