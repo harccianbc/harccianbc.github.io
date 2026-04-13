@@ -78,7 +78,6 @@
     
     <button class="download-btn" onclick="generateCert()">Download PDF Certificate</button>
     
-    <!-- Back to Home button - always visible -->
     <br><br>
     <button class="home-btn" onclick="goHome()">← Back to Home</button>
 
@@ -95,51 +94,62 @@
       const { jsPDF } = window.jspdf;
       const pdf = new jsPDF('landscape', 'mm', 'a4');
 
-      // Background
+      // 1. Background
       pdf.setFillColor(25, 37, 53);
       pdf.rect(0, 0, 297, 210, 'F');
 
-      // Gold border
+      // 2. Gold border
       pdf.setDrawColor(212, 175, 55);
       pdf.setLineWidth(5);
       pdf.rect(10, 10, 277, 190);
 
-      // Add Logo at the top
+      // 3. Add Logo
       try {
-        pdf.addImage('h4logo.png', 'PNG', 118, 22, 60, 45);  // centered logo
+        pdf.addImage('h4logo.png', 'PNG', 118, 22, 60, 45); 
       } catch(e) {
         console.log("Logo could not be loaded");
       }
 
-      // Title
+      // 4. Header Title
       pdf.setTextColor(255, 215, 0);
       pdf.setFont('helvetica', 'bold');
-      pdf.setFontSize(32);
-      pdf.text('CERTIFICATE OF COMPLETION', 148.5, 85, { align: 'center' });
+      pdf.setFontSize(30);
+      pdf.text('CERTIFICATE OF COMPLETION', 148.5, 82, { align: 'center' });
 
-      // "This certifies that"
+      // 5. Introductory Text
       pdf.setTextColor(255, 255, 255);
+      pdf.setFont('helvetica', 'normal');
       pdf.setFontSize(18);
-      pdf.text('This certifies that', 148.5, 105, { align: 'center' });
+      pdf.text('This is to certify that', 148.5, 100, { align: 'center' });
 
-      // Student Name
-      pdf.setFontSize(26);
-      pdf.text(name.toUpperCase(), 148.5, 125, { align: 'center' });
+      // 6. Student Name
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(32);
+      pdf.text(name.toUpperCase(), 148.5, 120, { align: 'center' });
 
-      // Completion text
+      // 7. Course Completion Text
+      pdf.setFont('helvetica', 'normal');
       pdf.setFontSize(16);
-      pdf.text('has successfully completed the Certificate Test', 148.5, 145, { align: 'center' });
+      pdf.text('has completed the Harccian Bible College Training Course', 148.5, 138, { align: 'center' });
+      
+      // 8. H.M.C.T.C Title
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(22);
+      pdf.setTextColor(255, 215, 0);
+      pdf.text('H.M.C.T.C', 148.5, 152, { align: 'center' });
 
-      // College name
+      // 9. College Footer
+      pdf.setTextColor(255, 255, 255);
       pdf.setFontSize(14);
-      pdf.text('HARCCIAN Bible College™', 148.5, 170, { align: 'center' });
+      pdf.setFont('helvetica', 'normal');
+      pdf.text('HARCCIAN Bible College™', 148.5, 172, { align: 'center' });
 
-      // Date
+      // 10. Current Date
       const today = new Date().toLocaleDateString('en-GB');
       pdf.setFontSize(12);
       pdf.text('Issued on: ' + today, 148.5, 185, { align: 'center' });
 
-      // Save PDF
+      // Save the file
       pdf.save(name + '_HARCCIAN_Certificate.pdf');
     }
 
