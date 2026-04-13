@@ -1,296 +1,250 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Certificates - HARCCIAN Bible College</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificates - HARCCIAN Bible College</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Great+Vibes&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-<style>
-/* SAME BASE STYLE AS INDEX */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-  background: #192535;
-  color: white;
-  font-family: 'Lato', Arial, sans-serif;
-  text-align: center;
-}
+    body {
+      background: #192535;
+      color: white;
+      font-family: 'Lato', Arial, sans-serif;
+      text-align: center;
+      min-height: 100vh;
+    }
 
-/* HEADER */
-.banner-container img {
-  width: 60%;
-  margin: 15px auto;
-  display: block;
-  border-radius: 8px;
-}
+    .banner-container, .mainbanner-container {
+      width: 100%;
+      margin: 15px 0;
+    }
 
-/* MENU */
-.nav-container {
-  margin: 15px 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
+    .banner-container img, .mainbanner-container img {
+      width: 60%;
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
 
-.menu-button {
-  display: inline-block;
-  background-color: #be2834;
-  color: white;
-  padding: 12px 20px;
-  margin: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  font-size: 13px;
-  font-family: 'Cinzel', serif;
-  transition: 0.3s;
-}
+    /* NAV (same as index) */
+    .nav-container {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
 
-.menu-button:hover {
-  background: white;
-  color: #be2834;
-}
+    .dropdown { position: relative; display: inline-block; }
 
-.dropdown { position: relative; display: inline-block; }
+    .menu-button {
+      background-color: #be2834;
+      color: white;
+      padding: 12px 20px;
+      margin: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      font-size: 13px;
+      cursor: pointer;
+      border: none;
+      font-family: 'Cinzel', serif;
+    }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background: #192535;
-  min-width: 220px;
-  border: 1px solid #d4af37;
-  z-index: 10;
-  text-align: left;
-}
+    .menu-button:hover {
+      background: white;
+      color: #be2834;
+    }
 
-.dropdown-content a {
-  display: block;
-  padding: 12px;
-  color: white;
-  text-decoration: none;
-}
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #192535;
+      min-width: 220px;
+      border: 1px solid #d4af37;
+      z-index: 10;
+      text-align: left;
+    }
 
-.dropdown-content a:hover {
-  background: #be2834;
-}
+    .dropdown-content a {
+      color: white;
+      padding: 12px;
+      display: block;
+      text-decoration: none;
+      font-size: 14px;
+    }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+    .dropdown:hover .dropdown-content { display: block; }
 
-/* PAGE */
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
-}
+    .menu-divider {
+      height: 1px;
+      background: #d4af37;
+      width: 80%;
+      margin: 15px auto;
+    }
 
-h1 {
-  font-family: Cinzel;
-  color: #ffd700;
-}
+    /* CERTIFICATE PAGE */
+    .cert-box {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fdfcf7;
+      color: #192535;
+      padding: 40px;
+      border-radius: 8px;
+      border: 2px solid #d4af37;
+      text-align: center;
+    }
 
-/* QUIZ */
-.quiz-box {
-  background: white;
-  color: #192535;
-  padding: 25px;
-  border-radius: 10px;
-  margin-top: 20px;
-}
+    .cert-box h1 {
+      font-family: 'Cinzel', serif;
+      color: #be2834;
+      margin-bottom: 15px;
+    }
 
-.question {
-  margin: 15px 0;
-  font-weight: bold;
-}
+    .quiz {
+      margin-top: 20px;
+      text-align: left;
+    }
 
-input {
-  padding: 10px;
-  width: 80%;
-}
+    .quiz p {
+      margin: 10px 0;
+      font-weight: bold;
+    }
 
-button {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border: none;
-  cursor: pointer;
-  border-radius: 6px;
-  background: #ffd700;
-  font-weight: bold;
-}
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
 
-/* POPUP */
-.popup {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
-  justify-content: center;
-  align-items: center;
-}
+    button {
+      padding: 12px 20px;
+      background: #ffd700;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: 'Cinzel';
+    }
 
-.popup-content {
-  background: white;
-  color: black;
-  padding: 25px;
-  border-radius: 10px;
-}
+    #formBox {
+      display: none;
+      margin-top: 20px;
+    }
 
-/* CERTIFICATE */
-.certificate {
-  display: none;
-  margin-top: 30px;
-  padding: 40px;
-  background: #fdfcf7;
-  color: #192535;
-  border: 5px solid #d4af37;
-}
+    .cert-result {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      border: 2px dashed #be2834;
+      background: white;
+      color: black;
+    }
 
-.certificate h2 {
-  font-family: Cinzel;
-  color: #be2834;
-}
+    /* FOOTER */
+    .hbc-footer {
+      margin-top: 50px;
+      background: #be2834;
+      padding: 20px;
+      color: white;
+    }
 
-/* FOOTER */
-.footer {
-  margin-top: 50px;
-  padding: 20px;
-  background: #111c2a;
-  font-size: 12px;
-}
-</style>
+  </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- HEADER / MENU (FULL COPIED STYLE) -->
 <div class="banner-container">
   <img src="HARCCIAN (4).png">
 </div>
 
-<!-- MENU -->
+<hr class="menu-divider">
+
 <nav class="nav-container">
 
   <div class="dropdown">
     <a href="index.html" class="menu-button">HOME ▾</a>
     <div class="dropdown-content">
-      <a href="mission.html">MISSION</a>
+      <a href="mission.html">OUR MISSION</a>
       <a href="staff.html">STAFF</a>
       <a href="terms.html">TERMS</a>
-      <a href="certificates.html">CERTIFICATES</a>
     </div>
   </div>
 
-  <a href="prospectus.html" class="menu-button">PROSPECTUS</a>
-  <a href="about.html" class="menu-button">ABOUT</a>
   <a href="courses.html" class="menu-button">COURSES</a>
-  <a href="non-accreditation.html" class="menu-button">NON-ACCREDITATION</a>
-  <a href="shop.html" class="menu-button">SHOP</a>
+  <a href="certificates.html" class="menu-button">CERTIFICATES</a>
 
 </nav>
 
-<hr>
+<hr class="menu-divider">
 
-<!-- PAGE CONTENT -->
-<div class="container">
+<!-- CERT PAGE CONTENT -->
+<div class="cert-box">
 
-<h1>CERTIFICATES</h1>
+  <h1>Certificate Entry Test</h1>
 
-<p>This page is now connected to your website.</p>
+  <p>Answer these questions to continue</p>
 
-<div class="quiz-box">
-
-  <h3>Entrance Quiz</h3>
-
-  <div class="question">
-    What color is red?
+  <div class="quiz">
+    <p>1. What is 1 + 1?</p>
     <input id="q1">
-  </div>
 
-  <div class="question">
-    What is 1 + 1?
+    <p>2. What color is red?</p>
     <input id="q2">
+
+    <button onclick="checkQuiz()">Submit Answers</button>
   </div>
 
-  <div class="question">
-    What is the opposite of dark?
-    <input id="q3">
+  <div id="formBox">
+    <h2>Generate Certificate</h2>
+
+    <input id="fullname" placeholder="Full Name">
+    <input id="date" placeholder="Date">
+
+    <button onclick="generateCert()">Generate</button>
   </div>
 
-  <button onclick="checkQuiz()">Submit</button>
-
-  <p id="result"></p>
-
-  <button id="genBtn" style="display:none;" onclick="openPopup()">
-    GENERATE YOUR FREE CERTIFICATE
-  </button>
-
-</div>
-
-</div>
-
-<!-- POPUP -->
-<div class="popup" id="popup">
-  <div class="popup-content">
-    <h3>Enter Details</h3>
-    <input id="name" placeholder="Full Name"><br><br>
-    <input id="date" type="date"><br><br>
-    <button onclick="generateCertificate()">Generate</button>
+  <div class="cert-result" id="resultBox">
+    <h2>HARCCIAN CERTIFICATE</h2>
+    <p>This certifies</p>
+    <h3 id="nameOut"></h3>
+    <p id="dateOut"></p>
   </div>
-</div>
 
-<!-- CERTIFICATE -->
-<div class="certificate" id="certificate">
-  <h2>HARCCIAN BIBLE COLLEGE</h2>
-  <h3>CERTIFICATE OF COMPLETION</h3>
-
-  <p>Presented to</p>
-  <h2 id="cName"></h2>
-
-  <p>Date</p>
-  <p id="cDate"></p>
-
-  <p><b>“Earned, not given.”</b></p>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-© 2026 HARCCIAN BIBLE COLLEGE™
 </div>
 
 <script>
-
 function checkQuiz() {
-  let q1 = document.getElementById("q1").value;
-  let q2 = document.getElementById("q2").value;
-  let q3 = document.getElementById("q3").value;
+  const a1 = document.getElementById("q1").value;
+  const a2 = document.getElementById("q2").value.toLowerCase();
 
-  if(q1 && q2 && q3) {
-    document.getElementById("result").innerText = "Great — you passed!";
-    document.getElementById("genBtn").style.display = "inline-block";
+  if (a1 == "2" && a2.includes("red")) {
+    document.getElementById("formBox").style.display = "block";
+    alert("Great job — you passed!");
   } else {
-    document.getElementById("result").innerText = "Answer all questions.";
+    alert("Try again!");
   }
 }
 
-function openPopup() {
-  document.getElementById("popup").style.display = "flex";
+function generateCert() {
+  document.getElementById("nameOut").innerText =
+    document.getElementById("fullname").value;
+
+  document.getElementById("dateOut").innerText =
+    document.getElementById("date").value;
+
+  document.getElementById("resultBox").style.display = "block";
 }
-
-function generateCertificate() {
-  document.getElementById("cName").innerText = document.getElementById("name").value;
-  document.getElementById("cDate").innerText = document.getElementById("date").value;
-
-  document.getElementById("popup").style.display = "none";
-  document.getElementById("certificate").style.display = "block";
-}
-
 </script>
+
+<!-- FOOTER -->
+<div class="hbc-footer">
+  © 2026 HARCCIAN BIBLE COLLEGE™
+</div>
 
 </body>
 </html>
