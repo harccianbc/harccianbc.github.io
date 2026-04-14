@@ -14,6 +14,11 @@
       padding: 40px;
       min-height: 100vh;
     }
+    .landing-logo {
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 20px;
+    }
     h1 {
       font-family: 'Cinzel', serif;
       color: #ffd700;
@@ -81,6 +86,8 @@
 </head>
 <body>
   <div class="container">
+    <img src="certlogolion.png" alt="College Logo" class="landing-logo">
+
     <h1>Congratulations on Earning Your Certificate of Completion in Ministry</h1>
     
     <p class="instruction">
@@ -118,9 +125,9 @@
       pdf.setLineWidth(0.8);
       pdf.rect(14, 14, 269, 182);
 
-      // 3. Add Logo
+      // 3. Add Logo to PDF (Now using certlogolion.png)
       try {
-        pdf.addImage('h4logo.png', 'PNG', 118, 22, 60, 45); 
+        pdf.addImage('certlogolion.png', 'PNG', 123.5, 22, 50, 45); 
       } catch(e) {
         console.log("Logo could not be loaded");
       }
@@ -142,7 +149,7 @@
       pdf.setFontSize(32);
       pdf.text(name.toUpperCase(), 148.5, 120, { align: 'center' });
 
-      // 7. Course Completion Text (Corrected Phrasing)
+      // 7. Course Completion Text
       pdf.setFont('helvetica', 'normal');
       pdf.setFontSize(15);
       pdf.text('has successfully completed all required modules to be awarded this certificate,', 148.5, 138, { align: 'center' });
