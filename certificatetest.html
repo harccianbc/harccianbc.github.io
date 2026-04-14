@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Certificate Test - HARCCIAN Bible College</title>
+  <title>Certificate Generation - HARCCIAN Bible College</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
@@ -17,11 +17,20 @@
     h1 {
       font-family: 'Cinzel', serif;
       color: #ffd700;
-      font-size: 36px;
+      font-size: 28px;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+    p.instruction {
+      font-size: 18px;
+      color: #ffffff;
       margin-bottom: 30px;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .container {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
     }
     input {
@@ -62,22 +71,34 @@
       background: #ffffff;
       color: #be2834;
     }
-    /* Removed .notice styles */
+    .disclaimer {
+      margin-top: 30px;
+      font-size: 13px;
+      color: #d4af37;
+      font-style: italic;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Certificate Test</h1>
+    <h1>Congratulations for completing your Certificate of Completion of Ministry</h1>
     
+    <p class="instruction">
+      Please enter your full name and generate your certificate.<br>
+      Please remember all our certificates are non-accredited.
+    </p>
+
     <input id="studentName" type="text" placeholder="Enter your full name">
-    <br><br>
+    <br>
     
-    <button class="download-btn" onclick="generateCert()">Download PDF Certificate</button>
-    
+    <button class="download-btn" onclick="generateCert()">Generate Certificate</button>
     <br><br>
     <button class="home-btn" onclick="goHome()">← Back to Home</button>
-    
+
+    <div class="disclaimer">
+      H.B.C
     </div>
+  </div>
 
   <script>
     function generateCert() {
@@ -90,10 +111,16 @@
       pdf.setFillColor(25, 37, 53);
       pdf.rect(0, 0, 297, 210, 'F');
 
-      // 2. Gold border
+      // 2. Academic Double Border (Consistent Gold Color)
       pdf.setDrawColor(212, 175, 55);
-      pdf.setLineWidth(5);
+      
+      // Outer Thick Line
+      pdf.setLineWidth(2.5);
       pdf.rect(10, 10, 277, 190);
+      
+      // Inner Thin Line (Now also set to same Gold Color)
+      pdf.setLineWidth(0.8);
+      pdf.rect(14, 14, 269, 182);
 
       // 3. Add Logo
       try {
@@ -105,8 +132,8 @@
       // 4. Header Title
       pdf.setTextColor(255, 215, 0);
       pdf.setFont('helvetica', 'bold');
-      pdf.setFontSize(30);
-      pdf.text('CERTIFICATE OF COMPLETION', 148.5, 82, { align: 'center' });
+      pdf.setFontSize(28);
+      pdf.text('CERTIFICATE OF COMPLETION OF MINISTRY', 148.5, 82, { align: 'center' });
 
       // 5. Introductory Text
       pdf.setTextColor(255, 255, 255);
@@ -121,28 +148,40 @@
 
       // 7. Course Completion Text
       pdf.setFont('helvetica', 'normal');
-      pdf.setFontSize(16);
-      pdf.text('has completed the Harccian Bible College Training Course', 148.5, 138, { align: 'center' });
+      pdf.setFontSize(15);
+      pdf.text('has completed all modules in to be awarded this certificate,', 148.5, 138, { align: 'center' });
       
-      // 8. H.M.C.T.C Title
       pdf.setFont('helvetica', 'bold');
-      pdf.setFontSize(22);
+      pdf.setFontSize(18);
       pdf.setTextColor(255, 215, 0);
-      pdf.text('H.M.C.T.C', 148.5, 152, { align: 'center' });
+      pdf.text('Harccian Bible College (tm)', 148.5, 150, { align: 'center' });
 
-      // 9. College Footer
+      // 8. Signature Area (Bottom Left)
+      pdf.setDrawColor(212, 175, 55);
+      pdf.setLineWidth(0.5);
+      pdf.line(40, 180, 100, 180); // Signature line
+      
+      pdf.setTextColor(255, 215, 0);
+      pdf.setFont('times', 'italic'); 
+      pdf.setFontSize(20);
+      pdf.text('Founder', 70, 175, { align: 'center' });
+      
       pdf.setTextColor(255, 255, 255);
-      pdf.setFontSize(14);
       pdf.setFont('helvetica', 'normal');
-      pdf.text('HARCCIAN Bible College™', 148.5, 172, { align: 'center' });
+      pdf.setFontSize(10);
+      pdf.text('College Founder', 70, 185, { align: 'center' });
 
-      // 10. Current Date
+      // 9. Current Date (Bottom Right)
       const today = new Date().toLocaleDateString('en-GB');
       pdf.setFontSize(12);
-      pdf.text('Issued on: ' + today, 148.5, 185, { align: 'center' });
+      pdf.text('Issued on: ' + today, 227, 185, { align: 'center' });
+
+      // 10. Small Footer
+      pdf.setFontSize(9);
+      pdf.text('HARCCIAN Bible College™', 148.5, 192, { align: 'center' });
 
       // Save the file
-      pdf.save(name + '_HARCCIAN_Certificate.pdf');
+      pdf.save(name + '_HARCCIAN_Ministry_Certificate.pdf');
     }
 
     function goHome() {
