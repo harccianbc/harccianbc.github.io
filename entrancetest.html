@@ -1,244 +1,73 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harccian Entrance Exam</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harccian Entrance Exam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #eee;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-<style>
-body {
-    font-family: Arial;
-    background: #111;
-    color: #eee;
-    user-select: none;
-    padding: 20px;
-}
+        .header-info {
+            max-width: 900px;
+            width: 90%;
+            background: #1c1c1c;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px 10px 0 0;
+            border-bottom: 4px solid red;
+            text-align: center;
+        }
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    background: #1c1c1c;
-    padding: 20px;
-    border-radius: 10px;
-}
+        .form-container {
+            width: 100%;
+            max-width: 900px;
+            background: #fff; /* Google Forms usually look best on white or their native bg */
+            border-radius: 0 0 10px 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
 
-.warning {
-    background: darkred;
-    padding: 12px;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
+        iframe {
+            width: 100%;
+            height: 1200px; /* Adjust height as needed for your form length */
+            border: none;
+        }
 
-.info {
-    background:#222;
-    padding:15px;
-    margin-bottom:15px;
-    border-left:4px solid red;
-}
-
-.progress-bar {
-    width:100%;
-    background:#333;
-    border-radius:20px;
-    margin-bottom:15px;
-}
-
-.progress {
-    height:18px;
-    width:0%;
-    background:red;
-    border-radius:20px;
-}
-
-.question {
-    margin-bottom:15px;
-}
-
-label {
-    display:block;
-}
-
-.nav {
-    display:flex;
-    justify-content:space-between;
-    margin-top:15px;
-}
-
-button {
-    padding:12px;
-    width:48%;
-    background:red;
-    border:none;
-    color:white;
-    cursor:pointer;
-}
-</style>
-
-<script>
-// basic anti-cheat (browser limited)
-document.addEventListener("contextmenu", e => e.preventDefault());
-document.onkeydown = function(e){
-    if(e.keyCode==123){
-        alert("Security warning");
-        return false;
-    }
-};
-</script>
-
+        .warning-text {
+            color: #ff4444;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
+    <div class="header-info">
+        <h2>Harccian Entrance Exam</h2>
+        <p class="warning-text">⚠ Please ensure you have a stable connection before starting.</p>
+        <p>Complete the form below to submit your application.</p>
+    </div>
 
-<div class="warning">
-⚠ SECURITY WARNING: Any tampering may terminate the exam
-</div>
-
-<div class="info">
-<strong>IMPORTANT:</strong> This exam must be completed in ONE sitting.<br>
-Answers are NOT saved if you leave or refresh.<br><br>
-
-Pass mark: <strong>90% (68/75)</strong><br>
-Fail = retry unlimited times<br>
-Pass = application page
-</div>
-
-<div class="progress-bar">
-<div class="progress" id="progress"></div>
-</div>
-
-<div id="page"></div>
-
-<div class="nav">
-<button onclick="back()">Back</button>
-<button onclick="next()">Next</button>
-</div>
-
-<br>
-<button onclick="submitExam()" style="width:100%">Submit Exam</button>
-
-</div>
-
-<script>
-
-// ================= QUESTIONS =================
-const questions = [
-"He doesn’t like apples","Receive spelling","She is going","Cowboy noun","Its raining",
-"They are playing","Past run","She has book","Verb barked","There are people",
-"Definitely spelling","I saw him","Adjective big","Dont go","Has finished",
-"Plural child","We were late","Pronoun him","I am going","Separate spelling",
-"They arrived","Adverb quickly","Who’s there","She is happy","I did nothing",
-
-"God created world","Noah ark","6 days","Adam","Eve",
-"Moses","Red Sea","David","Jonah","Bethlehem",
-"Mary","John Baptist","12 disciples","Judas","3 days",
-"Genesis","Revelation","Psalms","Daniel","Joseph",
-"Wine miracle","Peter water","Love God","Bible","Jesus",
-
-"HBC","Motto","Accredited","Harccian","Focus",
-"Course","Study","Platform","Govern","Affiliated",
-"Certificates","Why study","Started","Barrier","Environment",
-"Who for","AI review","AI role","Data","Share",
-"Storage","Rules","Volunteers","Alumni","Meaning"
-];
-
-// ================= ANSWERS =================
-const answers = [
-"B","B","B","B","B",
-"B","B","B","B","B",
-"B","B","B","B","A",
-"B","B","B","A","A",
-"B","B","B","A","A",
-
-"B","A","B","A","B",
-"B","B","B","A","C",
-"A","B","B","B","B",
-"B","B","B","A","B",
-"B","B","B","A","B",
-
-"B","B","B","B","B",
-"B","B","C","C","C",
-"B","B","B","B","B",
-"B","B","B","B","C",
-"C","B","B","B","C"
-];
-
-// ================= STATE =================
-let page = 0;
-let perPage = 25;
-let stored = new Array(75).fill(null);
-
-// ================= RENDER =================
-function render(){
-    let start = page * perPage;
-    let end = start + perPage;
-
-    let html = "";
-
-    for(let i=start;i<end;i++){
-        html += `
-        <div class="question">
-            <p><b>Question ${i+1}:</b> ${questions[i]}</p>
-            <label><input type="radio" name="q${i}" value="A" onchange="save(${i},'A')"> A</label>
-            <label><input type="radio" name="q${i}" value="B" onchange="save(${i},'B')"> B</label>
-            <label><input type="radio" name="q${i}" value="C" onchange="save(${i},'C')"> C</label>
-        </div>
-        `;
-    }
-
-    document.getElementById("page").innerHTML = html;
-    updateProgress();
-}
-
-// ================= SAVE =================
-function save(i,v){
-    stored[i]=v;
-    updateProgress();
-}
-
-// ================= PROGRESS =================
-function updateProgress(){
-    let done = stored.filter(x=>x!==null).length;
-    document.getElementById("progress").style.width = (done/75*100)+"%";
-}
-
-// ================= NAV =================
-function next(){
-    if(page<2){page++;render();}
-}
-function back(){
-    if(page>0){page--;render();}
-}
-
-// ================= SUBMIT =================
-function submitExam(){
-
-    for(let i=0;i<75;i++){
-        if(!stored[i]){
-            alert("You must answer ALL questions.");
-            return;
-        }
-    }
-
-    let score=0;
-
-    for(let i=0;i<75;i++){
-        if(stored[i]===answers[i]) score++;
-    }
-
-    if(score>=68){
-        alert("PASS: 90% achieved. Redirecting to application.");
-        window.location.href="apply1.html";
-    } else {
-        alert("FAIL: Try again. You may retry unlimited times.");
-    }
-}
-
-render();
-
-</script>
+    <div class="form-container">
+        <iframe 
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfLYyVXpvsPBrp4ij8WXzU8YeX8JN4IhbGUBYhiEvCk7fUZNQ/viewform?embedded=true" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0">
+            Loading…
+        </iframe>
+    </div>
 
 </body>
 </html>
