@@ -1,65 +1,127 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harccian Entrance Exam</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: #eee;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harccian Bible College - Application</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: #111;
+        color: #eee;
+        line-height: 1.6;
+        padding: 20px;
+        margin: 0;
+    }
 
-        .header-info {
-            max-width: 900px;
-            width: 90%;
-            background: #1c1c1c;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 10px 10px 0 0;
-            border-bottom: 4px solid red;
-            text-align: center;
-        }
+    .container {
+        max-width: 950px;
+        margin: auto;
+        background: #1c1c1c;
+        padding: 40px;
+        border-radius: 10px;
+        border-top: 5px solid red;
+    }
 
-        .form-container {
-            width: 100%;
-            max-width: 900px;
-            background: #fff; /* Google Forms usually look best on white or their native bg */
-            border-radius: 0 0 10px 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            margin-bottom: 40px;
-        }
+    h1 {
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
 
-        iframe {
-            width: 100%;
-            height: 1200px; /* Adjust height as needed for your form length */
-            border: none;
-        }
+    .subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #bbb;
+        margin-bottom: 30px;
+    }
 
-        .warning-text {
-            color: #ff4444;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-    </style>
+    .info-section {
+        background: #222;
+        padding: 25px;
+        border-radius: 5px;
+        margin-bottom: 30px;
+        border-left: 4px solid red;
+    }
+
+    h3 {
+        color: red;
+        margin-top: 0;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    ul li::before {
+        content: "•";
+        color: red;
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
+
+    .form-wrapper {
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 20px;
+    }
+
+    iframe {
+        width: 100%;
+        height: 1500px; /* Adjusted height for a large assessment */
+        border: none;
+    }
+
+    .footer-note {
+        font-size: 0.9rem;
+        color: #888;
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
 </head>
 <body>
 
-    <div class="header-info">
-        <h2>Harccian Entrance Exam</h2>
-        <p class="warning-text">⚠ Please ensure you have a stable connection before starting.</p>
-        <p>Complete the form below to submit your application.</p>
+<div class="container">
+    <h1>HARCCIAN BIBLE COLLEGE - APPLICATION</h1>
+    <p class="subtitle">Welcome to the Harccian™ Bible College Application Process</p>
+
+    <div class="info-section">
+        <p>All information submitted must be <strong>accurate and truthful</strong>. Harccian™ Bible College assumes no responsibility for any complications arising from incorrect or misleading details. The information you provide will be used solely for the purpose of processing your application and issuing certificates where applicable.</p>
+        
+        <p>Entry into Harccian™ Bible College is not designed for the careless or casual. We seek applicants who demonstrate <strong>diligence, integrity, and a commitment to excellence</strong>. While our programs are <strong>non-accredited</strong>, we uphold <strong>high standards</strong> for all who apply and study with us.</p>
     </div>
 
-    <div class="form-container">
+    <div class="info-section">
+        <h3>Assessment Structure</h3>
+        <p>This entrance assessment consists of <strong>four (4) sections:</strong></p>
+        <ul>
+            <li><strong>Administration</strong></li>
+            <li><strong>Bible Knowledge</strong> – You may reference your Bible to assist with answers</li>
+            <li><strong>English Grammar</strong> – Assessing comprehension, clarity, and accuracy</li>
+            <li><strong>Harccian Knowledge</strong> – Based on information found on this website</li>
+        </ul>
+        <p>We encourage all applicants to approach each question thoughtfully, ensuring that your answers reflect both <strong>understanding and honesty</strong>.</p>
+    </div>
+
+    <div class="info-section" style="border-left-color: #ffcc00;">
+        <h3>Important Notice</h3>
+        <p>We strongly recommend completing this application in <strong>one sitting</strong>.</p>
+        <p>While we believe the system may include an <strong>autosave feature</strong>, this cannot be guaranteed at all times. As this is a <strong>large assessment</strong>, please ensure you proceed carefully and avoid leaving the application for extended periods to prevent any potential loss of progress.</p>
+    </div>
+
+    <div class="form-wrapper">
         <iframe 
             src="https://docs.google.com/forms/d/e/1FAIpQLSfLYyVXpvsPBrp4ij8WXzU8YeX8JN4IhbGUBYhiEvCk7fUZNQ/viewform?embedded=true" 
             frameborder="0" 
@@ -68,6 +130,9 @@
             Loading…
         </iframe>
     </div>
+
+    <p class="footer-note">© 2026 Harccian Bible College</p>
+</div>
 
 </body>
 </html>
