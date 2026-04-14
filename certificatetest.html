@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,11 +13,12 @@
       text-align: center;
       padding: 40px;
       min-height: 100vh;
+      user-select: none; 
     }
     .landing-logo {
-      max-width: 180px;
+      max-width: 240px;
       height: auto;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
     h1 {
       font-family: 'Cinzel', serif;
@@ -26,13 +27,19 @@
       line-height: 1.4;
       margin-bottom: 20px;
     }
-    p.instruction {
+    .instruction {
       font-size: 18px;
       color: #ffffff;
-      margin-bottom: 30px;
-      max-width: 550px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-bottom: 5px;
+    }
+    /* Small and Yellow as requested */
+    .accreditation-notice {
+      font-size: 11px;
+      color: #ffd700; 
+      margin-bottom: 25px;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     .container {
       max-width: 700px;
@@ -47,7 +54,7 @@
       border: 2px solid #d4af37;
       background: #fff;
       color: #192535;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     button {
       padding: 14px 30px;
@@ -72,33 +79,33 @@
       color: #192535;
       border: none;
     }
-    .home-btn:hover {
-      background: #ffffff;
-      color: #be2834;
-    }
     .disclaimer {
       margin-top: 30px;
       font-size: 13px;
       color: #d4af37;
-      font-style: italic;
     }
   </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
+
   <div class="container">
     <img src="certlogolion.png" alt="College Logo" class="landing-logo">
 
     <h1>Congratulations on Earning Your Certificate of Completion in Ministry</h1>
     
-    <p class="instruction">
-      Please enter your full name and generate your certificate.<br>
+    <div class="instruction">
+      Please enter your full name and generate your certificate.
+    </div>
+    
+    <div class="accreditation-notice">
       Please remember all our certificates are non-accredited.
-    </p>
+    </div>
 
-    <input id="studentName" type="text" placeholder="Enter your full name">
+    <input id="studentName" type="text" placeholder="Enter your full name" autocomplete="off">
     <br>
     
-    <button class="download-btn" onclick="generateCert()">Generate Certificate</button>
+    <button id="genBtn" class="download-btn" onclick="generateCert()">Generate Certificate</button>
+    
     <br><br>
     <button class="home-btn" onclick="goHome()">← Back to Home</button>
 
@@ -109,7 +116,13 @@
 
   <script>
     function generateCert() {
-      const name = document.getElementById('studentName').value.trim() || 'Student';
+      const nameInput = document.getElementById('studentName');
+      const name = nameInput.value.trim();
+      
+      if (!name) {
+        alert("Please enter your name first.");
+        return;
+      }
 
       const { jsPDF } = window.jspdf;
       const pdf = new jsPDF('landscape', 'mm', 'a4');
@@ -118,38 +131,33 @@
       pdf.setFillColor(25, 37, 53);
       pdf.rect(0, 0, 297, 210, 'F');
 
-      // 2. Academic Double Border (Gold)
+      // 2. Border
       pdf.setDrawColor(212, 175, 55);
       pdf.setLineWidth(2.5);
       pdf.rect(10, 10, 277, 190);
       pdf.setLineWidth(0.8);
       pdf.rect(14, 14, 269, 182);
 
-      // 3. Add Logo to PDF (Now using certlogolion.png)
+      // 3. Logo
       try {
         pdf.addImage('certlogolion.png', 'PNG', 123.5, 22, 50, 45); 
-      } catch(e) {
-        console.log("Logo could not be loaded");
-      }
+      } catch(e) {}
 
-      // 4. Header Title
+      // 4. Text Content
       pdf.setTextColor(255, 215, 0);
       pdf.setFont('helvetica', 'bold');
       pdf.setFontSize(28);
       pdf.text('CERTIFICATE OF COMPLETION OF MINISTRY', 148.5, 82, { align: 'center' });
 
-      // 5. Introductory Text
       pdf.setTextColor(255, 255, 255);
       pdf.setFont('helvetica', 'normal');
       pdf.setFontSize(18);
       pdf.text('This is to certify that', 148.5, 100, { align: 'center' });
 
-      // 6. Student Name
       pdf.setFont('helvetica', 'bold');
       pdf.setFontSize(32);
       pdf.text(name.toUpperCase(), 148.5, 120, { align: 'center' });
 
-      // 7. Course Completion Text
       pdf.setFont('helvetica', 'normal');
       pdf.setFontSize(15);
       pdf.text('has successfully completed all required modules to be awarded this certificate,', 148.5, 138, { align: 'center' });
@@ -159,32 +167,34 @@
       pdf.setTextColor(255, 215, 0);
       pdf.text('Harccian Bible College™', 148.5, 150, { align: 'center' });
 
-      // 8. Signature Area
+      // 5. Signature Area
       pdf.setDrawColor(212, 175, 55);
       pdf.setLineWidth(0.5);
       pdf.line(40, 180, 100, 180); 
-      
       pdf.setTextColor(255, 215, 0);
       pdf.setFont('times', 'italic'); 
       pdf.setFontSize(20);
       pdf.text('Founder', 70, 175, { align: 'center' });
-      
       pdf.setTextColor(255, 255, 255);
       pdf.setFont('helvetica', 'normal');
       pdf.setFontSize(10);
       pdf.text('College Founder', 70, 185, { align: 'center' });
 
-      // 9. Current Date
       const today = new Date().toLocaleDateString('en-GB');
       pdf.setFontSize(12);
       pdf.text('Issued on: ' + today, 227, 185, { align: 'center' });
 
-      // 10. Small Footer
       pdf.setFontSize(9);
       pdf.text('HARCCIAN Bible College™', 148.5, 192, { align: 'center' });
 
-      // Save the file
-      pdf.save(name + '_HARCCIAN_Ministry_Certificate.pdf');
+      pdf.save(name + '_Certificate.pdf');
+    }
+
+    // Security - Deter Inspect Elements (Right-click and common shortcuts)
+    document.onkeydown = function(e) {
+      if(e.keyCode == 123) return false;
+      if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) return false;
+      if(e.ctrlKey && e.keyCode == 85) return false;
     }
 
     function goHome() {
