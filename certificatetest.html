@@ -13,6 +13,8 @@
       text-align: center;
       padding: 40px;
       min-height: 100vh;
+      /* Prevent text selection for extra security */
+      user-select: none; 
     }
     .landing-logo {
       max-width: 180px;
@@ -26,13 +28,17 @@
       line-height: 1.4;
       margin-bottom: 20px;
     }
-    p.instruction {
+    .instruction {
       font-size: 18px;
       color: #ffffff;
+      margin-bottom: 10px;
+    }
+    /* Updated styling for the disclaimer */
+    .accreditation-notice {
+      font-size: 13px;
+      color: #ffd700; 
       margin-bottom: 30px;
-      max-width: 550px;
-      margin-left: auto;
-      margin-right: auto;
+      font-style: italic;
     }
     .container {
       max-width: 700px;
@@ -80,20 +86,20 @@
       margin-top: 30px;
       font-size: 13px;
       color: #d4af37;
-      font-style: italic;
     }
   </style>
 </head>
-<body>
-  <div class="container">
+<body oncontextmenu="return false;"> <div class="container">
     <img src="certlogolion.png" alt="College Logo" class="landing-logo">
 
     <h1>Congratulations on Earning Your Certificate of Completion in Ministry</h1>
     
-    <p class="instruction">
-      Please enter your full name and generate your certificate.<br>
+    <div class="instruction">
+      Please enter your full name and generate your certificate.
+    </div>
+    <div class="accreditation-notice">
       Please remember all our certificates are non-accredited.
-    </p>
+    </div>
 
     <input id="studentName" type="text" placeholder="Enter your full name">
     <br>
@@ -108,6 +114,15 @@
   </div>
 
   <script>
+    // Additional Security: Disable F12 and Ctrl+Shift+I
+    document.onkeydown = function(e) {
+      if(e.keyCode == 123) return false;
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+      if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+    }
+
     function generateCert() {
       const name = document.getElementById('studentName').value.trim() || 'Student';
 
@@ -125,7 +140,7 @@
       pdf.setLineWidth(0.8);
       pdf.rect(14, 14, 269, 182);
 
-      // 3. Add Logo to PDF (Now using certlogolion.png)
+      // 3. Add Logo to PDF
       try {
         pdf.addImage('certlogolion.png', 'PNG', 123.5, 22, 50, 45); 
       } catch(e) {
@@ -183,7 +198,6 @@
       pdf.setFontSize(9);
       pdf.text('HARCCIAN Bible College™', 148.5, 192, { align: 'center' });
 
-      // Save the file
       pdf.save(name + '_HARCCIAN_Ministry_Certificate.pdf');
     }
 
