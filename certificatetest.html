@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,12 +13,11 @@
       text-align: center;
       padding: 40px;
       min-height: 100vh;
-      user-select: none; 
     }
     .landing-logo {
-      max-width: 240px;
+      max-width: 180px;
       height: auto;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
     h1 {
       font-family: 'Cinzel', serif;
@@ -27,37 +26,13 @@
       line-height: 1.4;
       margin-bottom: 20px;
     }
-    .instruction {
+    p.instruction {
       font-size: 18px;
       color: #ffffff;
-      margin-bottom: 10px;
-    }
-    .accreditation-notice {
-      font-size: 13px;
-      color: #ffd700; 
-      margin-bottom: 10px;
-      font-style: italic;
-    }
-    .security-notice {
-      font-size: 14px;
-      color: #ffcc00;
-      margin-bottom: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    #attempt-counter {
-      color: #ffd700;
-      font-size: 14px;
-      margin-bottom: 15px;
-      font-weight: bold;
-    }
-    #limit-message {
-      color: #ff4d4d;
-      font-weight: bold;
-      margin-top: 10px;
-      display: none;
+      margin-bottom: 30px;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .container {
       max-width: 700px;
@@ -72,7 +47,7 @@
       border: 2px solid #d4af37;
       background: #fff;
       color: #192535;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
     button {
       padding: 14px 30px;
@@ -88,47 +63,42 @@
       color: white;
       border: none;
     }
-    .download-btn:disabled {
-      background: #555;
-      cursor: not-allowed;
-      opacity: 0.6;
+    .download-btn:hover {
+      background: #ffffff;
+      color: #be2834;
     }
     .home-btn {
       background: #d4af37;
       color: #192535;
       border: none;
     }
+    .home-btn:hover {
+      background: #ffffff;
+      color: #be2834;
+    }
     .disclaimer {
       margin-top: 30px;
       font-size: 13px;
       color: #d4af37;
+      font-style: italic;
     }
   </style>
 </head>
-<body oncontextmenu="return false;">
-
+<body>
   <div class="container">
     <img src="certlogolion.png" alt="College Logo" class="landing-logo">
 
     <h1>Congratulations on Earning Your Certificate of Completion in Ministry</h1>
     
-    <div class="instruction">
-      Please enter your full name and generate your certificate.
-    </div>
-    <div class="accreditation-notice">
+    <p class="instruction">
+      Please enter your full name and generate your certificate.<br>
       Please remember all our certificates are non-accredited.
-    </div>
-    
-    <div class="security-notice">
-      <span>🔒</span> For security purposes, you only have 3 attempts to generate this certificate.
-    </div>
+    </p>
 
     <input id="studentName" type="text" placeholder="Enter your full name">
-    <div id="attempt-counter">Attempts remaining: 3</div>
+    <br>
     
-    <button id="genBtn" class="download-btn" onclick="generateCert()">Generate Certificate</button>
-    <div id="limit-message">You have reached the maximum of 3 downloads. Access locked.</div>
-    
+    <button class="download-btn" onclick="generateCert()">Generate Certificate</button>
     <br><br>
     <button class="home-btn" onclick="goHome()">← Back to Home</button>
 
@@ -138,39 +108,8 @@
   </div>
 
   <script>
-    const MAX_ATTEMPTS = 3;
-
-    function updateAttemptUI() {
-      let attempts = parseInt(localStorage.getItem('cert_attempts') || 0);
-      let remaining = MAX_ATTEMPTS - attempts;
-      
-      const counterDisplay = document.getElementById('attempt-counter');
-      const genBtn = document.getElementById('genBtn');
-      const limitMsg = document.getElementById('limit-message');
-
-      if (remaining <= 0) {
-        counterDisplay.innerText = "Attempts remaining: 0";
-        genBtn.disabled = true;
-        limitMsg.style.display = 'block';
-      } else {
-        counterDisplay.innerText = "Attempts remaining: " + remaining;
-      }
-    }
-
-    window.onload = updateAttemptUI;
-
     function generateCert() {
-      let attempts = parseInt(localStorage.getItem('cert_attempts') || 0);
-      
-      if (attempts >= MAX_ATTEMPTS) return;
-
-      const nameInput = document.getElementById('studentName');
-      const name = nameInput.value.trim();
-      
-      if (!name) {
-        alert("Please enter your name first.");
-        return;
-      }
+      const name = document.getElementById('studentName').value.trim() || 'Student';
 
       const { jsPDF } = window.jspdf;
       const pdf = new jsPDF('landscape', 'mm', 'a4');
@@ -179,33 +118,38 @@
       pdf.setFillColor(25, 37, 53);
       pdf.rect(0, 0, 297, 210, 'F');
 
-      // 2. Border
+      // 2. Academic Double Border (Gold)
       pdf.setDrawColor(212, 175, 55);
       pdf.setLineWidth(2.5);
       pdf.rect(10, 10, 277, 190);
       pdf.setLineWidth(0.8);
       pdf.rect(14, 14, 269, 182);
 
-      // 3. Logo
+      // 3. Add Logo to PDF (Now using certlogolion.png)
       try {
         pdf.addImage('certlogolion.png', 'PNG', 123.5, 22, 50, 45); 
-      } catch(e) {}
+      } catch(e) {
+        console.log("Logo could not be loaded");
+      }
 
-      // 4. Text Content
+      // 4. Header Title
       pdf.setTextColor(255, 215, 0);
       pdf.setFont('helvetica', 'bold');
       pdf.setFontSize(28);
       pdf.text('CERTIFICATE OF COMPLETION OF MINISTRY', 148.5, 82, { align: 'center' });
 
+      // 5. Introductory Text
       pdf.setTextColor(255, 255, 255);
       pdf.setFont('helvetica', 'normal');
       pdf.setFontSize(18);
       pdf.text('This is to certify that', 148.5, 100, { align: 'center' });
 
+      // 6. Student Name
       pdf.setFont('helvetica', 'bold');
       pdf.setFontSize(32);
       pdf.text(name.toUpperCase(), 148.5, 120, { align: 'center' });
 
+      // 7. Course Completion Text
       pdf.setFont('helvetica', 'normal');
       pdf.setFontSize(15);
       pdf.text('has successfully completed all required modules to be awarded this certificate,', 148.5, 138, { align: 'center' });
@@ -215,39 +159,32 @@
       pdf.setTextColor(255, 215, 0);
       pdf.text('Harccian Bible College™', 148.5, 150, { align: 'center' });
 
-      // 5. Signature Area
+      // 8. Signature Area
       pdf.setDrawColor(212, 175, 55);
       pdf.setLineWidth(0.5);
       pdf.line(40, 180, 100, 180); 
+      
       pdf.setTextColor(255, 215, 0);
       pdf.setFont('times', 'italic'); 
       pdf.setFontSize(20);
       pdf.text('Founder', 70, 175, { align: 'center' });
+      
       pdf.setTextColor(255, 255, 255);
       pdf.setFont('helvetica', 'normal');
       pdf.setFontSize(10);
       pdf.text('College Founder', 70, 185, { align: 'center' });
 
+      // 9. Current Date
       const today = new Date().toLocaleDateString('en-GB');
       pdf.setFontSize(12);
       pdf.text('Issued on: ' + today, 227, 185, { align: 'center' });
 
+      // 10. Small Footer
       pdf.setFontSize(9);
       pdf.text('HARCCIAN Bible College™', 148.5, 192, { align: 'center' });
 
-      pdf.save(name + '_Certificate.pdf');
-
-      // Update counter
-      attempts++;
-      localStorage.setItem('cert_attempts', attempts);
-      updateAttemptUI();
-    }
-
-    // Security - Disable Inspect Elements
-    document.onkeydown = function(e) {
-      if(e.keyCode == 123) return false;
-      if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) return false;
-      if(e.ctrlKey && e.keyCode == 85) return false;
+      // Save the file
+      pdf.save(name + '_HARCCIAN_Ministry_Certificate.pdf');
     }
 
     function goHome() {
