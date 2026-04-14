@@ -81,7 +81,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Congratulations for completing your Certificate of Completion of Ministry</h1>
+    <h1>Congratulations on Earning Your Certificate of Completion in Ministry</h1>
     
     <p class="instruction">
       Please enter your full name and generate your certificate.<br>
@@ -111,14 +111,10 @@
       pdf.setFillColor(25, 37, 53);
       pdf.rect(0, 0, 297, 210, 'F');
 
-      // 2. Academic Double Border (Consistent Gold Color)
+      // 2. Academic Double Border (Gold)
       pdf.setDrawColor(212, 175, 55);
-      
-      // Outer Thick Line
       pdf.setLineWidth(2.5);
       pdf.rect(10, 10, 277, 190);
-      
-      // Inner Thin Line (Now also set to same Gold Color)
       pdf.setLineWidth(0.8);
       pdf.rect(14, 14, 269, 182);
 
@@ -146,20 +142,20 @@
       pdf.setFontSize(32);
       pdf.text(name.toUpperCase(), 148.5, 120, { align: 'center' });
 
-      // 7. Course Completion Text
+      // 7. Course Completion Text (Corrected Phrasing)
       pdf.setFont('helvetica', 'normal');
       pdf.setFontSize(15);
-      pdf.text('has completed all modules in to be awarded this certificate,', 148.5, 138, { align: 'center' });
+      pdf.text('has successfully completed all required modules to be awarded this certificate,', 148.5, 138, { align: 'center' });
       
       pdf.setFont('helvetica', 'bold');
       pdf.setFontSize(18);
       pdf.setTextColor(255, 215, 0);
-      pdf.text('Harccian Bible College (tm)', 148.5, 150, { align: 'center' });
+      pdf.text('Harccian Bible College™', 148.5, 150, { align: 'center' });
 
-      // 8. Signature Area (Bottom Left)
+      // 8. Signature Area
       pdf.setDrawColor(212, 175, 55);
       pdf.setLineWidth(0.5);
-      pdf.line(40, 180, 100, 180); // Signature line
+      pdf.line(40, 180, 100, 180); 
       
       pdf.setTextColor(255, 215, 0);
       pdf.setFont('times', 'italic'); 
@@ -171,7 +167,7 @@
       pdf.setFontSize(10);
       pdf.text('College Founder', 70, 185, { align: 'center' });
 
-      // 9. Current Date (Bottom Right)
+      // 9. Current Date
       const today = new Date().toLocaleDateString('en-GB');
       pdf.setFontSize(12);
       pdf.text('Issued on: ' + today, 227, 185, { align: 'center' });
