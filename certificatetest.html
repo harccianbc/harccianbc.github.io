@@ -13,13 +13,14 @@
       text-align: center;
       padding: 40px;
       min-height: 100vh;
-      /* Prevent text selection for extra security */
+      /* Prevent text selection */
       user-select: none; 
     }
     .landing-logo {
-      max-width: 180px;
+      /* Increased from 180px to 240px for a more prominent look */
+      max-width: 240px;
       height: auto;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
     h1 {
       font-family: 'Cinzel', serif;
@@ -33,7 +34,6 @@
       color: #ffffff;
       margin-bottom: 10px;
     }
-    /* Updated styling for the disclaimer */
     .accreditation-notice {
       font-size: 13px;
       color: #ffd700; 
@@ -89,7 +89,9 @@
     }
   </style>
 </head>
-<body oncontextmenu="return false;"> <div class="container">
+<body oncontextmenu="return false;">
+
+  <div class="container">
     <img src="certlogolion.png" alt="College Logo" class="landing-logo">
 
     <h1>Congratulations on Earning Your Certificate of Completion in Ministry</h1>
@@ -114,7 +116,7 @@
   </div>
 
   <script>
-    // Additional Security: Disable F12 and Ctrl+Shift+I
+    // Security: Disable standard developer shortcuts
     document.onkeydown = function(e) {
       if(e.keyCode == 123) return false;
       if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
