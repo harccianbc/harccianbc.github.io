@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -53,7 +53,7 @@ hr{border:none;border-top:1px solid #e5e7eb;margin:18px 0}
       <p>The information provided will be used solely for processing applications, course access, and issuing certificates where applicable.</p>
       <p>Entry into Harccian™ Bible College is intended for applicants who demonstrate diligence, integrity, and commitment to excellence.</p>
       <p>While our programs are non-accredited, we maintain high personal and academic standards for all students.</p>
-      <p>⚠️ NON-ACCREDITATION NOTICE</p>
+      <p style="color:#be2834;font-weight:800;font-size:18px;letter-spacing:.3px;margin-top:14px;">⚠️ NON-ACCREDITATION NOTICE</p>
       <p>Harccian™ Bible College (H.B.C) is not a Registered Training Organisation (RTO) and is not accredited under any formal national or governmental education framework.</p>
       <p>All courses, materials, and assessments are provided for personal development, educational enrichment, and spiritual growth.</p>
       <p>We do not offer nationally recognised qualifications.</p>
@@ -69,8 +69,8 @@ hr{border:none;border-top:1px solid #e5e7eb;margin:18px 0}
     </div>
 
     <div class="options">
-      <label class="option"><input type="checkbox" /> I AGREE to all the terms above</label>
-      <label class="option"><input type="checkbox" /> I AM OVER THE AGE OF 18 YEARS OLD</label>
+      <label class="option"><input type="checkbox" id="agreeBox" /> I AGREE to all the terms above</label>
+      <label class="option"><input type="checkbox" id="ageBox" /> I AM OVER THE AGE OF 18 YEARS OLD</label>
     </div>
   </div>
 
@@ -161,6 +161,24 @@ hr{border:none;border-top:1px solid #e5e7eb;margin:18px 0}
   </div>
 
   <div class="footer">Harccian Bible College Entrance Exam Template</div>
+
+  <div class="card" style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;">
+    <div class="small">You must tick both boxes to continue to the next page.</div>
+    <button id="nextBtn" style="background:var(--red);color:#fff;border:none;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;">NEXT PAGE</button>
+  </div>
 </main>
+
+<script>
+const agreeBox=document.getElementById('agreeBox');
+const ageBox=document.getElementById('ageBox');
+const nextBtn=document.getElementById('nextBtn');
+nextBtn.addEventListener('click',()=>{
+  if(agreeBox.checked && ageBox.checked){
+    alert('Proceeding to next page...');
+  } else {
+    alert('Please tick both boxes to continue.');
+  }
+});
+</script>
 </body>
 </html>
