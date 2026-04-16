@@ -15,36 +15,7 @@
       text-align: center;
       padding: 40px;
       min-height: 100vh;
-      user-select: none; 
-    }
-
-    .landing-logo {
-      max-width: 240px;
-      height: auto;
-      margin-bottom: 25px;
-    }
-
-    h1 {
-      font-family: 'Cinzel', serif;
-      color: #ffd700;
-      font-size: 28px;
-      line-height: 1.4;
-      margin-bottom: 20px;
-    }
-
-    .instruction {
-      font-size: 18px;
-      color: #ffffff;
-      margin-bottom: 5px;
-    }
-
-    .accreditation-notice {
-      font-size: 11px;
-      color: #ffd700; 
-      margin-bottom: 25px;
-      font-style: italic;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      user-select: none;
     }
 
     .container {
@@ -52,29 +23,69 @@
       margin: 0 auto;
     }
 
+    .landing-logo {
+      max-width: 240px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: #ffd700;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .instruction {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .warning {
+      font-size: 12px;
+      color: #ffd700;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    /* 🔴 ACCESS CODE BOX (IMPORTANT) */
+    #accessCode {
+      padding: 15px;
+      font-size: 18px;
+      width: 320px;
+      max-width: 90%;
+      border-radius: 6px;
+      border: 3px solid red;
+      background: white;
+      color: black;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 10px;
+      outline: none;
+    }
+
+    #accessCode::placeholder {
+      color: #555;
+      font-weight: normal;
+    }
+
     input {
-      padding: 14px;
+      padding: 15px;
       font-size: 17px;
       width: 320px;
       max-width: 90%;
-      border-radius: 5px;
+      border-radius: 6px;
       border: 2px solid #d4af37;
-      background: #fff;
-      color: #192535;
       margin-bottom: 10px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+      text-align: center;
     }
 
     button {
       padding: 14px 30px;
       font-size: 16px;
-      margin: 10px;
-      border-radius: 5px;
+      margin-top: 10px;
+      border-radius: 6px;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.3s;
     }
 
     .download-btn {
@@ -84,7 +95,7 @@
     }
 
     .download-btn:hover {
-      background: #ffffff;
+      background: white;
       color: #be2834;
     }
 
@@ -95,8 +106,8 @@
     }
 
     .disclaimer {
-      margin-top: 30px;
-      font-size: 13px;
+      margin-top: 25px;
+      font-size: 12px;
       color: #d4af37;
     }
   </style>
@@ -104,51 +115,52 @@
 
 <body oncontextmenu="return false;">
 
-  <div class="container">
+<div class="container">
 
-    <img src="certlogolion.png" class="landing-logo">
+  <img src="certlogolion.png" class="landing-logo">
 
-    <h1>Certificate of Completion - Ministry Program</h1>
+  <h1>Certificate of Completion - Ministry Program</h1>
 
-    <div class="instruction">
-      Enter your access code and full name to generate your certificate.
-    </div>
-
-    <div class="accreditation-notice">
-      All certificates are non-accredited.
-    </div>
-
-    <!-- ACCESS CODE -->
-    <input id="accessCode" type="password" placeholder="Enter access code">
-
-    <!-- NAME -->
-    <input id="studentName" type="text" placeholder="Enter your full name">
-
-    <button class="download-btn" onclick="generateCert()">Generate Certificate</button>
-
-    <br>
-
-    <button class="home-btn" onclick="goHome()">← Back to Home</button>
-
-    <div class="disclaimer">
-      H.B.C
-    </div>
-
+  <div class="instruction">
+    Enter your ACCESS CODE and FULL NAME to generate your certificate.
   </div>
+
+  <div class="warning">
+    ⚠ Access code is CASE SENSITIVE (must match exactly: CODE123)
+  </div>
+
+  <!-- ACCESS CODE -->
+  <input id="accessCode" type="password" placeholder="ENTER ACCESS CODE">
+
+  <!-- NAME -->
+  <input id="studentName" type="text" placeholder="ENTER FULL NAME">
+
+  <br>
+
+  <button class="download-btn" onclick="generateCert()">Generate Certificate</button>
+
+  <br>
+
+  <button class="home-btn" onclick="goHome()">← Back to Home</button>
+
+  <div class="disclaimer">
+    H.B.C
+  </div>
+
+</div>
 
 <script>
 function generateCert() {
 
-  const name = document.getElementById('studentName').value.trim();
-  const code = document.getElementById('accessCode').value.trim();
+  const code = document.getElementById("accessCode").value.trim();
+  const name = document.getElementById("studentName").value.trim();
 
-  // ACCESS CODE CHECK
+  // CASE-SENSITIVE CHECK
   if (code !== "CODE123") {
-    alert("Invalid access code. Please complete your course and use the correct code.");
+    alert("Incorrect access code. Remember: it IS case sensitive.");
     return;
   }
 
-  // NAME CHECK
   if (!name) {
     alert("Please enter your full name.");
     return;
@@ -157,23 +169,20 @@ function generateCert() {
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF('landscape', 'mm', 'a4');
 
-  // Background
   pdf.setFillColor(25, 37, 53);
   pdf.rect(0, 0, 297, 210, 'F');
 
-  // Border
   pdf.setDrawColor(212, 175, 55);
   pdf.setLineWidth(2.5);
   pdf.rect(10, 10, 277, 190);
+
   pdf.setLineWidth(0.8);
   pdf.rect(14, 14, 269, 182);
 
-  // Logo
   try {
-    pdf.addImage('certlogolion.png', 'PNG', 123.5, 22, 50, 45);
-  } catch(e) {}
+    pdf.addImage('certlogolion.png', 'PNG', 123, 22, 50, 45);
+  } catch (e) {}
 
-  // Title
   pdf.setTextColor(255, 215, 0);
   pdf.setFont('helvetica', 'bold');
   pdf.setFontSize(28);
@@ -191,12 +200,10 @@ function generateCert() {
   pdf.setFontSize(15);
   pdf.text('has successfully completed the Ministry Program', 148.5, 138, { align: 'center' });
 
-  pdf.setFont('helvetica', 'bold');
   pdf.setTextColor(255, 215, 0);
   pdf.setFontSize(18);
   pdf.text('Harccian Bible College™', 148.5, 150, { align: 'center' });
 
-  // Signature
   pdf.setDrawColor(212, 175, 55);
   pdf.line(40, 180, 100, 180);
 
@@ -208,7 +215,6 @@ function generateCert() {
   pdf.setFontSize(10);
   pdf.text('College Founder', 70, 185, { align: 'center' });
 
-  // Date
   const today = new Date().toLocaleDateString('en-GB');
   pdf.text('Issued: ' + today, 227, 185, { align: 'center' });
 
