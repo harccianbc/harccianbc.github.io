@@ -47,7 +47,7 @@
       margin-bottom: 20px;
     }
 
-    /* 🔴 ACCESS CODE BOX (IMPORTANT) */
+    /* 🔴 ACCESS CODE BOX */
     #accessCode {
       padding: 15px;
       font-size: 18px;
@@ -63,12 +63,7 @@
       outline: none;
     }
 
-    #accessCode::placeholder {
-      color: #555;
-      font-weight: normal;
-    }
-
-    input {
+    input[type="text"] {
       padding: 15px;
       font-size: 17px;
       width: 320px;
@@ -126,11 +121,11 @@
   </div>
 
   <div class="warning">
-    ⚠ Access code is CASE SENSITIVE (must match exactly: CODE123)
+    ⚠ Access code is CASE SENSITIVE (example: Cgh657)
   </div>
 
   <!-- ACCESS CODE -->
-  <input id="accessCode" type="password" placeholder="ENTER ACCESS CODE">
+  <input id="accessCode" type="password" placeholder="ENTER ACCESS CODE (e.g. Cgh657)">
 
   <!-- NAME -->
   <input id="studentName" type="text" placeholder="ENTER FULL NAME">
@@ -156,8 +151,8 @@ function generateCert() {
   const name = document.getElementById("studentName").value.trim();
 
   // CASE-SENSITIVE CHECK
-  if (code !== "CODE123") {
-    alert("Incorrect access code. Remember: it IS case sensitive.");
+  if (code !== "Cgh657") {
+    alert("Incorrect access code. It is case sensitive.");
     return;
   }
 
